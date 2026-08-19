@@ -1,885 +1,1724 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, maximum-scale=1"
+>
+
 <title>Checklist HYTE</title>
+
 
 <style>
 
-*{
-    box-sizing:border-box;
-    -webkit-tap-highlight-color:transparent;
+/* =========================================================
+   BASE
+========================================================= */
+
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
 }
 
 html,
-body{
-    margin:0;
-    width:100%;
-    height:100%;
-    background:#000;
-    color:#f4f4f4;
-    font-family:Arial,Helvetica,sans-serif;
+body {
+    margin: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: transparent;
+
+    color: #f4f4f4;
+
+    font-family:
+        "Arial Narrow",
+        "Roboto Condensed",
+        Arial,
+        Helvetica,
+        sans-serif;
 }
 
-body{
-    overflow:hidden;
-    touch-action:manipulation;
+body {
+    overflow: hidden;
+
+    touch-action: manipulation;
 }
 
-button{
-    font-family:inherit;
-    touch-action:manipulation;
+button {
+    font-family: inherit;
+
+    touch-action: manipulation;
+
+    cursor: pointer;
 }
 
-.app{
-    width:100%;
-    height:100%;
-    padding:12px;
-    display:flex;
-    flex-direction:column;
+
+/* =========================================================
+   APP
+========================================================= */
+
+.app {
+    width: 100%;
+    height: 100%;
+
+    padding:
+        8px
+        10px;
+
+    display: flex;
+    flex-direction: column;
 }
 
-/* =====================================================
-   CABEÇALHO
-===================================================== */
 
-.header{
-    flex:none;
-    padding:30px 20px 16px;
-    border:1px solid #555;
-    border-bottom:0;
-    border-radius:18px 18px 0 0;
+/* =========================================================
+   PAINEL PRINCIPAL
+========================================================= */
+
+.panel {
+    flex: 1;
+
+    min-height: 0;
+
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        rgba(255,255,255,.36);
+
+    border-radius: 20px;
+
+    background:
+        radial-gradient(
+            circle at 70% 30%,
+            rgba(255,255,255,.025),
+            transparent 33%
+        ),
+        linear-gradient(
+            180deg,
+            rgba(6,6,6,.99),
+            rgba(1,1,1,.995)
+        );
+
+    box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,.015),
+        0 20px 50px rgba(0,0,0,.45);
+}
+
+
+/* pincel superior */
+
+.panel:before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 220px;
+    height: 33px;
 
     background:
         linear-gradient(
             90deg,
-            #fff 0 15%,
-            #777 18%,
-            transparent 23%
-        )
-        top left / 220px 13px no-repeat,
-        #050505;
+            #fff 0%,
+            #fff 55%,
+            rgba(255,255,255,.7) 70%,
+            transparent 100%
+        );
+
+    clip-path:
+        polygon(
+            0 0,
+            100% 0,
+            88% 30%,
+            100% 45%,
+            70% 58%,
+            91% 73%,
+            47% 68%,
+            28% 100%,
+            0 78%
+        );
+
+    opacity: .96;
+
+    pointer-events: none;
+
+    z-index: 5;
 }
 
-.header-row{
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-start;
-    gap:12px;
-}
 
-.title{
-    margin:0;
-    font-size:31px;
-    line-height:1;
-    font-weight:900;
-}
+/* pincel inferior */
 
-.subtitle{
-    margin-top:12px;
-    color:#888;
-    font-size:16px;
-}
+.panel:after {
+    content: "";
 
-.gear{
-    width:48px;
-    height:48px;
-    flex:none;
-    border:1px solid #777;
-    border-radius:9px;
-    background:#080808;
-    color:#fff;
-    font-size:23px;
-}
+    position: absolute;
 
-/* =====================================================
-   MODO EDIÇÃO
-===================================================== */
+    right: -10px;
+    bottom: 0;
 
-.edit-banner{
-    display:none;
-    flex:none;
-    min-height:39px;
-    align-items:center;
-    justify-content:center;
-    background:#eee;
-    color:#090909;
-    font-size:12px;
-    font-weight:900;
-    letter-spacing:4px;
-}
-
-body.editing .edit-banner{
-    display:flex;
-}
-
-/* =====================================================
-   PROGRESSO
-===================================================== */
-
-.progress{
-    flex:none;
-    padding:20px;
-    border-left:1px solid #555;
-    border-right:1px solid #555;
-    border-bottom:1px solid #333;
-    background:#060606;
-}
-
-.progress-row{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-}
-
-.progress-label{
-    color:#8d8d8d;
-    font-size:12px;
-    font-weight:900;
-    letter-spacing:3px;
-}
-
-.progress-percent{
-    font-size:20px;
-    font-weight:900;
-}
-
-.track{
-    height:8px;
-    margin-top:12px;
-    overflow:hidden;
-    border:1px solid #333;
-    border-radius:20px;
-    background:#111;
-}
-
-.fill{
-    width:0;
-    height:100%;
-    background:#eee;
-    transition:width .15s linear;
-}
-
-.progress-text{
-    margin-top:7px;
-    color:#666;
-    font-size:12px;
-}
-
-/* =====================================================
-   CARD
-===================================================== */
-
-.card{
-    flex:1;
-    min-height:0;
-    overflow:hidden;
-    border:1px solid #555;
-    border-top:0;
-    border-radius:0 0 18px 18px;
+    width: 210px;
+    height: 65px;
 
     background:
-        radial-gradient(
-            circle at 80% 15%,
-            rgba(255,255,255,.035),
-            transparent 30%
-        ),
         linear-gradient(
-            #070707,
-            #020202
+            90deg,
+            transparent,
+            rgba(255,255,255,.4)
+        );
+
+    clip-path:
+        polygon(
+            20% 45%,
+            100% 0,
+            100% 100%,
+            0 100%,
+            20% 80%,
+            7% 64%,
+            34% 57%
+        );
+
+    opacity: .5;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   CABEÇALHO
+========================================================= */
+
+.header {
+    flex-shrink: 0;
+
+    position: relative;
+
+    z-index: 10;
+
+    padding:
+        55px
+        28px
+        24px;
+}
+
+.header-row {
+    display: flex;
+
+    align-items: flex-start;
+    justify-content: space-between;
+
+    gap: 18px;
+}
+
+.header-copy {
+    min-width: 0;
+}
+
+.title {
+    margin: 0;
+
+    font-size: 36px;
+
+    line-height: .95;
+
+    font-weight: 900;
+
+    letter-spacing: -.6px;
+
+    text-transform: uppercase;
+}
+
+.subtitle {
+    margin-top: 13px;
+
+    color: #8a8a8a;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 17px;
+}
+
+.gear {
+    width: 62px;
+    height: 62px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    border:
+        1px solid
+        rgba(255,255,255,.7);
+
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #101010,
+            #030303
+        );
+
+    color: #fff;
+
+    font-size: 30px;
+
+    box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,.08);
+}
+
+
+/* =========================================================
+   PROGRESSO
+========================================================= */
+
+.progress {
+    flex-shrink: 0;
+
+    padding:
+        28px
+        28px
+        30px;
+
+    border-bottom:
+        1px solid
+        rgba(255,255,255,.28);
+}
+
+.progress-row {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 12px;
+}
+
+.progress-label {
+    color: #9a9a9a;
+
+    font-size: 13px;
+
+    font-weight: 900;
+
+    letter-spacing: 4px;
+
+    text-transform: uppercase;
+}
+
+.progress-percent {
+    font-size: 30px;
+
+    line-height: 1;
+
+    font-weight: 900;
+}
+
+.track {
+    width: 100%;
+    height: 13px;
+
+    margin-top: 19px;
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        #2f2f2f;
+
+    border-radius: 4px;
+
+    background:
+        repeating-linear-gradient(
+            -45deg,
+            #111 0px,
+            #111 8px,
+            #1c1c1c 8px,
+            #1c1c1c 15px
         );
 }
 
-.scroll{
-    width:100%;
-    height:100%;
-    overflow-y:auto;
-    padding:25px 14px 90px;
-    scrollbar-width:thin;
-    scrollbar-color:#777 #111;
+.fill {
+    width: 0%;
+    height: 100%;
+
+    background:
+        repeating-linear-gradient(
+            -45deg,
+            #ddd 0px,
+            #ddd 9px,
+            #aaa 9px,
+            #aaa 16px
+        );
+
+    transition:
+        width
+        .15s
+        linear;
 }
 
-.scroll::-webkit-scrollbar{
-    width:7px;
+.progress-text {
+    margin-top: 11px;
+
+    color: #777;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 13px;
 }
 
-.scroll::-webkit-scrollbar-track{
-    background:#111;
+
+/* =========================================================
+   MODO DE EDIÇÃO
+========================================================= */
+
+.edit-banner {
+    display: none;
+
+    flex-shrink: 0;
+
+    min-height: 42px;
+
+    align-items: center;
+    justify-content: center;
+
+    background: #eee;
+
+    color: #080808;
+
+    font-size: 12px;
+
+    font-weight: 900;
+
+    letter-spacing: 4px;
 }
 
-.scroll::-webkit-scrollbar-thumb{
-    background:#777;
-    border-radius:10px;
+body.editing .edit-banner {
+    display: flex;
 }
 
-/* =====================================================
-   EMPTY
-===================================================== */
 
-.empty{
-    min-height:400px;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    padding:30px;
-    text-align:center;
+/* =========================================================
+   CONTEÚDO
+========================================================= */
+
+.content {
+    flex: 1;
+
+    min-height: 0;
+
+    overflow-y: auto;
+
+    padding:
+        22px
+        28px
+        80px;
+
+    scrollbar-width: thin;
+
+    scrollbar-color:
+        #5c5c5c
+        #111;
 }
 
-.empty-icon{
-    font-size:55px;
-    color:#555;
+.content::-webkit-scrollbar {
+    width: 7px;
 }
 
-.empty-title{
-    margin-top:12px;
-    font-size:25px;
-    font-weight:900;
+.content::-webkit-scrollbar-track {
+    background: #111;
 }
 
-.empty-text{
-    margin:8px 0 20px;
-    color:#777;
-    font-size:15px;
+.content::-webkit-scrollbar-thumb {
+    background: #5c5c5c;
+
+    border-radius: 10px;
 }
 
-/* =====================================================
+
+/* =========================================================
+   TELA VAZIA
+========================================================= */
+
+.empty {
+    min-height: 420px;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px;
+
+    text-align: center;
+}
+
+.empty-icon {
+    font-size: 58px;
+
+    color: #666;
+}
+
+.empty-title {
+    margin-top: 14px;
+
+    font-size: 27px;
+
+    font-weight: 900;
+}
+
+.empty-text {
+    max-width: 410px;
+
+    margin:
+        9px
+        0
+        24px;
+
+    color: #767676;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 15px;
+
+    line-height: 1.45;
+}
+
+
+/* =========================================================
    SEÇÕES
-===================================================== */
+========================================================= */
 
-.section{
-    margin-bottom:28px;
+.section {
+    margin-bottom: 34px;
 }
 
-.section-head{
-    min-height:48px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:10px;
-    padding-bottom:8px;
-    border-bottom:1px solid #333;
+.section-head {
+    min-height: 62px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 12px;
+
+    position: relative;
 }
 
-.brush{
-    position:relative;
-    display:inline-block;
-    margin-left:5px;
-    padding:7px 19px;
-    background:#eee;
-    color:#080808;
-    font-size:21px;
-    font-style:italic;
-    font-weight:900;
-    text-transform:uppercase;
-    transform:skew(-4deg);
+
+/* pontilhado decorativo */
+
+.section-head:after {
+    content: "";
+
+    position: absolute;
+
+    right: 0;
+    bottom: 8px;
+
+    width: 150px;
+    height: 25px;
+
+    opacity: .20;
+
+    background:
+        radial-gradient(
+            circle,
+            #fff 1.5px,
+            transparent 2px
+        );
+
+    background-size:
+        11px
+        11px;
+
+    pointer-events: none;
 }
 
-.brush:before{
-    content:"";
-    position:absolute;
-    left:-10px;
-    top:3px;
-    width:14px;
-    height:80%;
-    background:#eee;
+.brush {
+    position: relative;
 
-    clip-path:polygon(
-        40% 0,
-        100% 5%,
-        70% 100%,
-        0 75%
-    );
+    z-index: 2;
+
+    display: inline-block;
+
+    margin-left: 12px;
+
+    padding:
+        8px
+        32px
+        8px
+        20px;
+
+    background: #eee;
+
+    color: #090909;
+
+    font-size: 24px;
+
+    line-height: 1;
+
+    font-style: italic;
+
+    font-weight: 900;
+
+    text-transform: uppercase;
+
+    transform:
+        skew(-5deg);
+
+    box-shadow:
+        -7px 6px 0 rgba(255,255,255,.05);
 }
 
-.brush:after{
-    content:"";
-    position:absolute;
-    right:-18px;
-    top:4px;
-    width:24px;
-    height:80%;
-    background:#aaa;
+.brush:before {
+    content: "";
 
-    clip-path:polygon(
-        0 0,
-        100% 10%,
-        65% 100%,
-        0 90%
-    );
+    position: absolute;
+
+    left: -15px;
+    top: -2px;
+
+    width: 20px;
+    height: calc(100% + 5px);
+
+    background: #eee;
+
+    clip-path:
+        polygon(
+            30% 0,
+            100% 5%,
+            74% 48%,
+            95% 90%,
+            0 100%,
+            28% 55%,
+            0 20%
+        );
 }
 
-.section-buttons{
-    display:none;
-    gap:5px;
-    flex-wrap:wrap;
-    justify-content:flex-end;
+.brush:after {
+    content: "";
+
+    position: absolute;
+
+    right: -28px;
+    top: 3px;
+
+    width: 36px;
+    height: 84%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #aaa,
+            #777
+        );
+
+    clip-path:
+        polygon(
+            0 0,
+            100% 12%,
+            67% 100%,
+            0 88%
+        );
 }
 
-body.editing .section-buttons{
-    display:flex;
+.section-buttons {
+    display: none;
+
+    position: relative;
+
+    z-index: 5;
+
+    gap: 6px;
+
+    flex-wrap: wrap;
+
+    justify-content: flex-end;
 }
 
-.small-btn{
-    min-height:39px;
-    padding:0 10px;
-    border:1px solid #555;
-    border-radius:7px;
-    background:#101010;
-    color:#ddd;
-    font-size:13px;
-    font-weight:800;
+body.editing .section-buttons {
+    display: flex;
 }
 
-.small-btn.square{
-    width:39px;
-    padding:0;
-    font-size:16px;
+
+/* =========================================================
+   BOTÕES PEQUENOS
+========================================================= */
+
+.small-btn {
+    min-height: 40px;
+
+    padding:
+        0
+        11px;
+
+    border:
+        1px solid
+        #555;
+
+    border-radius: 8px;
+
+    background: #0d0d0d;
+
+    color: #ddd;
+
+    font-size: 13px;
+
+    font-weight: 800;
 }
 
-.delete-btn{
-    border-color:#634040;
-    color:#e0b4b4;
+.small-btn.square {
+    width: 40px;
+
+    padding: 0;
+
+    font-size: 17px;
 }
 
-/* =====================================================
-   ATIVIDADES
-===================================================== */
+.delete-btn {
+    border-color: #623d3d;
 
-.task-list{
-    margin-top:8px;
-    overflow:hidden;
-    border:1px solid #292929;
-    border-radius:16px;
+    color: #dbaaaa;
 }
 
-.task{
-    min-height:76px;
-    display:grid;
-    grid-template-columns:42px 115px 1fr;
-    align-items:center;
-    gap:10px;
-    padding:9px 12px;
-    border-bottom:1px solid #202020;
-    background:rgba(255,255,255,.012);
+
+/* =========================================================
+   LISTA
+========================================================= */
+
+.task-list {
+    margin-top: 10px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 13px;
 }
 
-.task:last-child{
-    border-bottom:0;
+
+/* =========================================================
+   TAREFA
+========================================================= */
+
+.task {
+    min-height: 94px;
+
+    display: grid;
+
+    grid-template-columns:
+        50px
+        145px
+        1px
+        1fr;
+
+    align-items: center;
+
+    gap: 18px;
+
+    padding:
+        15px
+        20px;
+
+    border:
+        1px solid
+        #333;
+
+    border-radius: 15px;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.015),
+            rgba(255,255,255,.005)
+        );
+
+    box-shadow:
+        inset 0 0 25px rgba(255,255,255,.008);
 }
 
-.task:nth-child(even){
-    background:rgba(255,255,255,.026);
+body.editing .task {
+    grid-template-columns:
+        50px
+        130px
+        1px
+        1fr
+        132px;
 }
 
-body.editing .task{
-    grid-template-columns:42px 115px 1fr 132px;
+.task-divider {
+    width: 1px;
+    height: 50px;
+
+    background:
+        linear-gradient(
+            transparent,
+            #444,
+            transparent
+        );
 }
 
-.check-button{
-    width:31px;
-    height:31px;
-    padding:0;
-    position:relative;
-    border:2px solid #aaa;
-    border-radius:6px;
-    background:#060606;
-    color:#080808;
+
+/* =========================================================
+   CHECKBOX
+========================================================= */
+
+.check-button {
+    width: 40px;
+    height: 40px;
+
+    padding: 0;
+
+    position: relative;
+
+    border:
+        2px solid
+        #ddd;
+
+    border-radius: 6px;
+
+    background: #050505;
+
+    color: #080808;
 }
 
-.task.done .check-button{
-    background:#eee;
-    border-color:#eee;
+.check-button:before {
+    content: "";
+
+    position: absolute;
+
+    left: -2px;
+    bottom: -2px;
+
+    width: 15px;
+    height: 15px;
+
+    border-left:
+        2px solid
+        rgba(255,255,255,.8);
+
+    border-bottom:
+        2px solid
+        rgba(255,255,255,.8);
+
+    clip-path:
+        polygon(
+            0 0,
+            100% 100%,
+            0 100%
+        );
 }
 
-.task.done .check-button:after{
-    content:"✓";
-    position:absolute;
-    left:5px;
-    top:-4px;
-    color:#080808;
-    font-size:24px;
-    font-weight:900;
+.task.done .check-button {
+    background: #eee;
+
+    border-color: #eee;
 }
 
-.time{
-    color:#929292;
-    font-size:15px;
-    white-space:nowrap;
+.task.done .check-button:after {
+    content: "✓";
+
+    position: absolute;
+
+    left: 7px;
+    top: -3px;
+
+    color: #080808;
+
+    font-size: 30px;
+
+    font-weight: 900;
 }
 
-.task-name{
-    font-size:20px;
-    font-weight:800;
-    line-height:1.2;
-    word-break:break-word;
+
+/* =========================================================
+   HORÁRIO
+========================================================= */
+
+.time {
+    color: #969696;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 18px;
+
+    white-space: nowrap;
 }
 
-.task.done .time{
-    color:#555;
+
+/* =========================================================
+   NOME
+========================================================= */
+
+.task-name {
+    min-width: 0;
+
+    color: #f4f4f4;
+
+    font-size: 24px;
+
+    font-weight: 900;
+
+    letter-spacing: .3px;
+
+    line-height: 1.15;
+
+    word-break: break-word;
 }
 
-.task.done .task-name{
-    color:#666;
-    text-decoration:line-through;
+.task.done .time {
+    color: #555;
 }
 
-.task-actions{
-    display:none;
-    gap:4px;
-    justify-content:flex-end;
+.task.done .task-name {
+    color: #666;
+
+    text-decoration: line-through;
 }
 
-body.editing .task-actions{
-    display:flex;
+
+/* =========================================================
+   AÇÕES DA TAREFA
+========================================================= */
+
+.task-actions {
+    display: none;
+
+    gap: 4px;
+
+    justify-content: flex-end;
 }
 
-.task-action{
-    width:39px;
-    height:39px;
-    padding:0;
-    border:1px solid #555;
-    border-radius:7px;
-    background:#101010;
-    color:#ddd;
-    font-size:15px;
-    font-weight:900;
+body.editing .task-actions {
+    display: flex;
 }
 
-.task-action.duplicate{
-    font-size:17px;
+.task-action {
+    width: 39px;
+    height: 39px;
+
+    padding: 0;
+
+    border:
+        1px solid
+        #555;
+
+    border-radius: 7px;
+
+    background: #101010;
+
+    color: #ddd;
+
+    font-size: 15px;
+
+    font-weight: 900;
 }
 
-.add-task{
-    display:none;
-    width:100%;
-    min-height:51px;
-    margin-top:8px;
-    border:1px dashed #555;
-    border-radius:10px;
-    background:#080808;
-    color:#aaa;
-    font-size:14px;
-    font-weight:900;
+
+/* =========================================================
+   ADICIONAR
+========================================================= */
+
+.add-task {
+    display: none;
+
+    width: 100%;
+
+    min-height: 54px;
+
+    margin-top: 12px;
+
+    border:
+        1px dashed
+        #555;
+
+    border-radius: 11px;
+
+    background:
+        rgba(255,255,255,.015);
+
+    color: #aaa;
+
+    font-size: 14px;
+
+    font-weight: 900;
+
+    letter-spacing: .5px;
 }
 
-body.editing .add-task{
-    display:block;
+body.editing .add-task {
+    display: block;
 }
 
-/* =====================================================
-   MODAIS
-===================================================== */
 
-.overlay{
-    position:fixed;
-    inset:0;
-    z-index:1000;
-    display:none;
-    align-items:center;
-    justify-content:center;
-    padding:14px;
-    background:rgba(0,0,0,.94);
+/* =========================================================
+   RODAPÉ
+========================================================= */
+
+.footer-note {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    padding:
+        18px
+        20px
+        5px;
+
+    color: #777;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 14px;
+
+    line-height: 1.4;
+
+    text-align: center;
 }
 
-.overlay.open{
-    display:flex;
+.footer-icon {
+    width: 26px;
+    height: 26px;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border:
+        1px solid
+        #777;
+
+    border-radius: 50%;
+
+    color: #aaa;
+
+    font-weight: bold;
 }
 
-.modal{
-    width:100%;
-    max-width:580px;
-    max-height:95vh;
-    overflow-y:auto;
-    border:1px solid #666;
-    border-radius:16px;
-    background:#080808;
+
+/* =========================================================
+   OVERLAY
+========================================================= */
+
+.overlay {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 1000;
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 14px;
+
+    background:
+        rgba(0,0,0,.95);
 }
 
-.modal-head{
-    min-height:66px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:13px 17px;
-    border-bottom:1px solid #333;
+.overlay.open {
+    display: flex;
 }
 
-.modal-title{
-    font-size:23px;
-    font-weight:900;
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.modal {
+    width: 100%;
+
+    max-width: 580px;
+
+    max-height: 95vh;
+
+    overflow-y: auto;
+
+    border:
+        1px solid
+        #666;
+
+    border-radius: 17px;
+
+    background:
+        linear-gradient(
+            #090909,
+            #030303
+        );
+
+    box-shadow:
+        0 25px 60px rgba(0,0,0,.7);
 }
 
-.close-btn{
-    width:42px;
-    height:42px;
-    border:1px solid #555;
-    border-radius:8px;
-    background:#101010;
-    color:#fff;
-    font-size:21px;
+.modal-head {
+    min-height: 70px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    padding:
+        13px
+        18px;
+
+    border-bottom:
+        1px solid
+        #333;
 }
 
-.modal-body{
-    padding:18px;
+.modal-title {
+    font-size: 25px;
+
+    font-weight: 900;
 }
 
-.label{
-    margin:17px 0 9px;
-    color:#888;
-    font-size:11px;
-    font-weight:900;
-    letter-spacing:2px;
+.close-btn {
+    width: 43px;
+    height: 43px;
+
+    border:
+        1px solid
+        #555;
+
+    border-radius: 9px;
+
+    background: #0c0c0c;
+
+    color: #fff;
+
+    font-size: 22px;
 }
 
-/* =====================================================
+.modal-body {
+    padding: 18px;
+}
+
+
+/* =========================================================
+   LABEL
+========================================================= */
+
+.label {
+    margin:
+        18px
+        0
+        9px;
+
+    color: #8a8a8a;
+
+    font-size: 11px;
+
+    font-weight: 900;
+
+    letter-spacing: 2px;
+}
+
+
+/* =========================================================
    BOTÕES GRANDES
-===================================================== */
+========================================================= */
 
 .primary,
 .secondary,
-.danger{
-    width:100%;
-    min-height:53px;
-    border-radius:9px;
-    font-size:15px;
-    font-weight:900;
+.danger {
+    width: 100%;
+
+    min-height: 54px;
+
+    border-radius: 9px;
+
+    font-size: 15px;
+
+    font-weight: 900;
 }
 
-.primary{
-    border:0;
-    background:#eee;
-    color:#050505;
+.primary {
+    border: 0;
+
+    background: #eee;
+
+    color: #050505;
 }
 
-.secondary{
-    border:1px solid #555;
-    background:#101010;
-    color:#eee;
+.secondary {
+    border:
+        1px solid
+        #555;
+
+    background: #101010;
+
+    color: #eee;
 }
 
-.danger{
-    border:1px solid #713f3f;
-    background:#140a0a;
-    color:#efbcbc;
+.danger {
+    border:
+        1px solid
+        #713f3f;
+
+    background: #140a0a;
+
+    color: #efbcbc;
 }
 
-.button-gap{
-    margin-top:9px;
+.button-gap {
+    margin-top: 9px;
 }
 
-/* =====================================================
-   DISPLAY TEXTO
-===================================================== */
 
-.text-display{
-    min-height:58px;
-    padding:15px;
-    border:1px solid #555;
-    border-radius:9px;
-    background:#020202;
-    color:#fff;
-    font-size:19px;
-    font-weight:800;
-    word-break:break-word;
+/* =========================================================
+   TEXTO
+========================================================= */
+
+.text-display {
+    min-height: 60px;
+
+    padding: 15px;
+
+    border:
+        1px solid
+        #555;
+
+    border-radius: 9px;
+
+    background: #020202;
+
+    color: #fff;
+
+    font-size: 20px;
+
+    font-weight: 800;
+
+    word-break: break-word;
 }
 
-.text-display.placeholder{
-    color:#555;
+.text-display.placeholder {
+    color: #555;
 }
 
-/* =====================================================
+
+/* =========================================================
    TECLADO
-===================================================== */
+========================================================= */
 
-.keyboard{
-    margin-top:10px;
+.keyboard {
+    margin-top: 11px;
 }
 
-.key-row{
-    display:flex;
-    gap:4px;
-    margin-bottom:5px;
+.key-row {
+    display: flex;
+
+    gap: 4px;
+
+    margin-bottom: 5px;
 }
 
-.key{
-    flex:1;
-    min-width:0;
-    height:43px;
-    padding:0;
-    border:1px solid #444;
-    border-radius:6px;
-    background:#151515;
-    color:#fff;
-    font-size:14px;
-    font-weight:800;
+.key {
+    flex: 1;
+
+    min-width: 0;
+
+    height: 44px;
+
+    padding: 0;
+
+    border:
+        1px solid
+        #444;
+
+    border-radius: 6px;
+
+    background: #151515;
+
+    color: #fff;
+
+    font-size: 14px;
+
+    font-weight: 800;
 }
 
-.key-space{
-    flex:5;
+.key-space {
+    flex: 5;
 }
 
-.key-back{
-    flex:1.5;
+.key-back {
+    flex: 1.5;
 }
 
-/* =====================================================
-   EMOJIS
-===================================================== */
 
-.selected-emoji{
-    min-height:58px;
-    display:flex;
-    align-items:center;
-    gap:12px;
-    padding:10px 14px;
-    margin-bottom:10px;
-    border:1px solid #555;
-    border-radius:9px;
-    background:#030303;
+/* =========================================================
+   EMOJI
+========================================================= */
+
+.selected-emoji {
+    min-height: 62px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    padding:
+        10px
+        14px;
+
+    margin-bottom: 11px;
+
+    border:
+        1px solid
+        #555;
+
+    border-radius: 10px;
+
+    background: #030303;
 }
 
-.selected-emoji-icon{
-    font-size:31px;
+.selected-emoji-icon {
+    font-size: 33px;
 }
 
-.selected-emoji-text{
-    color:#888;
-    font-size:13px;
+.selected-emoji-text {
+    color: #888;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 13px;
 }
 
-.emoji-grid{
-    display:grid;
-    grid-template-columns:repeat(5,1fr);
-    gap:8px;
+.emoji-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(5,1fr);
+
+    gap: 8px;
 }
 
-.emoji-btn{
-    min-height:57px;
-    border:2px solid #333;
-    border-radius:9px;
-    background:#111;
-    font-size:25px;
+.emoji-btn {
+    min-height: 58px;
+
+    border:
+        2px solid
+        #333;
+
+    border-radius: 9px;
+
+    background: #111;
+
+    font-size: 25px;
 }
 
-.emoji-btn.selected{
-    border-color:#fff;
-    background:#333;
-    transform:scale(.96);
+.emoji-btn.selected {
+    border-color: #fff;
+
+    background: #333;
+
+    transform:
+        scale(.96);
 }
 
-/* =====================================================
+
+/* =========================================================
    HORÁRIO
-===================================================== */
+========================================================= */
 
-.time-editor{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:10px;
+.time-editor {
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        1fr;
+
+    gap: 10px;
 }
 
-.time-box{
-    padding:11px;
-    border:1px solid #444;
-    border-radius:10px;
-    background:#050505;
-    text-align:center;
+.time-box {
+    padding: 12px;
+
+    border:
+        1px solid
+        #444;
+
+    border-radius: 11px;
+
+    background: #050505;
+
+    text-align: center;
 }
 
-.time-value{
-    margin:5px 0 10px;
-    font-size:27px;
-    font-weight:900;
+.time-value {
+    margin:
+        6px
+        0
+        11px;
+
+    font-size: 29px;
+
+    font-weight: 900;
 }
 
-.time-buttons{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:6px;
+.time-buttons {
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        1fr;
+
+    gap: 6px;
 }
 
-.time-btn{
-    min-height:43px;
-    border:1px solid #555;
-    border-radius:7px;
-    background:#151515;
-    color:#fff;
-    font-size:16px;
-    font-weight:900;
+.time-btn {
+    min-height: 44px;
+
+    border:
+        1px solid
+        #555;
+
+    border-radius: 7px;
+
+    background: #151515;
+
+    color: #fff;
+
+    font-size: 16px;
+
+    font-weight: 900;
 }
 
-/* =====================================================
+
+/* =========================================================
    CONFIRMAÇÃO
-===================================================== */
+========================================================= */
 
-.confirm-text{
-    margin:4px 0 20px;
-    color:#aaa;
-    font-size:16px;
-    line-height:1.5;
+.confirm-text {
+    margin:
+        4px
+        0
+        20px;
+
+    color: #aaa;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 16px;
+
+    line-height: 1.5;
 }
 
-.confirm-name{
-    color:#fff;
-    font-weight:900;
+.confirm-name {
+    color: #fff;
+
+    font-weight: 900;
 }
 
-/* =====================================================
-   CONFIGURAÇÕES
-===================================================== */
 
-.settings-section{
-    padding-bottom:17px;
-    margin-bottom:17px;
-    border-bottom:1px solid #292929;
+/* =========================================================
+   SETTINGS
+========================================================= */
+
+.settings-section {
+    padding-bottom: 17px;
+
+    margin-bottom: 17px;
+
+    border-bottom:
+        1px solid
+        #292929;
 }
 
-.settings-section:last-child{
-    padding-bottom:0;
-    margin-bottom:0;
-    border-bottom:0;
+.settings-section:last-child {
+    padding-bottom: 0;
+
+    margin-bottom: 0;
+
+    border-bottom: 0;
 }
 
-.settings-title{
-    margin-bottom:10px;
-    color:#777;
-    font-size:11px;
-    font-weight:900;
-    letter-spacing:2px;
+.settings-title {
+    margin-bottom: 10px;
+
+    color: #777;
+
+    font-size: 11px;
+
+    font-weight: 900;
+
+    letter-spacing: 2px;
 }
 
-.setting-status{
-    margin-top:8px;
-    color:#777;
-    font-size:12px;
-    line-height:1.4;
+.setting-status {
+    margin-top: 8px;
+
+    color: #777;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 12px;
+
+    line-height: 1.4;
 }
 
-.note{
-    margin-top:15px;
-    padding:12px;
-    border:1px solid #292929;
-    border-radius:9px;
-    color:#777;
-    font-size:12px;
-    line-height:1.5;
+.note {
+    margin-top: 15px;
+
+    padding: 12px;
+
+    border:
+        1px solid
+        #292929;
+
+    border-radius: 9px;
+
+    color: #777;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 12px;
+
+    line-height: 1.5;
 }
 
-#backupInput{
-    display:none;
+#backupInput {
+    display: none;
 }
 
-/* =====================================================
-   RESPONSIVO
-===================================================== */
 
-@media(max-width:500px){
+/* =========================================================
+   RESPONSIVO HYTE
+========================================================= */
 
-    .title{
-        font-size:28px;
+@media(max-width:500px) {
+
+    .header {
+        padding:
+            48px
+            22px
+            22px;
     }
 
-    .task-name{
-        font-size:19px;
+    .title {
+        font-size: 32px;
     }
 
-    .time{
-        font-size:14px;
+    .gear {
+        width: 57px;
+        height: 57px;
     }
 
-    .brush{
-        font-size:19px;
+    .progress {
+        padding:
+            24px
+            22px
+            27px;
     }
 
-    body.editing .task{
+    .content {
+        padding:
+            20px
+            19px
+            70px;
+    }
+
+    .brush {
+        font-size: 21px;
+    }
+
+    .task {
+        min-height: 87px;
+
         grid-template-columns:
-            40px
-            105px
+            44px
+            125px
+            1px
+            1fr;
+
+        gap: 13px;
+
+        padding:
+            13px
+            14px;
+    }
+
+    .time {
+        font-size: 16px;
+    }
+
+    .task-name {
+        font-size: 21px;
+    }
+
+    body.editing .task {
+        grid-template-columns:
+            44px
+            112px
+            1px
             1fr;
     }
 
-    body.editing .task-actions{
-        grid-column:1 / -1;
-        justify-content:flex-end;
-        padding-top:5px;
+    body.editing .task-actions {
+        grid-column:
+            1 / -1;
+
+        justify-content: flex-end;
+
+        padding-top: 4px;
     }
 
 }
 
 </style>
+
 </head>
+
 
 <body>
 
+
 <div class="app">
 
-    <div class="header">
-        <div class="header-row">
+    <div class="panel">
 
-            <div>
-                <h1 class="title">CHECKLIST DE HOJE</h1>
-                <div class="subtitle">Marque as atividades concluídas</div>
+
+        <div class="header">
+
+            <div class="header-row">
+
+                <div class="header-copy">
+
+                    <h1 class="title">
+                        CHECKLIST DE HOJE
+                    </h1>
+
+                    <div class="subtitle">
+                        Marque as atividades concluídas
+                    </div>
+
+                </div>
+
+
+                <button
+                    class="gear"
+                    data-action="settings"
+                >
+                    ⚙
+                </button>
+
             </div>
-
-            <button
-                class="gear"
-                data-action="settings"
-            >
-                ⚙
-            </button>
 
         </div>
-    </div>
 
-    <div class="edit-banner">
-        MODO DE EDIÇÃO ATIVO
-    </div>
 
-    <div class="progress">
+        <div class="edit-banner">
+            MODO DE EDIÇÃO ATIVO
+        </div>
 
-        <div class="progress-row">
 
-            <div class="progress-label">
-                PROGRESSO DO DIA
+        <div class="progress">
+
+            <div class="progress-row">
+
+                <div class="progress-label">
+                    PROGRESSO DO DIA
+                </div>
+
+                <div
+                    class="progress-percent"
+                    id="percent"
+                >
+                    0%
+                </div>
+
             </div>
+
+
+            <div class="track">
+
+                <div
+                    class="fill"
+                    id="fill"
+                ></div>
+
+            </div>
+
 
             <div
-                class="progress-percent"
-                id="percent"
+                class="progress-text"
+                id="progressText"
             >
-                0%
+                Nenhuma atividade cadastrada
             </div>
 
         </div>
 
-        <div class="track">
-            <div
-                class="fill"
-                id="fill"
-            ></div>
-        </div>
 
         <div
-            class="progress-text"
-            id="progressText"
-        >
-            Nenhuma atividade cadastrada
-        </div>
-
-    </div>
-
-    <div class="card">
-        <div
-            class="scroll"
+            class="content"
             id="content"
         ></div>
+
+
     </div>
 
 </div>
 
 
-<!-- CONFIGURAÇÕES -->
+<!-- =====================================================
+     CONFIGURAÇÕES
+===================================================== -->
 
 <div
     class="overlay"
@@ -904,13 +1743,16 @@ body.editing .add-task{
 
         </div>
 
+
         <div class="modal-body">
+
 
             <div class="settings-section">
 
                 <div class="settings-title">
                     EDIÇÃO
                 </div>
+
 
                 <button
                     class="primary"
@@ -919,6 +1761,7 @@ body.editing .add-task{
                 >
                     ✎ ENTRAR NO MODO EDIÇÃO
                 </button>
+
 
                 <button
                     class="secondary button-gap"
@@ -929,11 +1772,13 @@ body.editing .add-task{
 
             </div>
 
+
             <div class="settings-section">
 
                 <div class="settings-title">
                     DIA
                 </div>
+
 
                 <button
                     class="secondary"
@@ -942,6 +1787,7 @@ body.editing .add-task{
                     LIMPAR MARCAÇÕES
                 </button>
 
+
                 <button
                     class="secondary button-gap"
                     data-action="toggle-auto-reset"
@@ -949,6 +1795,7 @@ body.editing .add-task{
                 >
                     RESET DIÁRIO: ATIVO
                 </button>
+
 
                 <div
                     class="setting-status"
@@ -959,11 +1806,13 @@ body.editing .add-task{
 
             </div>
 
+
             <div class="settings-section">
 
                 <div class="settings-title">
                     BACKUP
                 </div>
+
 
                 <button
                     class="secondary"
@@ -972,12 +1821,14 @@ body.editing .add-task{
                     EXPORTAR BACKUP
                 </button>
 
+
                 <button
                     class="secondary button-gap"
                     data-action="import-backup"
                 >
                     IMPORTAR BACKUP
                 </button>
+
 
                 <input
                     type="file"
@@ -987,9 +1838,15 @@ body.editing .add-task{
 
             </div>
 
+
             <div class="note">
+
                 Sua rotina e suas atividades ficam no armazenamento local deste navegador.
-                O código público do GitHub não contém os dados que você cadastrar aqui.
+
+                <br><br>
+
+                O código publicado no GitHub não contém as atividades que você cadastrar.
+
             </div>
 
         </div>
@@ -999,7 +1856,9 @@ body.editing .add-task{
 </div>
 
 
-<!-- SEÇÃO -->
+<!-- =====================================================
+     SEÇÃO
+===================================================== -->
 
 <div
     class="overlay"
@@ -1017,6 +1876,7 @@ body.editing .add-task{
                 Nova seção
             </div>
 
+
             <button
                 class="close-btn"
                 data-action="close"
@@ -1027,11 +1887,14 @@ body.editing .add-task{
 
         </div>
 
+
         <div class="modal-body">
+
 
             <div class="label">
                 NOME DA SEÇÃO
             </div>
+
 
             <div
                 class="text-display placeholder"
@@ -1040,10 +1903,12 @@ body.editing .add-task{
                 Digite abaixo
             </div>
 
+
             <div
                 class="keyboard"
                 id="sectionKeyboard"
             ></div>
+
 
             <button
                 class="primary button-gap"
@@ -1059,7 +1924,9 @@ body.editing .add-task{
 </div>
 
 
-<!-- ATIVIDADE -->
+<!-- =====================================================
+     ATIVIDADE
+===================================================== -->
 
 <div
     class="overlay"
@@ -1077,6 +1944,7 @@ body.editing .add-task{
                 Nova atividade
             </div>
 
+
             <button
                 class="close-btn"
                 data-action="close"
@@ -1087,13 +1955,17 @@ body.editing .add-task{
 
         </div>
 
+
         <div class="modal-body">
+
 
             <div class="label">
                 HORÁRIO
             </div>
 
+
             <div class="time-editor">
+
 
                 <div class="time-box">
 
@@ -1104,12 +1976,14 @@ body.editing .add-task{
                         INÍCIO
                     </div>
 
+
                     <div
                         class="time-value"
                         id="startDisplay"
                     >
                         07:30
                     </div>
+
 
                     <div class="time-buttons">
 
@@ -1134,6 +2008,7 @@ body.editing .add-task{
                     </div>
 
                 </div>
+
 
                 <div class="time-box">
 
@@ -1144,12 +2019,14 @@ body.editing .add-task{
                         FIM
                     </div>
 
+
                     <div
                         class="time-value"
                         id="endDisplay"
                     >
                         08:00
                     </div>
+
 
                     <div class="time-buttons">
 
@@ -1177,9 +2054,11 @@ body.editing .add-task{
 
             </div>
 
+
             <div class="label">
                 ÍCONE
             </div>
+
 
             <div class="selected-emoji">
 
@@ -1196,14 +2075,17 @@ body.editing .add-task{
 
             </div>
 
+
             <div
                 class="emoji-grid"
                 id="emojiGrid"
             ></div>
 
+
             <div class="label">
                 ATIVIDADE
             </div>
+
 
             <div
                 class="text-display placeholder"
@@ -1212,10 +2094,12 @@ body.editing .add-task{
                 Digite abaixo
             </div>
 
+
             <div
                 class="keyboard"
                 id="taskKeyboard"
             ></div>
+
 
             <button
                 class="primary button-gap"
@@ -1223,6 +2107,7 @@ body.editing .add-task{
             >
                 SALVAR ATIVIDADE
             </button>
+
 
             <button
                 class="danger button-gap"
@@ -1240,7 +2125,9 @@ body.editing .add-task{
 </div>
 
 
-<!-- CONFIRMAÇÃO -->
+<!-- =====================================================
+     CONFIRMAÇÃO
+===================================================== -->
 
 <div
     class="overlay"
@@ -1264,7 +2151,9 @@ body.editing .add-task{
 
         </div>
 
+
         <div class="modal-body">
+
 
             <div
                 class="confirm-text"
@@ -1273,12 +2162,14 @@ body.editing .add-task{
                 Deseja realmente excluir?
             </div>
 
+
             <button
                 class="danger"
                 data-action="confirm-delete"
             >
                 SIM, EXCLUIR
             </button>
+
 
             <button
                 class="secondary button-gap"
@@ -1301,9 +2192,9 @@ body.editing .add-task{
 "use strict";
 
 
-/* =====================================================
-   STORAGE
-===================================================== */
+/* =========================================================
+   DADOS
+========================================================= */
 
 var STORAGE_KEY =
     "HYTE_CHECKLIST_STABLE_V3";
@@ -1378,9 +2269,9 @@ var emojis = [
 ];
 
 
-/* =====================================================
-   LOAD / SAVE
-===================================================== */
+/* =========================================================
+   STORAGE
+========================================================= */
 
 function loadState(){
 
@@ -1505,9 +2396,9 @@ function saveState(){
 }
 
 
-/* =====================================================
+/* =========================================================
    RESET DIÁRIO
-===================================================== */
+========================================================= */
 
 function todayString(){
 
@@ -1621,9 +2512,9 @@ function resetAllChecks(){
 }
 
 
-/* =====================================================
+/* =========================================================
    HELPERS
-===================================================== */
+========================================================= */
 
 function makeId(prefix){
 
@@ -1758,9 +2649,9 @@ function closeAllModals(){
 }
 
 
-/* =====================================================
+/* =========================================================
    TEMPO
-===================================================== */
+========================================================= */
 
 function normalizeMinutes(value){
 
@@ -1884,19 +2775,9 @@ function updateTimeDisplays(){
 }
 
 
-/* =====================================================
-   NOVO:
-   DESCOBRIR O FIM DA ÚLTIMA ATIVIDADE DA SEÇÃO
-===================================================== */
-
 function getNextTaskStart(
     section
 ){
-
-    /*
-        Se não houver atividade:
-        07:30
-    */
 
     if(
         !section ||
@@ -1909,11 +2790,6 @@ function getNextTaskStart(
 
     }
 
-
-    /*
-        Pega a última atividade
-        na ordem atual da seção.
-    */
 
     var lastTask =
         section.tasks[
@@ -1932,11 +2808,6 @@ function getNextTaskStart(
     }
 
 
-    /*
-        Esperado:
-        07:30–08:00
-    */
-
     var pieces =
         String(
             lastTask.time
@@ -1945,11 +2816,6 @@ function getNextTaskStart(
             "–"
         );
 
-
-    /*
-        Tenta também hífen normal
-        se algum dado antigo tiver sido salvo assim.
-    */
 
     if(
         pieces.length !==
@@ -1977,22 +2843,6 @@ function getNextTaskStart(
     }
 
 
-    var parsed =
-        parseClock(
-            pieces[1]
-            .replace(
-                /^\s+|\s+$/g,
-                ""
-            )
-        );
-
-
-    /*
-        00:00 é um horário válido,
-        então só usamos fallback
-        se o texto claramente não parece horário.
-    */
-
     if(
         pieces[1]
             .indexOf(":") ===
@@ -2005,15 +2855,23 @@ function getNextTaskStart(
 
 
     return normalizeMinutes(
-        parsed
+
+        parseClock(
+            pieces[1]
+            .replace(
+                /^\s+|\s+$/g,
+                ""
+            )
+        )
+
     );
 
 }
 
 
-/* =====================================================
+/* =========================================================
    RENDER
-===================================================== */
+========================================================= */
 
 function render(){
 
@@ -2065,13 +2923,32 @@ function render(){
             content.appendChild(
 
                 renderSection(
-                    state.sections[i],
-                    i
+                    state.sections[i]
                 )
 
             );
 
         }
+
+
+        var footer =
+            document.createElement(
+                "div"
+            );
+
+
+        footer.className =
+            "footer-note";
+
+
+        footer.innerHTML =
+            '<span class="footer-icon">i</span>' +
+            '<span>As marcações serão limpas automaticamente quando mudar o dia.</span>';
+
+
+        content.appendChild(
+            footer
+        );
 
     }
 
@@ -2081,9 +2958,12 @@ function render(){
 }
 
 
+/* =========================================================
+   SEÇÃO
+========================================================= */
+
 function renderSection(
-    section,
-    sectionIndex
+    section
 ){
 
     var wrapper =
@@ -2194,27 +3074,27 @@ function renderSection(
     );
 
 
-    var rename =
+    var edit =
         document.createElement(
             "button"
         );
 
 
-    rename.className =
+    edit.className =
         "small-btn";
 
 
-    rename.textContent =
+    edit.textContent =
         "Editar";
 
 
-    rename.setAttribute(
+    edit.setAttribute(
         "data-action",
         "edit-section"
     );
 
 
-    rename.setAttribute(
+    edit.setAttribute(
         "data-section",
         section.id
     );
@@ -2248,7 +3128,7 @@ function renderSection(
 
     buttons.appendChild(up);
     buttons.appendChild(down);
-    buttons.appendChild(rename);
+    buttons.appendChild(edit);
     buttons.appendChild(remove);
 
 
@@ -2292,8 +3172,7 @@ function renderSection(
 
                 renderTask(
                     section,
-                    section.tasks[i],
-                    i
+                    section.tasks[i]
                 )
 
             );
@@ -2344,10 +3223,13 @@ function renderSection(
 }
 
 
+/* =========================================================
+   TAREFA
+========================================================= */
+
 function renderTask(
     section,
-    task,
-    taskIndex
+    task
 ){
 
     var row =
@@ -2405,6 +3287,16 @@ function renderTask(
     time.textContent =
         task.time ||
         "";
+
+
+    var divider =
+        document.createElement(
+            "div"
+        );
+
+
+    divider.className =
+        "task-divider";
 
 
     var name =
@@ -2521,7 +3413,7 @@ function renderTask(
 
 
     duplicate.className =
-        "task-action duplicate";
+        "task-action";
 
 
     duplicate.textContent =
@@ -2586,6 +3478,7 @@ function renderTask(
 
     row.appendChild(check);
     row.appendChild(time);
+    row.appendChild(divider);
     row.appendChild(name);
     row.appendChild(actions);
 
@@ -2595,9 +3488,9 @@ function renderTask(
 }
 
 
-/* =====================================================
+/* =========================================================
    PROGRESSO
-===================================================== */
+========================================================= */
 
 function updateProgress(){
 
@@ -2692,9 +3585,9 @@ function updateProgress(){
 }
 
 
-/* =====================================================
+/* =========================================================
    MODO EDIÇÃO
-===================================================== */
+========================================================= */
 
 function setEditing(value){
 
@@ -2740,9 +3633,9 @@ function setEditing(value){
 }
 
 
-/* =====================================================
+/* =========================================================
    SEÇÃO
-===================================================== */
+========================================================= */
 
 function openSectionEditor(id){
 
@@ -2811,9 +3704,7 @@ function updateSectionDisplay(){
         );
 
 
-    if(
-        sectionText
-    ){
+    if(sectionText){
 
         display.textContent =
             sectionText;
@@ -2909,9 +3800,9 @@ function saveSection(){
 }
 
 
-/* =====================================================
+/* =========================================================
    MOVER SEÇÃO
-===================================================== */
+========================================================= */
 
 function moveSection(
     sectionId,
@@ -2984,9 +3875,9 @@ function moveSection(
 }
 
 
-/* =====================================================
-   EDITOR TAREFA
-===================================================== */
+/* =========================================================
+   TASK EDITOR
+========================================================= */
 
 function openTaskEditor(
     sectionId,
@@ -3011,11 +3902,6 @@ function openTaskEditor(
     if(
         currentTaskId
     ){
-
-        /*
-            EDITANDO:
-            mantém horário da própria atividade.
-        */
 
         var section =
             getSection(
@@ -3100,18 +3986,6 @@ function openTaskEditor(
     }
     else{
 
-        /*
-            NOVA ATIVIDADE:
-            começa no fim da última atividade
-            da seção.
-
-            Exemplo:
-            última = 08:00–09:15
-
-            nova =
-            09:15–09:45
-        */
-
         var targetSection =
             getSection(
                 currentSectionId
@@ -3179,9 +4053,7 @@ function updateTaskDisplay(){
         );
 
 
-    if(
-        taskText
-    ){
+    if(taskText){
 
         display.textContent =
             taskText;
@@ -3320,9 +4192,9 @@ function saveTask(){
 }
 
 
-/* =====================================================
+/* =========================================================
    MOVER TAREFA
-===================================================== */
+========================================================= */
 
 function moveTask(
     sectionId,
@@ -3407,9 +4279,9 @@ function moveTask(
 }
 
 
-/* =====================================================
+/* =========================================================
    DUPLICAR
-===================================================== */
+========================================================= */
 
 function duplicateTask(
     sectionId,
@@ -3508,9 +4380,9 @@ function duplicateTask(
 }
 
 
-/* =====================================================
-   EMOJI
-===================================================== */
+/* =========================================================
+   EMOJIS
+========================================================= */
 
 function buildEmojis(){
 
@@ -3621,16 +4493,20 @@ function updateEmojiSelection(){
 }
 
 
-/* =====================================================
+/* =========================================================
    TECLADO
-===================================================== */
+========================================================= */
 
 var keyboardRows = [
 
     ["1","2","3","4","5","6","7","8","9","0"],
+
     ["Q","W","E","R","T","Y","U","I","O","P"],
+
     ["A","S","D","F","G","H","J","K","L"],
+
     ["Z","X","C","V","B","N","M"],
+
     ["Á","É","Í","Ó","Ú","Ç"]
 
 ];
@@ -3871,9 +4747,9 @@ function keyboardBackspace(
 }
 
 
-/* =====================================================
+/* =========================================================
    EXCLUSÃO
-===================================================== */
+========================================================= */
 
 function requestDeleteSection(
     sectionId
@@ -4096,9 +4972,9 @@ function confirmDelete(){
 }
 
 
-/* =====================================================
+/* =========================================================
    BACKUP
-===================================================== */
+========================================================= */
 
 function exportBackup(){
 
@@ -4285,9 +5161,9 @@ function importBackupFile(
 }
 
 
-/* =====================================================
+/* =========================================================
    CONFIG UI
-===================================================== */
+========================================================= */
 
 function updateSettingsUI(){
 
@@ -4329,9 +5205,9 @@ function updateSettingsUI(){
 }
 
 
-/* =====================================================
+/* =========================================================
    AÇÕES
-===================================================== */
+========================================================= */
 
 function performAction(
     target
@@ -4845,9 +5721,9 @@ function performAction(
 }
 
 
-/* =====================================================
+/* =========================================================
    EVENTOS HYTE
-===================================================== */
+========================================================= */
 
 function findActionElement(
     element
@@ -4967,9 +5843,9 @@ document.addEventListener(
 );
 
 
-/* =====================================================
-   BACKUP INPUT
-===================================================== */
+/* =========================================================
+   IMPORT BACKUP
+========================================================= */
 
 document
     .getElementById(
@@ -5000,9 +5876,9 @@ document
     );
 
 
-/* =====================================================
-   INICIALIZAÇÃO
-===================================================== */
+/* =========================================================
+   START
+========================================================= */
 
 loadState();
 
@@ -5025,7 +5901,10 @@ updateSettingsUI();
 render();
 
 })();
+
 </script>
 
+
 </body>
+
 </html>
