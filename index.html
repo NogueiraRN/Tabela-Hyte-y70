@@ -36,7 +36,6 @@ button{
     width:100%;
     height:100%;
     padding:12px;
-
     display:flex;
     flex-direction:column;
 }
@@ -47,12 +46,9 @@ button{
 
 .header{
     flex:none;
-
     padding:30px 20px 16px;
-
     border:1px solid #555;
     border-bottom:0;
-
     border-radius:18px 18px 0 0;
 
     background:
@@ -68,42 +64,32 @@ button{
 
 .header-row{
     display:flex;
-
     justify-content:space-between;
     align-items:flex-start;
-
     gap:12px;
 }
 
 .title{
     margin:0;
-
     font-size:31px;
     line-height:1;
-
     font-weight:900;
 }
 
 .subtitle{
     margin-top:12px;
-
     color:#888;
-
     font-size:16px;
 }
 
 .gear{
     width:48px;
     height:48px;
-
     flex:none;
-
     border:1px solid #777;
     border-radius:9px;
-
     background:#080808;
     color:#fff;
-
     font-size:23px;
 }
 
@@ -113,20 +99,14 @@ button{
 
 .edit-banner{
     display:none;
-
     flex:none;
-
     min-height:39px;
-
     align-items:center;
     justify-content:center;
-
     background:#eee;
     color:#090909;
-
     font-size:12px;
     font-weight:900;
-
     letter-spacing:4px;
 }
 
@@ -140,66 +120,50 @@ body.editing .edit-banner{
 
 .progress{
     flex:none;
-
     padding:20px;
-
     border-left:1px solid #555;
     border-right:1px solid #555;
     border-bottom:1px solid #333;
-
     background:#060606;
 }
 
 .progress-row{
     display:flex;
-
     justify-content:space-between;
     align-items:center;
 }
 
 .progress-label{
     color:#8d8d8d;
-
     font-size:12px;
-
     font-weight:900;
-
     letter-spacing:3px;
 }
 
 .progress-percent{
     font-size:20px;
-
     font-weight:900;
 }
 
 .track{
     height:8px;
-
     margin-top:12px;
-
     overflow:hidden;
-
     border:1px solid #333;
     border-radius:20px;
-
     background:#111;
 }
 
 .fill{
     width:0;
     height:100%;
-
     background:#eee;
-
     transition:width .15s linear;
 }
 
 .progress-text{
     margin-top:7px;
-
     color:#666;
-
     font-size:12px;
 }
 
@@ -209,14 +173,10 @@ body.editing .edit-banner{
 
 .card{
     flex:1;
-
     min-height:0;
-
     overflow:hidden;
-
     border:1px solid #555;
     border-top:0;
-
     border-radius:0 0 18px 18px;
 
     background:
@@ -234,11 +194,8 @@ body.editing .edit-banner{
 .scroll{
     width:100%;
     height:100%;
-
     overflow-y:auto;
-
     padding:25px 14px 90px;
-
     scrollbar-width:thin;
     scrollbar-color:#777 #111;
 }
@@ -253,7 +210,6 @@ body.editing .edit-banner{
 
 .scroll::-webkit-scrollbar-thumb{
     background:#777;
-
     border-radius:10px;
 }
 
@@ -263,38 +219,28 @@ body.editing .edit-banner{
 
 .empty{
     min-height:400px;
-
     display:flex;
-
     flex-direction:column;
-
     align-items:center;
     justify-content:center;
-
     padding:30px;
-
     text-align:center;
 }
 
 .empty-icon{
     font-size:55px;
-
     color:#555;
 }
 
 .empty-title{
     margin-top:12px;
-
     font-size:25px;
-
     font-weight:900;
 }
 
 .empty-text{
     margin:8px 0 20px;
-
     color:#777;
-
     font-size:15px;
 }
 
@@ -308,54 +254,35 @@ body.editing .edit-banner{
 
 .section-head{
     min-height:48px;
-
     display:flex;
-
     align-items:center;
     justify-content:space-between;
-
     gap:10px;
-
     padding-bottom:8px;
-
     border-bottom:1px solid #333;
 }
 
 .brush{
     position:relative;
-
     display:inline-block;
-
     margin-left:5px;
-
-    padding:
-        7px
-        19px;
-
+    padding:7px 19px;
     background:#eee;
     color:#080808;
-
     font-size:21px;
-
     font-style:italic;
     font-weight:900;
-
     text-transform:uppercase;
-
     transform:skew(-4deg);
 }
 
 .brush:before{
     content:"";
-
     position:absolute;
-
     left:-10px;
     top:3px;
-
     width:14px;
     height:80%;
-
     background:#eee;
 
     clip-path:polygon(
@@ -368,15 +295,11 @@ body.editing .edit-banner{
 
 .brush:after{
     content:"";
-
     position:absolute;
-
     right:-18px;
     top:4px;
-
     width:24px;
     height:80%;
-
     background:#aaa;
 
     clip-path:polygon(
@@ -389,11 +312,8 @@ body.editing .edit-banner{
 
 .section-buttons{
     display:none;
-
     gap:5px;
-
     flex-wrap:wrap;
-
     justify-content:flex-end;
 }
 
@@ -403,33 +323,23 @@ body.editing .section-buttons{
 
 .small-btn{
     min-height:39px;
-
-    padding:
-        0
-        10px;
-
+    padding:0 10px;
     border:1px solid #555;
     border-radius:7px;
-
     background:#101010;
     color:#ddd;
-
     font-size:13px;
-
     font-weight:800;
 }
 
 .small-btn.square{
     width:39px;
-
     padding:0;
-
     font-size:16px;
 }
 
 .delete-btn{
     border-color:#634040;
-
     color:#e0b4b4;
 }
 
@@ -439,35 +349,20 @@ body.editing .section-buttons{
 
 .task-list{
     margin-top:8px;
-
     overflow:hidden;
-
     border:1px solid #292929;
     border-radius:16px;
 }
 
 .task{
     min-height:76px;
-
     display:grid;
-
-    grid-template-columns:
-        42px
-        115px
-        1fr;
-
+    grid-template-columns:42px 115px 1fr;
     align-items:center;
-
     gap:10px;
-
-    padding:
-        9px
-        12px;
-
+    padding:9px 12px;
     border-bottom:1px solid #202020;
-
-    background:
-        rgba(255,255,255,.012);
+    background:rgba(255,255,255,.012);
 }
 
 .task:last-child{
@@ -475,70 +370,49 @@ body.editing .section-buttons{
 }
 
 .task:nth-child(even){
-    background:
-        rgba(255,255,255,.026);
+    background:rgba(255,255,255,.026);
 }
 
 body.editing .task{
-    grid-template-columns:
-        42px
-        115px
-        1fr
-        132px;
+    grid-template-columns:42px 115px 1fr 132px;
 }
 
 .check-button{
     width:31px;
     height:31px;
-
     padding:0;
-
     position:relative;
-
     border:2px solid #aaa;
     border-radius:6px;
-
     background:#060606;
-
     color:#080808;
 }
 
 .task.done .check-button{
     background:#eee;
-
     border-color:#eee;
 }
 
 .task.done .check-button:after{
     content:"✓";
-
     position:absolute;
-
     left:5px;
     top:-4px;
-
     color:#080808;
-
     font-size:24px;
-
     font-weight:900;
 }
 
 .time{
     color:#929292;
-
     font-size:15px;
-
     white-space:nowrap;
 }
 
 .task-name{
     font-size:20px;
-
     font-weight:800;
-
     line-height:1.2;
-
     word-break:break-word;
 }
 
@@ -548,15 +422,12 @@ body.editing .task{
 
 .task.done .task-name{
     color:#666;
-
     text-decoration:line-through;
 }
 
 .task-actions{
     display:none;
-
     gap:4px;
-
     justify-content:flex-end;
 }
 
@@ -567,17 +438,12 @@ body.editing .task-actions{
 .task-action{
     width:39px;
     height:39px;
-
     padding:0;
-
     border:1px solid #555;
     border-radius:7px;
-
     background:#101010;
     color:#ddd;
-
     font-size:15px;
-
     font-weight:900;
 }
 
@@ -587,22 +453,14 @@ body.editing .task-actions{
 
 .add-task{
     display:none;
-
     width:100%;
-
     min-height:51px;
-
     margin-top:8px;
-
     border:1px dashed #555;
     border-radius:10px;
-
     background:#080808;
-
     color:#aaa;
-
     font-size:14px;
-
     font-weight:900;
 }
 
@@ -616,20 +474,13 @@ body.editing .add-task{
 
 .overlay{
     position:fixed;
-
     inset:0;
-
     z-index:1000;
-
     display:none;
-
     align-items:center;
     justify-content:center;
-
     padding:14px;
-
-    background:
-        rgba(0,0,0,.94);
+    background:rgba(0,0,0,.94);
 }
 
 .overlay.open{
@@ -638,51 +489,35 @@ body.editing .add-task{
 
 .modal{
     width:100%;
-
     max-width:580px;
-
     max-height:95vh;
-
     overflow-y:auto;
-
     border:1px solid #666;
     border-radius:16px;
-
     background:#080808;
 }
 
 .modal-head{
     min-height:66px;
-
     display:flex;
-
     align-items:center;
     justify-content:space-between;
-
-    padding:
-        13px
-        17px;
-
+    padding:13px 17px;
     border-bottom:1px solid #333;
 }
 
 .modal-title{
     font-size:23px;
-
     font-weight:900;
 }
 
 .close-btn{
     width:42px;
     height:42px;
-
     border:1px solid #555;
     border-radius:8px;
-
     background:#101010;
-
     color:#fff;
-
     font-size:21px;
 }
 
@@ -691,17 +526,10 @@ body.editing .add-task{
 }
 
 .label{
-    margin:
-        17px
-        0
-        9px;
-
+    margin:17px 0 9px;
     color:#888;
-
     font-size:11px;
-
     font-weight:900;
-
     letter-spacing:2px;
 }
 
@@ -713,35 +541,27 @@ body.editing .add-task{
 .secondary,
 .danger{
     width:100%;
-
     min-height:53px;
-
     border-radius:9px;
-
     font-size:15px;
-
     font-weight:900;
 }
 
 .primary{
     border:0;
-
     background:#eee;
     color:#050505;
 }
 
 .secondary{
     border:1px solid #555;
-
     background:#101010;
     color:#eee;
 }
 
 .danger{
     border:1px solid #713f3f;
-
     background:#140a0a;
-
     color:#efbcbc;
 }
 
@@ -755,20 +575,13 @@ body.editing .add-task{
 
 .text-display{
     min-height:58px;
-
     padding:15px;
-
     border:1px solid #555;
     border-radius:9px;
-
     background:#020202;
-
     color:#fff;
-
     font-size:19px;
-
     font-weight:800;
-
     word-break:break-word;
 }
 
@@ -786,30 +599,20 @@ body.editing .add-task{
 
 .key-row{
     display:flex;
-
     gap:4px;
-
     margin-bottom:5px;
 }
 
 .key{
     flex:1;
-
     min-width:0;
-
     height:43px;
-
     padding:0;
-
     border:1px solid #444;
     border-radius:6px;
-
     background:#151515;
-
     color:#fff;
-
     font-size:14px;
-
     font-weight:800;
 }
 
@@ -827,22 +630,13 @@ body.editing .add-task{
 
 .selected-emoji{
     min-height:58px;
-
     display:flex;
-
     align-items:center;
-
     gap:12px;
-
-    padding:
-        10px
-        14px;
-
+    padding:10px 14px;
     margin-bottom:10px;
-
     border:1px solid #555;
     border-radius:9px;
-
     background:#030303;
 }
 
@@ -852,35 +646,26 @@ body.editing .add-task{
 
 .selected-emoji-text{
     color:#888;
-
     font-size:13px;
 }
 
 .emoji-grid{
     display:grid;
-
-    grid-template-columns:
-        repeat(5,1fr);
-
+    grid-template-columns:repeat(5,1fr);
     gap:8px;
 }
 
 .emoji-btn{
     min-height:57px;
-
     border:2px solid #333;
     border-radius:9px;
-
     background:#111;
-
     font-size:25px;
 }
 
 .emoji-btn.selected{
     border-color:#fff;
-
     background:#333;
-
     transform:scale(.96);
 }
 
@@ -890,58 +675,37 @@ body.editing .add-task{
 
 .time-editor{
     display:grid;
-
-    grid-template-columns:
-        1fr
-        1fr;
-
+    grid-template-columns:1fr 1fr;
     gap:10px;
 }
 
 .time-box{
     padding:11px;
-
     border:1px solid #444;
     border-radius:10px;
-
     background:#050505;
-
     text-align:center;
 }
 
 .time-value{
-    margin:
-        5px
-        0
-        10px;
-
+    margin:5px 0 10px;
     font-size:27px;
-
     font-weight:900;
 }
 
 .time-buttons{
     display:grid;
-
-    grid-template-columns:
-        1fr
-        1fr;
-
+    grid-template-columns:1fr 1fr;
     gap:6px;
 }
 
 .time-btn{
     min-height:43px;
-
     border:1px solid #555;
     border-radius:7px;
-
     background:#151515;
-
     color:#fff;
-
     font-size:16px;
-
     font-weight:900;
 }
 
@@ -950,21 +714,14 @@ body.editing .add-task{
 ===================================================== */
 
 .confirm-text{
-    margin:
-        4px
-        0
-        20px;
-
+    margin:4px 0 20px;
     color:#aaa;
-
     font-size:16px;
-
     line-height:1.5;
 }
 
 .confirm-name{
     color:#fff;
-
     font-weight:900;
 }
 
@@ -974,60 +731,40 @@ body.editing .add-task{
 
 .settings-section{
     padding-bottom:17px;
-
     margin-bottom:17px;
-
     border-bottom:1px solid #292929;
 }
 
 .settings-section:last-child{
     padding-bottom:0;
-
     margin-bottom:0;
-
     border-bottom:0;
 }
 
 .settings-title{
     margin-bottom:10px;
-
     color:#777;
-
     font-size:11px;
-
     font-weight:900;
-
     letter-spacing:2px;
 }
 
 .setting-status{
     margin-top:8px;
-
     color:#777;
-
     font-size:12px;
-
     line-height:1.4;
 }
 
 .note{
     margin-top:15px;
-
     padding:12px;
-
     border:1px solid #292929;
     border-radius:9px;
-
     color:#777;
-
     font-size:12px;
-
     line-height:1.5;
 }
-
-/* =====================================================
-   BACKUP INPUT
-===================================================== */
 
 #backupInput{
     display:none;
@@ -1063,11 +800,8 @@ body.editing .add-task{
     }
 
     body.editing .task-actions{
-        grid-column:
-            1 / -1;
-
+        grid-column:1 / -1;
         justify-content:flex-end;
-
         padding-top:5px;
     }
 
@@ -1076,28 +810,17 @@ body.editing .add-task{
 </style>
 </head>
 
-
 <body>
-
 
 <div class="app">
 
     <div class="header">
-
         <div class="header-row">
 
             <div>
-
-                <h1 class="title">
-                    CHECKLIST DE HOJE
-                </h1>
-
-                <div class="subtitle">
-                    Marque as atividades concluídas
-                </div>
-
+                <h1 class="title">CHECKLIST DE HOJE</h1>
+                <div class="subtitle">Marque as atividades concluídas</div>
             </div>
-
 
             <button
                 class="gear"
@@ -1107,14 +830,11 @@ body.editing .add-task{
             </button>
 
         </div>
-
     </div>
-
 
     <div class="edit-banner">
         MODO DE EDIÇÃO ATIVO
     </div>
-
 
     <div class="progress">
 
@@ -1133,16 +853,12 @@ body.editing .add-task{
 
         </div>
 
-
         <div class="track">
-
             <div
                 class="fill"
                 id="fill"
             ></div>
-
         </div>
-
 
         <div
             class="progress-text"
@@ -1153,22 +869,17 @@ body.editing .add-task{
 
     </div>
 
-
     <div class="card">
-
         <div
             class="scroll"
             id="content"
         ></div>
-
     </div>
 
 </div>
 
 
-<!-- =====================================================
-     CONFIGURAÇÕES
-===================================================== -->
+<!-- CONFIGURAÇÕES -->
 
 <div
     class="overlay"
@@ -1193,16 +904,13 @@ body.editing .add-task{
 
         </div>
 
-
         <div class="modal-body">
-
 
             <div class="settings-section">
 
                 <div class="settings-title">
                     EDIÇÃO
                 </div>
-
 
                 <button
                     class="primary"
@@ -1211,7 +919,6 @@ body.editing .add-task{
                 >
                     ✎ ENTRAR NO MODO EDIÇÃO
                 </button>
-
 
                 <button
                     class="secondary button-gap"
@@ -1222,13 +929,11 @@ body.editing .add-task{
 
             </div>
 
-
             <div class="settings-section">
 
                 <div class="settings-title">
                     DIA
                 </div>
-
 
                 <button
                     class="secondary"
@@ -1237,7 +942,6 @@ body.editing .add-task{
                     LIMPAR MARCAÇÕES
                 </button>
 
-
                 <button
                     class="secondary button-gap"
                     data-action="toggle-auto-reset"
@@ -1245,7 +949,6 @@ body.editing .add-task{
                 >
                     RESET DIÁRIO: ATIVO
                 </button>
-
 
                 <div
                     class="setting-status"
@@ -1256,13 +959,11 @@ body.editing .add-task{
 
             </div>
 
-
             <div class="settings-section">
 
                 <div class="settings-title">
                     BACKUP
                 </div>
-
 
                 <button
                     class="secondary"
@@ -1271,14 +972,12 @@ body.editing .add-task{
                     EXPORTAR BACKUP
                 </button>
 
-
                 <button
                     class="secondary button-gap"
                     data-action="import-backup"
                 >
                     IMPORTAR BACKUP
                 </button>
-
 
                 <input
                     type="file"
@@ -1287,7 +986,6 @@ body.editing .add-task{
                 >
 
             </div>
-
 
             <div class="note">
                 Sua rotina e suas atividades ficam no armazenamento local deste navegador.
@@ -1301,9 +999,7 @@ body.editing .add-task{
 </div>
 
 
-<!-- =====================================================
-     SEÇÃO
-===================================================== -->
+<!-- SEÇÃO -->
 
 <div
     class="overlay"
@@ -1321,7 +1017,6 @@ body.editing .add-task{
                 Nova seção
             </div>
 
-
             <button
                 class="close-btn"
                 data-action="close"
@@ -1332,14 +1027,11 @@ body.editing .add-task{
 
         </div>
 
-
         <div class="modal-body">
-
 
             <div class="label">
                 NOME DA SEÇÃO
             </div>
-
 
             <div
                 class="text-display placeholder"
@@ -1348,12 +1040,10 @@ body.editing .add-task{
                 Digite abaixo
             </div>
 
-
             <div
                 class="keyboard"
                 id="sectionKeyboard"
             ></div>
-
 
             <button
                 class="primary button-gap"
@@ -1369,9 +1059,7 @@ body.editing .add-task{
 </div>
 
 
-<!-- =====================================================
-     ATIVIDADE
-===================================================== -->
+<!-- ATIVIDADE -->
 
 <div
     class="overlay"
@@ -1389,7 +1077,6 @@ body.editing .add-task{
                 Nova atividade
             </div>
 
-
             <button
                 class="close-btn"
                 data-action="close"
@@ -1400,17 +1087,13 @@ body.editing .add-task{
 
         </div>
 
-
         <div class="modal-body">
-
 
             <div class="label">
                 HORÁRIO
             </div>
 
-
             <div class="time-editor">
-
 
                 <div class="time-box">
 
@@ -1421,14 +1104,12 @@ body.editing .add-task{
                         INÍCIO
                     </div>
 
-
                     <div
                         class="time-value"
                         id="startDisplay"
                     >
                         07:30
                     </div>
-
 
                     <div class="time-buttons">
 
@@ -1453,7 +1134,6 @@ body.editing .add-task{
                     </div>
 
                 </div>
-
 
                 <div class="time-box">
 
@@ -1464,14 +1144,12 @@ body.editing .add-task{
                         FIM
                     </div>
 
-
                     <div
                         class="time-value"
                         id="endDisplay"
                     >
                         08:00
                     </div>
-
 
                     <div class="time-buttons">
 
@@ -1499,11 +1177,9 @@ body.editing .add-task{
 
             </div>
 
-
             <div class="label">
                 ÍCONE
             </div>
-
 
             <div class="selected-emoji">
 
@@ -1520,17 +1196,14 @@ body.editing .add-task{
 
             </div>
 
-
             <div
                 class="emoji-grid"
                 id="emojiGrid"
             ></div>
 
-
             <div class="label">
                 ATIVIDADE
             </div>
-
 
             <div
                 class="text-display placeholder"
@@ -1539,12 +1212,10 @@ body.editing .add-task{
                 Digite abaixo
             </div>
 
-
             <div
                 class="keyboard"
                 id="taskKeyboard"
             ></div>
-
 
             <button
                 class="primary button-gap"
@@ -1552,7 +1223,6 @@ body.editing .add-task{
             >
                 SALVAR ATIVIDADE
             </button>
-
 
             <button
                 class="danger button-gap"
@@ -1570,9 +1240,7 @@ body.editing .add-task{
 </div>
 
 
-<!-- =====================================================
-     CONFIRMAÇÃO
-===================================================== -->
+<!-- CONFIRMAÇÃO -->
 
 <div
     class="overlay"
@@ -1596,9 +1264,7 @@ body.editing .add-task{
 
         </div>
 
-
         <div class="modal-body">
-
 
             <div
                 class="confirm-text"
@@ -1607,14 +1273,12 @@ body.editing .add-task{
                 Deseja realmente excluir?
             </div>
 
-
             <button
                 class="danger"
                 data-action="confirm-delete"
             >
                 SIM, EXCLUIR
             </button>
-
 
             <button
                 class="secondary button-gap"
@@ -1636,11 +1300,9 @@ body.editing .add-task{
 
 "use strict";
 
-/* =====================================================
-   CONFIGURAÇÃO PRINCIPAL
 
-   IMPORTANTE:
-   ESTA É A MESMA CHAVE DA VERSÃO QUE FUNCIONOU.
+/* =====================================================
+   STORAGE
 ===================================================== */
 
 var STORAGE_KEY =
@@ -1706,47 +1368,18 @@ var lastPointerTime =
 
 var emojis = [
 
-    "⏰",
-    "☕",
-    "💻",
-    "💼",
-    "🏋️",
-
-    "🍽️",
-    "🎹",
-    "🎓",
-    "🚗",
-    "🚿",
-
-    "📚",
-    "🎮",
-    "🧹",
-    "🛒",
-    "📝",
-
-    "🎯",
-    "🧠",
-    "🏠",
-    "💤",
-    "🎧",
-
-    "📺",
-    "🍳",
-    "🚶",
-    "⭐",
-    "🔥",
-
-    "❤️",
-    "✅",
-    "📱",
-    "💰",
-    "🥤"
+    "⏰","☕","💻","💼","🏋️",
+    "🍽️","🎹","🎓","🚗","🚿",
+    "📚","🎮","🧹","🛒","📝",
+    "🎯","🧠","🏠","💤","🎧",
+    "📺","🍳","🚶","⭐","🔥",
+    "❤️","✅","📱","💰","🥤"
 
 ];
 
 
 /* =====================================================
-   STORAGE
+   LOAD / SAVE
 ===================================================== */
 
 function loadState(){
@@ -1926,6 +1559,7 @@ function checkDailyReset(){
 
         state.lastDate =
             today;
+
 
         saveState();
 
@@ -2192,17 +1826,35 @@ function parseClock(value){
     }
 
 
-    return (
+    var hour =
         parseInt(
             pieces[0],
             10
-        ) *
-        60
-        +
+        );
+
+
+    var minute =
         parseInt(
             pieces[1],
             10
-        )
+        );
+
+
+    if(
+        isNaN(hour) ||
+        isNaN(minute)
+    ){
+
+        return 0;
+
+    }
+
+
+    return (
+        hour *
+        60
+        +
+        minute
     );
 
 }
@@ -2228,6 +1880,133 @@ function updateTimeDisplays(){
         clockText(
             endMinutes
         );
+
+}
+
+
+/* =====================================================
+   NOVO:
+   DESCOBRIR O FIM DA ÚLTIMA ATIVIDADE DA SEÇÃO
+===================================================== */
+
+function getNextTaskStart(
+    section
+){
+
+    /*
+        Se não houver atividade:
+        07:30
+    */
+
+    if(
+        !section ||
+        !section.tasks ||
+        section.tasks.length ===
+        0
+    ){
+
+        return 450;
+
+    }
+
+
+    /*
+        Pega a última atividade
+        na ordem atual da seção.
+    */
+
+    var lastTask =
+        section.tasks[
+            section.tasks.length -
+            1
+        ];
+
+
+    if(
+        !lastTask ||
+        !lastTask.time
+    ){
+
+        return 450;
+
+    }
+
+
+    /*
+        Esperado:
+        07:30–08:00
+    */
+
+    var pieces =
+        String(
+            lastTask.time
+        )
+        .split(
+            "–"
+        );
+
+
+    /*
+        Tenta também hífen normal
+        se algum dado antigo tiver sido salvo assim.
+    */
+
+    if(
+        pieces.length !==
+        2
+    ){
+
+        pieces =
+            String(
+                lastTask.time
+            )
+            .split(
+                "-"
+            );
+
+    }
+
+
+    if(
+        pieces.length !==
+        2
+    ){
+
+        return 450;
+
+    }
+
+
+    var parsed =
+        parseClock(
+            pieces[1]
+            .replace(
+                /^\s+|\s+$/g,
+                ""
+            )
+        );
+
+
+    /*
+        00:00 é um horário válido,
+        então só usamos fallback
+        se o texto claramente não parece horário.
+    */
+
+    if(
+        pieces[1]
+            .indexOf(":") ===
+        -1
+    ){
+
+        return 450;
+
+    }
+
+
+    return normalizeMinutes(
+        parsed
+    );
 
 }
 
@@ -2351,8 +2130,6 @@ function renderSection(
         "section-buttons";
 
 
-    /* SUBIR */
-
     var up =
         document.createElement(
             "button"
@@ -2384,8 +2161,6 @@ function renderSection(
         "-1"
     );
 
-
-    /* DESCER */
 
     var down =
         document.createElement(
@@ -2419,8 +2194,6 @@ function renderSection(
     );
 
 
-    /* EDITAR */
-
     var rename =
         document.createElement(
             "button"
@@ -2446,8 +2219,6 @@ function renderSection(
         section.id
     );
 
-
-    /* EXCLUIR */
 
     var remove =
         document.createElement(
@@ -2573,10 +2344,6 @@ function renderSection(
 }
 
 
-/* =====================================================
-   RENDER TAREFA
-===================================================== */
-
 function renderTask(
     section,
     task,
@@ -2596,8 +2363,6 @@ function renderTask(
         :
         "task";
 
-
-    /* CHECK */
 
     var check =
         document.createElement(
@@ -2627,8 +2392,6 @@ function renderTask(
     );
 
 
-    /* HORÁRIO */
-
     var time =
         document.createElement(
             "div"
@@ -2643,8 +2406,6 @@ function renderTask(
         task.time ||
         "";
 
-
-    /* NOME */
 
     var name =
         document.createElement(
@@ -2666,8 +2427,6 @@ function renderTask(
         +
         task.name;
 
-
-    /* AÇÕES */
 
     var actions =
         document.createElement(
@@ -3253,6 +3012,11 @@ function openTaskEditor(
         currentTaskId
     ){
 
+        /*
+            EDITANDO:
+            mantém horário da própria atividade.
+        */
+
         var section =
             getSection(
                 currentSectionId
@@ -3336,6 +3100,24 @@ function openTaskEditor(
     }
     else{
 
+        /*
+            NOVA ATIVIDADE:
+            começa no fim da última atividade
+            da seção.
+
+            Exemplo:
+            última = 08:00–09:15
+
+            nova =
+            09:15–09:45
+        */
+
+        var targetSection =
+            getSection(
+                currentSectionId
+            );
+
+
         taskText =
             "";
 
@@ -3345,11 +3127,16 @@ function openTaskEditor(
 
 
         startMinutes =
-            450;
+            getNextTaskStart(
+                targetSection
+            );
 
 
         endMinutes =
-            480;
+            normalizeMinutes(
+                startMinutes +
+                30
+            );
 
 
         document
@@ -3621,7 +3408,7 @@ function moveTask(
 
 
 /* =====================================================
-   DUPLICAR TAREFA
+   DUPLICAR
 ===================================================== */
 
 function duplicateTask(
@@ -3722,7 +3509,7 @@ function duplicateTask(
 
 
 /* =====================================================
-   EMOJIS
+   EMOJI
 ===================================================== */
 
 function buildEmojis(){
@@ -3840,29 +3627,11 @@ function updateEmojiSelection(){
 
 var keyboardRows = [
 
-    [
-        "1","2","3","4","5",
-        "6","7","8","9","0"
-    ],
-
-    [
-        "Q","W","E","R","T",
-        "Y","U","I","O","P"
-    ],
-
-    [
-        "A","S","D","F","G",
-        "H","J","K","L"
-    ],
-
-    [
-        "Z","X","C","V","B",
-        "N","M"
-    ],
-
-    [
-        "Á","É","Í","Ó","Ú","Ç"
-    ]
+    ["1","2","3","4","5","6","7","8","9","0"],
+    ["Q","W","E","R","T","Y","U","I","O","P"],
+    ["A","S","D","F","G","H","J","K","L"],
+    ["Z","X","C","V","B","N","M"],
+    ["Á","É","Í","Ó","Ú","Ç"]
 
 ];
 
@@ -4579,8 +4348,6 @@ function performAction(
     }
 
 
-    /* CONFIGURAÇÕES */
-
     if(
         action ===
         "settings"
@@ -4596,8 +4363,6 @@ function performAction(
     }
 
 
-    /* FECHAR */
-
     else if(
         action ===
         "close"
@@ -4611,8 +4376,6 @@ function performAction(
 
     }
 
-
-    /* MODO EDIÇÃO */
 
     else if(
         action ===
@@ -4631,8 +4394,6 @@ function performAction(
     }
 
 
-    /* NOVA SEÇÃO */
-
     else if(
         action ===
         "new-section"
@@ -4650,8 +4411,6 @@ function performAction(
     }
 
 
-    /* EDITAR SEÇÃO */
-
     else if(
         action ===
         "edit-section"
@@ -4667,8 +4426,6 @@ function performAction(
 
     }
 
-
-    /* MOVER SEÇÃO */
 
     else if(
         action ===
@@ -4693,8 +4450,6 @@ function performAction(
     }
 
 
-    /* SALVAR SEÇÃO */
-
     else if(
         action ===
         "save-section"
@@ -4704,8 +4459,6 @@ function performAction(
 
     }
 
-
-    /* NOVA TAREFA */
 
     else if(
         action ===
@@ -4724,8 +4477,6 @@ function performAction(
 
     }
 
-
-    /* EDITAR TAREFA */
 
     else if(
         action ===
@@ -4746,8 +4497,6 @@ function performAction(
 
     }
 
-
-    /* MOVER TAREFA */
 
     else if(
         action ===
@@ -4776,8 +4525,6 @@ function performAction(
     }
 
 
-    /* DUPLICAR TAREFA */
-
     else if(
         action ===
         "duplicate-task"
@@ -4798,8 +4545,6 @@ function performAction(
     }
 
 
-    /* SALVAR TAREFA */
-
     else if(
         action ===
         "save-task"
@@ -4809,8 +4554,6 @@ function performAction(
 
     }
 
-
-    /* CHECK */
 
     else if(
         action ===
@@ -4879,8 +4622,6 @@ function performAction(
     }
 
 
-    /* EMOJI */
-
     else if(
         action ===
         "emoji"
@@ -4896,8 +4637,6 @@ function performAction(
 
     }
 
-
-    /* HORÁRIO */
 
     else if(
         action ===
@@ -4950,8 +4689,6 @@ function performAction(
     }
 
 
-    /* TECLADO */
-
     else if(
         action ===
         "key"
@@ -4972,8 +4709,6 @@ function performAction(
     }
 
 
-    /* BACKSPACE */
-
     else if(
         action ===
         "backspace"
@@ -4989,8 +4724,6 @@ function performAction(
 
     }
 
-
-    /* EXCLUIR SEÇÃO */
 
     else if(
         action ===
@@ -5008,8 +4741,6 @@ function performAction(
     }
 
 
-    /* EXCLUIR TAREFA */
-
     else if(
         action ===
         "request-delete-task"
@@ -5020,8 +4751,6 @@ function performAction(
     }
 
 
-    /* CONFIRMAR EXCLUSÃO */
-
     else if(
         action ===
         "confirm-delete"
@@ -5031,8 +4760,6 @@ function performAction(
 
     }
 
-
-    /* CANCELAR EXCLUSÃO */
 
     else if(
         action ===
@@ -5058,8 +4785,6 @@ function performAction(
     }
 
 
-    /* LIMPAR CHECKS */
-
     else if(
         action ===
         "clear-checks"
@@ -5081,8 +4806,6 @@ function performAction(
     }
 
 
-    /* RESET AUTOMÁTICO */
-
     else if(
         action ===
         "toggle-auto-reset"
@@ -5100,8 +4823,6 @@ function performAction(
     }
 
 
-    /* EXPORTAR */
-
     else if(
         action ===
         "export-backup"
@@ -5111,8 +4832,6 @@ function performAction(
 
     }
 
-
-    /* IMPORTAR */
 
     else if(
         action ===
@@ -5128,8 +4847,6 @@ function performAction(
 
 /* =====================================================
    EVENTOS HYTE
-
-   MANTIDO O MESMO MECANISMO QUE FUNCIONOU.
 ===================================================== */
 
 function findActionElement(
@@ -5235,31 +4952,23 @@ if(
 ){
 
     document.addEventListener(
-
         "pointerup",
-
         pointerHandler,
-
         false
-
     );
 
 }
 
 
 document.addEventListener(
-
     "click",
-
     clickHandler,
-
     false
-
 );
 
 
 /* =====================================================
-   IMPORTAÇÃO DE BACKUP
+   BACKUP INPUT
 ===================================================== */
 
 document
@@ -5297,27 +5006,21 @@ document
 
 loadState();
 
-
 checkDailyReset();
-
 
 buildKeyboard(
     "sectionKeyboard",
     "section"
 );
 
-
 buildKeyboard(
     "taskKeyboard",
     "task"
 );
 
-
 buildEmojis();
 
-
 updateSettingsUI();
-
 
 render();
 
