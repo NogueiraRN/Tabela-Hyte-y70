@@ -23,84 +23,47 @@
     box-sizing: border-box;
 }
 
-:root {
-
-    --bg: #000;
-
-    --panel: #050505;
-
-    --panel2: #0b0b0b;
-
-    --line: rgba(255,255,255,.15);
-
-    --line2: rgba(255,255,255,.30);
-
-    --text: #f2f2f2;
-
-    --muted: #888;
-
-    --white: #f1f1f1;
-
-    --black: #080808;
-
-}
-
-
 html,
 body {
-
     margin: 0;
 
     width: 100%;
-
     height: 100%;
 
     background: transparent;
 
-    color: var(--text);
+    color: #f2f2f2;
 
     font-family:
         Arial,
         Helvetica,
         sans-serif;
-
 }
 
-
 body {
-
     overflow: hidden;
-
 }
 
 
 /* =========================================================
-   APP
+   ESTRUTURA
 ========================================================= */
 
 .app {
-
     width: 100%;
-
     height: 100%;
 
     padding: 10px 12px;
 
     display: flex;
-
     flex-direction: column;
-
 }
 
-
 .card {
-
     flex: 1;
-
     min-height: 0;
 
     display: flex;
-
     flex-direction: column;
 
     position: relative;
@@ -114,33 +77,27 @@ body {
             rgba(2,2,2,.99)
         );
 
-    border:
-        1px solid
-        #626262;
+    border: 1px solid #626262;
 
     border-radius: 18px;
 
     box-shadow:
         0 12px 30px
         rgba(0,0,0,.50);
-
 }
 
 
 /* PINCEL SUPERIOR */
 
-.card::before {
-
+.card:before {
     content: "";
 
     position: absolute;
 
     top: 0;
-
     left: 0;
 
     width: 150px;
-
     height: 23px;
 
     background:
@@ -164,24 +121,20 @@ body {
     );
 
     z-index: 3;
-
 }
 
 
 /* PINCEL INFERIOR */
 
-.card::after {
-
+.card:after {
     content: "";
 
     position: absolute;
 
     right: -10px;
-
     bottom: -3px;
 
     width: 180px;
-
     height: 34px;
 
     background:
@@ -204,16 +157,14 @@ body {
     pointer-events: none;
 
     z-index: 3;
-
 }
 
 
 /* =========================================================
-   HEADER
+   CABEÇALHO
 ========================================================= */
 
 .header {
-
     flex-shrink: 0;
 
     padding:
@@ -223,30 +174,23 @@ body {
 
     border-bottom:
         1px solid
-        var(--line2);
+        rgba(255,255,255,.30);
 
     position: relative;
 
     z-index: 2;
-
 }
 
-
 .header-top {
-
     display: flex;
 
     align-items: center;
-
     justify-content: space-between;
 
     gap: 12px;
-
 }
 
-
 .header-title {
-
     font-size: 30px;
 
     line-height: 1;
@@ -256,14 +200,10 @@ body {
     letter-spacing: -.5px;
 
     text-transform: uppercase;
-
 }
 
-
 .settings-button {
-
     width: 44px;
-
     height: 44px;
 
     flex-shrink: 0;
@@ -271,7 +211,6 @@ body {
     display: flex;
 
     align-items: center;
-
     justify-content: center;
 
     padding: 0;
@@ -289,18 +228,14 @@ body {
     font-size: 23px;
 
     cursor: pointer;
-
 }
 
-
 .subtitle {
-
     margin-top: 9px;
 
-    color: var(--muted);
+    color: #888;
 
     font-size: 17px;
-
 }
 
 
@@ -309,7 +244,6 @@ body {
 ========================================================= */
 
 .progress-area {
-
     flex-shrink: 0;
 
     padding:
@@ -319,28 +253,21 @@ body {
 
     border-bottom:
         1px solid
-        var(--line);
-
+        rgba(255,255,255,.15);
 }
 
-
 .progress-top {
-
     display: flex;
 
     align-items: center;
-
     justify-content: space-between;
 
     gap: 10px;
 
     margin-bottom: 9px;
-
 }
 
-
 .progress-label {
-
     color: #909090;
 
     font-size: 12px;
@@ -350,23 +277,16 @@ body {
     letter-spacing: 2px;
 
     text-transform: uppercase;
-
 }
 
-
 .progress-number {
-
     font-size: 18px;
 
     font-weight: 900;
-
 }
 
-
 .progress-bar {
-
     width: 100%;
-
     height: 8px;
 
     overflow: hidden;
@@ -378,12 +298,9 @@ body {
         #363636;
 
     border-radius: 10px;
-
 }
 
-
 .progress-fill {
-
     width: 0%;
 
     height: 100%;
@@ -391,21 +308,43 @@ body {
     background: #eee;
 
     border-radius: 10px;
-
-    transition:
-        width .25s ease;
-
 }
 
-
 .progress-details {
-
     margin-top: 7px;
 
     color: #707070;
 
     font-size: 12px;
+}
 
+
+/* =========================================================
+   MODO EDIÇÃO
+========================================================= */
+
+.edit-banner {
+    display: none;
+
+    flex-shrink: 0;
+
+    padding: 9px;
+
+    text-align: center;
+
+    background: #eee;
+
+    color: #050505;
+
+    font-size: 12px;
+
+    font-weight: 900;
+
+    letter-spacing: 2px;
+}
+
+.edit-mode .edit-banner {
+    display: block;
 }
 
 
@@ -414,7 +353,6 @@ body {
 ========================================================= */
 
 .content {
-
     flex: 1;
 
     min-height: 0;
@@ -431,39 +369,28 @@ body {
     scrollbar-color:
         #707070
         #111;
-
 }
-
 
 .content::-webkit-scrollbar {
-
     width: 7px;
-
 }
-
 
 .content::-webkit-scrollbar-track {
-
     background: #101010;
-
 }
 
-
 .content::-webkit-scrollbar-thumb {
-
     background: #707070;
 
     border-radius: 10px;
-
 }
 
 
 /* =========================================================
-   EMPTY
+   TELA VAZIA
 ========================================================= */
 
 .empty-state {
-
     min-height: 360px;
 
     display: flex;
@@ -471,38 +398,28 @@ body {
     flex-direction: column;
 
     align-items: center;
-
     justify-content: center;
 
     text-align: center;
 
     padding: 30px 20px;
-
 }
 
-
 .empty-symbol {
-
     font-size: 54px;
 
     opacity: .85;
 
     margin-bottom: 15px;
-
 }
 
-
 .empty-title {
-
     font-size: 25px;
 
     font-weight: 900;
-
 }
 
-
 .empty-text {
-
     max-width: 400px;
 
     margin-top: 8px;
@@ -512,12 +429,9 @@ body {
     font-size: 15px;
 
     line-height: 1.45;
-
 }
 
-
 .big-action {
-
     margin-top: 22px;
 
     min-height: 52px;
@@ -539,7 +453,6 @@ body {
     font-weight: 900;
 
     cursor: pointer;
-
 }
 
 
@@ -548,27 +461,19 @@ body {
 ========================================================= */
 
 .section-block {
-
     margin-bottom: 10px;
-
 }
 
-
 .section-top {
-
     display: flex;
 
     align-items: center;
-
     justify-content: space-between;
 
     gap: 10px;
-
 }
 
-
 .section-title {
-
     position: relative;
 
     display: inline-block;
@@ -600,12 +505,9 @@ body {
 
     transform:
         skew(-4deg);
-
 }
 
-
-.section-title::before {
-
+.section-title:before {
     content: "";
 
     position: absolute;
@@ -619,67 +521,34 @@ body {
     height: 100%;
 
     background: #f1f1f1;
-
-    clip-path: polygon(
-        60% 0,
-        100% 15%,
-        75% 35%,
-        100% 55%,
-        55% 70%,
-        82% 100%,
-        0 85%,
-        25% 55%,
-        0 25%
-    );
-
 }
 
-
-.section-title::after {
-
+.section-title:after {
     content: "";
 
     position: absolute;
 
-    right: -24px;
+    right: -20px;
 
-    top: 2px;
+    top: 3px;
 
-    width: 30px;
+    width: 26px;
 
-    height: 90%;
+    height: 80%;
 
     background: #f1f1f1;
 
-    opacity: .86;
-
-    clip-path: polygon(
-        0 0,
-        100% 20%,
-        65% 40%,
-        100% 55%,
-        55% 70%,
-        75% 100%,
-        0 85%
-    );
-
+    opacity: .80;
 }
 
-
 .section-actions {
-
     display: none;
 
     gap: 5px;
-
 }
 
-
-.edit-mode
-.section-actions {
-
+.edit-mode .section-actions {
     display: flex;
-
 }
 
 
@@ -688,7 +557,6 @@ body {
 ========================================================= */
 
 .group {
-
     overflow: hidden;
 
     border:
@@ -699,16 +567,14 @@ body {
 
     background:
         rgba(0,0,0,.35);
-
 }
 
 
 /* =========================================================
-   TASK
+   ATIVIDADE
 ========================================================= */
 
 .task {
-
     min-height: 76px;
 
     display: grid;
@@ -736,37 +602,30 @@ body {
             rgba(255,255,255,.015),
             rgba(255,255,255,.002)
         );
-
 }
-
 
 .task:last-child {
-
     border-bottom: 0;
-
 }
 
-
 .task:nth-child(even) {
-
     background:
         linear-gradient(
             90deg,
             rgba(255,255,255,.03),
             rgba(255,255,255,.008)
         );
-
 }
 
 
-.task-checkbox {
+/* CHECKBOX */
 
+.task-checkbox {
     appearance: none;
 
     -webkit-appearance: none;
 
     width: 32px;
-
     height: 32px;
 
     margin: 0;
@@ -782,21 +641,15 @@ body {
     position: relative;
 
     cursor: pointer;
-
 }
 
-
 .task-checkbox:checked {
-
     background: #ededed;
 
     border-color: #ededed;
-
 }
 
-
-.task-checkbox:checked::after {
-
+.task-checkbox:checked:after {
     content: "✓";
 
     position: absolute;
@@ -810,23 +663,20 @@ body {
     font-size: 25px;
 
     font-weight: 900;
-
 }
 
 
-.task-time {
+/* TEXTO */
 
+.task-time {
     color: #969696;
 
     font-size: 18px;
 
     white-space: nowrap;
-
 }
 
-
 .task-name {
-
     color: #f2f2f2;
 
     font-size: 23px;
@@ -834,65 +684,24 @@ body {
     font-weight: 600;
 
     line-height: 1.2;
-
 }
 
-
-.task.done
-.task-time {
-
+.task.done .task-time {
     color: #606060;
-
 }
 
-
-.task.done
-.task-name {
-
+.task.done .task-name {
     color: #777;
 
     text-decoration: line-through;
-
 }
 
 
 /* =========================================================
-   EDIÇÃO
+   CONTROLES DE EDIÇÃO
 ========================================================= */
 
-.edit-banner {
-
-    display: none;
-
-    flex-shrink: 0;
-
-    padding: 9px;
-
-    text-align: center;
-
-    background: #eee;
-
-    color: #050505;
-
-    font-size: 12px;
-
-    font-weight: 900;
-
-    letter-spacing: 2px;
-
-}
-
-
-.edit-mode
-.edit-banner {
-
-    display: block;
-
-}
-
-
 .task-actions {
-
     display: none;
 
     grid-column: 1 / -1;
@@ -908,20 +717,13 @@ body {
     gap: 6px;
 
     flex-wrap: wrap;
-
 }
 
-
-.edit-mode
-.task-actions {
-
+.edit-mode .task-actions {
     display: flex;
-
 }
-
 
 .small-button {
-
     min-height: 36px;
 
     padding:
@@ -943,21 +745,15 @@ body {
     font-weight: 700;
 
     cursor: pointer;
-
 }
 
-
 .small-button.danger {
-
     color: #e0aaaa;
 
     border-color: #603b3b;
-
 }
 
-
 .add-task {
-
     display: none;
 
     width: 100%;
@@ -982,15 +778,10 @@ body {
     font-weight: 900;
 
     cursor: pointer;
-
 }
 
-
-.edit-mode
-.add-task {
-
+.edit-mode .add-task {
     display: block;
-
 }
 
 
@@ -999,41 +790,34 @@ body {
 ========================================================= */
 
 .overlay {
-
     position: fixed;
 
-    inset: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
 
     display: none;
 
     align-items: center;
-
     justify-content: center;
 
     padding: 14px;
 
     background:
-        rgba(0,0,0,.88);
+        rgba(0,0,0,.90);
 
     z-index: 1000;
-
 }
-
 
 .overlay.show {
-
     display: flex;
-
 }
 
-
 .modal {
+    width: 100%;
 
-    width:
-        min(
-            560px,
-            100%
-        );
+    max-width: 560px;
 
     max-height: 94vh;
 
@@ -1050,16 +834,12 @@ body {
     box-shadow:
         0 25px 70px
         rgba(0,0,0,.75);
-
 }
 
-
 .modal-header {
-
     display: flex;
 
     align-items: center;
-
     justify-content: space-between;
 
     padding: 18px;
@@ -1067,23 +847,16 @@ body {
     border-bottom:
         1px solid
         #292929;
-
 }
 
-
 .modal-title {
-
     font-size: 23px;
 
     font-weight: 900;
-
 }
 
-
 .close {
-
     width: 40px;
-
     height: 40px;
 
     background: transparent;
@@ -1099,25 +872,18 @@ body {
     font-size: 23px;
 
     cursor: pointer;
-
 }
 
-
 .modal-body {
-
     padding: 18px;
-
 }
 
 
 /* =========================================================
-   TEXT DISPLAY
-
-   NÃO É INPUT.
+   CAMPO VISUAL
 ========================================================= */
 
 .field-label {
-
     margin-bottom: 7px;
 
     color: #8c8c8c;
@@ -1129,12 +895,9 @@ body {
     letter-spacing: 1.5px;
 
     text-transform: uppercase;
-
 }
 
-
 .text-display {
-
     min-height: 58px;
 
     display: flex;
@@ -1162,14 +925,10 @@ body {
     word-break: break-word;
 
     margin-bottom: 14px;
-
 }
 
-
 .text-display.empty {
-
     color: #555;
-
 }
 
 
@@ -1178,7 +937,6 @@ body {
 ========================================================= */
 
 .keyboard {
-
     display: flex;
 
     flex-direction: column;
@@ -1186,23 +944,17 @@ body {
     gap: 7px;
 
     margin-top: 12px;
-
 }
 
-
 .key-row {
-
     display: flex;
 
     justify-content: center;
 
     gap: 5px;
-
 }
 
-
 .key {
-
     flex: 1;
 
     min-width: 0;
@@ -1226,56 +978,33 @@ body {
     font-weight: 800;
 
     cursor: pointer;
-
 }
-
-
-.key:active {
-
-    background: #eee;
-
-    color: #070707;
-
-}
-
 
 .key.wide {
-
-    flex: 2.2;
-
+    flex: 2;
 }
 
-
-.key.extra-wide {
-
+.key.space {
     flex: 4;
-
 }
 
 
 /* =========================================================
-   EMOJI
+   EMOJIS
 ========================================================= */
 
 .emoji-grid {
-
     display: grid;
 
     grid-template-columns:
-        repeat(
-            6,
-            1fr
-        );
+        repeat(6, 1fr);
 
     gap: 7px;
 
     margin-bottom: 15px;
-
 }
 
-
 .emoji-button {
-
     min-height: 50px;
 
     background: #101010;
@@ -1289,16 +1018,12 @@ body {
     font-size: 24px;
 
     cursor: pointer;
-
 }
 
-
 .emoji-button.selected {
-
     background: #eee;
 
     border-color: #eee;
-
 }
 
 
@@ -1307,22 +1032,17 @@ body {
 ========================================================= */
 
 .time-editor {
-
     display: grid;
 
     grid-template-columns:
-        1fr
-        1fr;
+        1fr 1fr;
 
     gap: 10px;
 
     margin-bottom: 16px;
-
 }
 
-
 .time-box {
-
     padding: 12px;
 
     background: #050505;
@@ -1334,12 +1054,9 @@ body {
     border-radius: 10px;
 
     text-align: center;
-
 }
 
-
 .time-title {
-
     color: #777;
 
     font-size: 11px;
@@ -1349,38 +1066,26 @@ body {
     letter-spacing: 1.5px;
 
     margin-bottom: 10px;
-
 }
 
-
 .time-value {
-
     font-size: 27px;
 
     font-weight: 900;
 
     margin-bottom: 10px;
-
 }
 
-
 .time-controls {
-
     display: grid;
 
     grid-template-columns:
-        repeat(
-            2,
-            1fr
-        );
+        1fr 1fr;
 
     gap: 6px;
-
 }
 
-
 .time-button {
-
     min-height: 40px;
 
     background: #121212;
@@ -1398,7 +1103,6 @@ body {
     font-weight: 900;
 
     cursor: pointer;
-
 }
 
 
@@ -1407,7 +1111,6 @@ body {
 ========================================================= */
 
 .section-picker {
-
     display: flex;
 
     flex-wrap: wrap;
@@ -1415,12 +1118,9 @@ body {
     gap: 7px;
 
     margin-bottom: 15px;
-
 }
 
-
 .section-choice {
-
     padding:
         10px
         12px;
@@ -1440,18 +1140,14 @@ body {
     font-weight: 800;
 
     cursor: pointer;
-
 }
 
-
 .section-choice.selected {
-
     background: #eee;
 
     color: #080808;
 
     border-color: #eee;
-
 }
 
 
@@ -1460,7 +1156,6 @@ body {
 ========================================================= */
 
 .button {
-
     width: 100%;
 
     min-height: 50px;
@@ -1486,36 +1181,28 @@ body {
     font-weight: 900;
 
     cursor: pointer;
-
 }
 
-
 .button.primary {
-
     background: #eee;
 
     color: #070707;
 
     border-color: #eee;
-
 }
 
-
 .button.danger {
-
     color: #dfa8a8;
 
     border-color: #613f3f;
-
 }
 
 
 /* =========================================================
-   CONFIG
+   CONFIGURAÇÕES
 ========================================================= */
 
 .settings-section {
-
     padding-bottom: 15px;
 
     margin-bottom: 15px;
@@ -1523,12 +1210,9 @@ body {
     border-bottom:
         1px solid
         #222;
-
 }
 
-
 .settings-heading {
-
     margin-bottom: 10px;
 
     color: #888;
@@ -1538,12 +1222,9 @@ body {
     font-weight: 900;
 
     letter-spacing: 2px;
-
 }
 
-
 .privacy {
-
     padding: 12px;
 
     color: #777;
@@ -1559,7 +1240,6 @@ body {
     font-size: 12px;
 
     line-height: 1.5;
-
 }
 
 
@@ -1568,7 +1248,6 @@ body {
 ========================================================= */
 
 .toast {
-
     position: fixed;
 
     left: 50%;
@@ -1576,8 +1255,7 @@ body {
     bottom: 25px;
 
     transform:
-        translateX(-50%)
-        translateY(20px);
+        translateX(-50%);
 
     padding:
         11px
@@ -1597,95 +1275,58 @@ body {
 
     pointer-events: none;
 
-    transition: .2s;
-
     z-index: 2000;
-
 }
 
-
 .toast.show {
-
     opacity: 1;
-
-    transform:
-        translateX(-50%)
-        translateY(0);
-
 }
 
 
 /* =========================================================
-   RESPONSIVO HYTE
+   HYTE
 ========================================================= */
 
-@media
-(max-width: 500px) {
+@media (max-width: 500px) {
 
     .app {
-
         padding:
             8px
             10px;
-
     }
-
 
     .header-title {
-
         font-size: 29px;
-
     }
-
 
     .section-title {
-
         font-size: 21px;
-
     }
 
-
     .task {
-
         grid-template-columns:
             40px
             128px
             1fr;
-
     }
-
 
     .task-time {
-
         font-size: 17px;
-
     }
-
 
     .task-name {
-
         font-size: 22px;
-
     }
 
-
     .key {
-
         min-height: 45px;
 
         font-size: 15px;
-
     }
 
-
     .emoji-grid {
-
         grid-template-columns:
-            repeat(
-                5,
-                1fr
-            );
-
+            repeat(5, 1fr);
     }
 
 }
@@ -1703,93 +1344,92 @@ body {
     id="app"
 >
 
+    <div class="card">
 
-<div class="card">
+
+        <div class="header">
+
+            <div class="header-top">
+
+                <div class="header-title">
+                    CHECKLIST DE HOJE
+                </div>
 
 
-    <div class="header">
+                <button
+                    class="settings-button"
+                    onclick="openSettings()"
+                >
+                    ⚙
+                </button>
 
-        <div class="header-top">
-
-            <div class="header-title">
-                CHECKLIST DE HOJE
             </div>
 
 
-            <button
-                class="settings-button"
-                onclick="openSettings()"
-            >
-                ⚙
-            </button>
+            <div class="subtitle">
+                Marque as atividades concluídas
+            </div>
 
         </div>
 
 
-        <div class="subtitle">
-            Marque as atividades concluídas
+        <div class="edit-banner">
+            MODO DE EDIÇÃO ATIVO
         </div>
 
-    </div>
 
+        <div class="progress-area">
 
-    <div class="edit-banner">
-        MODO DE EDIÇÃO ATIVO
-    </div>
+            <div class="progress-top">
 
+                <div class="progress-label">
+                    Progresso do dia
+                </div>
 
-    <div class="progress-area">
+                <div
+                    class="progress-number"
+                    id="progressPercent"
+                >
+                    0%
+                </div>
 
-        <div class="progress-top">
-
-            <div class="progress-label">
-                Progresso do dia
             </div>
+
+
+            <div class="progress-bar">
+
+                <div
+                    class="progress-fill"
+                    id="progressFill"
+                ></div>
+
+            </div>
+
 
             <div
-                class="progress-number"
-                id="progressPercent"
+                class="progress-details"
+                id="progressDetails"
             >
-                0%
+                Nenhuma atividade cadastrada
             </div>
-
-        </div>
-
-
-        <div class="progress-bar">
-
-            <div
-                class="progress-fill"
-                id="progressFill"
-            ></div>
 
         </div>
 
 
         <div
-            class="progress-details"
-            id="progressDetails"
-        >
-            Nenhuma atividade cadastrada
-        </div>
+            class="content"
+            id="content"
+        ></div>
+
 
     </div>
-
-
-    <div
-        class="content"
-        id="content"
-    ></div>
-
-
-</div>
 
 </div>
 
 
 
 <!-- =====================================================
-     SETTINGS
+     CONFIGURAÇÕES
 ===================================================== -->
 
 <div
@@ -1797,93 +1437,95 @@ body {
     id="settingsOverlay"
 >
 
-<div class="modal">
-
-    <div class="modal-header">
-
-        <div class="modal-title">
-            Configurações
-        </div>
-
-        <button
-            class="close"
-            onclick="closeOverlay('settingsOverlay')"
-        >
-            ×
-        </button>
-
-    </div>
+    <div class="modal">
 
 
-    <div class="modal-body">
+        <div class="modal-header">
 
-
-        <div class="settings-section">
-
-            <div class="settings-heading">
-                CHECKLIST
+            <div class="modal-title">
+                Configurações
             </div>
 
             <button
-                class="button primary"
-                id="editModeButton"
-                onclick="toggleEditMode()"
+                class="close"
+                onclick="closeOverlay('settingsOverlay')"
             >
-                Ativar modo de edição
-            </button>
-
-
-            <button
-                class="button"
-                onclick="newSection()"
-            >
-                + Nova seção
-            </button>
-
-
-            <button
-                class="button"
-                onclick="clearChecks()"
-            >
-                Limpar marcações
+                ×
             </button>
 
         </div>
 
 
-        <div class="settings-section">
+        <div class="modal-body">
 
-            <div class="settings-heading">
-                DADOS
+
+            <div class="settings-section">
+
+                <div class="settings-heading">
+                    CHECKLIST
+                </div>
+
+
+                <button
+                    class="button primary"
+                    id="editModeButton"
+                    onclick="toggleEditMode()"
+                >
+                    Ativar modo de edição
+                </button>
+
+
+                <button
+                    class="button"
+                    onclick="newSection()"
+                >
+                    + Nova seção
+                </button>
+
+
+                <button
+                    class="button"
+                    onclick="clearChecks()"
+                >
+                    Limpar marcações
+                </button>
+
             </div>
 
 
-            <button
-                class="button danger"
-                onclick="eraseEverything()"
-            >
-                Apagar toda a checklist
-            </button>
+            <div class="settings-section">
 
-        </div>
+                <div class="settings-heading">
+                    DADOS
+                </div>
 
 
-        <div class="privacy">
+                <button
+                    class="button danger"
+                    onclick="eraseEverything()"
+                >
+                    Apagar toda a checklist
+                </button>
 
-            Sua rotina não fica armazenada no
-            GitHub.
+            </div>
 
-            <br><br>
 
-            As informações são salvas somente
-            no armazenamento local do navegador
-            deste dispositivo.
+            <div class="privacy">
+
+                Sua rotina é salva somente
+                neste navegador.
+
+                <br><br>
+
+                Nenhuma atividade cadastrada
+                é enviada ao GitHub.
+
+            </div>
+
 
         </div>
 
     </div>
-
-</div>
 
 </div>
 
@@ -1898,62 +1540,63 @@ body {
     id="textOverlay"
 >
 
-<div class="modal">
+    <div class="modal">
 
-    <div class="modal-header">
 
-        <div
-            class="modal-title"
-            id="textTitle"
-        >
-            Escrever
+        <div class="modal-header">
+
+            <div
+                class="modal-title"
+                id="textTitle"
+            >
+                Escrever
+            </div>
+
+
+            <button
+                class="close"
+                onclick="cancelTextEditor()"
+            >
+                ×
+            </button>
+
         </div>
 
-        <button
-            class="close"
-            onclick="closeOverlay('textOverlay')"
-        >
-            ×
-        </button>
+
+        <div class="modal-body">
+
+
+            <div class="field-label">
+                TEXTO
+            </div>
+
+
+            <div
+                class="text-display"
+                id="textDisplay"
+            ></div>
+
+
+            <div
+                class="keyboard"
+                id="keyboard"
+            ></div>
+
+
+            <br>
+
+
+            <button
+                class="button primary"
+                onclick="confirmTextEditor()"
+            >
+                ✓ CONFIRMAR
+            </button>
+
+
+        </div>
 
     </div>
-
-
-    <div class="modal-body">
-
-
-        <div class="field-label">
-            TEXTO
-        </div>
-
-
-        <div
-            class="text-display"
-            id="textDisplay"
-        >
-        </div>
-
-
-        <div
-            class="keyboard"
-            id="keyboard"
-        ></div>
-
-
-        <br>
-
-
-        <button
-            class="button primary"
-            onclick="confirmTextEditor()"
-        >
-            ✓ Confirmar
-        </button>
-
-
-    </div>
-
-</div>
 
 </div>
 
@@ -1968,166 +1611,172 @@ body {
     id="taskOverlay"
 >
 
-<div class="modal">
-
-    <div class="modal-header">
-
-        <div
-            class="modal-title"
-            id="taskEditorTitle"
-        >
-            Nova atividade
-        </div>
-
-        <button
-            class="close"
-            onclick="closeOverlay('taskOverlay')"
-        >
-            ×
-        </button>
-
-    </div>
+    <div class="modal">
 
 
-    <div class="modal-body">
+        <div class="modal-header">
+
+            <div
+                class="modal-title"
+                id="taskEditorTitle"
+            >
+                Nova atividade
+            </div>
 
 
-        <div class="field-label">
-            EMOJI
+            <button
+                class="close"
+                onclick="closeOverlay('taskOverlay')"
+            >
+                ×
+            </button>
+
         </div>
 
 
-        <div
-            class="emoji-grid"
-            id="emojiGrid"
-        ></div>
+        <div class="modal-body">
 
 
-        <div class="field-label">
-            HORÁRIO
-        </div>
+            <div class="field-label">
+                EMOJI
+            </div>
 
 
-        <div class="time-editor">
+            <div
+                class="emoji-grid"
+                id="emojiGrid"
+            ></div>
 
 
-            <div class="time-box">
-
-                <div class="time-title">
-                    INÍCIO
-                </div>
-
-                <div
-                    class="time-value"
-                    id="startTimeDisplay"
-                >
-                    07:30
-                </div>
+            <div class="field-label">
+                HORÁRIO
+            </div>
 
 
-                <div class="time-controls">
+            <div class="time-editor">
 
-                    <button
-                        class="time-button"
-                        onclick="changeStart(-15)"
+
+                <div class="time-box">
+
+                    <div class="time-title">
+                        INÍCIO
+                    </div>
+
+
+                    <div
+                        class="time-value"
+                        id="startTimeDisplay"
                     >
-                        −15
-                    </button>
+                        07:30
+                    </div>
 
-                    <button
-                        class="time-button"
-                        onclick="changeStart(15)"
-                    >
-                        +15
-                    </button>
+
+                    <div class="time-controls">
+
+                        <button
+                            class="time-button"
+                            onclick="changeStart(-15)"
+                        >
+                            −15
+                        </button>
+
+
+                        <button
+                            class="time-button"
+                            onclick="changeStart(15)"
+                        >
+                            +15
+                        </button>
+
+                    </div>
 
                 </div>
+
+
+
+                <div class="time-box">
+
+                    <div class="time-title">
+                        FIM
+                    </div>
+
+
+                    <div
+                        class="time-value"
+                        id="endTimeDisplay"
+                    >
+                        08:00
+                    </div>
+
+
+                    <div class="time-controls">
+
+                        <button
+                            class="time-button"
+                            onclick="changeEnd(-15)"
+                        >
+                            −15
+                        </button>
+
+
+                        <button
+                            class="time-button"
+                            onclick="changeEnd(15)"
+                        >
+                            +15
+                        </button>
+
+                    </div>
+
+                </div>
+
 
             </div>
 
 
-
-            <div class="time-box">
-
-                <div class="time-title">
-                    FIM
-                </div>
-
-                <div
-                    class="time-value"
-                    id="endTimeDisplay"
-                >
-                    08:00
-                </div>
-
-
-                <div class="time-controls">
-
-                    <button
-                        class="time-button"
-                        onclick="changeEnd(-15)"
-                    >
-                        −15
-                    </button>
-
-                    <button
-                        class="time-button"
-                        onclick="changeEnd(15)"
-                    >
-                        +15
-                    </button>
-
-                </div>
-
+            <div class="field-label">
+                ATIVIDADE
             </div>
 
 
+            <div
+                class="text-display"
+                id="taskNameDisplay"
+            >
+                Nenhum nome definido
+            </div>
+
+
+            <button
+                class="button"
+                onclick="editTaskName()"
+            >
+                ✎ ESCREVER NOME DA ATIVIDADE
+            </button>
+
+
+            <div class="field-label">
+                SEÇÃO
+            </div>
+
+
+            <div
+                class="section-picker"
+                id="sectionPicker"
+            ></div>
+
+
+            <button
+                class="button primary"
+                onclick="saveTaskEditor()"
+            >
+                SALVAR ATIVIDADE
+            </button>
+
+
         </div>
-
-
-        <div class="field-label">
-            ATIVIDADE
-        </div>
-
-
-        <div
-            class="text-display"
-            id="taskNameDisplay"
-        >
-            Toque aqui para escrever
-        </div>
-
-
-        <button
-            class="button"
-            onclick="editTaskName()"
-        >
-            ✎ Escrever nome da atividade
-        </button>
-
-
-        <div class="field-label">
-            SEÇÃO
-        </div>
-
-
-        <div
-            class="section-picker"
-            id="sectionPicker"
-        ></div>
-
-
-        <button
-            class="button primary"
-            onclick="saveTaskEditor()"
-        >
-            Salvar atividade
-        </button>
-
 
     </div>
-
-</div>
 
 </div>
 
@@ -2146,71 +1795,71 @@ body {
    DADOS
 ========================================================= */
 
-const STORAGE_KEY =
-    "hyte_checklist_v2";
+var STORAGE_KEY =
+    "hyte_checklist_v3";
 
 
-let data =
+var data =
     loadData();
 
 
-let editMode =
+var editMode =
     false;
 
 
-let activeText =
+var activeText =
     "";
 
 
-let activeTextCallback =
-    null;
+var textAction =
+    "";
 
 
-let shift =
+var textTargetId =
+    "";
+
+
+var returnToTaskEditor =
     false;
 
 
-let editingSectionId =
-    null;
-
-
-let editingTaskId =
-    null;
-
-
-let editingTaskSource =
-    null;
-
-
-let taskName =
+var taskName =
     "";
 
 
-let taskEmoji =
+var taskEmoji =
     "✅";
 
 
-let taskSectionId =
-    null;
+var taskSectionId =
+    "";
 
 
-let startMinutes =
+var editingTaskId =
+    "";
+
+
+var editingTaskSourceId =
+    "";
+
+
+var startMinutes =
     450;
 
 
-let endMinutes =
+var endMinutes =
     480;
 
 
 /* =========================================================
-   LOCAL STORAGE
+   STORAGE
 ========================================================= */
 
 function loadData() {
 
     try {
 
-        const raw =
+        var raw =
             localStorage.getItem(
                 STORAGE_KEY
             );
@@ -2225,15 +1874,14 @@ function loadData() {
         }
 
 
-        const parsed =
+        var parsed =
             JSON.parse(raw);
 
 
         if (
             !parsed ||
-            !Array.isArray(
-                parsed.sections
-            )
+            !parsed.sections ||
+            !(parsed.sections instanceof Array)
         ) {
 
             return {
@@ -2246,7 +1894,7 @@ function loadData() {
         return parsed;
 
     }
-    catch {
+    catch (e) {
 
         return {
             sections: []
@@ -2259,61 +1907,95 @@ function loadData() {
 
 function saveData() {
 
-    localStorage.setItem(
-        STORAGE_KEY,
-        JSON.stringify(data)
+    try {
+
+        localStorage.setItem(
+            STORAGE_KEY,
+            JSON.stringify(data)
+        );
+
+        return true;
+
+    }
+    catch (e) {
+
+        alert(
+            "Não foi possível salvar os dados neste navegador."
+        );
+
+        return false;
+
+    }
+
+}
+
+
+/* =========================================================
+   ID
+========================================================= */
+
+function makeId(prefix) {
+
+    return (
+        prefix +
+        "_" +
+        new Date().getTime() +
+        "_" +
+        Math.floor(
+            Math.random() *
+            100000
+        )
     );
 
 }
 
 
 /* =========================================================
-   UTIL
+   ESCAPE HTML COMPATÍVEL
 ========================================================= */
-
-function id(prefix) {
-
-    return (
-        prefix +
-        "_" +
-        Date.now().toString(36) +
-        "_" +
-        Math.random()
-            .toString(36)
-            .slice(2,7)
-    );
-
-}
-
 
 function escapeHtml(value) {
 
-    return String(value)
+    var text =
+        String(value);
 
-        .replaceAll(
-            "&",
+
+    text =
+        text.replace(
+            /&/g,
             "&amp;"
-        )
+        );
 
-        .replaceAll(
-            "<",
+
+    text =
+        text.replace(
+            /</g,
             "&lt;"
-        )
+        );
 
-        .replaceAll(
-            ">",
+
+    text =
+        text.replace(
+            />/g,
             "&gt;"
-        )
+        );
 
-        .replaceAll(
-            '"',
+
+    text =
+        text.replace(
+            /"/g,
             "&quot;"
-        )
+        );
 
-        .replaceAll(
-            "'",
+
+    text =
+        text.replace(
+            /'/g,
             "&#039;"
         );
+
+
+    return text;
 
 }
 
@@ -2324,64 +2006,77 @@ function escapeHtml(value) {
 
 function render() {
 
-    const content =
+    var content =
         document.getElementById(
             "content"
         );
 
 
-    document
-        .getElementById("app")
-        .classList.toggle(
-            "edit-mode",
-            editMode
+    var app =
+        document.getElementById(
+            "app"
         );
 
 
-    document
-        .getElementById(
+    if (editMode) {
+
+        app.className =
+            "app edit-mode";
+
+    }
+    else {
+
+        app.className =
+            "app";
+
+    }
+
+
+    var editButton =
+        document.getElementById(
             "editModeButton"
-        )
-        .textContent =
-        editMode
-            ?
-            "Sair do modo de edição"
-            :
+        );
+
+
+    if (editMode) {
+
+        editButton.innerHTML =
+            "Sair do modo de edição";
+
+    }
+    else {
+
+        editButton.innerHTML =
             "Ativar modo de edição";
+
+    }
 
 
     if (
         data.sections.length === 0
     ) {
 
-        content.innerHTML = `
+        content.innerHTML =
+            '<div class="empty-state">' +
 
-            <div class="empty-state">
+                '<div class="empty-symbol">' +
+                    '✓' +
+                '</div>' +
 
-                <div class="empty-symbol">
-                    ✓
-                </div>
+                '<div class="empty-title">' +
+                    'Sua checklist está vazia' +
+                '</div>' +
 
-                <div class="empty-title">
-                    Sua checklist está vazia
-                </div>
+                '<div class="empty-text">' +
+                    'Crie sua primeira seção e monte sua rotina diretamente neste dispositivo.' +
+                '</div>' +
 
-                <div class="empty-text">
-                    Crie sua primeira seção
-                    e monte sua rotina diretamente
-                    neste dispositivo.
-                </div>
+                '<button class="big-action" onclick="newSection()">' +
+                    '+ CRIAR PRIMEIRA SEÇÃO' +
+                '</button>' +
 
-                <button
-                    class="big-action"
-                    onclick="newSection()"
-                >
-                    + CRIAR PRIMEIRA SEÇÃO
-                </button>
+            '</div>';
 
-            </div>
-
-        `;
 
         updateProgress();
 
@@ -2390,12 +2085,29 @@ function render() {
     }
 
 
+    var html =
+        "";
+
+
+    var i;
+
+
+    for (
+        i = 0;
+        i < data.sections.length;
+        i++
+    ) {
+
+        html +=
+            sectionHtml(
+                data.sections[i]
+            );
+
+    }
+
+
     content.innerHTML =
-        data.sections
-            .map(
-                sectionHtml
-            )
-            .join("");
+        html;
 
 
     updateProgress();
@@ -2403,308 +2115,350 @@ function render() {
 }
 
 
+/* =========================================================
+   HTML DA SEÇÃO
+========================================================= */
+
 function sectionHtml(section) {
 
-    return `
-
-        <div class="section-block">
-
-            <div class="section-top">
-
-                <div class="section-title">
-
-                    ${escapeHtml(
-                        section.name
-                    )}
-
-                </div>
+    var html =
+        '';
 
 
-                <div class="section-actions">
-
-                    <button
-                        class="small-button"
-                        onclick="
-                            moveSection(
-                                '${section.id}',
-                                -1
-                            )
-                        "
-                    >
-                        ↑
-                    </button>
-
-                    <button
-                        class="small-button"
-                        onclick="
-                            moveSection(
-                                '${section.id}',
-                                1
-                            )
-                        "
-                    >
-                        ↓
-                    </button>
-
-                    <button
-                        class="small-button"
-                        onclick="
-                            editSection(
-                                '${section.id}'
-                            )
-                        "
-                    >
-                        Editar
-                    </button>
-
-                    <button
-                        class="small-button danger"
-                        onclick="
-                            deleteSection(
-                                '${section.id}'
-                            )
-                        "
-                    >
-                        ×
-                    </button>
-
-                </div>
-
-            </div>
+    html +=
+        '<div class="section-block">';
 
 
-            <div class="group">
-
-                ${
-                    section.tasks.length
-                    ?
-                    section.tasks
-                        .map(
-                            task =>
-                                taskHtml(
-                                    section,
-                                    task
-                                )
-                        )
-                        .join("")
-                    :
-                    `
-
-                    <div style="
-                        padding:20px;
-                        text-align:center;
-                        color:#666;
-                    ">
-                        Nenhuma atividade
-                    </div>
-
-                    `
-                }
-
-            </div>
+    html +=
+        '<div class="section-top">';
 
 
-            <button
-                class="add-task"
-                onclick="
-                    newTask(
-                        '${section.id}'
-                    )
-                "
-            >
-                + ADICIONAR ATIVIDADE
-            </button>
+    html +=
+        '<div class="section-title">' +
+            escapeHtml(
+                section.name
+            ) +
+        '</div>';
 
 
-        </div>
+    html +=
+        '<div class="section-actions">';
 
-    `;
+
+    html +=
+        '<button class="small-button" onclick="moveSection(\'' +
+        section.id +
+        '\', -1)">↑</button>';
+
+
+    html +=
+        '<button class="small-button" onclick="moveSection(\'' +
+        section.id +
+        '\', 1)">↓</button>';
+
+
+    html +=
+        '<button class="small-button" onclick="editSection(\'' +
+        section.id +
+        '\')">Editar</button>';
+
+
+    html +=
+        '<button class="small-button danger" onclick="deleteSection(\'' +
+        section.id +
+        '\')">×</button>';
+
+
+    html +=
+        '</div>';
+
+
+    html +=
+        '</div>';
+
+
+    html +=
+        '<div class="group">';
+
+
+    if (
+        !section.tasks ||
+        section.tasks.length === 0
+    ) {
+
+        html +=
+            '<div style="padding:20px;text-align:center;color:#666;">' +
+                'Nenhuma atividade' +
+            '</div>';
+
+    }
+    else {
+
+        var i;
+
+
+        for (
+            i = 0;
+            i < section.tasks.length;
+            i++
+        ) {
+
+            html +=
+                taskHtml(
+                    section,
+                    section.tasks[i]
+                );
+
+        }
+
+    }
+
+
+    html +=
+        '</div>';
+
+
+    html +=
+        '<button class="add-task" onclick="newTask(\'' +
+        section.id +
+        '\')">' +
+            '+ ADICIONAR ATIVIDADE' +
+        '</button>';
+
+
+    html +=
+        '</div>';
+
+
+    return html;
 
 }
 
+
+/* =========================================================
+   HTML DA TAREFA
+========================================================= */
 
 function taskHtml(
     section,
     task
 ) {
 
-    return `
-
-        <div
-            class="
-                task
-                ${
-                    task.done
-                    ?
-                    "done"
-                    :
-                    ""
-                }
-            "
-        >
-
-            <input
-                type="checkbox"
-                class="task-checkbox"
-
-                ${
-                    task.done
-                    ?
-                    "checked"
-                    :
-                    ""
-                }
-
-                onchange="
-                    toggleTask(
-                        '${section.id}',
-                        '${task.id}',
-                        this.checked
-                    )
-                "
-            >
+    var doneClass =
+        task.done
+        ?
+        " done"
+        :
+        "";
 
 
-            <div class="task-time">
-
-                ${
-                    escapeHtml(
-                        task.time
-                    )
-                }
-
-            </div>
+    var checked =
+        task.done
+        ?
+        " checked"
+        :
+        "";
 
 
-            <div class="task-name">
-
-                ${
-                    escapeHtml(
-                        task.emoji
-                    )
-                }
-
-                ${
-                    escapeHtml(
-                        task.name
-                    )
-                }
-
-            </div>
+    var html =
+        '';
 
 
-            <div class="task-actions">
-
-                <button
-                    class="small-button"
-                    onclick="
-                        moveTask(
-                            '${section.id}',
-                            '${task.id}',
-                            -1
-                        )
-                    "
-                >
-                    ↑ Subir
-                </button>
+    html +=
+        '<div class="task' +
+        doneClass +
+        '">';
 
 
-                <button
-                    class="small-button"
-                    onclick="
-                        moveTask(
-                            '${section.id}',
-                            '${task.id}',
-                            1
-                        )
-                    "
-                >
-                    ↓ Descer
-                </button>
+    html +=
+        '<input ' +
+        'type="checkbox" ' +
+        'class="task-checkbox"' +
+        checked +
+        ' onchange="toggleTask(\'' +
+        section.id +
+        '\',\'' +
+        task.id +
+        '\',this.checked)">';
 
 
-                <button
-                    class="small-button"
-                    onclick="
-                        editTask(
-                            '${section.id}',
-                            '${task.id}'
-                        )
-                    "
-                >
-                    Editar
-                </button>
+    html +=
+        '<div class="task-time">' +
+        escapeHtml(
+            task.time || ""
+        ) +
+        '</div>';
 
 
-                <button
-                    class="small-button danger"
-                    onclick="
-                        deleteTask(
-                            '${section.id}',
-                            '${task.id}'
-                        )
-                    "
-                >
-                    Excluir
-                </button>
-
-            </div>
+    html +=
+        '<div class="task-name">' +
+        escapeHtml(
+            task.emoji || ""
+        ) +
+        ' ' +
+        escapeHtml(
+            task.name || ""
+        ) +
+        '</div>';
 
 
-        </div>
+    html +=
+        '<div class="task-actions">';
 
-    `;
+
+    html +=
+        '<button class="small-button" onclick="moveTask(\'' +
+        section.id +
+        '\',\'' +
+        task.id +
+        '\',-1)">↑ Subir</button>';
+
+
+    html +=
+        '<button class="small-button" onclick="moveTask(\'' +
+        section.id +
+        '\',\'' +
+        task.id +
+        '\',1)">↓ Descer</button>';
+
+
+    html +=
+        '<button class="small-button" onclick="editTask(\'' +
+        section.id +
+        '\',\'' +
+        task.id +
+        '\')">Editar</button>';
+
+
+    html +=
+        '<button class="small-button danger" onclick="deleteTask(\'' +
+        section.id +
+        '\',\'' +
+        task.id +
+        '\')">Excluir</button>';
+
+
+    html +=
+        '</div>';
+
+
+    html +=
+        '</div>';
+
+
+    return html;
 
 }
 
 
 /* =========================================================
-   PROGRESS
+   PROGRESSO
 ========================================================= */
 
-function allTasks() {
+function getAllTasks() {
 
-    return data.sections.flatMap(
-        section =>
-            section.tasks
-    );
+    var result =
+        [];
+
+
+    var i;
+    var j;
+
+
+    for (
+        i = 0;
+        i < data.sections.length;
+        i++
+    ) {
+
+        var tasks =
+            data.sections[i].tasks;
+
+
+        if (!tasks) {
+
+            continue;
+
+        }
+
+
+        for (
+            j = 0;
+            j < tasks.length;
+            j++
+        ) {
+
+            result.push(
+                tasks[j]
+            );
+
+        }
+
+    }
+
+
+    return result;
 
 }
 
 
 function updateProgress() {
 
-    const tasks =
-        allTasks();
+    var tasks =
+        getAllTasks();
 
 
-    const total =
+    var total =
         tasks.length;
 
 
-    const completed =
-        tasks.filter(
-            task => task.done
-        ).length;
-
-
-    const percentage =
-        total
-        ?
-        Math.round(
-            completed /
-            total *
-            100
-        )
-        :
+    var completed =
         0;
+
+
+    var i;
+
+
+    for (
+        i = 0;
+        i < tasks.length;
+        i++
+    ) {
+
+        if (
+            tasks[i].done
+        ) {
+
+            completed++;
+
+        }
+
+    }
+
+
+    var percentage =
+        0;
+
+
+    if (
+        total > 0
+    ) {
+
+        percentage =
+            Math.round(
+                completed /
+                total *
+                100
+            );
+
+    }
 
 
     document
         .getElementById(
             "progressPercent"
         )
-        .textContent =
+        .innerHTML =
         percentage + "%";
 
 
@@ -2716,31 +2470,45 @@ function updateProgress() {
         percentage + "%";
 
 
-    document
-        .getElementById(
-            "progressDetails"
-        )
-        .textContent =
-        total
-        ?
-        `${completed} de ${total} concluídas`
-        :
-        "Nenhuma atividade cadastrada";
+    if (
+        total === 0
+    ) {
+
+        document
+            .getElementById(
+                "progressDetails"
+            )
+            .innerHTML =
+            "Nenhuma atividade cadastrada";
+
+    }
+    else {
+
+        document
+            .getElementById(
+                "progressDetails"
+            )
+            .innerHTML =
+            completed +
+            " de " +
+            total +
+            " concluídas";
+
+    }
 
 }
 
 
 /* =========================================================
-   OVERLAYS
+   OVERLAY
 ========================================================= */
 
 function openOverlay(name) {
 
     document
         .getElementById(name)
-        .classList.add(
-            "show"
-        );
+        .className =
+        "overlay show";
 
 }
 
@@ -2749,9 +2517,8 @@ function closeOverlay(name) {
 
     document
         .getElementById(name)
-        .classList.remove(
-            "show"
-        );
+        .className =
+        "overlay";
 
 }
 
@@ -2766,7 +2533,7 @@ function openSettings() {
 
 
 /* =========================================================
-   EDIT MODE
+   MODO EDIÇÃO
 ========================================================= */
 
 function toggleEditMode() {
@@ -2789,7 +2556,7 @@ function toggleEditMode() {
    TECLADO
 ========================================================= */
 
-const keyboardRows = [
+var keyboardRows = [
 
     [
         "1","2","3","4","5",
@@ -2797,51 +2564,52 @@ const keyboardRows = [
     ],
 
     [
-        "q","w","e","r","t",
-        "y","u","i","o","p"
+        "Q","W","E","R","T",
+        "Y","U","I","O","P"
     ],
 
     [
-        "a","s","d","f","g",
-        "h","j","k","l"
+        "A","S","D","F","G",
+        "H","J","K","L"
     ],
 
     [
-        "z","x","c","v","b",
-        "n","m"
+        "Z","X","C","V","B",
+        "N","M"
     ],
 
     [
-        "á","é","í","ó","ú","ç"
+        "Á","É","Í","Ó","Ú","Ç"
     ]
 
 ];
 
 
-function openTextEditor(
+function showTextEditor(
     title,
-    initial,
-    callback
+    initialValue,
+    action,
+    targetId
 ) {
 
     activeText =
-        initial || "";
+        initialValue || "";
 
 
-    activeTextCallback =
-        callback;
+    textAction =
+        action || "";
 
 
-    shift =
-        false;
+    textTargetId =
+        targetId || "";
 
 
     document
         .getElementById(
             "textTitle"
         )
-        .textContent =
-        title;
+        .innerHTML =
+        escapeHtml(title);
 
 
     updateTextDisplay();
@@ -2859,30 +2627,34 @@ function openTextEditor(
 
 function updateTextDisplay() {
 
-    const display =
+    var display =
         document.getElementById(
             "textDisplay"
         );
 
 
-    if (!activeText) {
+    if (
+        activeText === ""
+    ) {
 
-        display.textContent =
+        display.innerHTML =
             "Digite usando o teclado abaixo";
 
-        display.classList.add(
-            "empty"
-        );
+
+        display.className =
+            "text-display empty";
 
     }
     else {
 
-        display.textContent =
-            activeText;
+        display.innerHTML =
+            escapeHtml(
+                activeText
+            );
 
-        display.classList.remove(
-            "empty"
-        );
+
+        display.className =
+            "text-display";
 
     }
 
@@ -2891,88 +2663,80 @@ function updateTextDisplay() {
 
 function renderKeyboard() {
 
-    const keyboard =
+    var keyboard =
         document.getElementById(
             "keyboard"
         );
 
 
-    let html =
+    var html =
         "";
 
 
-    keyboardRows.forEach(
-        row => {
-
-            html +=
-                `<div class="key-row">`;
+    var i;
+    var j;
 
 
-            row.forEach(
-                key => {
+    for (
+        i = 0;
+        i < keyboardRows.length;
+        i++
+    ) {
 
-                    const shown =
-                        shift
-                        ?
-                        key.toUpperCase()
-                        :
-                        key;
+        html +=
+            '<div class="key-row">';
 
 
-                    html += `
+        for (
+            j = 0;
+            j < keyboardRows[i].length;
+            j++
+        ) {
 
-                        <button
-                            class="key"
-                            onclick="
-                                typeKey(
-                                    '${shown}'
-                                )
-                            "
-                        >
-                            ${shown}
-                        </button>
-
-                    `;
-
-                }
-            );
+            var key =
+                keyboardRows[i][j];
 
 
             html +=
-                `</div>`;
+                '<button class="key" onclick="typeKey(\'' +
+                key +
+                '\')">' +
+                key +
+                '</button>';
 
         }
-    );
 
 
-    html += `
+        html +=
+            '</div>';
 
-        <div class="key-row">
+    }
 
-            <button
-                class="key wide"
-                onclick="toggleShift()"
-            >
-                ⇧
-            </button>
 
-            <button
-                class="key extra-wide"
-                onclick="typeKey(' ')"
-            >
-                ESPAÇO
-            </button>
+    html +=
+        '<div class="key-row">';
 
-            <button
-                class="key wide"
-                onclick="backspaceKey()"
-            >
-                ⌫
-            </button>
 
-        </div>
+    html +=
+        '<button class="key wide" onclick="toggleCase()">' +
+        'Aa' +
+        '</button>';
 
-    `;
+
+    html +=
+        '<button class="key space" onclick="typeKey(\' \')">' +
+        'ESPAÇO' +
+        '</button>';
+
+
+    html +=
+        '<button class="key wide" onclick="backspaceKey()">' +
+        '⌫' +
+        '</button>';
+
+
+    html +=
+        '</div>';
 
 
     keyboard.innerHTML =
@@ -2987,16 +2751,6 @@ function typeKey(key) {
         key;
 
 
-    if (shift) {
-
-        shift =
-            false;
-
-        renderKeyboard();
-
-    }
-
-
     updateTextDisplay();
 
 }
@@ -3005,9 +2759,9 @@ function typeKey(key) {
 function backspaceKey() {
 
     activeText =
-        activeText.slice(
+        activeText.substring(
             0,
-            -1
+            activeText.length - 1
         );
 
 
@@ -3016,10 +2770,47 @@ function backspaceKey() {
 }
 
 
-function toggleShift() {
+function toggleCase() {
 
-    shift =
-        !shift;
+    var i;
+    var j;
+
+
+    for (
+        i = 1;
+        i <= 3;
+        i++
+    ) {
+
+        for (
+            j = 0;
+            j < keyboardRows[i].length;
+            j++
+        ) {
+
+            var value =
+                keyboardRows[i][j];
+
+
+            if (
+                value ===
+                value.toUpperCase()
+            ) {
+
+                keyboardRows[i][j] =
+                    value.toLowerCase();
+
+            }
+            else {
+
+                keyboardRows[i][j] =
+                    value.toUpperCase();
+
+            }
+
+        }
+
+    }
 
 
     renderKeyboard();
@@ -3027,13 +2818,26 @@ function toggleShift() {
 }
 
 
+/* =========================================================
+   CONFIRMAR TEXTO
+
+   AGORA SEM CALLBACK DINÂMICO.
+========================================================= */
+
 function confirmTextEditor() {
 
+    var value =
+        activeText.replace(
+            /^\s+|\s+$/g,
+            ""
+        );
+
+
     if (
-        !activeText.trim()
+        value === ""
     ) {
 
-        toast(
+        showToast(
             "Digite algum texto."
         );
 
@@ -3042,101 +2846,193 @@ function confirmTextEditor() {
     }
 
 
-    const callback =
-        activeTextCallback;
+    /*
+        NOVA SEÇÃO
+    */
+
+    if (
+        textAction ===
+        "newSection"
+    ) {
+
+        data.sections.push({
+
+            id:
+                makeId(
+                    "section"
+                ),
+
+            name:
+                value,
+
+            tasks:
+                []
+
+        });
 
 
-    const value =
-        activeText.trim();
+        saveData();
+
+
+        closeOverlay(
+            "textOverlay"
+        );
+
+
+        activeText =
+            "";
+
+
+        textAction =
+            "";
+
+
+        render();
+
+
+        showToast(
+            "Seção criada."
+        );
+
+
+        return;
+
+    }
+
+
+    /*
+        EDITAR SEÇÃO
+    */
+
+    if (
+        textAction ===
+        "editSection"
+    ) {
+
+        var section =
+            findSection(
+                textTargetId
+            );
+
+
+        if (
+            section
+        ) {
+
+            section.name =
+                value;
+
+
+            saveData();
+
+        }
+
+
+        closeOverlay(
+            "textOverlay"
+        );
+
+
+        activeText =
+            "";
+
+
+        textAction =
+            "";
+
+
+        render();
+
+
+        return;
+
+    }
+
+
+    /*
+        NOME DA ATIVIDADE
+    */
+
+    if (
+        textAction ===
+        "taskName"
+    ) {
+
+        taskName =
+            value;
+
+
+        closeOverlay(
+            "textOverlay"
+        );
+
+
+        activeText =
+            "";
+
+
+        textAction =
+            "";
+
+
+        renderTaskEditor();
+
+
+        openOverlay(
+            "taskOverlay"
+        );
+
+
+        return;
+
+    }
 
 
     closeOverlay(
         "textOverlay"
     );
 
+}
 
-    if (callback) {
 
-        callback(
-            value
+/* =========================================================
+   CANCELAR TEXTO
+========================================================= */
+
+function cancelTextEditor() {
+
+    closeOverlay(
+        "textOverlay"
+    );
+
+
+    if (
+        textAction ===
+        "taskName"
+    ) {
+
+        renderTaskEditor();
+
+
+        openOverlay(
+            "taskOverlay"
         );
 
     }
+
+
+    activeText =
+        "";
+
+
+    textAction =
+        "";
 
 }
 
 
 /* =========================================================
-   TECLADO FÍSICO OPCIONAL
-========================================================= */
-
-document.addEventListener(
-    "keydown",
-    event => {
-
-        const overlay =
-            document.getElementById(
-                "textOverlay"
-            );
-
-
-        if (
-            !overlay.classList.contains(
-                "show"
-            )
-        ) {
-
-            return;
-
-        }
-
-
-        if (
-            event.key ===
-            "Backspace"
-        ) {
-
-            backspaceKey();
-
-            event.preventDefault();
-
-            return;
-
-        }
-
-
-        if (
-            event.key ===
-            "Enter"
-        ) {
-
-            confirmTextEditor();
-
-            event.preventDefault();
-
-            return;
-
-        }
-
-
-        if (
-            event.key.length ===
-            1
-        ) {
-
-            activeText +=
-                event.key;
-
-            updateTextDisplay();
-
-        }
-
-    }
-);
-
-
-/* =========================================================
-   SECTION
+   SEÇÕES
 ========================================================= */
 
 function newSection() {
@@ -3146,42 +3042,42 @@ function newSection() {
     );
 
 
-    editingSectionId =
-        null;
-
-
-    openTextEditor(
-
+    showTextEditor(
         "Nova seção",
-
         "",
+        "newSection",
+        ""
+    );
 
-        value => {
-
-            data.sections.push({
-
-                id:
-                    id("section"),
-
-                name:
-                    value,
-
-                tasks: []
-
-            });
+}
 
 
-            saveData();
+function findSection(
+    sectionId
+) {
 
-            render();
+    var i;
 
-            toast(
-                "Seção criada."
-            );
+
+    for (
+        i = 0;
+        i < data.sections.length;
+        i++
+    ) {
+
+        if (
+            data.sections[i].id ===
+            sectionId
+        ) {
+
+            return data.sections[i];
 
         }
 
-    );
+    }
+
+
+    return null;
 
 }
 
@@ -3190,35 +3086,24 @@ function editSection(
     sectionId
 ) {
 
-    const section =
-        data.sections.find(
-            section =>
-                section.id ===
-                sectionId
+    var section =
+        findSection(
+            sectionId
         );
 
 
-    if (!section) return;
+    if (!section) {
+
+        return;
+
+    }
 
 
-    openTextEditor(
-
+    showTextEditor(
         "Editar seção",
-
         section.name,
-
-        value => {
-
-            section.name =
-                value;
-
-
-            saveData();
-
-            render();
-
-        }
-
+        "editSection",
+        sectionId
     );
 
 }
@@ -3228,20 +3113,24 @@ function deleteSection(
     sectionId
 ) {
 
-    const section =
-        data.sections.find(
-            section =>
-                section.id ===
-                sectionId
+    var section =
+        findSection(
+            sectionId
         );
 
 
-    if (!section) return;
+    if (!section) {
+
+        return;
+
+    }
 
 
     if (
         !confirm(
-            `Excluir "${section.name}"?`
+            'Excluir "' +
+            section.name +
+            '"?'
         )
     ) {
 
@@ -3250,15 +3139,39 @@ function deleteSection(
     }
 
 
+    var newSections =
+        [];
+
+
+    var i;
+
+
+    for (
+        i = 0;
+        i < data.sections.length;
+        i++
+    ) {
+
+        if (
+            data.sections[i].id !==
+            sectionId
+        ) {
+
+            newSections.push(
+                data.sections[i]
+            );
+
+        }
+
+    }
+
+
     data.sections =
-        data.sections.filter(
-            section =>
-                section.id !==
-                sectionId
-        );
+        newSections;
 
 
     saveData();
+
 
     render();
 
@@ -3270,23 +3183,36 @@ function moveSection(
     direction
 ) {
 
-    const index =
-        data.sections.findIndex(
-            section =>
-                section.id ===
-                sectionId
-        );
+    var index =
+        -1;
 
 
-    const destination =
-        index + direction;
+    var i;
+
+
+    for (
+        i = 0;
+        i < data.sections.length;
+        i++
+    ) {
+
+        if (
+            data.sections[i].id ===
+            sectionId
+        ) {
+
+            index =
+                i;
+
+            break;
+
+        }
+
+    }
 
 
     if (
-        index < 0 ||
-        destination < 0 ||
-        destination >=
-            data.sections.length
+        index < 0
     ) {
 
         return;
@@ -3294,21 +3220,36 @@ function moveSection(
     }
 
 
-    const item =
-        data.sections.splice(
-            index,
-            1
-        )[0];
+    var target =
+        index +
+        direction;
 
 
-    data.sections.splice(
-        destination,
-        0,
-        item
-    );
+    if (
+        target < 0 ||
+        target >=
+        data.sections.length
+    ) {
+
+        return;
+
+    }
+
+
+    var temp =
+        data.sections[index];
+
+
+    data.sections[index] =
+        data.sections[target];
+
+
+    data.sections[target] =
+        temp;
 
 
     saveData();
+
 
     render();
 
@@ -3316,10 +3257,10 @@ function moveSection(
 
 
 /* =========================================================
-   EMOJI
+   EMOJIS
 ========================================================= */
 
-const emojis = [
+var emojis = [
 
     "✅",
     "⏰",
@@ -3361,40 +3302,46 @@ const emojis = [
 
 function renderEmojiGrid() {
 
+    var html =
+        "";
+
+
+    var i;
+
+
+    for (
+        i = 0;
+        i < emojis.length;
+        i++
+    ) {
+
+        var selected =
+            emojis[i] ===
+            taskEmoji
+            ?
+            " selected"
+            :
+            "";
+
+
+        html +=
+            '<button class="emoji-button' +
+            selected +
+            '" onclick="chooseEmoji(\'' +
+            emojis[i] +
+            '\')">' +
+            emojis[i] +
+            '</button>';
+
+    }
+
+
     document
         .getElementById(
             "emojiGrid"
         )
         .innerHTML =
-        emojis
-            .map(
-                emoji => `
-
-                    <button
-                        class="
-                            emoji-button
-                            ${
-                                emoji ===
-                                taskEmoji
-                                ?
-                                "selected"
-                                :
-                                ""
-                            }
-                        "
-
-                        onclick="
-                            chooseEmoji(
-                                '${emoji}'
-                            )
-                        "
-                    >
-                        ${emoji}
-                    </button>
-
-                `
-            )
-            .join("");
+        html;
 
 }
 
@@ -3416,36 +3363,62 @@ function chooseEmoji(
    HORÁRIO
 ========================================================= */
 
-function formatTime(minutes) {
+function formatTime(
+    minutes
+) {
 
-    minutes =
-        (
-            minutes +
-            1440
-        ) %
-        1440;
+    while (
+        minutes < 0
+    ) {
+
+        minutes +=
+            1440;
+
+    }
 
 
-    const hour =
+    while (
+        minutes >= 1440
+    ) {
+
+        minutes -=
+            1440;
+
+    }
+
+
+    var hour =
         Math.floor(
             minutes /
             60
         );
 
 
-    const minute =
+    var minute =
         minutes %
         60;
 
 
+    var h =
+        hour < 10
+        ?
+        "0" + hour
+        :
+        String(hour);
+
+
+    var m =
+        minute < 10
+        ?
+        "0" + minute
+        :
+        String(minute);
+
+
     return (
-        String(hour)
-            .padStart(2,"0")
-        +
-        ":"
-        +
-        String(minute)
-            .padStart(2,"0")
+        h +
+        ":" +
+        m
     );
 
 }
@@ -3457,7 +3430,7 @@ function updateTimeDisplays() {
         .getElementById(
             "startTimeDisplay"
         )
-        .textContent =
+        .innerHTML =
         formatTime(
             startMinutes
         );
@@ -3467,7 +3440,7 @@ function updateTimeDisplays() {
         .getElementById(
             "endTimeDisplay"
         )
-        .textContent =
+        .innerHTML =
         formatTime(
             endMinutes
         );
@@ -3479,14 +3452,29 @@ function changeStart(
     amount
 ) {
 
-    startMinutes =
-        (
-            startMinutes +
-            amount +
-            1440
-        )
-        %
-        1440;
+    startMinutes +=
+        amount;
+
+
+    if (
+        startMinutes < 0
+    ) {
+
+        startMinutes +=
+            1440;
+
+    }
+
+
+    if (
+        startMinutes >=
+        1440
+    ) {
+
+        startMinutes -=
+            1440;
+
+    }
 
 
     updateTimeDisplays();
@@ -3498,14 +3486,29 @@ function changeEnd(
     amount
 ) {
 
-    endMinutes =
-        (
-            endMinutes +
-            amount +
-            1440
-        )
-        %
-        1440;
+    endMinutes +=
+        amount;
+
+
+    if (
+        endMinutes < 0
+    ) {
+
+        endMinutes +=
+            1440;
+
+    }
+
+
+    if (
+        endMinutes >=
+        1440
+    ) {
+
+        endMinutes -=
+            1440;
+
+    }
 
 
     updateTimeDisplays();
@@ -3522,11 +3525,11 @@ function newTask(
 ) {
 
     editingTaskId =
-        null;
+        "";
 
 
-    editingTaskSource =
-        null;
+    editingTaskSourceId =
+        "";
 
 
     taskSectionId =
@@ -3553,7 +3556,7 @@ function newTask(
         .getElementById(
             "taskEditorTitle"
         )
-        .textContent =
+        .innerHTML =
         "Nova atividade";
 
 
@@ -3567,146 +3570,6 @@ function newTask(
 }
 
 
-function editTask(
-    sectionId,
-    taskId
-) {
-
-    const section =
-        data.sections.find(
-            section =>
-                section.id ===
-                sectionId
-        );
-
-
-    if (!section) return;
-
-
-    const task =
-        section.tasks.find(
-            task =>
-                task.id ===
-                taskId
-        );
-
-
-    if (!task) return;
-
-
-    editingTaskId =
-        taskId;
-
-
-    editingTaskSource =
-        sectionId;
-
-
-    taskSectionId =
-        sectionId;
-
-
-    taskName =
-        task.name;
-
-
-    taskEmoji =
-        task.emoji;
-
-
-    const times =
-        parseTaskTime(
-            task.time
-        );
-
-
-    startMinutes =
-        times.start;
-
-
-    endMinutes =
-        times.end;
-
-
-    document
-        .getElementById(
-            "taskEditorTitle"
-        )
-        .textContent =
-        "Editar atividade";
-
-
-    renderTaskEditor();
-
-
-    openOverlay(
-        "taskOverlay"
-    );
-
-}
-
-
-function parseTaskTime(
-    value
-) {
-
-    const parts =
-        String(value)
-            .split("–");
-
-
-    function parse(part) {
-
-        const pieces =
-            part
-                .trim()
-                .split(":");
-
-
-        if (
-            pieces.length !==
-            2
-        ) {
-
-            return 0;
-
-        }
-
-
-        return (
-            Number(pieces[0]) *
-            60
-            +
-            Number(pieces[1])
-        );
-
-    }
-
-
-    return {
-
-        start:
-            parts[0]
-            ?
-            parse(parts[0])
-            :
-            0,
-
-        end:
-            parts[1]
-            ?
-            parse(parts[1])
-            :
-            (
-                parse(parts[0]) +
-                30
-            )
-
-    };
-
-}
-
-
 function renderTaskEditor() {
 
     renderEmojiGrid();
@@ -3715,32 +3578,74 @@ function renderTaskEditor() {
     updateTimeDisplays();
 
 
-    const taskDisplay =
+    var nameDisplay =
         document.getElementById(
             "taskNameDisplay"
         );
 
 
-    if (taskName) {
+    if (
+        taskName === ""
+    ) {
 
-        taskDisplay.textContent =
-            taskName;
+        nameDisplay.innerHTML =
+            "Nenhum nome definido";
 
 
-        taskDisplay.classList.remove(
-            "empty"
-        );
+        nameDisplay.className =
+            "text-display empty";
 
     }
     else {
 
-        taskDisplay.textContent =
-            "Nenhum nome definido";
+        nameDisplay.innerHTML =
+            escapeHtml(
+                taskName
+            );
 
 
-        taskDisplay.classList.add(
-            "empty"
-        );
+        nameDisplay.className =
+            "text-display";
+
+    }
+
+
+    var pickerHtml =
+        "";
+
+
+    var i;
+
+
+    for (
+        i = 0;
+        i < data.sections.length;
+        i++
+    ) {
+
+        var section =
+            data.sections[i];
+
+
+        var selected =
+            section.id ===
+            taskSectionId
+            ?
+            " selected"
+            :
+            "";
+
+
+        pickerHtml +=
+            '<button class="section-choice' +
+            selected +
+            '" onclick="chooseTaskSection(\'' +
+            section.id +
+            '\')">' +
+            escapeHtml(
+                section.name
+            ) +
+            '</button>';
 
     }
 
@@ -3750,37 +3655,7 @@ function renderTaskEditor() {
             "sectionPicker"
         )
         .innerHTML =
-        data.sections
-            .map(
-                section => `
-
-                    <button
-                        class="
-                            section-choice
-                            ${
-                                section.id ===
-                                taskSectionId
-                                ?
-                                "selected"
-                                :
-                                ""
-                            }
-                        "
-
-                        onclick="
-                            chooseTaskSection(
-                                '${section.id}'
-                            )
-                        "
-                    >
-                        ${escapeHtml(
-                            section.name
-                        )}
-                    </button>
-
-                `
-            )
-            .join("");
+        pickerHtml;
 
 }
 
@@ -3792,27 +3667,11 @@ function editTaskName() {
     );
 
 
-    openTextEditor(
-
+    showTextEditor(
         "Nome da atividade",
-
         taskName,
-
-        value => {
-
-            taskName =
-                value;
-
-
-            renderTaskEditor();
-
-
-            openOverlay(
-                "taskOverlay"
-            );
-
-        }
-
+        "taskName",
+        ""
     );
 
 }
@@ -3831,12 +3690,197 @@ function chooseTaskSection(
 }
 
 
+/* =========================================================
+   EDITAR TAREFA
+========================================================= */
+
+function editTask(
+    sectionId,
+    taskId
+) {
+
+    var section =
+        findSection(
+            sectionId
+        );
+
+
+    if (!section) {
+
+        return;
+
+    }
+
+
+    var task =
+        null;
+
+
+    var i;
+
+
+    for (
+        i = 0;
+        i < section.tasks.length;
+        i++
+    ) {
+
+        if (
+            section.tasks[i].id ===
+            taskId
+        ) {
+
+            task =
+                section.tasks[i];
+
+            break;
+
+        }
+
+    }
+
+
+    if (!task) {
+
+        return;
+
+    }
+
+
+    editingTaskId =
+        taskId;
+
+
+    editingTaskSourceId =
+        sectionId;
+
+
+    taskSectionId =
+        sectionId;
+
+
+    taskName =
+        task.name;
+
+
+    taskEmoji =
+        task.emoji;
+
+
+    parseTaskTime(
+        task.time
+    );
+
+
+    document
+        .getElementById(
+            "taskEditorTitle"
+        )
+        .innerHTML =
+        "Editar atividade";
+
+
+    renderTaskEditor();
+
+
+    openOverlay(
+        "taskOverlay"
+    );
+
+}
+
+
+/* =========================================================
+   PARSE HORÁRIO
+========================================================= */
+
+function parseSingleTime(
+    value
+) {
+
+    var parts =
+        value.split(":");
+
+
+    if (
+        parts.length !== 2
+    ) {
+
+        return 0;
+
+    }
+
+
+    return (
+        parseInt(
+            parts[0],
+            10
+        ) *
+        60
+        +
+        parseInt(
+            parts[1],
+            10
+        )
+    );
+
+}
+
+
+function parseTaskTime(
+    value
+) {
+
+    var parts =
+        String(value)
+        .split("–");
+
+
+    if (
+        parts.length >= 1
+    ) {
+
+        startMinutes =
+            parseSingleTime(
+                parts[0]
+            );
+
+    }
+
+
+    if (
+        parts.length >= 2
+    ) {
+
+        endMinutes =
+            parseSingleTime(
+                parts[1]
+            );
+
+    }
+    else {
+
+        endMinutes =
+            startMinutes +
+            30;
+
+    }
+
+}
+
+
+/* =========================================================
+   SALVAR TAREFA
+========================================================= */
+
 function saveTaskEditor() {
 
-    if (!taskName.trim()) {
+    if (
+        taskName === ""
+    ) {
 
-        toast(
-            "Defina um nome."
+        showToast(
+            "Defina o nome da atividade."
         );
 
         return;
@@ -3844,18 +3888,24 @@ function saveTaskEditor() {
     }
 
 
-    const destination =
-        data.sections.find(
-            section =>
-                section.id ===
-                taskSectionId
+    var destination =
+        findSection(
+            taskSectionId
         );
 
 
-    if (!destination) return;
+    if (!destination) {
+
+        showToast(
+            "Escolha uma seção."
+        );
+
+        return;
+
+    }
 
 
-    const time =
+    var time =
         formatTime(
             startMinutes
         )
@@ -3867,43 +3917,73 @@ function saveTaskEditor() {
         );
 
 
-    if (editingTaskId) {
+    if (
+        editingTaskId !== ""
+    ) {
 
-        const source =
-            data.sections.find(
-                section =>
-                    section.id ===
-                    editingTaskSource
+        var source =
+            findSection(
+                editingTaskSourceId
             );
 
 
-        if (!source) return;
+        if (!source) {
+
+            return;
+
+        }
 
 
-        const index =
-            source.tasks.findIndex(
-                task =>
-                    task.id ===
-                    editingTaskId
-            );
+        var index =
+            -1;
 
 
-        if (index < 0) return;
+        var i;
 
 
-        const task =
+        for (
+            i = 0;
+            i < source.tasks.length;
+            i++
+        ) {
+
+            if (
+                source.tasks[i].id ===
+                editingTaskId
+            ) {
+
+                index =
+                    i;
+
+                break;
+
+            }
+
+        }
+
+
+        if (
+            index < 0
+        ) {
+
+            return;
+
+        }
+
+
+        var existingTask =
             source.tasks[index];
 
 
-        task.name =
+        existingTask.name =
             taskName;
 
 
-        task.emoji =
+        existingTask.emoji =
             taskEmoji;
 
 
-        task.time =
+        existingTask.time =
             time;
 
 
@@ -3919,7 +3999,7 @@ function saveTaskEditor() {
 
 
             destination.tasks.push(
-                task
+                existingTask
             );
 
         }
@@ -3930,7 +4010,9 @@ function saveTaskEditor() {
         destination.tasks.push({
 
             id:
-                id("task"),
+                makeId(
+                    "task"
+                ),
 
             name:
                 taskName,
@@ -3960,7 +4042,7 @@ function saveTaskEditor() {
     render();
 
 
-    toast(
+    showToast(
         "Atividade salva."
     );
 
@@ -3968,7 +4050,7 @@ function saveTaskEditor() {
 
 
 /* =========================================================
-   TASK ACTIONS
+   CHECKBOX
 ========================================================= */
 
 function toggleTask(
@@ -3977,69 +4059,108 @@ function toggleTask(
     checked
 ) {
 
-    const section =
-        data.sections.find(
-            section =>
-                section.id ===
-                sectionId
+    var section =
+        findSection(
+            sectionId
         );
 
 
-    if (!section) return;
+    if (!section) {
+
+        return;
+
+    }
 
 
-    const task =
-        section.tasks.find(
-            task =>
-                task.id ===
-                taskId
-        );
+    var i;
 
 
-    if (!task) return;
+    for (
+        i = 0;
+        i < section.tasks.length;
+        i++
+    ) {
 
+        if (
+            section.tasks[i].id ===
+            taskId
+        ) {
 
-    task.done =
-        checked;
+            section.tasks[i].done =
+                checked;
+
+            break;
+
+        }
+
+    }
 
 
     saveData();
+
 
     render();
 
 }
 
 
+/* =========================================================
+   EXCLUIR TAREFA
+========================================================= */
+
 function deleteTask(
     sectionId,
     taskId
 ) {
 
-    const section =
-        data.sections.find(
-            section =>
-                section.id ===
-                sectionId
+    var section =
+        findSection(
+            sectionId
         );
 
 
-    if (!section) return;
+    if (!section) {
+
+        return;
+
+    }
 
 
-    const task =
-        section.tasks.find(
-            task =>
-                task.id ===
-                taskId
-        );
+    var newTasks =
+        [];
 
 
-    if (!task) return;
+    var foundName =
+        "";
+
+
+    var i;
+
+
+    for (
+        i = 0;
+        i < section.tasks.length;
+        i++
+    ) {
+
+        if (
+            section.tasks[i].id ===
+            taskId
+        ) {
+
+            foundName =
+                section.tasks[i].name;
+
+        }
+
+    }
 
 
     if (
         !confirm(
-            `Excluir "${task.name}"?`
+            'Excluir "' +
+            foundName +
+            '"?'
         )
     ) {
 
@@ -4048,20 +4169,41 @@ function deleteTask(
     }
 
 
+    for (
+        i = 0;
+        i < section.tasks.length;
+        i++
+    ) {
+
+        if (
+            section.tasks[i].id !==
+            taskId
+        ) {
+
+            newTasks.push(
+                section.tasks[i]
+            );
+
+        }
+
+    }
+
+
     section.tasks =
-        section.tasks.filter(
-            task =>
-                task.id !==
-                taskId
-        );
+        newTasks;
 
 
     saveData();
+
 
     render();
 
 }
 
+
+/* =========================================================
+   MOVER TAREFA
+========================================================= */
 
 function moveTask(
     sectionId,
@@ -4069,26 +4211,48 @@ function moveTask(
     direction
 ) {
 
-    const section =
-        data.sections.find(
-            section =>
-                section.id ===
-                sectionId
+    var section =
+        findSection(
+            sectionId
         );
 
 
-    if (!section) return;
+    if (!section) {
+
+        return;
+
+    }
 
 
-    const index =
-        section.tasks.findIndex(
-            task =>
-                task.id ===
-                taskId
-        );
+    var index =
+        -1;
 
 
-    const target =
+    var i;
+
+
+    for (
+        i = 0;
+        i < section.tasks.length;
+        i++
+    ) {
+
+        if (
+            section.tasks[i].id ===
+            taskId
+        ) {
+
+            index =
+                i;
+
+            break;
+
+        }
+
+    }
+
+
+    var target =
         index +
         direction;
 
@@ -4097,7 +4261,7 @@ function moveTask(
         index < 0 ||
         target < 0 ||
         target >=
-            section.tasks.length
+        section.tasks.length
     ) {
 
         return;
@@ -4105,21 +4269,20 @@ function moveTask(
     }
 
 
-    const item =
-        section.tasks.splice(
-            index,
-            1
-        )[0];
+    var temp =
+        section.tasks[index];
 
 
-    section.tasks.splice(
-        target,
-        0,
-        item
-    );
+    section.tasks[index] =
+        section.tasks[target];
+
+
+    section.tasks[target] =
+        temp;
 
 
     saveData();
+
 
     render();
 
@@ -4127,20 +4290,20 @@ function moveTask(
 
 
 /* =========================================================
-   CLEAR
+   LIMPAR CHECKS
 ========================================================= */
 
 function clearChecks() {
 
-    const tasks =
-        allTasks();
+    var tasks =
+        getAllTasks();
 
 
     if (
         tasks.length === 0
     ) {
 
-        toast(
+        showToast(
             "Nenhuma atividade."
         );
 
@@ -4160,14 +4323,23 @@ function clearChecks() {
     }
 
 
-    tasks.forEach(
-        task =>
-            task.done =
-            false
-    );
+    var i;
+
+
+    for (
+        i = 0;
+        i < tasks.length;
+        i++
+    ) {
+
+        tasks[i].done =
+            false;
+
+    }
 
 
     saveData();
+
 
     render();
 
@@ -4175,7 +4347,7 @@ function clearChecks() {
 
 
 /* =========================================================
-   ERASE
+   APAGAR TUDO
 ========================================================= */
 
 function eraseEverything() {
@@ -4196,9 +4368,16 @@ function eraseEverything() {
     };
 
 
-    localStorage.removeItem(
-        STORAGE_KEY
-    );
+    try {
+
+        localStorage.removeItem(
+            STORAGE_KEY
+        );
+
+    }
+    catch (e) {
+
+    }
 
 
     editMode =
@@ -4219,38 +4398,47 @@ function eraseEverything() {
    TOAST
 ========================================================= */
 
-let toastTimer;
+var toastTimer =
+    null;
 
 
-function toast(message) {
+function showToast(
+    message
+) {
 
-    const element =
+    var element =
         document.getElementById(
             "toast"
         );
 
 
-    element.textContent =
-        message;
+    element.innerHTML =
+        escapeHtml(
+            message
+        );
 
 
-    element.classList.add(
-        "show"
-    );
+    element.className =
+        "toast show";
 
 
-    clearTimeout(
+    if (
         toastTimer
-    );
+    ) {
+
+        clearTimeout(
+            toastTimer
+        );
+
+    }
 
 
     toastTimer =
         setTimeout(
-            () => {
+            function () {
 
-                element.classList.remove(
-                    "show"
-                );
+                element.className =
+                    "toast";
 
             },
             2000
@@ -4260,7 +4448,7 @@ function toast(message) {
 
 
 /* =========================================================
-   START
+   INICIALIZAÇÃO
 ========================================================= */
 
 render();
