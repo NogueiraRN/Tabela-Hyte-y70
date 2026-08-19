@@ -2,634 +2,639 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <title>Checklist HYTE</title>
 
 <style>
-*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-
-html,body{
-    margin:0;
-    width:100%;
-    height:100%;
-    background:#000;
-    color:#f4f4f4;
-    font-family:Arial,Helvetica,sans-serif;
+*{
+  box-sizing:border-box;
+  -webkit-tap-highlight-color:transparent;
 }
 
-body{overflow:hidden}
+html,body{
+  margin:0;
+  width:100%;
+  height:100%;
+  background:#000;
+  color:#f4f4f4;
+  font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+  overflow:hidden;
+  touch-action:manipulation;
+}
 
 button{
-    font-family:inherit;
-    cursor:pointer;
+  font-family:inherit;
+  touch-action:manipulation;
 }
 
 .app{
-    width:100%;
-    height:100%;
-    padding:12px;
-    display:flex;
-    flex-direction:column;
+  width:100%;
+  height:100%;
+  padding:12px;
+  display:flex;
+  flex-direction:column;
 }
 
-/* ================= HEADER ================= */
+/* ================= CABEÇALHO ================= */
 
 .header{
-    flex:none;
-    padding:16px 12px 14px;
+  flex:none;
+  border:1px solid #555;
+  border-bottom:0;
+  border-radius:18px 18px 0 0;
+  background:
+    linear-gradient(90deg,#fff 0 15%,#777 18%,transparent 23%) top left/220px 13px no-repeat,
+    #050505;
+  padding:30px 20px 16px;
 }
 
-.header-line{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:15px;
-}
-
-.eyebrow{
-    color:#8a8a8a;
-    font-size:12px;
-    font-weight:900;
-    letter-spacing:3px;
-    margin-bottom:5px;
+.header-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:12px;
 }
 
 .title{
-    font-size:30px;
-    font-weight:900;
-    line-height:1;
+  margin:0;
+  font-size:31px;
+  line-height:1;
+  font-weight:900;
 }
 
 .subtitle{
-    margin-top:8px;
-    color:#777;
-    font-size:15px;
+  margin-top:12px;
+  color:#888;
+  font-size:16px;
 }
 
 .gear{
-    flex:none;
-    width:50px;
-    height:50px;
-    border:1px solid #777;
-    border-radius:10px;
-    background:#070707;
-    color:white;
-    font-size:25px;
-}
-
-/* ================= PROGRESS ================= */
-
-.progress-area{
-    flex:none;
-    padding:5px 12px 16px;
-}
-
-.progress-top{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:8px;
-}
-
-.progress-label{
-    color:#8c8c8c;
-    font-size:12px;
-    font-weight:900;
-    letter-spacing:2px;
-}
-
-.progress-number{
-    font-size:20px;
-    font-weight:900;
-}
-
-.progress-track{
-    width:100%;
-    height:9px;
-    background:#111;
-    border:1px solid #333;
-    border-radius:20px;
-    overflow:hidden;
-}
-
-.progress-fill{
-    width:0%;
-    height:100%;
-    background:#f2f2f2;
-    transition:width .12s linear;
-}
-
-.progress-info{
-    margin-top:7px;
-    color:#666;
-    font-size:12px;
-}
-
-/* ================= MAIN CARD ================= */
-
-.card{
-    flex:1;
-    min-height:0;
-    position:relative;
-    border:1px solid #555;
-    border-radius:18px;
-    background:
-        radial-gradient(circle at 80% 20%,rgba(255,255,255,.035),transparent 30%),
-        linear-gradient(180deg,#080808,#020202);
-    overflow:hidden;
-}
-
-.card:before{
-    content:"";
-    position:absolute;
-    top:0;
-    left:0;
-    width:170px;
-    height:12px;
-    background:#eee;
-    clip-path:polygon(0 0,100% 0,75% 45%,100% 70%,42% 100%,0 70%);
-    opacity:.9;
-}
-
-.scroll{
-    height:100%;
-    overflow-y:auto;
-    padding:18px 13px 50px;
-    scrollbar-width:thin;
-    scrollbar-color:#777 #111;
-}
-
-.scroll::-webkit-scrollbar{width:7px}
-.scroll::-webkit-scrollbar-track{background:#111}
-.scroll::-webkit-scrollbar-thumb{background:#777;border-radius:20px}
-
-/* ================= EMPTY ================= */
-
-.empty{
-    min-height:450px;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    padding:25px;
-}
-
-.empty-check{
-    font-size:58px;
-    color:#555;
-}
-
-.empty h2{
-    margin:10px 0 6px;
-    font-size:25px;
-}
-
-.empty p{
-    margin:0 0 22px;
-    color:#777;
-    font-size:15px;
-    line-height:1.4;
-}
-
-/* ================= SECTION ================= */
-
-.section{
-    margin-bottom:22px;
-}
-
-.section-head{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:10px;
-    margin-bottom:8px;
-}
-
-.brush-title{
-    position:relative;
-    display:inline-block;
-    margin-left:10px;
-    padding:7px 19px 7px 14px;
-    background:#eee;
-    color:#090909;
-    font-size:21px;
-    font-weight:900;
-    font-style:italic;
-    text-transform:uppercase;
-    transform:skew(-4deg);
-}
-
-.brush-title:before{
-    content:"";
-    position:absolute;
-    left:-10px;
-    top:3px;
-    width:15px;
-    height:80%;
-    background:#eee;
-    clip-path:polygon(40% 0,100% 5%,70% 100%,0 75%);
-}
-
-.brush-title:after{
-    content:"";
-    position:absolute;
-    right:-17px;
-    top:4px;
-    width:22px;
-    height:80%;
-    background:#aaa;
-    clip-path:polygon(0 0,100% 10%,65% 100%,0 90%);
-}
-
-.section-actions{
-    display:flex;
-    gap:5px;
-}
-
-.icon-btn{
-    min-width:37px;
-    height:37px;
-    border:1px solid #444;
-    border-radius:7px;
-    background:#101010;
-    color:#aaa;
-    font-size:16px;
-}
-
-/* ================= TASK ================= */
-
-.task-list{
-    border:1px solid #292929;
-    border-radius:17px;
-    overflow:hidden;
-}
-
-.task{
-    min-height:75px;
-    display:grid;
-    grid-template-columns:42px 118px 1fr 38px;
-    gap:10px;
-    align-items:center;
-    padding:9px 11px;
-    border-bottom:1px solid #202020;
-    background:rgba(255,255,255,.012);
-}
-
-.task:nth-child(even){
-    background:rgba(255,255,255,.027);
-}
-
-.task:last-child{
-    border-bottom:0;
-}
-
-.check{
-    appearance:none;
-    -webkit-appearance:none;
-    width:31px;
-    height:31px;
-    margin:0;
-    border:2px solid #aaa;
-    border-radius:6px;
-    background:#060606;
-    position:relative;
-}
-
-.check:checked{
-    background:#eee;
-    border-color:#eee;
-}
-
-.check:checked:after{
-    content:"✓";
-    position:absolute;
-    color:#080808;
-    font-size:24px;
-    font-weight:900;
-    left:5px;
-    top:-3px;
-}
-
-.time{
-    color:#929292;
-    font-size:16px;
-    white-space:nowrap;
-}
-
-.task-name{
-    font-size:21px;
-    font-weight:700;
-    line-height:1.2;
-}
-
-.task.done .task-name{
-    color:#666;
-    text-decoration:line-through;
-}
-
-.task.done .time{
-    color:#555;
-}
-
-.edit-task{
-    width:37px;
-    height:37px;
-    border:1px solid #3d3d3d;
-    border-radius:7px;
-    background:#0c0c0c;
-    color:#aaa;
-    font-size:16px;
-}
-
-.add-task{
-    width:100%;
-    min-height:48px;
-    margin-top:7px;
-    border:1px dashed #555;
-    border-radius:10px;
-    background:#090909;
-    color:#aaa;
-    font-size:14px;
-    font-weight:900;
+  width:48px;
+  height:48px;
+  flex:none;
+  border:1px solid #777;
+  border-radius:9px;
+  background:#080808;
+  color:#fff;
+  font-size:23px;
 }
 
 /* ================= EDIT MODE ================= */
 
-.edit-only{display:none}
+.edit-banner{
+  display:none;
+  flex:none;
+  min-height:39px;
+  align-items:center;
+  justify-content:center;
+  background:#eee;
+  color:#090909;
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:4px;
+}
 
-body.editing .edit-only{
-    display:inline-flex;
+body.editing .edit-banner{
+  display:flex;
+}
+
+/* ================= PROGRESSO ================= */
+
+.progress{
+  flex:none;
+  padding:20px;
+  border-left:1px solid #555;
+  border-right:1px solid #555;
+  border-bottom:1px solid #333;
+  background:#060606;
+}
+
+.progress-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.progress-label{
+  color:#8d8d8d;
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:3px;
+}
+
+.progress-percent{
+  font-size:20px;
+  font-weight:900;
+}
+
+.track{
+  height:8px;
+  margin-top:12px;
+  overflow:hidden;
+  border:1px solid #333;
+  border-radius:20px;
+  background:#111;
+}
+
+.fill{
+  width:0;
+  height:100%;
+  background:#eee;
+}
+
+.progress-text{
+  margin-top:7px;
+  color:#666;
+  font-size:12px;
+}
+
+/* ================= CARD ================= */
+
+.card{
+  flex:1;
+  min-height:0;
+  border:1px solid #555;
+  border-top:0;
+  border-radius:0 0 18px 18px;
+  background:
+    radial-gradient(circle at 80% 15%,rgba(255,255,255,.035),transparent 30%),
+    linear-gradient(#070707,#020202);
+  overflow:hidden;
+}
+
+.scroll{
+  width:100%;
+  height:100%;
+  overflow-y:auto;
+  padding:25px 14px 80px;
+  scrollbar-width:thin;
+  scrollbar-color:#777 #111;
+}
+
+.scroll::-webkit-scrollbar{width:7px}
+.scroll::-webkit-scrollbar-track{background:#111}
+.scroll::-webkit-scrollbar-thumb{background:#777;border-radius:10px}
+
+/* ================= EMPTY ================= */
+
+.empty{
+  min-height:400px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:30px;
+}
+
+.empty-icon{
+  font-size:55px;
+  color:#555;
+}
+
+.empty-title{
+  margin-top:12px;
+  font-size:25px;
+  font-weight:900;
+}
+
+.empty-text{
+  margin:8px 0 20px;
+  color:#777;
+  font-size:15px;
+}
+
+/* ================= SEÇÃO ================= */
+
+.section{
+  margin-bottom:26px;
+}
+
+.section-head{
+  min-height:48px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  padding-bottom:8px;
+  border-bottom:1px solid #333;
+}
+
+.brush{
+  position:relative;
+  display:inline-block;
+  margin-left:5px;
+  padding:7px 19px;
+  background:#eee;
+  color:#080808;
+  font-size:21px;
+  font-style:italic;
+  font-weight:900;
+  text-transform:uppercase;
+  transform:skew(-4deg);
+}
+
+.brush:after{
+  content:"";
+  position:absolute;
+  right:-18px;
+  top:4px;
+  width:24px;
+  height:80%;
+  background:#aaa;
+  clip-path:polygon(0 0,100% 10%,65% 100%,0 90%);
+}
+
+.section-buttons{
+  display:none;
+  gap:6px;
+}
+
+body.editing .section-buttons{
+  display:flex;
+}
+
+.small-btn{
+  min-height:39px;
+  padding:0 12px;
+  border:1px solid #555;
+  border-radius:7px;
+  background:#101010;
+  color:#ddd;
+  font-size:13px;
+  font-weight:800;
+}
+
+.delete-btn{
+  border-color:#634040;
+  color:#e0b4b4;
+}
+
+/* ================= ATIVIDADES ================= */
+
+.task-list{
+  margin-top:8px;
+  overflow:hidden;
+  border:1px solid #292929;
+  border-radius:16px;
+}
+
+.task{
+  min-height:76px;
+  display:grid;
+  grid-template-columns:42px 115px 1fr;
+  align-items:center;
+  gap:10px;
+  padding:9px 12px;
+  border-bottom:1px solid #202020;
+  background:rgba(255,255,255,.012);
+}
+
+.task:last-child{
+  border-bottom:0;
+}
+
+.task:nth-child(even){
+  background:rgba(255,255,255,.026);
 }
 
 body.editing .task{
-    grid-template-columns:42px 118px 1fr 38px;
+  grid-template-columns:42px 115px 1fr 45px;
 }
 
-body:not(.editing) .task{
-    grid-template-columns:42px 118px 1fr;
+.check-button{
+  width:31px;
+  height:31px;
+  padding:0;
+  position:relative;
+  border:2px solid #aaa;
+  border-radius:6px;
+  background:#060606;
+  color:#080808;
 }
 
-body:not(.editing) .edit-task{
-    display:none;
+.task.done .check-button{
+  background:#eee;
+  border-color:#eee;
 }
 
-.edit-bar{
-    display:none;
-    flex:none;
-    align-items:center;
-    justify-content:space-between;
-    gap:10px;
-    padding:10px 12px;
-    background:#eee;
-    color:#080808;
-    font-weight:900;
+.task.done .check-button:after{
+  content:"✓";
+  position:absolute;
+  left:5px;
+  top:-4px;
+  color:#080808;
+  font-size:24px;
+  font-weight:900;
 }
 
-body.editing .edit-bar{
-    display:flex;
+.time{
+  color:#929292;
+  font-size:15px;
+  white-space:nowrap;
 }
 
-.finish-edit{
-    border:0;
-    border-radius:7px;
-    background:#080808;
-    color:white;
-    padding:10px 15px;
-    font-weight:900;
+.task-name{
+  font-size:20px;
+  font-weight:800;
+  line-height:1.2;
 }
 
-/* ================= BUTTONS ================= */
-
-.primary{
-    min-height:51px;
-    border:0;
-    border-radius:9px;
-    padding:12px 18px;
-    background:#eee;
-    color:#050505;
-    font-size:15px;
-    font-weight:900;
+.task.done .time{
+  color:#555;
 }
 
-.secondary{
-    min-height:48px;
-    border:1px solid #444;
-    border-radius:9px;
-    padding:11px 15px;
-    background:#101010;
-    color:#eee;
-    font-size:14px;
-    font-weight:800;
+.task.done .task-name{
+  color:#666;
+  text-decoration:line-through;
 }
 
-.danger{
-    color:#e3a1a1;
-    border-color:#5c3434;
+.task-edit{
+  display:none;
+  width:40px;
+  height:40px;
+  padding:0;
+  border:1px solid #555;
+  border-radius:7px;
+  background:#101010;
+  color:#ddd;
+  font-size:18px;
 }
 
-/* ================= MODAL ================= */
+body.editing .task-edit{
+  display:block;
+}
+
+.add-task{
+  display:none;
+  width:100%;
+  min-height:51px;
+  margin-top:8px;
+  border:1px dashed #555;
+  border-radius:10px;
+  background:#080808;
+  color:#aaa;
+  font-size:14px;
+  font-weight:900;
+}
+
+body.editing .add-task{
+  display:block;
+}
+
+/* ================= MODAIS ================= */
 
 .overlay{
-    position:fixed;
-    inset:0;
-    z-index:1000;
-    display:none;
-    align-items:center;
-    justify-content:center;
-    padding:14px;
-    background:rgba(0,0,0,.92);
+  position:fixed;
+  inset:0;
+  z-index:1000;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:14px;
+  background:rgba(0,0,0,.94);
 }
 
 .overlay.open{
-    display:flex;
+  display:flex;
 }
 
 .modal{
-    width:100%;
-    max-width:570px;
-    max-height:94vh;
-    overflow-y:auto;
-    border:1px solid #555;
-    border-radius:16px;
-    background:#080808;
+  width:100%;
+  max-width:580px;
+  max-height:95vh;
+  overflow-y:auto;
+  border:1px solid #666;
+  border-radius:16px;
+  background:#080808;
 }
 
 .modal-head{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:17px 18px;
-    border-bottom:1px solid #292929;
+  min-height:66px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:13px 17px;
+  border-bottom:1px solid #333;
 }
 
 .modal-title{
-    font-size:23px;
-    font-weight:900;
+  font-size:23px;
+  font-weight:900;
 }
 
-.close{
-    width:40px;
-    height:40px;
-    border:1px solid #555;
-    border-radius:8px;
-    background:#090909;
-    color:white;
-    font-size:22px;
+.close-btn{
+  width:42px;
+  height:42px;
+  border:1px solid #555;
+  border-radius:8px;
+  background:#101010;
+  color:#fff;
+  font-size:21px;
 }
 
 .modal-body{
-    padding:18px;
+  padding:18px;
 }
 
 .label{
-    margin:15px 0 8px;
-    color:#888;
-    font-size:11px;
-    font-weight:900;
-    letter-spacing:2px;
+  margin:17px 0 9px;
+  color:#888;
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:2px;
 }
 
-/* ================= TEXT DISPLAY ================= */
+/* ================= BOTÕES ================= */
+
+.primary,
+.secondary,
+.danger{
+  width:100%;
+  min-height:53px;
+  border-radius:9px;
+  font-size:15px;
+  font-weight:900;
+}
+
+.primary{
+  border:0;
+  background:#eee;
+  color:#050505;
+}
+
+.secondary{
+  border:1px solid #555;
+  background:#101010;
+  color:#eee;
+}
+
+.danger{
+  border:1px solid #713f3f;
+  background:#140a0a;
+  color:#efbcbc;
+}
+
+.button-gap{
+  margin-top:9px;
+}
+
+/* ================= DISPLAY DE TEXTO ================= */
 
 .text-display{
-    min-height:58px;
-    padding:14px;
-    border:1px solid #555;
-    border-radius:9px;
-    background:#020202;
-    color:white;
-    font-size:19px;
-    font-weight:700;
-    word-break:break-word;
+  min-height:58px;
+  padding:15px;
+  border:1px solid #555;
+  border-radius:9px;
+  background:#020202;
+  color:#fff;
+  font-size:19px;
+  font-weight:800;
+  word-break:break-word;
 }
 
-.placeholder{
-    color:#555;
+.text-display.placeholder{
+  color:#555;
 }
 
-/* ================= KEYBOARD ================= */
+/* ================= TECLADO ================= */
 
 .keyboard{
-    margin-top:10px;
+  margin-top:10px;
 }
 
-.keyrow{
-    display:flex;
-    gap:4px;
-    margin-bottom:5px;
+.key-row{
+  display:flex;
+  gap:4px;
+  margin-bottom:5px;
 }
 
 .key{
-    flex:1;
-    height:44px;
-    min-width:0;
-    padding:0;
-    border:1px solid #444;
-    border-radius:6px;
-    background:#151515;
-    color:white;
-    font-size:14px;
-    font-weight:800;
+  flex:1;
+  min-width:0;
+  height:43px;
+  padding:0;
+  border:1px solid #444;
+  border-radius:6px;
+  background:#151515;
+  color:#fff;
+  font-size:14px;
+  font-weight:800;
 }
 
-.key:active{
-    background:#eee;
-    color:#050505;
+.key-space{
+  flex:5;
 }
 
-.space{flex:5}
-.back{flex:1.5}
+.key-back{
+  flex:1.5;
+}
 
-/* ================= EMOJI ================= */
+/* ================= EMOJIS ================= */
+
+.selected-emoji{
+  min-height:58px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:10px 14px;
+  margin-bottom:10px;
+  border:1px solid #555;
+  border-radius:9px;
+  background:#030303;
+}
+
+.selected-emoji-icon{
+  font-size:31px;
+}
+
+.selected-emoji-text{
+  color:#888;
+  font-size:13px;
+}
 
 .emoji-grid{
-    display:grid;
-    grid-template-columns:repeat(6,1fr);
-    gap:7px;
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:8px;
 }
 
-.emoji{
-    min-height:49px;
-    border:1px solid #444;
-    border-radius:8px;
-    background:#111;
-    font-size:23px;
+.emoji-btn{
+  min-height:57px;
+  border:2px solid #333;
+  border-radius:9px;
+  background:#111;
+  font-size:25px;
 }
 
-.emoji.selected{
-    background:#eee;
-    border-color:white;
+.emoji-btn.selected{
+  border-color:#fff;
+  background:#333;
+  transform:scale(.96);
 }
 
-/* ================= TIME ================= */
+/* ================= HORÁRIO ================= */
 
 .time-editor{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:10px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
 }
 
-.time-card{
-    padding:11px;
-    border:1px solid #333;
-    border-radius:10px;
-    background:#050505;
-    text-align:center;
+.time-box{
+  padding:11px;
+  border:1px solid #444;
+  border-radius:10px;
+  background:#050505;
+  text-align:center;
 }
 
 .time-value{
-    font-size:27px;
-    font-weight:900;
-    margin-bottom:9px;
+  margin:5px 0 10px;
+  font-size:27px;
+  font-weight:900;
 }
 
-.time-controls{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:6px;
+.time-buttons{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:6px;
 }
 
-.time-controls button{
-    min-height:40px;
-    border:1px solid #444;
-    border-radius:7px;
-    background:#111;
-    color:white;
-    font-size:17px;
-    font-weight:900;
+.time-btn{
+  min-height:43px;
+  border:1px solid #555;
+  border-radius:7px;
+  background:#151515;
+  color:#fff;
+  font-size:16px;
+  font-weight:900;
 }
 
-/* ================= SETTINGS ================= */
+/* ================= CONFIRMAÇÃO ================= */
 
-.settings-list{
-    display:grid;
-    gap:8px;
+.confirm-text{
+  margin:4px 0 20px;
+  color:#aaa;
+  font-size:16px;
+  line-height:1.5;
 }
 
-.settings-list button{
-    width:100%;
+.confirm-name{
+  color:#fff;
+  font-weight:900;
 }
 
-.note{
-    margin-top:17px;
-    padding:12px;
-    border:1px solid #292929;
-    border-radius:9px;
-    color:#777;
-    font-size:12px;
-    line-height:1.5;
-}
-
-/* ================= RESPONSIVE ================= */
+/* ================= RESPONSIVO ================= */
 
 @media(max-width:500px){
-    .title{font-size:28px}
-    .task-name{font-size:20px}
-    .time{font-size:15px}
-    .task{grid-template-columns:40px 112px 1fr 36px}
-    body:not(.editing) .task{grid-template-columns:40px 112px 1fr}
-    .emoji-grid{grid-template-columns:repeat(5,1fr)}
+  .title{font-size:28px}
+  .task-name{font-size:19px}
+  .time{font-size:14px}
+  .brush{font-size:19px}
 }
 </style>
 </head>
@@ -638,883 +643,1266 @@ body.editing .edit-bar{
 
 <div class="app">
 
-    <div class="header">
-        <div class="header-line">
-            <div>
-                <div class="eyebrow">ROTINA DIÁRIA</div>
-                <div class="title">CHECKLIST DE HOJE</div>
-                <div class="subtitle">Marque as atividades concluídas</div>
-            </div>
+  <div class="header">
+    <div class="header-row">
+      <div>
+        <h1 class="title">CHECKLIST DE HOJE</h1>
+        <div class="subtitle">Marque as atividades concluídas</div>
+      </div>
 
-            <button class="gear" id="gear">⚙</button>
-        </div>
+      <button class="gear" data-action="settings">⚙</button>
+    </div>
+  </div>
+
+  <div class="edit-banner">
+    MODO DE EDIÇÃO ATIVO
+  </div>
+
+  <div class="progress">
+    <div class="progress-row">
+      <div class="progress-label">PROGRESSO DO DIA</div>
+      <div class="progress-percent" id="percent">0%</div>
     </div>
 
-    <div class="progress-area">
-        <div class="progress-top">
-            <span class="progress-label">PROGRESSO DO DIA</span>
-            <span class="progress-number" id="percent">0%</span>
-        </div>
-
-        <div class="progress-track">
-            <div class="progress-fill" id="progressFill"></div>
-        </div>
-
-        <div class="progress-info" id="progressInfo">
-            Nenhuma atividade cadastrada
-        </div>
+    <div class="track">
+      <div class="fill" id="fill"></div>
     </div>
 
-    <div class="edit-bar">
-        <span>EDITANDO CHECKLIST</span>
-        <button class="finish-edit" id="finishEdit">✓ CONCLUIR</button>
+    <div class="progress-text" id="progressText">
+      Nenhuma atividade cadastrada
     </div>
+  </div>
 
-    <div class="card">
-        <div class="scroll" id="content"></div>
-    </div>
+  <div class="card">
+    <div class="scroll" id="content"></div>
+  </div>
 
 </div>
 
 
 <!-- CONFIGURAÇÕES -->
 
-<div class="overlay" id="settingsOverlay">
-    <div class="modal">
+<div class="overlay" id="settingsModal">
+  <div class="modal">
 
-        <div class="modal-head">
-            <div class="modal-title">Minha checklist</div>
-            <button class="close" data-close="settingsOverlay">×</button>
-        </div>
-
-        <div class="modal-body">
-
-            <div class="settings-list">
-                <button class="primary" id="editModeButton">
-                    ✎ EDITAR CHECKLIST
-                </button>
-
-                <button class="secondary" id="newSectionButton">
-                    + NOVA SEÇÃO
-                </button>
-
-                <button class="secondary" id="clearChecks">
-                    LIMPAR MARCAÇÕES
-                </button>
-
-                <button class="secondary danger" id="deleteAll">
-                    APAGAR TUDO
-                </button>
-            </div>
-
-            <div class="note">
-                Sua rotina é armazenada no navegador deste dispositivo.
-                O código publicado não contém as atividades que você cadastrar.
-            </div>
-
-        </div>
+    <div class="modal-head">
+      <div class="modal-title">Minha checklist</div>
+      <button class="close-btn" data-action="close" data-modal="settingsModal">×</button>
     </div>
+
+    <div class="modal-body">
+
+      <button class="primary" data-action="toggle-edit" id="editModeBtn">
+        ✎ ENTRAR NO MODO EDIÇÃO
+      </button>
+
+      <button class="secondary button-gap" data-action="new-section">
+        + NOVA SEÇÃO
+      </button>
+
+      <button class="secondary button-gap" data-action="clear-checks">
+        LIMPAR MARCAÇÕES
+      </button>
+
+    </div>
+  </div>
 </div>
 
 
-<!-- EDITAR/CRIAR SEÇÃO -->
+<!-- SEÇÃO -->
 
-<div class="overlay" id="sectionOverlay">
-    <div class="modal">
+<div class="overlay" id="sectionModal">
+  <div class="modal">
 
-        <div class="modal-head">
-            <div class="modal-title" id="sectionModalTitle">Nova seção</div>
-            <button class="close" data-close="sectionOverlay">×</button>
-        </div>
-
-        <div class="modal-body">
-
-            <div class="label">NOME DA SEÇÃO</div>
-
-            <div class="text-display placeholder" id="sectionText">
-                Digite abaixo
-            </div>
-
-            <div class="keyboard" id="sectionKeyboard"></div>
-
-            <button class="primary" style="width:100%;margin-top:12px" id="saveSection">
-                SALVAR SEÇÃO
-            </button>
-
-        </div>
+    <div class="modal-head">
+      <div class="modal-title" id="sectionTitle">Nova seção</div>
+      <button class="close-btn" data-action="close" data-modal="sectionModal">×</button>
     </div>
+
+    <div class="modal-body">
+
+      <div class="label">NOME DA SEÇÃO</div>
+
+      <div class="text-display placeholder" id="sectionDisplay">
+        Digite abaixo
+      </div>
+
+      <div class="keyboard" id="sectionKeyboard"></div>
+
+      <button class="primary button-gap" data-action="save-section">
+        SALVAR SEÇÃO
+      </button>
+
+    </div>
+  </div>
 </div>
 
 
 <!-- ATIVIDADE -->
 
-<div class="overlay" id="taskOverlay">
-    <div class="modal">
+<div class="overlay" id="taskModal">
+  <div class="modal">
 
-        <div class="modal-head">
-            <div class="modal-title" id="taskModalTitle">Nova atividade</div>
-            <button class="close" data-close="taskOverlay">×</button>
-        </div>
-
-        <div class="modal-body">
-
-            <div class="label">HORÁRIO</div>
-
-            <div class="time-editor">
-
-                <div class="time-card">
-                    <div class="label" style="margin-top:0">INÍCIO</div>
-                    <div class="time-value" id="startTime">07:30</div>
-
-                    <div class="time-controls">
-                        <button id="startMinus">−15</button>
-                        <button id="startPlus">+15</button>
-                    </div>
-                </div>
-
-                <div class="time-card">
-                    <div class="label" style="margin-top:0">FIM</div>
-                    <div class="time-value" id="endTime">08:00</div>
-
-                    <div class="time-controls">
-                        <button id="endMinus">−15</button>
-                        <button id="endPlus">+15</button>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="label">ÍCONE</div>
-            <div class="emoji-grid" id="emojiGrid"></div>
-
-            <div class="label">ATIVIDADE</div>
-
-            <div class="text-display placeholder" id="taskText">
-                Digite abaixo
-            </div>
-
-            <div class="keyboard" id="taskKeyboard"></div>
-
-            <button class="primary" style="width:100%;margin-top:12px" id="saveTask">
-                SALVAR ATIVIDADE
-            </button>
-
-            <button class="secondary danger" style="width:100%;margin-top:8px;display:none" id="deleteTask">
-                EXCLUIR ATIVIDADE
-            </button>
-
-        </div>
+    <div class="modal-head">
+      <div class="modal-title" id="taskTitle">Nova atividade</div>
+      <button class="close-btn" data-action="close" data-modal="taskModal">×</button>
     </div>
+
+    <div class="modal-body">
+
+      <div class="label">HORÁRIO</div>
+
+      <div class="time-editor">
+
+        <div class="time-box">
+          <div class="label" style="margin:0">INÍCIO</div>
+          <div class="time-value" id="startDisplay">07:30</div>
+
+          <div class="time-buttons">
+            <button class="time-btn" data-action="time" data-target="start" data-change="-15">−15</button>
+            <button class="time-btn" data-action="time" data-target="start" data-change="15">+15</button>
+          </div>
+        </div>
+
+        <div class="time-box">
+          <div class="label" style="margin:0">FIM</div>
+          <div class="time-value" id="endDisplay">08:00</div>
+
+          <div class="time-buttons">
+            <button class="time-btn" data-action="time" data-target="end" data-change="-15">−15</button>
+            <button class="time-btn" data-action="time" data-target="end" data-change="15">+15</button>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="label">ÍCONE</div>
+
+      <div class="selected-emoji">
+        <div class="selected-emoji-icon" id="selectedEmojiIcon">⏰</div>
+        <div class="selected-emoji-text">
+          Ícone selecionado
+        </div>
+      </div>
+
+      <div class="emoji-grid" id="emojiGrid"></div>
+
+      <div class="label">ATIVIDADE</div>
+
+      <div class="text-display placeholder" id="taskDisplay">
+        Digite abaixo
+      </div>
+
+      <div class="keyboard" id="taskKeyboard"></div>
+
+      <button class="primary button-gap" data-action="save-task">
+        SALVAR ATIVIDADE
+      </button>
+
+      <button class="danger button-gap" data-action="request-delete-task" id="deleteTaskBtn" style="display:none">
+        EXCLUIR ATIVIDADE
+      </button>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- CONFIRMAR EXCLUSÃO -->
+
+<div class="overlay" id="confirmModal">
+  <div class="modal">
+
+    <div class="modal-head">
+      <div class="modal-title">Confirmar exclusão</div>
+      <button class="close-btn" data-action="cancel-delete">×</button>
+    </div>
+
+    <div class="modal-body">
+
+      <div class="confirm-text" id="confirmText">
+        Deseja realmente excluir?
+      </div>
+
+      <button class="danger" data-action="confirm-delete">
+        SIM, EXCLUIR
+      </button>
+
+      <button class="secondary button-gap" data-action="cancel-delete">
+        CANCELAR
+      </button>
+
+    </div>
+  </div>
 </div>
 
 
 <script>
 (function(){
 
-var STORAGE = "HYTE_DAILY_CHECKLIST_V2";
+"use strict";
+
+var STORAGE_KEY = "HYTE_CHECKLIST_STABLE_V3";
 
 var state = {
-    sections: []
+  sections:[]
 };
 
 var editing = false;
 
-var sectionEditId = null;
-var sectionTextValue = "";
+var currentSectionId = null;
+var currentTaskId = null;
 
-var taskSectionId = null;
-var taskEditId = null;
-var taskTextValue = "";
+var sectionText = "";
+var taskText = "";
+
 var selectedEmoji = "⏰";
 
 var startMinutes = 450;
 var endMinutes = 480;
 
+var deleteType = null;
+var deleteSectionId = null;
+var deleteTaskId = null;
+
+var lastPointerTime = 0;
+
 var emojis = [
-    "⏰","☕","💻","💼","🏋️","🍽️",
-    "🎹","🎓","🚗","🚿","📚","🎮",
-    "🧹","🛒","💰","📝","📱","🎯",
-    "🧠","🏠","💤","🎧","📺","🥤",
-    "🍳","🚶","⭐","🔥","❤️","✅"
+  "⏰","☕","💻","💼","🏋️",
+  "🍽️","🎹","🎓","🚗","🚿",
+  "📚","🎮","🧹","🛒","📝",
+  "🎯","🧠","🏠","💤","🎧",
+  "📺","🍳","🚶","⭐","🔥",
+  "❤️","✅","📱","💰","🥤"
 ];
 
 
-/* ==================================================
-   STORAGE
-================================================== */
+/* ================= STORAGE ================= */
 
-function load(){
-    try{
-        var saved = localStorage.getItem(STORAGE);
+function loadState(){
 
-        if(saved){
-            var parsed = JSON.parse(saved);
+  try{
 
-            if(parsed && Array.isArray(parsed.sections)){
-                state = parsed;
-            }
-        }
-    }catch(e){}
-}
+    var saved = localStorage.getItem(STORAGE_KEY);
 
-function save(){
-    try{
-        localStorage.setItem(STORAGE,JSON.stringify(state));
-    }catch(e){}
-}
+    if(saved){
 
+      var parsed = JSON.parse(saved);
 
-/* ==================================================
-   HELPERS
-================================================== */
+      if(parsed && Array.isArray(parsed.sections)){
+        state = parsed;
+      }
 
-function id(prefix){
-    return prefix + "_" + Date.now() + "_" + Math.floor(Math.random()*99999);
-}
-
-function openModal(name){
-    document.getElementById(name).classList.add("open");
-}
-
-function closeModal(name){
-    document.getElementById(name).classList.remove("open");
-}
-
-function findSection(sectionId){
-    for(var i=0;i<state.sections.length;i++){
-        if(state.sections[i].id === sectionId){
-            return state.sections[i];
-        }
-    }
-    return null;
-}
-
-function findTask(section,taskId){
-    if(!section) return null;
-
-    for(var i=0;i<section.tasks.length;i++){
-        if(section.tasks[i].id === taskId){
-            return section.tasks[i];
-        }
     }
 
-    return null;
+  }catch(e){}
 }
 
-function formatTime(minutes){
-    while(minutes < 0) minutes += 1440;
-    while(minutes >= 1440) minutes -= 1440;
+function saveState(){
 
-    var h = Math.floor(minutes/60);
-    var m = minutes%60;
-
-    return (h<10?"0":"")+h+":"+(m<10?"0":"")+m;
-}
-
-function normalizeTime(){
-    while(startMinutes < 0) startMinutes += 1440;
-    while(startMinutes >= 1440) startMinutes -= 1440;
-    while(endMinutes < 0) endMinutes += 1440;
-    while(endMinutes >= 1440) endMinutes -= 1440;
-
-    document.getElementById("startTime").textContent = formatTime(startMinutes);
-    document.getElementById("endTime").textContent = formatTime(endMinutes);
+  try{
+    localStorage.setItem(STORAGE_KEY,JSON.stringify(state));
+  }catch(e){}
 }
 
 
-/* ==================================================
-   RENDER
-================================================== */
+/* ================= HELPERS ================= */
 
-function render(){
-    var content = document.getElementById("content");
-    content.innerHTML = "";
+function makeId(prefix){
+  return prefix + "_" + Date.now() + "_" + Math.floor(Math.random()*100000);
+}
 
-    if(state.sections.length === 0){
+function getSection(id){
 
-        var empty = document.createElement("div");
-        empty.className = "empty";
+  for(var i=0;i<state.sections.length;i++){
 
-        var icon = document.createElement("div");
-        icon.className = "empty-check";
-        icon.textContent = "✓";
-
-        var h = document.createElement("h2");
-        h.textContent = "Sua checklist está vazia";
-
-        var p = document.createElement("p");
-        p.textContent = "Crie sua primeira seção para começar a organizar o dia.";
-
-        var b = document.createElement("button");
-        b.className = "primary";
-        b.textContent = "+ CRIAR PRIMEIRA SEÇÃO";
-        b.onclick = function(){
-            openSectionEditor(null);
-        };
-
-        empty.appendChild(icon);
-        empty.appendChild(h);
-        empty.appendChild(p);
-        empty.appendChild(b);
-
-        content.appendChild(empty);
+    if(state.sections[i].id === id){
+      return state.sections[i];
     }
 
-    for(var i=0;i<state.sections.length;i++){
-        renderSection(state.sections[i],content);
-    }
+  }
 
-    updateProgress();
+  return null;
 }
 
-function renderSection(section,content){
+function getTask(section,id){
 
-    var wrapper = document.createElement("div");
-    wrapper.className = "section";
+  if(!section) return null;
 
-    var head = document.createElement("div");
-    head.className = "section-head";
+  for(var i=0;i<section.tasks.length;i++){
 
-    var title = document.createElement("div");
-    title.className = "brush-title";
-    title.textContent = section.name;
-
-    var actions = document.createElement("div");
-    actions.className = "section-actions edit-only";
-
-    var rename = document.createElement("button");
-    rename.className = "icon-btn";
-    rename.textContent = "✎";
-    rename.onclick = function(){
-        openSectionEditor(section.id);
-    };
-
-    var remove = document.createElement("button");
-    remove.className = "icon-btn";
-    remove.textContent = "×";
-    remove.onclick = function(){
-        if(confirm("Excluir esta seção e todas as atividades dela?")){
-            state.sections = state.sections.filter(function(s){
-                return s.id !== section.id;
-            });
-            save();
-            render();
-        }
-    };
-
-    actions.appendChild(rename);
-    actions.appendChild(remove);
-
-    head.appendChild(title);
-    head.appendChild(actions);
-
-    wrapper.appendChild(head);
-
-    if(section.tasks.length){
-
-        var list = document.createElement("div");
-        list.className = "task-list";
-
-        for(var i=0;i<section.tasks.length;i++){
-            list.appendChild(createTask(section,section.tasks[i]));
-        }
-
-        wrapper.appendChild(list);
+    if(section.tasks[i].id === id){
+      return section.tasks[i];
     }
 
-    var add = document.createElement("button");
-    add.className = "add-task edit-only";
-    add.textContent = "+ ADICIONAR ATIVIDADE";
-    add.onclick = function(){
-        openTaskEditor(section.id,null);
-    };
+  }
 
-    wrapper.appendChild(add);
-
-    content.appendChild(wrapper);
+  return null;
 }
 
-function createTask(section,task){
+function openModal(id){
+  var modal = document.getElementById(id);
+  if(modal) modal.classList.add("open");
+}
 
-    var row = document.createElement("div");
-    row.className = task.done ? "task done" : "task";
+function closeModal(id){
+  var modal = document.getElementById(id);
+  if(modal) modal.classList.remove("open");
+}
 
-    var check = document.createElement("input");
-    check.type = "checkbox";
-    check.className = "check";
-    check.checked = !!task.done;
+function closeAllModals(){
 
-    check.onchange = function(){
-        task.done = check.checked;
-        save();
+  var modals = document.querySelectorAll(".overlay");
 
-        if(task.done){
-            row.classList.add("done");
-        }else{
-            row.classList.remove("done");
-        }
-
-        updateProgress();
-    };
-
-    var time = document.createElement("div");
-    time.className = "time";
-    time.textContent = task.time;
-
-    var name = document.createElement("div");
-    name.className = "task-name";
-    name.textContent = task.emoji + "  " + task.name;
-
-    var edit = document.createElement("button");
-    edit.className = "edit-task";
-    edit.textContent = "✎";
-    edit.onclick = function(){
-        openTaskEditor(section.id,task.id);
-    };
-
-    row.appendChild(check);
-    row.appendChild(time);
-    row.appendChild(name);
-    row.appendChild(edit);
-
-    return row;
+  for(var i=0;i<modals.length;i++){
+    modals[i].classList.remove("open");
+  }
 }
 
 
-/* ==================================================
-   PROGRESS
-================================================== */
+/* ================= TEMPO ================= */
 
-function updateProgress(){
+function normalizeMinutes(value){
 
-    var total = 0;
-    var done = 0;
+  while(value < 0) value += 1440;
+  while(value >= 1440) value -= 1440;
 
-    for(var i=0;i<state.sections.length;i++){
-        for(var j=0;j<state.sections[i].tasks.length;j++){
-            total++;
-            if(state.sections[i].tasks[j].done) done++;
-        }
-    }
-
-    var percent = total ? Math.round((done/total)*100) : 0;
-
-    document.getElementById("percent").textContent = percent+"%";
-    document.getElementById("progressFill").style.width = percent+"%";
-
-    document.getElementById("progressInfo").textContent =
-        total ? done+" de "+total+" concluídas" : "Nenhuma atividade cadastrada";
+  return value;
 }
 
+function formatTime(value){
 
-/* ==================================================
-   EDIT MODE
-================================================== */
+  value = normalizeMinutes(value);
 
-function setEditing(value){
-    editing = value;
+  var hour = Math.floor(value/60);
+  var minute = value%60;
 
-    if(editing){
-        document.body.classList.add("editing");
-    }else{
-        document.body.classList.remove("editing");
-    }
+  return
+    (hour < 10 ? "0" : "") + hour +
+    ":" +
+    (minute < 10 ? "0" : "") + minute;
 }
 
+/*
+  Mantido separado por compatibilidade.
+*/
+function clockText(value){
 
-/* ==================================================
-   SECTION EDITOR
-================================================== */
+  value = normalizeMinutes(value);
 
-function openSectionEditor(sectionId){
+  var hour = Math.floor(value/60);
+  var minute = value%60;
 
-    sectionEditId = sectionId;
-
-    if(sectionId){
-        var section = findSection(sectionId);
-        sectionTextValue = section ? section.name : "";
-        document.getElementById("sectionModalTitle").textContent = "Editar seção";
-    }else{
-        sectionTextValue = "";
-        document.getElementById("sectionModalTitle").textContent = "Nova seção";
-    }
-
-    updateSectionText();
-    openModal("sectionOverlay");
-}
-
-function updateSectionText(){
-
-    var box = document.getElementById("sectionText");
-
-    if(sectionTextValue){
-        box.textContent = sectionTextValue;
-        box.classList.remove("placeholder");
-    }else{
-        box.textContent = "Digite abaixo";
-        box.classList.add("placeholder");
-    }
-}
-
-
-/* ==================================================
-   TASK EDITOR
-================================================== */
-
-function openTaskEditor(sectionId,taskId){
-
-    taskSectionId = sectionId;
-    taskEditId = taskId;
-
-    var deleteButton = document.getElementById("deleteTask");
-
-    if(taskId){
-
-        var section = findSection(sectionId);
-        var task = findTask(section,taskId);
-
-        taskTextValue = task.name;
-        selectedEmoji = task.emoji;
-
-        var pieces = task.time.split("–");
-
-        if(pieces.length === 2){
-            startMinutes = parseClock(pieces[0]);
-            endMinutes = parseClock(pieces[1]);
-        }
-
-        document.getElementById("taskModalTitle").textContent = "Editar atividade";
-        deleteButton.style.display = "block";
-
-    }else{
-
-        taskTextValue = "";
-        selectedEmoji = "⏰";
-        startMinutes = 450;
-        endMinutes = 480;
-
-        document.getElementById("taskModalTitle").textContent = "Nova atividade";
-        deleteButton.style.display = "none";
-    }
-
-    updateTaskText();
-    normalizeTime();
-    renderEmojiSelection();
-    openModal("taskOverlay");
+  return (hour<10?"0":"")+hour+":"+(minute<10?"0":"")+minute;
 }
 
 function parseClock(value){
-    var p = value.split(":");
-    return parseInt(p[0],10)*60 + parseInt(p[1],10);
+
+  var pieces = value.split(":");
+
+  if(pieces.length !== 2) return 0;
+
+  return (parseInt(pieces[0],10)*60) + parseInt(pieces[1],10);
 }
 
-function updateTaskText(){
+function updateTimeDisplays(){
 
-    var box = document.getElementById("taskText");
+  document.getElementById("startDisplay").textContent = clockText(startMinutes);
+  document.getElementById("endDisplay").textContent = clockText(endMinutes);
+}
 
-    if(taskTextValue){
-        box.textContent = taskTextValue;
-        box.classList.remove("placeholder");
+
+/* ================= RENDER PRINCIPAL ================= */
+
+function render(){
+
+  var content = document.getElementById("content");
+
+  content.innerHTML = "";
+
+  if(state.sections.length === 0){
+
+    var empty = document.createElement("div");
+    empty.className = "empty";
+
+    empty.innerHTML =
+      '<div class="empty-icon">✓</div>' +
+      '<div class="empty-title">Sua checklist está vazia</div>' +
+      '<div class="empty-text">Crie sua primeira seção para começar.</div>' +
+      '<button class="primary" data-action="new-section">+ CRIAR PRIMEIRA SEÇÃO</button>';
+
+    content.appendChild(empty);
+
+  }else{
+
+    for(var i=0;i<state.sections.length;i++){
+
+      content.appendChild(
+        renderSection(state.sections[i])
+      );
+
+    }
+
+  }
+
+  updateProgress();
+}
+
+function renderSection(section){
+
+  var wrapper = document.createElement("div");
+  wrapper.className = "section";
+
+  var head = document.createElement("div");
+  head.className = "section-head";
+
+  var title = document.createElement("div");
+  title.className = "brush";
+  title.textContent = section.name;
+
+  var buttons = document.createElement("div");
+  buttons.className = "section-buttons";
+
+  var rename = document.createElement("button");
+  rename.className = "small-btn";
+  rename.textContent = "Editar";
+  rename.setAttribute("data-action","edit-section");
+  rename.setAttribute("data-section",section.id);
+
+  var remove = document.createElement("button");
+  remove.className = "small-btn delete-btn";
+  remove.textContent = "Excluir";
+  remove.setAttribute("data-action","request-delete-section");
+  remove.setAttribute("data-section",section.id);
+
+  buttons.appendChild(rename);
+  buttons.appendChild(remove);
+
+  head.appendChild(title);
+  head.appendChild(buttons);
+
+  wrapper.appendChild(head);
+
+  if(section.tasks && section.tasks.length){
+
+    var list = document.createElement("div");
+    list.className = "task-list";
+
+    for(var i=0;i<section.tasks.length;i++){
+
+      list.appendChild(
+        renderTask(section,section.tasks[i])
+      );
+
+    }
+
+    wrapper.appendChild(list);
+  }
+
+  var add = document.createElement("button");
+  add.className = "add-task";
+  add.textContent = "+ ADICIONAR ATIVIDADE";
+  add.setAttribute("data-action","new-task");
+  add.setAttribute("data-section",section.id);
+
+  wrapper.appendChild(add);
+
+  return wrapper;
+}
+
+function renderTask(section,task){
+
+  var row = document.createElement("div");
+
+  row.className = task.done ? "task done" : "task";
+
+  var check = document.createElement("button");
+  check.className = "check-button";
+  check.setAttribute("data-action","toggle-task");
+  check.setAttribute("data-section",section.id);
+  check.setAttribute("data-task",task.id);
+
+  var time = document.createElement("div");
+  time.className = "time";
+  time.textContent = task.time || "";
+
+  var name = document.createElement("div");
+  name.className = "task-name";
+  name.textContent = (task.emoji || "✓") + "  " + task.name;
+
+  var edit = document.createElement("button");
+  edit.className = "task-edit";
+  edit.textContent = "✎";
+  edit.setAttribute("data-action","edit-task");
+  edit.setAttribute("data-section",section.id);
+  edit.setAttribute("data-task",task.id);
+
+  row.appendChild(check);
+  row.appendChild(time);
+  row.appendChild(name);
+  row.appendChild(edit);
+
+  return row;
+}
+
+
+/* ================= PROGRESSO ================= */
+
+function updateProgress(){
+
+  var total = 0;
+  var completed = 0;
+
+  for(var i=0;i<state.sections.length;i++){
+
+    var tasks = state.sections[i].tasks || [];
+
+    for(var j=0;j<tasks.length;j++){
+
+      total++;
+
+      if(tasks[j].done){
+        completed++;
+      }
+
+    }
+  }
+
+  var percentage = total ?
+    Math.round((completed/total)*100) :
+    0;
+
+  document.getElementById("percent").textContent =
+    percentage + "%";
+
+  document.getElementById("fill").style.width =
+    percentage + "%";
+
+  document.getElementById("progressText").textContent =
+    total ?
+      completed + " de " + total + " concluídas" :
+      "Nenhuma atividade cadastrada";
+}
+
+
+/* ================= MODO EDIÇÃO ================= */
+
+function setEditing(value){
+
+  editing = value;
+
+  if(editing){
+
+    document.body.classList.add("editing");
+
+    document.getElementById("editModeBtn").textContent =
+      "✓ SAIR DO MODO EDIÇÃO";
+
+  }else{
+
+    document.body.classList.remove("editing");
+
+    document.getElementById("editModeBtn").textContent =
+      "✎ ENTRAR NO MODO EDIÇÃO";
+
+  }
+}
+
+
+/* ================= EDITOR SEÇÃO ================= */
+
+function openSectionEditor(id){
+
+  currentSectionId = id || null;
+
+  if(currentSectionId){
+
+    var section = getSection(currentSectionId);
+
+    sectionText = section ? section.name : "";
+
+    document.getElementById("sectionTitle").textContent =
+      "Editar seção";
+
+  }else{
+
+    sectionText = "";
+
+    document.getElementById("sectionTitle").textContent =
+      "Nova seção";
+  }
+
+  updateSectionDisplay();
+  openModal("sectionModal");
+}
+
+function updateSectionDisplay(){
+
+  var display = document.getElementById("sectionDisplay");
+
+  if(sectionText){
+
+    display.textContent = sectionText;
+    display.classList.remove("placeholder");
+
+  }else{
+
+    display.textContent = "Digite abaixo";
+    display.classList.add("placeholder");
+  }
+}
+
+function saveSection(){
+
+  var value = sectionText.replace(/^\s+|\s+$/g,"");
+
+  if(!value) return;
+
+  if(currentSectionId){
+
+    var section = getSection(currentSectionId);
+
+    if(section){
+      section.name = value;
+    }
+
+  }else{
+
+    state.sections.push({
+      id:makeId("section"),
+      name:value,
+      tasks:[]
+    });
+  }
+
+  saveState();
+  closeModal("sectionModal");
+  render();
+}
+
+
+/* ================= EDITOR ATIVIDADE ================= */
+
+function openTaskEditor(sectionId,taskId){
+
+  currentSectionId = sectionId;
+  currentTaskId = taskId || null;
+
+  var deleteButton =
+    document.getElementById("deleteTaskBtn");
+
+  if(currentTaskId){
+
+    var section = getSection(currentSectionId);
+    var task = getTask(section,currentTaskId);
+
+    if(!task) return;
+
+    taskText = task.name || "";
+    selectedEmoji = task.emoji || "⏰";
+
+    var pieces = (task.time || "").split("–");
+
+    if(pieces.length === 2){
+
+      startMinutes = parseClock(pieces[0]);
+      endMinutes = parseClock(pieces[1]);
+
     }else{
-        box.textContent = "Digite abaixo";
-        box.classList.add("placeholder");
+
+      startMinutes = 450;
+      endMinutes = 480;
     }
+
+    document.getElementById("taskTitle").textContent =
+      "Editar atividade";
+
+    deleteButton.style.display = "block";
+
+  }else{
+
+    taskText = "";
+    selectedEmoji = "⏰";
+
+    startMinutes = 450;
+    endMinutes = 480;
+
+    document.getElementById("taskTitle").textContent =
+      "Nova atividade";
+
+    deleteButton.style.display = "none";
+  }
+
+  updateTaskDisplay();
+  updateTimeDisplays();
+  updateEmojiSelection();
+
+  openModal("taskModal");
+}
+
+function updateTaskDisplay(){
+
+  var display = document.getElementById("taskDisplay");
+
+  if(taskText){
+
+    display.textContent = taskText;
+    display.classList.remove("placeholder");
+
+  }else{
+
+    display.textContent = "Digite abaixo";
+    display.classList.add("placeholder");
+  }
+}
+
+function saveTask(){
+
+  var name = taskText.replace(/^\s+|\s+$/g,"");
+
+  if(!name) return;
+
+  var section = getSection(currentSectionId);
+
+  if(!section) return;
+
+  if(currentTaskId){
+
+    var task = getTask(section,currentTaskId);
+
+    if(!task) return;
+
+    task.name = name;
+    task.emoji = selectedEmoji;
+    task.time =
+      clockText(startMinutes) +
+      "–" +
+      clockText(endMinutes);
+
+  }else{
+
+    section.tasks.push({
+      id:makeId("task"),
+      name:name,
+      emoji:selectedEmoji,
+      time:
+        clockText(startMinutes) +
+        "–" +
+        clockText(endMinutes),
+      done:false
+    });
+  }
+
+  saveState();
+  closeModal("taskModal");
+  render();
 }
 
 
-/* ==================================================
-   KEYBOARD
-================================================== */
-
-var keyboardRows = [
-    ["1","2","3","4","5","6","7","8","9","0"],
-    ["Q","W","E","R","T","Y","U","I","O","P"],
-    ["A","S","D","F","G","H","J","K","L"],
-    ["Z","X","C","V","B","N","M"],
-    ["Á","É","Í","Ó","Ú","Ç"]
-];
-
-function buildKeyboard(containerId,type){
-
-    var keyboard = document.getElementById(containerId);
-    keyboard.innerHTML = "";
-
-    for(var r=0;r<keyboardRows.length;r++){
-
-        var row = document.createElement("div");
-        row.className = "keyrow";
-
-        for(var k=0;k<keyboardRows[r].length;k++){
-
-            (function(letter){
-
-                var button = document.createElement("button");
-                button.className = "key";
-                button.textContent = letter;
-
-                button.onclick = function(){
-
-                    if(type === "section"){
-                        sectionTextValue += letter;
-                        updateSectionText();
-                    }else{
-                        taskTextValue += letter;
-                        updateTaskText();
-                    }
-                };
-
-                row.appendChild(button);
-
-            })(keyboardRows[r][k]);
-        }
-
-        keyboard.appendChild(row);
-    }
-
-    var bottom = document.createElement("div");
-    bottom.className = "keyrow";
-
-    var space = document.createElement("button");
-    space.className = "key space";
-    space.textContent = "ESPAÇO";
-
-    space.onclick = function(){
-        if(type === "section"){
-            sectionTextValue += " ";
-            updateSectionText();
-        }else{
-            taskTextValue += " ";
-            updateTaskText();
-        }
-    };
-
-    var back = document.createElement("button");
-    back.className = "key back";
-    back.textContent = "⌫";
-
-    back.onclick = function(){
-        if(type === "section"){
-            sectionTextValue = sectionTextValue.slice(0,-1);
-            updateSectionText();
-        }else{
-            taskTextValue = taskTextValue.slice(0,-1);
-            updateTaskText();
-        }
-    };
-
-    bottom.appendChild(space);
-    bottom.appendChild(back);
-    keyboard.appendChild(bottom);
-}
-
-
-/* ==================================================
-   EMOJIS
-================================================== */
+/* ================= EMOJIS ================= */
 
 function buildEmojis(){
 
-    var grid = document.getElementById("emojiGrid");
-    grid.innerHTML = "";
+  var grid = document.getElementById("emojiGrid");
 
-    for(var i=0;i<emojis.length;i++){
+  grid.innerHTML = "";
 
-        (function(emojiValue){
+  for(var i=0;i<emojis.length;i++){
 
-            var button = document.createElement("button");
-            button.className = "emoji";
-            button.textContent = emojiValue;
-            button.setAttribute("data-emoji",emojiValue);
+    var button = document.createElement("button");
 
-            button.onclick = function(){
-                selectedEmoji = emojiValue;
-                renderEmojiSelection();
-            };
+    button.className = "emoji-btn";
+    button.textContent = emojis[i];
 
-            grid.appendChild(button);
+    button.setAttribute("data-action","emoji");
+    button.setAttribute("data-emoji",emojis[i]);
 
-        })(emojis[i]);
-    }
+    grid.appendChild(button);
+  }
 }
 
-function renderEmojiSelection(){
+function updateEmojiSelection(){
 
-    var buttons = document.querySelectorAll(".emoji");
+  document.getElementById("selectedEmojiIcon").textContent =
+    selectedEmoji;
 
-    for(var i=0;i<buttons.length;i++){
-        if(buttons[i].getAttribute("data-emoji") === selectedEmoji){
-            buttons[i].classList.add("selected");
-        }else{
-            buttons[i].classList.remove("selected");
-        }
-    }
-}
+  var buttons =
+    document.querySelectorAll(".emoji-btn");
 
+  for(var i=0;i<buttons.length;i++){
 
-/* ==================================================
-   EVENTS
-================================================== */
+    var emoji =
+      buttons[i].getAttribute("data-emoji");
 
-document.getElementById("gear").onclick = function(){
-    openModal("settingsOverlay");
-};
+    if(emoji === selectedEmoji){
 
-document.getElementById("editModeButton").onclick = function(){
-    closeModal("settingsOverlay");
-    setEditing(true);
-};
-
-document.getElementById("finishEdit").onclick = function(){
-    setEditing(false);
-};
-
-document.getElementById("newSectionButton").onclick = function(){
-    closeModal("settingsOverlay");
-    openSectionEditor(null);
-};
-
-document.getElementById("saveSection").onclick = function(){
-
-    var value = sectionTextValue.trim();
-
-    if(!value) return;
-
-    if(sectionEditId){
-
-        var section = findSection(sectionEditId);
-        if(section) section.name = value;
+      buttons[i].classList.add("selected");
 
     }else{
 
-        state.sections.push({
-            id:id("section"),
-            name:value,
-            tasks:[]
-        });
+      buttons[i].classList.remove("selected");
+    }
+  }
+}
+
+
+/* ================= TECLADO ================= */
+
+var keyboardRows = [
+  ["1","2","3","4","5","6","7","8","9","0"],
+  ["Q","W","E","R","T","Y","U","I","O","P"],
+  ["A","S","D","F","G","H","J","K","L"],
+  ["Z","X","C","V","B","N","M"],
+  ["Á","É","Í","Ó","Ú","Ç"]
+];
+
+function buildKeyboard(id,type){
+
+  var keyboard = document.getElementById(id);
+
+  keyboard.innerHTML = "";
+
+  for(var r=0;r<keyboardRows.length;r++){
+
+    var row = document.createElement("div");
+    row.className = "key-row";
+
+    for(var k=0;k<keyboardRows[r].length;k++){
+
+      var button = document.createElement("button");
+
+      button.className = "key";
+      button.textContent = keyboardRows[r][k];
+
+      button.setAttribute("data-action","key");
+      button.setAttribute("data-key",keyboardRows[r][k]);
+      button.setAttribute("data-keyboard",type);
+
+      row.appendChild(button);
     }
 
-    save();
-    closeModal("sectionOverlay");
-    render();
-};
+    keyboard.appendChild(row);
+  }
 
-document.getElementById("saveTask").onclick = function(){
+  var bottom = document.createElement("div");
+  bottom.className = "key-row";
 
-    var name = taskTextValue.trim();
+  var space = document.createElement("button");
 
-    if(!name) return;
+  space.className = "key key-space";
+  space.textContent = "ESPAÇO";
 
-    var section = findSection(taskSectionId);
+  space.setAttribute("data-action","key");
+  space.setAttribute("data-key"," ");
+  space.setAttribute("data-keyboard",type);
 
-    if(!section) return;
+  var back = document.createElement("button");
 
-    if(taskEditId){
+  back.className = "key key-back";
+  back.textContent = "⌫";
 
-        var task = findTask(section,taskEditId);
+  back.setAttribute("data-action","backspace");
+  back.setAttribute("data-keyboard",type);
 
-        if(task){
-            task.name = name;
-            task.emoji = selectedEmoji;
-            task.time = formatTime(startMinutes)+"–"+formatTime(endMinutes);
-        }
+  bottom.appendChild(space);
+  bottom.appendChild(back);
 
-    }else{
+  keyboard.appendChild(bottom);
+}
 
-        section.tasks.push({
-            id:id("task"),
-            name:name,
-            emoji:selectedEmoji,
-            time:formatTime(startMinutes)+"–"+formatTime(endMinutes),
-            done:false
-        });
-    }
+function keyboardKey(type,key){
 
-    save();
-    closeModal("taskOverlay");
-    render();
-};
+  if(type === "section"){
 
-document.getElementById("deleteTask").onclick = function(){
+    sectionText += key;
+    updateSectionDisplay();
 
-    var section = findSection(taskSectionId);
+  }else{
 
-    if(!section || !taskEditId) return;
+    taskText += key;
+    updateTaskDisplay();
+  }
+}
 
-    if(confirm("Excluir esta atividade?")){
+function keyboardBackspace(type){
 
-        section.tasks = section.tasks.filter(function(task){
-            return task.id !== taskEditId;
-        });
+  if(type === "section"){
 
-        save();
-        closeModal("taskOverlay");
-        render();
-    }
-};
+    sectionText =
+      sectionText.substring(0,sectionText.length-1);
 
-document.getElementById("startMinus").onclick = function(){
-    startMinutes -= 15;
-    normalizeTime();
-};
+    updateSectionDisplay();
 
-document.getElementById("startPlus").onclick = function(){
-    startMinutes += 15;
-    normalizeTime();
-};
+  }else{
 
-document.getElementById("endMinus").onclick = function(){
-    endMinutes -= 15;
-    normalizeTime();
-};
+    taskText =
+      taskText.substring(0,taskText.length-1);
 
-document.getElementById("endPlus").onclick = function(){
-    endMinutes += 15;
-    normalizeTime();
-};
+    updateTaskDisplay();
+  }
+}
 
-document.getElementById("clearChecks").onclick = function(){
+
+/* ================= EXCLUSÃO ================= */
+
+function requestDeleteSection(sectionId){
+
+  var section = getSection(sectionId);
+
+  if(!section) return;
+
+  deleteType = "section";
+  deleteSectionId = sectionId;
+  deleteTaskId = null;
+
+  document.getElementById("confirmText").innerHTML =
+    'Excluir a seção <span class="confirm-name"></span>?<br>' +
+    'As atividades desta seção também serão excluídas.';
+
+  var name =
+    document.querySelector("#confirmText .confirm-name");
+
+  if(name){
+    name.textContent = section.name;
+  }
+
+  openModal("confirmModal");
+}
+
+function requestDeleteTask(){
+
+  var section = getSection(currentSectionId);
+  var task = getTask(section,currentTaskId);
+
+  if(!task) return;
+
+  deleteType = "task";
+  deleteSectionId = currentSectionId;
+  deleteTaskId = currentTaskId;
+
+  document.getElementById("confirmText").innerHTML =
+    'Excluir a atividade <span class="confirm-name"></span>?';
+
+  var name =
+    document.querySelector("#confirmText .confirm-name");
+
+  if(name){
+    name.textContent = task.name;
+  }
+
+  openModal("confirmModal");
+}
+
+function confirmDelete(){
+
+  if(deleteType === "section"){
+
+    var newSections = [];
 
     for(var i=0;i<state.sections.length;i++){
-        for(var j=0;j<state.sections[i].tasks.length;j++){
-            state.sections[i].tasks[j].done = false;
+
+      if(state.sections[i].id !== deleteSectionId){
+        newSections.push(state.sections[i]);
+      }
+    }
+
+    state.sections = newSections;
+
+  }else if(deleteType === "task"){
+
+    var section = getSection(deleteSectionId);
+
+    if(section){
+
+      var newTasks = [];
+
+      for(var j=0;j<section.tasks.length;j++){
+
+        if(section.tasks[j].id !== deleteTaskId){
+          newTasks.push(section.tasks[j]);
         }
+      }
+
+      section.tasks = newTasks;
     }
+  }
 
-    save();
-    closeModal("settingsOverlay");
-    render();
-};
+  deleteType = null;
+  deleteSectionId = null;
+  deleteTaskId = null;
 
-document.getElementById("deleteAll").onclick = function(){
+  saveState();
 
-    if(confirm("Apagar todas as seções e atividades?")){
+  closeAllModals();
 
-        state.sections = [];
-        save();
-        setEditing(false);
-        closeModal("settingsOverlay");
-        render();
-    }
-};
-
-var closeButtons = document.querySelectorAll("[data-close]");
-
-for(var c=0;c<closeButtons.length;c++){
-
-    closeButtons[c].onclick = function(){
-        closeModal(this.getAttribute("data-close"));
-    };
+  render();
 }
 
 
-/* ==================================================
-   START
-================================================== */
+/* ================= AÇÕES ================= */
 
-load();
-buildKeyboard("sectionKeyboard","section");
-buildKeyboard("taskKeyboard","task");
+function performAction(target){
+
+  var action = target.getAttribute("data-action");
+
+  if(!action) return;
+
+  if(action === "settings"){
+
+    openModal("settingsModal");
+  }
+
+  else if(action === "close"){
+
+    closeModal(target.getAttribute("data-modal"));
+  }
+
+  else if(action === "toggle-edit"){
+
+    setEditing(!editing);
+    closeModal("settingsModal");
+  }
+
+  else if(action === "new-section"){
+
+    closeModal("settingsModal");
+    openSectionEditor(null);
+  }
+
+  else if(action === "edit-section"){
+
+    openSectionEditor(
+      target.getAttribute("data-section")
+    );
+  }
+
+  else if(action === "save-section"){
+
+    saveSection();
+  }
+
+  else if(action === "new-task"){
+
+    openTaskEditor(
+      target.getAttribute("data-section"),
+      null
+    );
+  }
+
+  else if(action === "edit-task"){
+
+    openTaskEditor(
+      target.getAttribute("data-section"),
+      target.getAttribute("data-task")
+    );
+  }
+
+  else if(action === "save-task"){
+
+    saveTask();
+  }
+
+  else if(action === "toggle-task"){
+
+    var section =
+      getSection(target.getAttribute("data-section"));
+
+    var task =
+      getTask(section,target.getAttribute("data-task"));
+
+    if(task){
+
+      task.done = !task.done;
+
+      saveState();
+
+      if(task.done){
+        target.parentNode.classList.add("done");
+      }else{
+        target.parentNode.classList.remove("done");
+      }
+
+      updateProgress();
+    }
+  }
+
+  else if(action === "emoji"){
+
+    selectedEmoji =
+      target.getAttribute("data-emoji");
+
+    updateEmojiSelection();
+  }
+
+  else if(action === "time"){
+
+    var change =
+      parseInt(target.getAttribute("data-change"),10);
+
+    var timeTarget =
+      target.getAttribute("data-target");
+
+    if(timeTarget === "start"){
+
+      startMinutes =
+        normalizeMinutes(startMinutes + change);
+
+    }else{
+
+      endMinutes =
+        normalizeMinutes(endMinutes + change);
+    }
+
+    updateTimeDisplays();
+  }
+
+  else if(action === "key"){
+
+    keyboardKey(
+      target.getAttribute("data-keyboard"),
+      target.getAttribute("data-key")
+    );
+  }
+
+  else if(action === "backspace"){
+
+    keyboardBackspace(
+      target.getAttribute("data-keyboard")
+    );
+  }
+
+  else if(action === "request-delete-section"){
+
+    requestDeleteSection(
+      target.getAttribute("data-section")
+    );
+  }
+
+  else if(action === "request-delete-task"){
+
+    requestDeleteTask();
+  }
+
+  else if(action === "confirm-delete"){
+
+    confirmDelete();
+  }
+
+  else if(action === "cancel-delete"){
+
+    closeModal("confirmModal");
+
+    deleteType = null;
+    deleteSectionId = null;
+    deleteTaskId = null;
+  }
+
+  else if(action === "clear-checks"){
+
+    for(var i=0;i<state.sections.length;i++){
+
+      for(var j=0;j<state.sections[i].tasks.length;j++){
+
+        state.sections[i].tasks[j].done = false;
+      }
+    }
+
+    saveState();
+    closeModal("settingsModal");
+    render();
+  }
+}
+
+
+/* ================= EVENTOS HYTE ================= */
+
+/*
+  Um único controlador para a interface inteira.
+
+  pointerup funciona bem em navegadores modernos/touch.
+  click fica como fallback.
+
+  A trava evita executar a mesma ação duas vezes quando
+  o navegador dispara pointerup e click juntos.
+*/
+
+function findActionElement(element){
+
+  while(element && element !== document){
+
+    if(
+      element.getAttribute &&
+      element.getAttribute("data-action")
+    ){
+      return element;
+    }
+
+    element = element.parentNode;
+  }
+
+  return null;
+}
+
+function pointerHandler(event){
+
+  var target = findActionElement(event.target);
+
+  if(!target) return;
+
+  lastPointerTime = Date.now();
+
+  event.preventDefault();
+
+  performAction(target);
+}
+
+function clickHandler(event){
+
+  if(Date.now() - lastPointerTime < 500){
+    return;
+  }
+
+  var target = findActionElement(event.target);
+
+  if(!target) return;
+
+  event.preventDefault();
+
+  performAction(target);
+}
+
+if(window.PointerEvent){
+
+  document.addEventListener(
+    "pointerup",
+    pointerHandler,
+    false
+  );
+}
+
+document.addEventListener(
+  "click",
+  clickHandler,
+  false
+);
+
+
+/* ================= INICIAR ================= */
+
+loadState();
+
+buildKeyboard(
+  "sectionKeyboard",
+  "section"
+);
+
+buildKeyboard(
+  "taskKeyboard",
+  "task"
+);
+
 buildEmojis();
+
 render();
 
 })();
