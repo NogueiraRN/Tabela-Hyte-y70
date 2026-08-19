@@ -3,3409 +3,1521 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Checklist HYTE</title>
 
 <style>
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 
-* {
-    box-sizing: border-box;
+html,body{
+    margin:0;
+    width:100%;
+    height:100%;
+    background:#000;
+    color:#f4f4f4;
+    font-family:Arial,Helvetica,sans-serif;
 }
 
-html,
-body {
-    margin: 0;
-    width: 100%;
-    height: 100%;
+body{overflow:hidden}
 
-    background: transparent;
-
-    color: #f2f2f2;
-
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
+button{
+    font-family:inherit;
+    cursor:pointer;
 }
 
-body {
-    overflow: hidden;
+.app{
+    width:100%;
+    height:100%;
+    padding:12px;
+    display:flex;
+    flex-direction:column;
 }
 
-/* =====================================================
-   APP
-===================================================== */
+/* ================= HEADER ================= */
 
-.app {
-    width: 100%;
-    height: 100%;
-
-    padding: 10px 12px;
+.header{
+    flex:none;
+    padding:16px 12px 14px;
 }
 
-.card {
-    width: 100%;
-    height: 100%;
+.header-line{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+}
 
-    display: flex;
-    flex-direction: column;
+.eyebrow{
+    color:#8a8a8a;
+    font-size:12px;
+    font-weight:900;
+    letter-spacing:3px;
+    margin-bottom:5px;
+}
 
-    position: relative;
+.title{
+    font-size:30px;
+    font-weight:900;
+    line-height:1;
+}
 
-    overflow: hidden;
+.subtitle{
+    margin-top:8px;
+    color:#777;
+    font-size:15px;
+}
 
+.gear{
+    flex:none;
+    width:50px;
+    height:50px;
+    border:1px solid #777;
+    border-radius:10px;
+    background:#070707;
+    color:white;
+    font-size:25px;
+}
+
+/* ================= PROGRESS ================= */
+
+.progress-area{
+    flex:none;
+    padding:5px 12px 16px;
+}
+
+.progress-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:8px;
+}
+
+.progress-label{
+    color:#8c8c8c;
+    font-size:12px;
+    font-weight:900;
+    letter-spacing:2px;
+}
+
+.progress-number{
+    font-size:20px;
+    font-weight:900;
+}
+
+.progress-track{
+    width:100%;
+    height:9px;
+    background:#111;
+    border:1px solid #333;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.progress-fill{
+    width:0%;
+    height:100%;
+    background:#f2f2f2;
+    transition:width .12s linear;
+}
+
+.progress-info{
+    margin-top:7px;
+    color:#666;
+    font-size:12px;
+}
+
+/* ================= MAIN CARD ================= */
+
+.card{
+    flex:1;
+    min-height:0;
+    position:relative;
+    border:1px solid #555;
+    border-radius:18px;
     background:
-        linear-gradient(
-            180deg,
-            rgba(7,7,7,.99),
-            rgba(2,2,2,.99)
-        );
-
-    border: 1px solid #626262;
-
-    border-radius: 18px;
-}
-
-/* pincel */
-
-.card::before {
-    content: "";
-
-    position: absolute;
-
-    top: 0;
-    left: 0;
-
-    width: 150px;
-    height: 22px;
-
-    background:
-        linear-gradient(
-            90deg,
-            #fff 0%,
-            #fff 70%,
-            transparent 100%
-        );
-
-    z-index: 2;
-}
-
-/* =====================================================
-   HEADER
-===================================================== */
-
-.header {
-    flex-shrink: 0;
-
-    padding:
-        25px
-        20px
-        16px;
-
-    border-bottom:
-        1px solid
-        rgba(255,255,255,.28);
-
-    position: relative;
-
-    z-index: 3;
-}
-
-.header-top {
-    display: flex;
-
-    justify-content: space-between;
-    align-items: center;
-
-    gap: 12px;
-}
-
-.header-title {
-    font-size: 30px;
-
-    line-height: 1;
-
-    font-weight: 900;
-
-    text-transform: uppercase;
-}
-
-.settings-button {
-    width: 44px;
-    height: 44px;
-
-    display: flex;
-
-    justify-content: center;
-    align-items: center;
-
-    padding: 0;
-
-    background: transparent;
-
-    color: white;
-
-    border:
-        1px solid
-        #ddd;
-
-    border-radius: 8px;
-
-    font-size: 23px;
-
-    cursor: pointer;
-}
-
-.subtitle {
-    margin-top: 9px;
-
-    color: #888;
-
-    font-size: 17px;
-}
-
-/* =====================================================
-   EDIT MODE
-===================================================== */
-
-.edit-banner {
-    display: none;
-
-    flex-shrink: 0;
-
-    padding: 9px;
-
-    background: #eee;
-
-    color: #080808;
-
-    text-align: center;
-
-    font-size: 12px;
-
-    font-weight: 900;
-
-    letter-spacing: 2px;
-}
-
-.app.edit-mode .edit-banner {
-    display: block;
-}
-
-/* =====================================================
-   PROGRESSO
-===================================================== */
-
-.progress {
-    flex-shrink: 0;
-
-    padding:
-        14px
-        20px
-        15px;
-
-    border-bottom:
-        1px solid
-        rgba(255,255,255,.14);
-}
-
-.progress-top {
-    display: flex;
-
-    justify-content: space-between;
-    align-items: center;
-
-    margin-bottom: 9px;
-}
-
-.progress-label {
-    color: #8d8d8d;
-
-    font-size: 12px;
-
-    font-weight: 900;
-
-    letter-spacing: 2px;
-}
-
-.progress-percent {
-    font-size: 18px;
-
-    font-weight: 900;
-}
-
-.progress-bar {
-    height: 8px;
-
-    overflow: hidden;
-
-    background: #181818;
-
-    border:
-        1px solid
-        #373737;
-
-    border-radius: 10px;
-}
-
-.progress-fill {
-    width: 0%;
-
-    height: 100%;
-
-    background: #eee;
-}
-
-.progress-info {
-    margin-top: 7px;
-
-    color: #707070;
-
-    font-size: 12px;
-}
-
-/* =====================================================
-   CONTEÚDO
-===================================================== */
-
-.content {
-    flex: 1;
-
-    min-height: 0;
-
-    overflow-y: auto;
-
-    padding:
-        10px
-        13px
-        40px;
-
-    scrollbar-width: thin;
-
-    scrollbar-color:
-        #777
-        #111;
+        radial-gradient(circle at 80% 20%,rgba(255,255,255,.035),transparent 30%),
+        linear-gradient(180deg,#080808,#020202);
+    overflow:hidden;
+}
+
+.card:before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:170px;
+    height:12px;
+    background:#eee;
+    clip-path:polygon(0 0,100% 0,75% 45%,100% 70%,42% 100%,0 70%);
+    opacity:.9;
 }
 
-.content::-webkit-scrollbar {
-    width: 7px;
+.scroll{
+    height:100%;
+    overflow-y:auto;
+    padding:18px 13px 50px;
+    scrollbar-width:thin;
+    scrollbar-color:#777 #111;
 }
 
-.content::-webkit-scrollbar-track {
-    background: #111;
-}
+.scroll::-webkit-scrollbar{width:7px}
+.scroll::-webkit-scrollbar-track{background:#111}
+.scroll::-webkit-scrollbar-thumb{background:#777;border-radius:20px}
 
-.content::-webkit-scrollbar-thumb {
-    background: #777;
+/* ================= EMPTY ================= */
 
-    border-radius: 20px;
+.empty{
+    min-height:450px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:25px;
+}
+
+.empty-check{
+    font-size:58px;
+    color:#555;
 }
-
-/* =====================================================
-   EMPTY
-===================================================== */
-
-.empty {
-    min-height: 350px;
 
-    display: flex;
-
-    flex-direction: column;
-
-    justify-content: center;
-    align-items: center;
-
-    padding: 25px;
-
-    text-align: center;
+.empty h2{
+    margin:10px 0 6px;
+    font-size:25px;
 }
 
-.empty-icon {
-    font-size: 52px;
+.empty p{
+    margin:0 0 22px;
+    color:#777;
+    font-size:15px;
+    line-height:1.4;
 }
-
-.empty-title {
-    margin-top: 15px;
 
-    font-size: 25px;
+/* ================= SECTION ================= */
 
-    font-weight: 900;
+.section{
+    margin-bottom:22px;
 }
 
-.empty-text {
-    max-width: 390px;
-
-    margin-top: 8px;
-
-    color: #777;
-
-    font-size: 15px;
-
-    line-height: 1.4;
+.section-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    margin-bottom:8px;
 }
-
-/* =====================================================
-   SEÇÃO
-===================================================== */
 
-.section-block {
-    margin-bottom: 16px;
+.brush-title{
+    position:relative;
+    display:inline-block;
+    margin-left:10px;
+    padding:7px 19px 7px 14px;
+    background:#eee;
+    color:#090909;
+    font-size:21px;
+    font-weight:900;
+    font-style:italic;
+    text-transform:uppercase;
+    transform:skew(-4deg);
 }
 
-.section-top {
-    display: flex;
-
-    justify-content: space-between;
-    align-items: center;
-
-    gap: 10px;
+.brush-title:before{
+    content:"";
+    position:absolute;
+    left:-10px;
+    top:3px;
+    width:15px;
+    height:80%;
+    background:#eee;
+    clip-path:polygon(40% 0,100% 5%,70% 100%,0 75%);
 }
-
-.section-title {
-    position: relative;
-
-    display: inline-block;
-
-    margin:
-        22px
-        12px
-        10px;
 
-    padding:
-        6px
-        18px
-        6px
-        15px;
-
-    background: #f1f1f1;
-
-    color: #080808;
-
-    font-size: 22px;
-
-    line-height: 1;
-
-    font-weight: 900;
-
-    font-style: italic;
-
-    text-transform: uppercase;
-
-    transform: skew(-4deg);
+.brush-title:after{
+    content:"";
+    position:absolute;
+    right:-17px;
+    top:4px;
+    width:22px;
+    height:80%;
+    background:#aaa;
+    clip-path:polygon(0 0,100% 10%,65% 100%,0 90%);
 }
-
-.section-title::before {
-    content: "";
 
-    position: absolute;
-
-    left: -10px;
-    top: 0;
-
-    width: 15px;
-    height: 100%;
-
-    background: #f1f1f1;
+.section-actions{
+    display:flex;
+    gap:5px;
 }
-
-.section-title::after {
-    content: "";
 
-    position: absolute;
-
-    right: -18px;
-    top: 3px;
-
-    width: 22px;
-    height: 80%;
-
-    background: #f1f1f1;
-
-    opacity: .8;
+.icon-btn{
+    min-width:37px;
+    height:37px;
+    border:1px solid #444;
+    border-radius:7px;
+    background:#101010;
+    color:#aaa;
+    font-size:16px;
 }
 
-.section-tools {
-    display: none;
+/* ================= TASK ================= */
 
-    gap: 5px;
+.task-list{
+    border:1px solid #292929;
+    border-radius:17px;
+    overflow:hidden;
 }
 
-.app.edit-mode .section-tools {
-    display: flex;
+.task{
+    min-height:75px;
+    display:grid;
+    grid-template-columns:42px 118px 1fr 38px;
+    gap:10px;
+    align-items:center;
+    padding:9px 11px;
+    border-bottom:1px solid #202020;
+    background:rgba(255,255,255,.012);
 }
-
-.tool-button {
-    min-height: 34px;
 
-    padding:
-        6px
-        9px;
-
-    background: #111;
-
-    color: #bbb;
-
-    border:
-        1px solid
-        #444;
-
-    border-radius: 7px;
-
-    font-size: 12px;
-
-    font-weight: 800;
+.task:nth-child(even){
+    background:rgba(255,255,255,.027);
 }
-
-/* =====================================================
-   GROUP
-===================================================== */
-
-.group {
-    overflow: hidden;
-
-    border:
-        1px solid
-        rgba(255,255,255,.14);
 
-    border-radius: 17px;
-
-    background:
-        rgba(0,0,0,.35);
+.task:last-child{
+    border-bottom:0;
 }
-
-/* =====================================================
-   TASK
-===================================================== */
-
-.task {
-    min-height: 76px;
-
-    display: grid;
-
-    grid-template-columns:
-        42px
-        130px
-        1fr
-        auto;
 
-    align-items: center;
-
-    gap: 11px;
-
-    padding:
-        10px
-        13px;
-
-    border-bottom:
-        1px solid
-        rgba(255,255,255,.05);
-
-    background:
-        linear-gradient(
-            90deg,
-            rgba(255,255,255,.02),
-            rgba(255,255,255,.003)
-        );
+.check{
+    appearance:none;
+    -webkit-appearance:none;
+    width:31px;
+    height:31px;
+    margin:0;
+    border:2px solid #aaa;
+    border-radius:6px;
+    background:#060606;
+    position:relative;
 }
 
-.task:last-child {
-    border-bottom: 0;
+.check:checked{
+    background:#eee;
+    border-color:#eee;
 }
 
-.task:nth-child(even) {
-    background:
-        linear-gradient(
-            90deg,
-            rgba(255,255,255,.035),
-            rgba(255,255,255,.008)
-        );
+.check:checked:after{
+    content:"✓";
+    position:absolute;
+    color:#080808;
+    font-size:24px;
+    font-weight:900;
+    left:5px;
+    top:-3px;
 }
-
-.task-check {
-    appearance: none;
 
-    -webkit-appearance: none;
-
-    width: 32px;
-    height: 32px;
-
-    margin: 0;
-
-    border:
-        2px solid
-        #b6b6b6;
-
-    border-radius: 6px;
-
-    background: transparent;
-
-    position: relative;
+.time{
+    color:#929292;
+    font-size:16px;
+    white-space:nowrap;
 }
 
-.task-check:checked {
-    background: #eee;
+.task-name{
+    font-size:21px;
+    font-weight:700;
+    line-height:1.2;
 }
-
-.task-check:checked::after {
-    content: "✓";
-
-    position: absolute;
-
-    left: 6px;
-    top: -2px;
 
-    color: #111;
-
-    font-size: 25px;
-
-    font-weight: 900;
+.task.done .task-name{
+    color:#666;
+    text-decoration:line-through;
 }
-
-.task-time {
-    color: #969696;
-
-    font-size: 18px;
 
-    white-space: nowrap;
+.task.done .time{
+    color:#555;
 }
 
-.task-name {
-    color: #f2f2f2;
-
-    font-size: 23px;
-
-    font-weight: 600;
-
-    line-height: 1.2;
+.edit-task{
+    width:37px;
+    height:37px;
+    border:1px solid #3d3d3d;
+    border-radius:7px;
+    background:#0c0c0c;
+    color:#aaa;
+    font-size:16px;
 }
 
-.task.done .task-time {
-    color: #606060;
+.add-task{
+    width:100%;
+    min-height:48px;
+    margin-top:7px;
+    border:1px dashed #555;
+    border-radius:10px;
+    background:#090909;
+    color:#aaa;
+    font-size:14px;
+    font-weight:900;
 }
 
-.task.done .task-name {
-    color: #777;
-
-    text-decoration: line-through;
-}
+/* ================= EDIT MODE ================= */
 
-.task-tools {
-    display: none;
-}
+.edit-only{display:none}
 
-.app.edit-mode .task-tools {
-    display: block;
+body.editing .edit-only{
+    display:inline-flex;
 }
-
-.delete-task {
-    width: 34px;
-    height: 34px;
-
-    background: #111;
-
-    color: #888;
 
-    border:
-        1px solid
-        #444;
-
-    border-radius: 7px;
-
-    font-size: 18px;
+body.editing .task{
+    grid-template-columns:42px 118px 1fr 38px;
 }
-
-/* =====================================================
-   ADD TASK
-===================================================== */
-
-.add-task-button {
-    display: none;
-
-    width: 100%;
 
-    min-height: 48px;
-
-    margin-top: 7px;
-
-    background:
-        rgba(255,255,255,.025);
-
-    color: #aaa;
-
-    border:
-        1px dashed
-        rgba(255,255,255,.25);
-
-    border-radius: 10px;
-
-    font-size: 14px;
-
-    font-weight: 900;
+body:not(.editing) .task{
+    grid-template-columns:42px 118px 1fr;
 }
 
-.app.edit-mode .add-task-button {
-    display: block;
+body:not(.editing) .edit-task{
+    display:none;
 }
-
-/* =====================================================
-   BOTÕES
-===================================================== */
-
-.primary-button {
-    min-height: 50px;
-
-    margin-top: 14px;
 
-    padding:
-        12px
-        20px;
-
-    background: #eee;
-
-    color: #070707;
-
-    border: 0;
-
-    border-radius: 9px;
-
-    font-size: 15px;
-
-    font-weight: 900;
+.edit-bar{
+    display:none;
+    flex:none;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    padding:10px 12px;
+    background:#eee;
+    color:#080808;
+    font-weight:900;
 }
-
-.config-button {
-    width: 100%;
-
-    min-height: 50px;
-
-    margin-bottom: 8px;
 
-    background: #111;
-
-    color: #eee;
-
-    border:
-        1px solid
-        #444;
-
-    border-radius: 8px;
-
-    font-size: 15px;
-
-    font-weight: 900;
+body.editing .edit-bar{
+    display:flex;
 }
-
-.config-button.primary {
-    background: #eee;
 
-    color: #070707;
+.finish-edit{
+    border:0;
+    border-radius:7px;
+    background:#080808;
+    color:white;
+    padding:10px 15px;
+    font-weight:900;
 }
 
-.config-button.danger {
-    color: #dda7a7;
+/* ================= BUTTONS ================= */
 
-    border-color: #604040;
+.primary{
+    min-height:51px;
+    border:0;
+    border-radius:9px;
+    padding:12px 18px;
+    background:#eee;
+    color:#050505;
+    font-size:15px;
+    font-weight:900;
 }
-
-/* =====================================================
-   OVERLAYS
-===================================================== */
-
-.overlay {
-    position: fixed;
-
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
 
-    display: none;
-
-    align-items: center;
-    justify-content: center;
-
-    padding: 14px;
-
-    background:
-        rgba(0,0,0,.91);
-
-    z-index: 9999;
+.secondary{
+    min-height:48px;
+    border:1px solid #444;
+    border-radius:9px;
+    padding:11px 15px;
+    background:#101010;
+    color:#eee;
+    font-size:14px;
+    font-weight:800;
 }
 
-.overlay.show {
-    display: flex;
+.danger{
+    color:#e3a1a1;
+    border-color:#5c3434;
 }
-
-.modal {
-    width: 100%;
-
-    max-width: 560px;
-
-    max-height: 95vh;
-
-    overflow-y: auto;
-
-    background: #080808;
 
-    border:
-        1px solid
-        #555;
+/* ================= MODAL ================= */
 
-    border-radius: 16px;
+.overlay{
+    position:fixed;
+    inset:0;
+    z-index:1000;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:14px;
+    background:rgba(0,0,0,.92);
 }
 
-.modal-header {
-    display: flex;
-
-    justify-content: space-between;
-    align-items: center;
-
-    padding: 18px;
-
-    border-bottom:
-        1px solid
-        #292929;
+.overlay.open{
+    display:flex;
 }
 
-.modal-title {
-    font-size: 23px;
-
-    font-weight: 900;
+.modal{
+    width:100%;
+    max-width:570px;
+    max-height:94vh;
+    overflow-y:auto;
+    border:1px solid #555;
+    border-radius:16px;
+    background:#080808;
 }
-
-.close-button {
-    width: 40px;
-    height: 40px;
 
-    background: transparent;
-
-    color: white;
-
-    border:
-        1px solid
-        #555;
-
-    border-radius: 8px;
-
-    font-size: 23px;
+.modal-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:17px 18px;
+    border-bottom:1px solid #292929;
 }
 
-.modal-body {
-    padding: 18px;
+.modal-title{
+    font-size:23px;
+    font-weight:900;
 }
-
-/* =====================================================
-   TEXT PREVIEW
-===================================================== */
 
-.field-label {
-    margin-bottom: 8px;
-
-    color: #888;
-
-    font-size: 12px;
-
-    font-weight: 900;
-
-    letter-spacing: 1.5px;
+.close{
+    width:40px;
+    height:40px;
+    border:1px solid #555;
+    border-radius:8px;
+    background:#090909;
+    color:white;
+    font-size:22px;
 }
-
-.text-preview {
-    min-height: 60px;
-
-    display: flex;
-
-    align-items: center;
-
-    padding:
-        10px
-        13px;
-
-    margin-bottom: 14px;
 
-    background: #020202;
-
-    color: white;
-
-    border:
-        1px solid
-        #555;
-
-    border-radius: 9px;
-
-    font-size: 20px;
-
-    font-weight: 600;
-
-    word-break: break-word;
+.modal-body{
+    padding:18px;
 }
 
-.text-preview.placeholder {
-    color: #555;
+.label{
+    margin:15px 0 8px;
+    color:#888;
+    font-size:11px;
+    font-weight:900;
+    letter-spacing:2px;
 }
-
-/* =====================================================
-   TECLADO FIXO
-===================================================== */
-
-.keyboard {
-    display: flex;
-
-    flex-direction: column;
 
-    gap: 6px;
+/* ================= TEXT DISPLAY ================= */
 
-    width: 100%;
+.text-display{
+    min-height:58px;
+    padding:14px;
+    border:1px solid #555;
+    border-radius:9px;
+    background:#020202;
+    color:white;
+    font-size:19px;
+    font-weight:700;
+    word-break:break-word;
 }
 
-.key-row {
-    display: flex;
-
-    gap: 5px;
-
-    width: 100%;
+.placeholder{
+    color:#555;
 }
-
-.key {
-    flex: 1;
-
-    min-width: 0;
-
-    height: 47px;
-
-    padding: 0;
-
-    background: #151515;
-
-    color: #eee;
-
-    border:
-        1px solid
-        #484848;
 
-    border-radius: 7px;
+/* ================= KEYBOARD ================= */
 
-    font-size: 16px;
-
-    font-weight: 800;
+.keyboard{
+    margin-top:10px;
 }
-
-.key:active {
-    background: #eee;
 
-    color: #080808;
+.keyrow{
+    display:flex;
+    gap:4px;
+    margin-bottom:5px;
 }
 
-.key-space {
-    flex: 4;
+.key{
+    flex:1;
+    height:44px;
+    min-width:0;
+    padding:0;
+    border:1px solid #444;
+    border-radius:6px;
+    background:#151515;
+    color:white;
+    font-size:14px;
+    font-weight:800;
 }
 
-.key-delete {
-    flex: 1.4;
+.key:active{
+    background:#eee;
+    color:#050505;
 }
 
-/* =====================================================
-   EMOJIS
-===================================================== */
+.space{flex:5}
+.back{flex:1.5}
 
-.emoji-grid {
-    display: grid;
+/* ================= EMOJI ================= */
 
-    grid-template-columns:
-        repeat(6, 1fr);
-
-    gap: 7px;
-
-    margin-bottom: 18px;
+.emoji-grid{
+    display:grid;
+    grid-template-columns:repeat(6,1fr);
+    gap:7px;
 }
-
-.emoji-button {
-    min-height: 50px;
 
-    background: #111;
-
-    border:
-        1px solid
-        #444;
-
-    border-radius: 8px;
-
-    font-size: 24px;
+.emoji{
+    min-height:49px;
+    border:1px solid #444;
+    border-radius:8px;
+    background:#111;
+    font-size:23px;
 }
 
-.emoji-button.selected {
-    background: #eee;
-
-    border-color: white;
+.emoji.selected{
+    background:#eee;
+    border-color:white;
 }
-
-/* =====================================================
-   TIME
-===================================================== */
 
-.time-grid {
-    display: grid;
+/* ================= TIME ================= */
 
-    grid-template-columns:
-        1fr
-        1fr;
-
-    gap: 10px;
-
-    margin-bottom: 18px;
+.time-editor{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
 }
-
-.time-box {
-    padding: 12px;
-
-    background: #050505;
 
-    border:
-        1px solid
-        #333;
-
-    border-radius: 10px;
-
-    text-align: center;
+.time-card{
+    padding:11px;
+    border:1px solid #333;
+    border-radius:10px;
+    background:#050505;
+    text-align:center;
 }
-
-.time-label {
-    margin-bottom: 10px;
-
-    color: #777;
-
-    font-size: 11px;
 
-    font-weight: 900;
+.time-value{
+    font-size:27px;
+    font-weight:900;
+    margin-bottom:9px;
 }
 
-.time-value {
-    margin-bottom: 10px;
-
-    font-size: 27px;
-
-    font-weight: 900;
+.time-controls{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:6px;
 }
 
-.time-buttons {
-    display: grid;
-
-    grid-template-columns:
-        1fr
-        1fr;
-
-    gap: 6px;
+.time-controls button{
+    min-height:40px;
+    border:1px solid #444;
+    border-radius:7px;
+    background:#111;
+    color:white;
+    font-size:17px;
+    font-weight:900;
 }
-
-.time-button {
-    min-height: 40px;
 
-    background: #111;
+/* ================= SETTINGS ================= */
 
-    color: white;
-
-    border:
-        1px solid
-        #444;
-
-    border-radius: 7px;
-
-    font-size: 17px;
-
-    font-weight: 900;
+.settings-list{
+    display:grid;
+    gap:8px;
 }
-
-/* =====================================================
-   PRIVACIDADE
-===================================================== */
 
-.privacy {
-    margin-top: 16px;
-
-    padding: 12px;
-
-    color: #777;
-
-    border:
-        1px solid
-        #292929;
-
-    border-radius: 9px;
-
-    font-size: 12px;
-
-    line-height: 1.5;
+.settings-list button{
+    width:100%;
 }
 
-/* =====================================================
-   REPAINT
-===================================================== */
-
-.paint-pulse {
-    transform:
-        translateZ(0)
-        scale(1.00001);
-
-    -webkit-transform:
-        translateZ(0)
-        scale(1.00001);
+.note{
+    margin-top:17px;
+    padding:12px;
+    border:1px solid #292929;
+    border-radius:9px;
+    color:#777;
+    font-size:12px;
+    line-height:1.5;
 }
-
-/* =====================================================
-   HYTE
-===================================================== */
 
-@media (max-width: 500px) {
+/* ================= RESPONSIVE ================= */
 
-    .app {
-        padding:
-            8px
-            10px;
-    }
-
-    .header-title {
-        font-size: 29px;
-    }
-
-    .section-title {
-        font-size: 21px;
-    }
-
-    .task {
-        grid-template-columns:
-            40px
-            125px
-            1fr
-            auto;
-    }
-
-    .task-time {
-        font-size: 17px;
-    }
-
-    .task-name {
-        font-size: 22px;
-    }
-
-    .emoji-grid {
-        grid-template-columns:
-            repeat(5, 1fr);
-    }
-
-    .key {
-        height: 44px;
-
-        font-size: 14px;
-    }
-
+@media(max-width:500px){
+    .title{font-size:28px}
+    .task-name{font-size:20px}
+    .time{font-size:15px}
+    .task{grid-template-columns:40px 112px 1fr 36px}
+    body:not(.editing) .task{grid-template-columns:40px 112px 1fr}
+    .emoji-grid{grid-template-columns:repeat(5,1fr)}
 }
-
 </style>
 </head>
 
-
 <body>
 
-<div
-    class="app"
-    id="app"
->
-
-<div class="card">
-
+<div class="app">
 
     <div class="header">
-
-        <div class="header-top">
-
-            <div class="header-title">
-                CHECKLIST DE HOJE
+        <div class="header-line">
+            <div>
+                <div class="eyebrow">ROTINA DIÁRIA</div>
+                <div class="title">CHECKLIST DE HOJE</div>
+                <div class="subtitle">Marque as atividades concluídas</div>
             </div>
 
-            <button
-                class="settings-button"
-                onclick="openSettings()"
-            >
-                ⚙
+            <button class="gear" id="gear">⚙</button>
+        </div>
+    </div>
+
+    <div class="progress-area">
+        <div class="progress-top">
+            <span class="progress-label">PROGRESSO DO DIA</span>
+            <span class="progress-number" id="percent">0%</span>
+        </div>
+
+        <div class="progress-track">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+
+        <div class="progress-info" id="progressInfo">
+            Nenhuma atividade cadastrada
+        </div>
+    </div>
+
+    <div class="edit-bar">
+        <span>EDITANDO CHECKLIST</span>
+        <button class="finish-edit" id="finishEdit">✓ CONCLUIR</button>
+    </div>
+
+    <div class="card">
+        <div class="scroll" id="content"></div>
+    </div>
+
+</div>
+
+
+<!-- CONFIGURAÇÕES -->
+
+<div class="overlay" id="settingsOverlay">
+    <div class="modal">
+
+        <div class="modal-head">
+            <div class="modal-title">Minha checklist</div>
+            <button class="close" data-close="settingsOverlay">×</button>
+        </div>
+
+        <div class="modal-body">
+
+            <div class="settings-list">
+                <button class="primary" id="editModeButton">
+                    ✎ EDITAR CHECKLIST
+                </button>
+
+                <button class="secondary" id="newSectionButton">
+                    + NOVA SEÇÃO
+                </button>
+
+                <button class="secondary" id="clearChecks">
+                    LIMPAR MARCAÇÕES
+                </button>
+
+                <button class="secondary danger" id="deleteAll">
+                    APAGAR TUDO
+                </button>
+            </div>
+
+            <div class="note">
+                Sua rotina é armazenada no navegador deste dispositivo.
+                O código publicado não contém as atividades que você cadastrar.
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- EDITAR/CRIAR SEÇÃO -->
+
+<div class="overlay" id="sectionOverlay">
+    <div class="modal">
+
+        <div class="modal-head">
+            <div class="modal-title" id="sectionModalTitle">Nova seção</div>
+            <button class="close" data-close="sectionOverlay">×</button>
+        </div>
+
+        <div class="modal-body">
+
+            <div class="label">NOME DA SEÇÃO</div>
+
+            <div class="text-display placeholder" id="sectionText">
+                Digite abaixo
+            </div>
+
+            <div class="keyboard" id="sectionKeyboard"></div>
+
+            <button class="primary" style="width:100%;margin-top:12px" id="saveSection">
+                SALVAR SEÇÃO
             </button>
 
         </div>
-
-        <div class="subtitle">
-            Marque as atividades concluídas
-        </div>
-
     </div>
-
-
-    <div class="edit-banner">
-        MODO DE EDIÇÃO ATIVO
-    </div>
-
-
-    <div class="progress">
-
-        <div class="progress-top">
-
-            <div class="progress-label">
-                PROGRESSO DO DIA
-            </div>
-
-            <div
-                class="progress-percent"
-                id="progressPercent"
-            >
-                0%
-            </div>
-
-        </div>
-
-        <div class="progress-bar">
-
-            <div
-                class="progress-fill"
-                id="progressFill"
-            ></div>
-
-        </div>
-
-        <div
-            class="progress-info"
-            id="progressInfo"
-        >
-            Nenhuma atividade cadastrada
-        </div>
-
-    </div>
-
-
-    <div
-        class="content"
-        id="content"
-    ></div>
-
-
-</div>
-
 </div>
 
 
-<!-- =====================================================
-     TECLADO / TEXTO
-===================================================== -->
+<!-- ATIVIDADE -->
 
-<div
-    class="overlay"
-    id="textOverlay"
->
+<div class="overlay" id="taskOverlay">
+    <div class="modal">
 
-<div class="modal">
-
-    <div class="modal-header">
-
-        <div
-            class="modal-title"
-            id="textTitle"
-        >
-            Escrever
+        <div class="modal-head">
+            <div class="modal-title" id="taskModalTitle">Nova atividade</div>
+            <button class="close" data-close="taskOverlay">×</button>
         </div>
 
-        <button
-            class="close-button"
-            onclick="cancelText()"
-        >
-            ×
-        </button>
+        <div class="modal-body">
 
-    </div>
+            <div class="label">HORÁRIO</div>
 
+            <div class="time-editor">
 
-    <div class="modal-body">
+                <div class="time-card">
+                    <div class="label" style="margin-top:0">INÍCIO</div>
+                    <div class="time-value" id="startTime">07:30</div>
 
-        <div class="field-label">
-            TEXTO
-        </div>
-
-
-        <div
-            class="text-preview placeholder"
-            id="textPreview"
-        >
-            Digite usando o teclado abaixo
-        </div>
-
-
-        <!-- TECLADO FIXO NO HTML -->
-
-        <div class="keyboard">
-
-
-            <div class="key-row">
-
-                <button class="key" onclick="typeKey('1')">1</button>
-                <button class="key" onclick="typeKey('2')">2</button>
-                <button class="key" onclick="typeKey('3')">3</button>
-                <button class="key" onclick="typeKey('4')">4</button>
-                <button class="key" onclick="typeKey('5')">5</button>
-                <button class="key" onclick="typeKey('6')">6</button>
-                <button class="key" onclick="typeKey('7')">7</button>
-                <button class="key" onclick="typeKey('8')">8</button>
-                <button class="key" onclick="typeKey('9')">9</button>
-                <button class="key" onclick="typeKey('0')">0</button>
-
-            </div>
-
-
-            <div class="key-row">
-
-                <button class="key" onclick="typeKey('Q')">Q</button>
-                <button class="key" onclick="typeKey('W')">W</button>
-                <button class="key" onclick="typeKey('E')">E</button>
-                <button class="key" onclick="typeKey('R')">R</button>
-                <button class="key" onclick="typeKey('T')">T</button>
-                <button class="key" onclick="typeKey('Y')">Y</button>
-                <button class="key" onclick="typeKey('U')">U</button>
-                <button class="key" onclick="typeKey('I')">I</button>
-                <button class="key" onclick="typeKey('O')">O</button>
-                <button class="key" onclick="typeKey('P')">P</button>
-
-            </div>
-
-
-            <div class="key-row">
-
-                <button class="key" onclick="typeKey('A')">A</button>
-                <button class="key" onclick="typeKey('S')">S</button>
-                <button class="key" onclick="typeKey('D')">D</button>
-                <button class="key" onclick="typeKey('F')">F</button>
-                <button class="key" onclick="typeKey('G')">G</button>
-                <button class="key" onclick="typeKey('H')">H</button>
-                <button class="key" onclick="typeKey('J')">J</button>
-                <button class="key" onclick="typeKey('K')">K</button>
-                <button class="key" onclick="typeKey('L')">L</button>
-
-            </div>
-
-
-            <div class="key-row">
-
-                <button class="key" onclick="typeKey('Z')">Z</button>
-                <button class="key" onclick="typeKey('X')">X</button>
-                <button class="key" onclick="typeKey('C')">C</button>
-                <button class="key" onclick="typeKey('V')">V</button>
-                <button class="key" onclick="typeKey('B')">B</button>
-                <button class="key" onclick="typeKey('N')">N</button>
-                <button class="key" onclick="typeKey('M')">M</button>
-
-            </div>
-
-
-            <div class="key-row">
-
-                <button class="key" onclick="typeKey('Á')">Á</button>
-                <button class="key" onclick="typeKey('É')">É</button>
-                <button class="key" onclick="typeKey('Í')">Í</button>
-                <button class="key" onclick="typeKey('Ó')">Ó</button>
-                <button class="key" onclick="typeKey('Ú')">Ú</button>
-                <button class="key" onclick="typeKey('Ç')">Ç</button>
-
-            </div>
-
-
-            <div class="key-row">
-
-                <button
-                    class="key key-space"
-                    onclick="typeKey(' ')"
-                >
-                    ESPAÇO
-                </button>
-
-                <button
-                    class="key key-delete"
-                    onclick="eraseKey()"
-                >
-                    ⌫
-                </button>
-
-            </div>
-
-
-        </div>
-
-
-        <button
-            class="primary-button"
-            style="width:100%;"
-            onclick="confirmText()"
-        >
-            ✓ CONFIRMAR
-        </button>
-
-
-    </div>
-
-</div>
-
-</div>
-
-
-<!-- =====================================================
-     NOVA ATIVIDADE
-===================================================== -->
-
-<div
-    class="overlay"
-    id="taskOverlay"
->
-
-<div class="modal">
-
-    <div class="modal-header">
-
-        <div class="modal-title">
-            Nova atividade
-        </div>
-
-        <button
-            class="close-button"
-            onclick="closeTask()"
-        >
-            ×
-        </button>
-
-    </div>
-
-
-    <div class="modal-body">
-
-
-        <div class="field-label">
-            EMOJI
-        </div>
-
-
-        <div
-            class="emoji-grid"
-            id="emojiGrid"
-        ></div>
-
-
-        <div class="field-label">
-            HORÁRIO
-        </div>
-
-
-        <div class="time-grid">
-
-
-            <div class="time-box">
-
-                <div class="time-label">
-                    INÍCIO
+                    <div class="time-controls">
+                        <button id="startMinus">−15</button>
+                        <button id="startPlus">+15</button>
+                    </div>
                 </div>
 
-                <div
-                    class="time-value"
-                    id="startTime"
-                >
-                    07:30
-                </div>
+                <div class="time-card">
+                    <div class="label" style="margin-top:0">FIM</div>
+                    <div class="time-value" id="endTime">08:00</div>
 
-                <div class="time-buttons">
-
-                    <button
-                        class="time-button"
-                        onclick="changeStart(-15)"
-                    >
-                        −15
-                    </button>
-
-                    <button
-                        class="time-button"
-                        onclick="changeStart(15)"
-                    >
-                        +15
-                    </button>
-
+                    <div class="time-controls">
+                        <button id="endMinus">−15</button>
+                        <button id="endPlus">+15</button>
+                    </div>
                 </div>
 
             </div>
 
+            <div class="label">ÍCONE</div>
+            <div class="emoji-grid" id="emojiGrid"></div>
 
-            <div class="time-box">
+            <div class="label">ATIVIDADE</div>
 
-                <div class="time-label">
-                    FIM
-                </div>
-
-                <div
-                    class="time-value"
-                    id="endTime"
-                >
-                    08:00
-                </div>
-
-                <div class="time-buttons">
-
-                    <button
-                        class="time-button"
-                        onclick="changeEnd(-15)"
-                    >
-                        −15
-                    </button>
-
-                    <button
-                        class="time-button"
-                        onclick="changeEnd(15)"
-                    >
-                        +15
-                    </button>
-
-                </div>
-
+            <div class="text-display placeholder" id="taskText">
+                Digite abaixo
             </div>
 
+            <div class="keyboard" id="taskKeyboard"></div>
+
+            <button class="primary" style="width:100%;margin-top:12px" id="saveTask">
+                SALVAR ATIVIDADE
+            </button>
+
+            <button class="secondary danger" style="width:100%;margin-top:8px;display:none" id="deleteTask">
+                EXCLUIR ATIVIDADE
+            </button>
 
         </div>
-
-
-        <div class="field-label">
-            ATIVIDADE
-        </div>
-
-
-        <div
-            class="text-preview placeholder"
-            id="taskNamePreview"
-        >
-            Nenhum nome definido
-        </div>
-
-
-        <button
-            class="config-button"
-            onclick="openTaskName()"
-        >
-            ✎ ESCREVER NOME
-        </button>
-
-
-        <button
-            class="primary-button"
-            style="width:100%;"
-            onclick="saveTask()"
-        >
-            SALVAR ATIVIDADE
-        </button>
-
-
     </div>
-
-</div>
-
-</div>
-
-
-<!-- =====================================================
-     CONFIGURAÇÕES
-===================================================== -->
-
-<div
-    class="overlay"
-    id="settingsOverlay"
->
-
-<div class="modal">
-
-    <div class="modal-header">
-
-        <div class="modal-title">
-            Configurações
-        </div>
-
-        <button
-            class="close-button"
-            onclick="closeSettings()"
-        >
-            ×
-        </button>
-
-    </div>
-
-
-    <div class="modal-body">
-
-
-        <button
-            class="config-button primary"
-            id="editButton"
-            onclick="toggleEditMode()"
-        >
-            ATIVAR MODO DE EDIÇÃO
-        </button>
-
-
-        <button
-            class="config-button"
-            onclick="newSectionFromSettings()"
-        >
-            + NOVA SEÇÃO
-        </button>
-
-
-        <button
-            class="config-button"
-            onclick="clearChecks()"
-        >
-            LIMPAR MARCAÇÕES
-        </button>
-
-
-        <button
-            class="config-button danger"
-            onclick="eraseEverything()"
-        >
-            APAGAR TODA A CHECKLIST
-        </button>
-
-
-        <div class="privacy">
-
-            Os dados ficam somente no armazenamento
-            local deste navegador.
-
-            <br><br>
-
-            Nenhuma atividade cadastrada é enviada
-            ao GitHub.
-
-        </div>
-
-
-    </div>
-
-</div>
-
 </div>
 
 
 <script>
+(function(){
 
-/* =====================================================
-   DADOS
-===================================================== */
+var STORAGE = "HYTE_DAILY_CHECKLIST_V2";
 
-var STORAGE_KEY =
-    "hyte_checklist_stable_v1";
-
-
-var data = {
+var state = {
     sections: []
 };
 
-
-var editMode =
-    false;
-
-
-var currentText =
-    "";
-
-
-var textMode =
-    "";
-
-
-var currentSectionId =
-    "";
-
-
-var taskName =
-    "";
-
-
-var taskEmoji =
-    "✅";
-
-
-var startMinutes =
-    450;
-
-
-var endMinutes =
-    480;
-
-
-/* =====================================================
-   INICIALIZAÇÃO
-===================================================== */
-
-loadData();
-
-buildEmojiGrid();
-
-renderAll();
-
-
-/* =====================================================
-   STORAGE
-===================================================== */
-
-function loadData() {
-
-    try {
-
-        var saved =
-            localStorage.getItem(
-                STORAGE_KEY
-            );
-
-
-        if (saved) {
-
-            var parsed =
-                JSON.parse(saved);
-
-
-            if (
-                parsed &&
-                parsed.sections &&
-                parsed.sections instanceof Array
-            ) {
-
-                data =
-                    parsed;
-
-            }
-
-        }
-
-    }
-    catch (e) {
-
-        data = {
-            sections: []
-        };
-
-    }
-
-}
-
-
-function saveData() {
-
-    try {
-
-        localStorage.setItem(
-            STORAGE_KEY,
-            JSON.stringify(data)
-        );
-
-    }
-    catch (e) {
-
-    }
-
-}
-
-
-/* =====================================================
-   FORCE PAINT
-
-   Usa uma mudança visual mínima,
-   parecida com o que o modo edição
-   já estava fazendo no HYTE.
-===================================================== */
-
-function forcePaint() {
-
-    var card =
-        document.querySelector(
-            ".card"
-        );
-
-
-    if (!card) {
-
-        return;
-
-    }
-
-
-    card.className =
-        "card paint-pulse";
-
-
-    var ignored =
-        card.offsetHeight;
-
-
-    setTimeout(
-        function () {
-
-            card.className =
-                "card";
-
-        },
-        40
-    );
-
-}
-
-
-/* =====================================================
-   RENDER
-===================================================== */
-
-function renderAll() {
-
-    var content =
-        document.getElementById(
-            "content"
-        );
-
-
-    content.innerHTML =
-        "";
-
-
-    if (
-        data.sections.length === 0
-    ) {
-
-        var empty =
-            document.createElement(
-                "div"
-            );
-
-        empty.className =
-            "empty";
-
-
-        empty.innerHTML =
-            '<div class="empty-icon">✓</div>' +
-            '<div class="empty-title">Sua checklist está vazia</div>' +
-            '<div class="empty-text">' +
-            'Crie sua primeira seção e monte sua rotina diretamente neste dispositivo.' +
-            '</div>' +
-            '<button class="primary-button" onclick="openNewSection()">' +
-            '+ CRIAR PRIMEIRA SEÇÃO' +
-            '</button>';
-
-
-        content.appendChild(
-            empty
-        );
-
-    }
-    else {
-
-        var i;
-
-
-        for (
-            i = 0;
-            i < data.sections.length;
-            i++
-        ) {
-
-            renderSection(
-                data.sections[i]
-            );
-
-        }
-
-    }
-
-
-    applyEditMode();
-
-    updateProgress();
-
-}
-
-
-/* =====================================================
-   SEÇÃO
-===================================================== */
-
-function renderSection(
-    section
-) {
-
-    var content =
-        document.getElementById(
-            "content"
-        );
-
-
-    var block =
-        document.createElement(
-            "div"
-        );
-
-    block.className =
-        "section-block";
-
-
-    var top =
-        document.createElement(
-            "div"
-        );
-
-    top.className =
-        "section-top";
-
-
-    var title =
-        document.createElement(
-            "div"
-        );
-
-    title.className =
-        "section-title";
-
-    title.appendChild(
-        document.createTextNode(
-            section.name
-        )
-    );
-
-
-    var tools =
-        document.createElement(
-            "div"
-        );
-
-    tools.className =
-        "section-tools";
-
-
-    var deleteSectionButton =
-        document.createElement(
-            "button"
-        );
-
-    deleteSectionButton.className =
-        "tool-button";
-
-    deleteSectionButton.innerHTML =
-        "Excluir";
-
-
-    deleteSectionButton.onclick =
-        function () {
-
-            deleteSection(
-                section.id
-            );
-
-        };
-
-
-    tools.appendChild(
-        deleteSectionButton
-    );
-
-
-    top.appendChild(
-        title
-    );
-
-    top.appendChild(
-        tools
-    );
-
-
-    var group =
-        document.createElement(
-            "div"
-        );
-
-    group.className =
-        "group";
-
-
-    var i;
-
-
-    for (
-        i = 0;
-        i < section.tasks.length;
-        i++
-    ) {
-
-        group.appendChild(
-            createTaskRow(
-                section,
-                section.tasks[i]
-            )
-        );
-
-    }
-
-
-    var add =
-        document.createElement(
-            "button"
-        );
-
-    add.className =
-        "add-task-button";
-
-    add.innerHTML =
-        "+ ADICIONAR ATIVIDADE";
-
-
-    add.onclick =
-        function () {
-
-            openNewTask(
-                section.id
-            );
-
-        };
-
-
-    block.appendChild(
-        top
-    );
-
-    block.appendChild(
-        group
-    );
-
-    block.appendChild(
-        add
-    );
-
-
-    content.appendChild(
-        block
-    );
-
-}
-
-
-/* =====================================================
-   TASK ROW
-===================================================== */
-
-function createTaskRow(
-    section,
-    task
-) {
-
-    var row =
-        document.createElement(
-            "div"
-        );
-
-
-    row.className =
-        task.done
-        ?
-        "task done"
-        :
-        "task";
-
-
-    var check =
-        document.createElement(
-            "input"
-        );
-
-    check.type =
-        "checkbox";
-
-    check.className =
-        "task-check";
-
-    check.checked =
-        task.done;
-
-
-    check.onchange =
-        function () {
-
-            task.done =
-                check.checked;
-
-
-            saveData();
-
-
-            if (
-                task.done
-            ) {
-
-                row.className =
-                    "task done";
-
-            }
-            else {
-
-                row.className =
-                    "task";
-
-            }
-
-
-            updateProgress();
-
-            forcePaint();
-
-        };
-
-
-    var time =
-        document.createElement(
-            "div"
-        );
-
-    time.className =
-        "task-time";
-
-    time.appendChild(
-        document.createTextNode(
-            task.time
-        )
-    );
-
-
-    var name =
-        document.createElement(
-            "div"
-        );
-
-    name.className =
-        "task-name";
-
-    name.appendChild(
-        document.createTextNode(
-            task.emoji +
-            " " +
-            task.name
-        )
-    );
-
-
-    var tools =
-        document.createElement(
-            "div"
-        );
-
-    tools.className =
-        "task-tools";
-
-
-    var remove =
-        document.createElement(
-            "button"
-        );
-
-    remove.className =
-        "delete-task";
-
-    remove.innerHTML =
-        "×";
-
-
-    remove.onclick =
-        function () {
-
-            deleteTask(
-                section.id,
-                task.id
-            );
-
-        };
-
-
-    tools.appendChild(
-        remove
-    );
-
-
-    row.appendChild(
-        check
-    );
-
-    row.appendChild(
-        time
-    );
-
-    row.appendChild(
-        name
-    );
-
-    row.appendChild(
-        tools
-    );
-
-
-    return row;
-
-}
-
-
-/* =====================================================
-   TEXT
-===================================================== */
-
-function openNewSection() {
-
-    currentText =
-        "";
-
-    textMode =
-        "section";
-
-
-    document
-        .getElementById(
-            "textTitle"
-        )
-        .innerHTML =
-        "Nova seção";
-
-
-    updateTextPreview();
-
-
-    document
-        .getElementById(
-            "textOverlay"
-        )
-        .className =
-        "overlay show";
-
-}
-
-
-function newSectionFromSettings() {
-
-    closeSettings();
-
-    openNewSection();
-
-}
-
-
-function typeKey(
-    key
-) {
-
-    currentText +=
-        key;
-
-
-    updateTextPreview();
-
-}
-
-
-function eraseKey() {
-
-    if (
-        currentText.length >
-        0
-    ) {
-
-        currentText =
-            currentText.substring(
-                0,
-                currentText.length -
-                1
-            );
-
-    }
-
-
-    updateTextPreview();
-
-}
-
-
-function updateTextPreview() {
-
-    var preview =
-        document.getElementById(
-            "textPreview"
-        );
-
-
-    if (
-        currentText === ""
-    ) {
-
-        preview.innerHTML =
-            "Digite usando o teclado abaixo";
-
-
-        preview.className =
-            "text-preview placeholder";
-
-    }
-    else {
-
-        preview.innerHTML =
-            escapeHtml(
-                currentText
-            );
-
-
-        preview.className =
-            "text-preview";
-
-    }
-
-}
-
-
-function confirmText() {
-
-    var value =
-        trimText(
-            currentText
-        );
-
-
-    if (
-        value === ""
-    ) {
-
-        return;
-
-    }
-
-
-    if (
-        textMode ===
-        "section"
-    ) {
-
-        data.sections.push(
-        {
-            id:
-                makeId(
-                    "section"
-                ),
-
-            name:
-                value,
-
-            tasks:
-                []
-        });
-
-
-        saveData();
-
-
-        closeTextOnly();
-
-
-        renderAll();
-
-
-        forcePaint();
-
-
-        return;
-
-    }
-
-
-    if (
-        textMode ===
-        "task"
-    ) {
-
-        taskName =
-            value;
-
-
-        document
-            .getElementById(
-                "taskNamePreview"
-            )
-            .innerHTML =
-            escapeHtml(
-                taskName
-            );
-
-
-        document
-            .getElementById(
-                "taskNamePreview"
-            )
-            .className =
-            "text-preview";
-
-
-        closeTextOnly();
-
-
-        document
-            .getElementById(
-                "taskOverlay"
-            )
-            .className =
-            "overlay show";
-
-
-        return;
-
-    }
-
-}
-
-
-function cancelText() {
-
-    closeTextOnly();
-
-
-    if (
-        textMode ===
-        "task"
-    ) {
-
-        document
-            .getElementById(
-                "taskOverlay"
-            )
-            .className =
-            "overlay show";
-
-    }
-
-}
-
-
-function closeTextOnly() {
-
-    document
-        .getElementById(
-            "textOverlay"
-        )
-        .className =
-        "overlay";
-
-}
-
-
-/* =====================================================
-   TASK
-===================================================== */
-
-function openNewTask(
-    sectionId
-) {
-
-    currentSectionId =
-        sectionId;
-
-
-    taskName =
-        "";
-
-
-    taskEmoji =
-        "✅";
-
-
-    startMinutes =
-        450;
-
-
-    endMinutes =
-        480;
-
-
-    document
-        .getElementById(
-            "taskNamePreview"
-        )
-        .innerHTML =
-        "Nenhum nome definido";
-
-
-    document
-        .getElementById(
-            "taskNamePreview"
-        )
-        .className =
-        "text-preview placeholder";
-
-
-    updateTime();
-
-    updateEmojiButtons();
-
-
-    document
-        .getElementById(
-            "taskOverlay"
-        )
-        .className =
-        "overlay show";
-
-}
-
-
-function openTaskName() {
-
-    document
-        .getElementById(
-            "taskOverlay"
-        )
-        .className =
-        "overlay";
-
-
-    currentText =
-        taskName;
-
-
-    textMode =
-        "task";
-
-
-    document
-        .getElementById(
-            "textTitle"
-        )
-        .innerHTML =
-        "Nome da atividade";
-
-
-    updateTextPreview();
-
-
-    document
-        .getElementById(
-            "textOverlay"
-        )
-        .className =
-        "overlay show";
-
-}
-
-
-function closeTask() {
-
-    document
-        .getElementById(
-            "taskOverlay"
-        )
-        .className =
-        "overlay";
-
-}
-
-
-function saveTask() {
-
-    if (
-        trimText(
-            taskName
-        ) === ""
-    ) {
-
-        return;
-
-    }
-
-
-    var section =
-        findSection(
-            currentSectionId
-        );
-
-
-    if (!section) {
-
-        return;
-
-    }
-
-
-    section.tasks.push(
-    {
-        id:
-            makeId(
-                "task"
-            ),
-
-        emoji:
-            taskEmoji,
-
-        name:
-            taskName,
-
-        time:
-            formatTime(
-                startMinutes
-            )
-            +
-            "–"
-            +
-            formatTime(
-                endMinutes
-            ),
-
-        done:
-            false
-    });
-
-
-    saveData();
-
-
-    closeTask();
-
-
-    renderAll();
-
-
-    forcePaint();
-
-}
-
-
-/* =====================================================
-   DELETE
-===================================================== */
-
-function deleteSection(
-    sectionId
-) {
-
-    if (
-        !confirm(
-            "Excluir esta seção?"
-        )
-    ) {
-
-        return;
-
-    }
-
-
-    var result =
-        [];
-
-    var i;
-
-
-    for (
-        i = 0;
-        i < data.sections.length;
-        i++
-    ) {
-
-        if (
-            data.sections[i].id !==
-            sectionId
-        ) {
-
-            result.push(
-                data.sections[i]
-            );
-
-        }
-
-    }
-
-
-    data.sections =
-        result;
-
-
-    saveData();
-
-    renderAll();
-
-    forcePaint();
-
-}
-
-
-function deleteTask(
-    sectionId,
-    taskId
-) {
-
-    var section =
-        findSection(
-            sectionId
-        );
-
-
-    if (!section) {
-
-        return;
-
-    }
-
-
-    var result =
-        [];
-
-    var i;
-
-
-    for (
-        i = 0;
-        i < section.tasks.length;
-        i++
-    ) {
-
-        if (
-            section.tasks[i].id !==
-            taskId
-        ) {
-
-            result.push(
-                section.tasks[i]
-            );
-
-        }
-
-    }
-
-
-    section.tasks =
-        result;
-
-
-    saveData();
-
-    renderAll();
-
-    forcePaint();
-
-}
-
-
-/* =====================================================
-   FIND
-===================================================== */
-
-function findSection(
-    id
-) {
-
-    var i;
-
-
-    for (
-        i = 0;
-        i < data.sections.length;
-        i++
-    ) {
-
-        if (
-            data.sections[i].id ===
-            id
-        ) {
-
-            return data.sections[i];
-
-        }
-
-    }
-
-
-    return null;
-
-}
-
-
-/* =====================================================
-   PROGRESS
-===================================================== */
-
-function updateProgress() {
-
-    var total =
-        0;
-
-
-    var done =
-        0;
-
-
-    var i;
-    var j;
-
-
-    for (
-        i = 0;
-        i < data.sections.length;
-        i++
-    ) {
-
-        for (
-            j = 0;
-            j < data.sections[i].tasks.length;
-            j++
-        ) {
-
-            total++;
-
-
-            if (
-                data.sections[i]
-                    .tasks[j]
-                    .done
-            ) {
-
-                done++;
-
-            }
-
-        }
-
-    }
-
-
-    var percent =
-        0;
-
-
-    if (
-        total >
-        0
-    ) {
-
-        percent =
-            Math.round(
-                done /
-                total *
-                100
-            );
-
-    }
-
-
-    document
-        .getElementById(
-            "progressPercent"
-        )
-        .innerHTML =
-        percent +
-        "%";
-
-
-    document
-        .getElementById(
-            "progressFill"
-        )
-        .style.width =
-        percent +
-        "%";
-
-
-    if (
-        total ===
-        0
-    ) {
-
-        document
-            .getElementById(
-                "progressInfo"
-            )
-            .innerHTML =
-            "Nenhuma atividade cadastrada";
-
-    }
-    else {
-
-        document
-            .getElementById(
-                "progressInfo"
-            )
-            .innerHTML =
-            done +
-            " de " +
-            total +
-            " concluídas";
-
-    }
-
-}
-
-
-/* =====================================================
-   EMOJI
-===================================================== */
-
-var emojis =
-[
-    "✅",
-    "⏰",
-    "☕",
-    "💻",
-    "💼",
-    "🏋️",
-    "🍽️",
-    "🎹",
-    "🎓",
-    "🚗",
-    "🚿",
-    "📚",
-    "🎮",
-    "🧹",
-    "🛒",
-    "💰",
-    "📝",
-    "📱",
-    "❤️",
-    "⭐",
-    "🔥",
-    "🎯",
-    "🧠",
-    "🏠",
-    "💤",
-    "🎧",
-    "📺",
-    "🥤",
-    "🍳",
-    "🚶"
+var editing = false;
+
+var sectionEditId = null;
+var sectionTextValue = "";
+
+var taskSectionId = null;
+var taskEditId = null;
+var taskTextValue = "";
+var selectedEmoji = "⏰";
+
+var startMinutes = 450;
+var endMinutes = 480;
+
+var emojis = [
+    "⏰","☕","💻","💼","🏋️","🍽️",
+    "🎹","🎓","🚗","🚿","📚","🎮",
+    "🧹","🛒","💰","📝","📱","🎯",
+    "🧠","🏠","💤","🎧","📺","🥤",
+    "🍳","🚶","⭐","🔥","❤️","✅"
 ];
 
 
-function buildEmojiGrid() {
+/* ==================================================
+   STORAGE
+================================================== */
 
-    var grid =
-        document.getElementById(
-            "emojiGrid"
-        );
+function load(){
+    try{
+        var saved = localStorage.getItem(STORAGE);
 
+        if(saved){
+            var parsed = JSON.parse(saved);
 
-    var i;
+            if(parsed && Array.isArray(parsed.sections)){
+                state = parsed;
+            }
+        }
+    }catch(e){}
+}
 
-
-    for (
-        i = 0;
-        i < emojis.length;
-        i++
-    ) {
-
-        createEmojiButton(
-            emojis[i]
-        );
-
-    }
-
+function save(){
+    try{
+        localStorage.setItem(STORAGE,JSON.stringify(state));
+    }catch(e){}
 }
 
 
-function createEmojiButton(
-    emoji
-) {
+/* ==================================================
+   HELPERS
+================================================== */
 
-    var grid =
-        document.getElementById(
-            "emojiGrid"
-        );
+function id(prefix){
+    return prefix + "_" + Date.now() + "_" + Math.floor(Math.random()*99999);
+}
+
+function openModal(name){
+    document.getElementById(name).classList.add("open");
+}
+
+function closeModal(name){
+    document.getElementById(name).classList.remove("open");
+}
+
+function findSection(sectionId){
+    for(var i=0;i<state.sections.length;i++){
+        if(state.sections[i].id === sectionId){
+            return state.sections[i];
+        }
+    }
+    return null;
+}
+
+function findTask(section,taskId){
+    if(!section) return null;
+
+    for(var i=0;i<section.tasks.length;i++){
+        if(section.tasks[i].id === taskId){
+            return section.tasks[i];
+        }
+    }
+
+    return null;
+}
+
+function formatTime(minutes){
+    while(minutes < 0) minutes += 1440;
+    while(minutes >= 1440) minutes -= 1440;
+
+    var h = Math.floor(minutes/60);
+    var m = minutes%60;
+
+    return (h<10?"0":"")+h+":"+(m<10?"0":"")+m;
+}
+
+function normalizeTime(){
+    while(startMinutes < 0) startMinutes += 1440;
+    while(startMinutes >= 1440) startMinutes -= 1440;
+    while(endMinutes < 0) endMinutes += 1440;
+    while(endMinutes >= 1440) endMinutes -= 1440;
+
+    document.getElementById("startTime").textContent = formatTime(startMinutes);
+    document.getElementById("endTime").textContent = formatTime(endMinutes);
+}
 
 
-    var button =
-        document.createElement(
-            "button"
-        );
+/* ==================================================
+   RENDER
+================================================== */
 
+function render(){
+    var content = document.getElementById("content");
+    content.innerHTML = "";
 
-    button.className =
-        "emoji-button";
+    if(state.sections.length === 0){
 
+        var empty = document.createElement("div");
+        empty.className = "empty";
 
-    button.setAttribute(
-        "data-emoji",
-        emoji
-    );
+        var icon = document.createElement("div");
+        icon.className = "empty-check";
+        icon.textContent = "✓";
 
+        var h = document.createElement("h2");
+        h.textContent = "Sua checklist está vazia";
 
-    button.appendChild(
-        document.createTextNode(
-            emoji
-        )
-    );
+        var p = document.createElement("p");
+        p.textContent = "Crie sua primeira seção para começar a organizar o dia.";
 
-
-    button.onclick =
-        function () {
-
-            taskEmoji =
-                emoji;
-
-
-            updateEmojiButtons();
-
+        var b = document.createElement("button");
+        b.className = "primary";
+        b.textContent = "+ CRIAR PRIMEIRA SEÇÃO";
+        b.onclick = function(){
+            openSectionEditor(null);
         };
 
+        empty.appendChild(icon);
+        empty.appendChild(h);
+        empty.appendChild(p);
+        empty.appendChild(b);
 
-    grid.appendChild(
-        button
-    );
-
-}
-
-
-function updateEmojiButtons() {
-
-    var grid =
-        document.getElementById(
-            "emojiGrid"
-        );
-
-
-    var buttons =
-        grid.getElementsByTagName(
-            "button"
-        );
-
-
-    var i;
-
-
-    for (
-        i = 0;
-        i < buttons.length;
-        i++
-    ) {
-
-        if (
-            buttons[i]
-                .getAttribute(
-                    "data-emoji"
-                )
-            ===
-            taskEmoji
-        ) {
-
-            buttons[i].className =
-                "emoji-button selected";
-
-        }
-        else {
-
-            buttons[i].className =
-                "emoji-button";
-
-        }
-
+        content.appendChild(empty);
     }
 
-}
-
-
-/* =====================================================
-   TIME
-===================================================== */
-
-function changeStart(
-    amount
-) {
-
-    startMinutes +=
-        amount;
-
-
-    normalizeTimes();
-
-    updateTime();
-
-}
-
-
-function changeEnd(
-    amount
-) {
-
-    endMinutes +=
-        amount;
-
-
-    normalizeTimes();
-
-    updateTime();
-
-}
-
-
-function normalizeTimes() {
-
-    while (
-        startMinutes <
-        0
-    ) {
-
-        startMinutes +=
-            1440;
-
+    for(var i=0;i<state.sections.length;i++){
+        renderSection(state.sections[i],content);
     }
 
-
-    while (
-        startMinutes >=
-        1440
-    ) {
-
-        startMinutes -=
-            1440;
-
-    }
-
-
-    while (
-        endMinutes <
-        0
-    ) {
-
-        endMinutes +=
-            1440;
-
-    }
-
-
-    while (
-        endMinutes >=
-        1440
-    ) {
-
-        endMinutes -=
-            1440;
-
-    }
-
+    updateProgress();
 }
 
+function renderSection(section,content){
 
-function updateTime() {
+    var wrapper = document.createElement("div");
+    wrapper.className = "section";
 
-    document
-        .getElementById(
-            "startTime"
-        )
-        .innerHTML =
-        formatTime(
-            startMinutes
-        );
+    var head = document.createElement("div");
+    head.className = "section-head";
 
+    var title = document.createElement("div");
+    title.className = "brush-title";
+    title.textContent = section.name;
 
-    document
-        .getElementById(
-            "endTime"
-        )
-        .innerHTML =
-        formatTime(
-            endMinutes
-        );
+    var actions = document.createElement("div");
+    actions.className = "section-actions edit-only";
 
-}
-
-
-function formatTime(
-    minutes
-) {
-
-    var hour =
-        Math.floor(
-            minutes /
-            60
-        );
-
-
-    var minute =
-        minutes %
-        60;
-
-
-    var h =
-        hour < 10
-        ?
-        "0" + hour
-        :
-        String(hour);
-
-
-    var m =
-        minute < 10
-        ?
-        "0" + minute
-        :
-        String(minute);
-
-
-    return (
-        h +
-        ":" +
-        m
-    );
-
-}
-
-
-/* =====================================================
-   SETTINGS
-===================================================== */
-
-function openSettings() {
-
-    applyEditMode();
-
-
-    document
-        .getElementById(
-            "settingsOverlay"
-        )
-        .className =
-        "overlay show";
-
-}
-
-
-function closeSettings() {
-
-    document
-        .getElementById(
-            "settingsOverlay"
-        )
-        .className =
-        "overlay";
-
-}
-
-
-function toggleEditMode() {
-
-    editMode =
-        !editMode;
-
-
-    applyEditMode();
-
-
-    closeSettings();
-
-
-    /*
-        Esse botão sabemos que
-        força o HYTE a redesenhar.
-    */
-
-    forcePaint();
-
-}
-
-
-function applyEditMode() {
-
-    var app =
-        document.getElementById(
-            "app"
-        );
-
-
-    var button =
-        document.getElementById(
-            "editButton"
-        );
-
-
-    if (
-        editMode
-    ) {
-
-        app.className =
-            "app edit-mode";
-
-
-        if (
-            button
-        ) {
-
-            button.innerHTML =
-                "SAIR DO MODO DE EDIÇÃO";
-
-        }
-
-    }
-    else {
-
-        app.className =
-            "app";
-
-
-        if (
-            button
-        ) {
-
-            button.innerHTML =
-                "ATIVAR MODO DE EDIÇÃO";
-
-        }
-
-    }
-
-}
-
-
-function clearChecks() {
-
-    var i;
-    var j;
-
-
-    for (
-        i = 0;
-        i < data.sections.length;
-        i++
-    ) {
-
-        for (
-            j = 0;
-            j < data.sections[i].tasks.length;
-            j++
-        ) {
-
-            data.sections[i]
-                .tasks[j]
-                .done =
-                false;
-
-        }
-
-    }
-
-
-    saveData();
-
-    renderAll();
-
-    forcePaint();
-
-}
-
-
-function eraseEverything() {
-
-    if (
-        !confirm(
-            "Apagar toda a checklist?"
-        )
-    ) {
-
-        return;
-
-    }
-
-
-    data = {
-        sections: []
+    var rename = document.createElement("button");
+    rename.className = "icon-btn";
+    rename.textContent = "✎";
+    rename.onclick = function(){
+        openSectionEditor(section.id);
     };
 
+    var remove = document.createElement("button");
+    remove.className = "icon-btn";
+    remove.textContent = "×";
+    remove.onclick = function(){
+        if(confirm("Excluir esta seção e todas as atividades dela?")){
+            state.sections = state.sections.filter(function(s){
+                return s.id !== section.id;
+            });
+            save();
+            render();
+        }
+    };
 
-    try {
+    actions.appendChild(rename);
+    actions.appendChild(remove);
 
-        localStorage.removeItem(
-            STORAGE_KEY
-        );
+    head.appendChild(title);
+    head.appendChild(actions);
 
+    wrapper.appendChild(head);
+
+    if(section.tasks.length){
+
+        var list = document.createElement("div");
+        list.className = "task-list";
+
+        for(var i=0;i<section.tasks.length;i++){
+            list.appendChild(createTask(section,section.tasks[i]));
+        }
+
+        wrapper.appendChild(list);
     }
-    catch (e) {
 
+    var add = document.createElement("button");
+    add.className = "add-task edit-only";
+    add.textContent = "+ ADICIONAR ATIVIDADE";
+    add.onclick = function(){
+        openTaskEditor(section.id,null);
+    };
+
+    wrapper.appendChild(add);
+
+    content.appendChild(wrapper);
+}
+
+function createTask(section,task){
+
+    var row = document.createElement("div");
+    row.className = task.done ? "task done" : "task";
+
+    var check = document.createElement("input");
+    check.type = "checkbox";
+    check.className = "check";
+    check.checked = !!task.done;
+
+    check.onchange = function(){
+        task.done = check.checked;
+        save();
+
+        if(task.done){
+            row.classList.add("done");
+        }else{
+            row.classList.remove("done");
+        }
+
+        updateProgress();
+    };
+
+    var time = document.createElement("div");
+    time.className = "time";
+    time.textContent = task.time;
+
+    var name = document.createElement("div");
+    name.className = "task-name";
+    name.textContent = task.emoji + "  " + task.name;
+
+    var edit = document.createElement("button");
+    edit.className = "edit-task";
+    edit.textContent = "✎";
+    edit.onclick = function(){
+        openTaskEditor(section.id,task.id);
+    };
+
+    row.appendChild(check);
+    row.appendChild(time);
+    row.appendChild(name);
+    row.appendChild(edit);
+
+    return row;
+}
+
+
+/* ==================================================
+   PROGRESS
+================================================== */
+
+function updateProgress(){
+
+    var total = 0;
+    var done = 0;
+
+    for(var i=0;i<state.sections.length;i++){
+        for(var j=0;j<state.sections[i].tasks.length;j++){
+            total++;
+            if(state.sections[i].tasks[j].done) done++;
+        }
     }
 
+    var percent = total ? Math.round((done/total)*100) : 0;
 
-    editMode =
-        false;
+    document.getElementById("percent").textContent = percent+"%";
+    document.getElementById("progressFill").style.width = percent+"%";
 
-
-    closeSettings();
-
-
-    renderAll();
-
-    forcePaint();
-
+    document.getElementById("progressInfo").textContent =
+        total ? done+" de "+total+" concluídas" : "Nenhuma atividade cadastrada";
 }
 
 
-/* =====================================================
-   UTIL
-===================================================== */
+/* ==================================================
+   EDIT MODE
+================================================== */
 
-function makeId(
-    prefix
-) {
+function setEditing(value){
+    editing = value;
 
-    return (
-        prefix +
-        "_" +
-        new Date().getTime() +
-        "_" +
-        Math.floor(
-            Math.random() *
-            100000
-        )
-    );
-
+    if(editing){
+        document.body.classList.add("editing");
+    }else{
+        document.body.classList.remove("editing");
+    }
 }
 
 
-function trimText(
-    value
-) {
+/* ==================================================
+   SECTION EDITOR
+================================================== */
 
-    return String(value)
-        .replace(
-            /^\s+|\s+$/g,
-            ""
-        );
+function openSectionEditor(sectionId){
 
+    sectionEditId = sectionId;
+
+    if(sectionId){
+        var section = findSection(sectionId);
+        sectionTextValue = section ? section.name : "";
+        document.getElementById("sectionModalTitle").textContent = "Editar seção";
+    }else{
+        sectionTextValue = "";
+        document.getElementById("sectionModalTitle").textContent = "Nova seção";
+    }
+
+    updateSectionText();
+    openModal("sectionOverlay");
+}
+
+function updateSectionText(){
+
+    var box = document.getElementById("sectionText");
+
+    if(sectionTextValue){
+        box.textContent = sectionTextValue;
+        box.classList.remove("placeholder");
+    }else{
+        box.textContent = "Digite abaixo";
+        box.classList.add("placeholder");
+    }
 }
 
 
-function escapeHtml(
-    value
-) {
+/* ==================================================
+   TASK EDITOR
+================================================== */
 
-    var text =
-        String(value);
+function openTaskEditor(sectionId,taskId){
 
+    taskSectionId = sectionId;
+    taskEditId = taskId;
 
-    text =
-        text.replace(
-            /&/g,
-            "&amp;"
-        );
+    var deleteButton = document.getElementById("deleteTask");
 
+    if(taskId){
 
-    text =
-        text.replace(
-            /</g,
-            "&lt;"
-        );
+        var section = findSection(sectionId);
+        var task = findTask(section,taskId);
 
+        taskTextValue = task.name;
+        selectedEmoji = task.emoji;
 
-    text =
-        text.replace(
-            />/g,
-            "&gt;"
-        );
+        var pieces = task.time.split("–");
 
+        if(pieces.length === 2){
+            startMinutes = parseClock(pieces[0]);
+            endMinutes = parseClock(pieces[1]);
+        }
 
-    return text;
+        document.getElementById("taskModalTitle").textContent = "Editar atividade";
+        deleteButton.style.display = "block";
 
+    }else{
+
+        taskTextValue = "";
+        selectedEmoji = "⏰";
+        startMinutes = 450;
+        endMinutes = 480;
+
+        document.getElementById("taskModalTitle").textContent = "Nova atividade";
+        deleteButton.style.display = "none";
+    }
+
+    updateTaskText();
+    normalizeTime();
+    renderEmojiSelection();
+    openModal("taskOverlay");
 }
 
+function parseClock(value){
+    var p = value.split(":");
+    return parseInt(p[0],10)*60 + parseInt(p[1],10);
+}
+
+function updateTaskText(){
+
+    var box = document.getElementById("taskText");
+
+    if(taskTextValue){
+        box.textContent = taskTextValue;
+        box.classList.remove("placeholder");
+    }else{
+        box.textContent = "Digite abaixo";
+        box.classList.add("placeholder");
+    }
+}
+
+
+/* ==================================================
+   KEYBOARD
+================================================== */
+
+var keyboardRows = [
+    ["1","2","3","4","5","6","7","8","9","0"],
+    ["Q","W","E","R","T","Y","U","I","O","P"],
+    ["A","S","D","F","G","H","J","K","L"],
+    ["Z","X","C","V","B","N","M"],
+    ["Á","É","Í","Ó","Ú","Ç"]
+];
+
+function buildKeyboard(containerId,type){
+
+    var keyboard = document.getElementById(containerId);
+    keyboard.innerHTML = "";
+
+    for(var r=0;r<keyboardRows.length;r++){
+
+        var row = document.createElement("div");
+        row.className = "keyrow";
+
+        for(var k=0;k<keyboardRows[r].length;k++){
+
+            (function(letter){
+
+                var button = document.createElement("button");
+                button.className = "key";
+                button.textContent = letter;
+
+                button.onclick = function(){
+
+                    if(type === "section"){
+                        sectionTextValue += letter;
+                        updateSectionText();
+                    }else{
+                        taskTextValue += letter;
+                        updateTaskText();
+                    }
+                };
+
+                row.appendChild(button);
+
+            })(keyboardRows[r][k]);
+        }
+
+        keyboard.appendChild(row);
+    }
+
+    var bottom = document.createElement("div");
+    bottom.className = "keyrow";
+
+    var space = document.createElement("button");
+    space.className = "key space";
+    space.textContent = "ESPAÇO";
+
+    space.onclick = function(){
+        if(type === "section"){
+            sectionTextValue += " ";
+            updateSectionText();
+        }else{
+            taskTextValue += " ";
+            updateTaskText();
+        }
+    };
+
+    var back = document.createElement("button");
+    back.className = "key back";
+    back.textContent = "⌫";
+
+    back.onclick = function(){
+        if(type === "section"){
+            sectionTextValue = sectionTextValue.slice(0,-1);
+            updateSectionText();
+        }else{
+            taskTextValue = taskTextValue.slice(0,-1);
+            updateTaskText();
+        }
+    };
+
+    bottom.appendChild(space);
+    bottom.appendChild(back);
+    keyboard.appendChild(bottom);
+}
+
+
+/* ==================================================
+   EMOJIS
+================================================== */
+
+function buildEmojis(){
+
+    var grid = document.getElementById("emojiGrid");
+    grid.innerHTML = "";
+
+    for(var i=0;i<emojis.length;i++){
+
+        (function(emojiValue){
+
+            var button = document.createElement("button");
+            button.className = "emoji";
+            button.textContent = emojiValue;
+            button.setAttribute("data-emoji",emojiValue);
+
+            button.onclick = function(){
+                selectedEmoji = emojiValue;
+                renderEmojiSelection();
+            };
+
+            grid.appendChild(button);
+
+        })(emojis[i]);
+    }
+}
+
+function renderEmojiSelection(){
+
+    var buttons = document.querySelectorAll(".emoji");
+
+    for(var i=0;i<buttons.length;i++){
+        if(buttons[i].getAttribute("data-emoji") === selectedEmoji){
+            buttons[i].classList.add("selected");
+        }else{
+            buttons[i].classList.remove("selected");
+        }
+    }
+}
+
+
+/* ==================================================
+   EVENTS
+================================================== */
+
+document.getElementById("gear").onclick = function(){
+    openModal("settingsOverlay");
+};
+
+document.getElementById("editModeButton").onclick = function(){
+    closeModal("settingsOverlay");
+    setEditing(true);
+};
+
+document.getElementById("finishEdit").onclick = function(){
+    setEditing(false);
+};
+
+document.getElementById("newSectionButton").onclick = function(){
+    closeModal("settingsOverlay");
+    openSectionEditor(null);
+};
+
+document.getElementById("saveSection").onclick = function(){
+
+    var value = sectionTextValue.trim();
+
+    if(!value) return;
+
+    if(sectionEditId){
+
+        var section = findSection(sectionEditId);
+        if(section) section.name = value;
+
+    }else{
+
+        state.sections.push({
+            id:id("section"),
+            name:value,
+            tasks:[]
+        });
+    }
+
+    save();
+    closeModal("sectionOverlay");
+    render();
+};
+
+document.getElementById("saveTask").onclick = function(){
+
+    var name = taskTextValue.trim();
+
+    if(!name) return;
+
+    var section = findSection(taskSectionId);
+
+    if(!section) return;
+
+    if(taskEditId){
+
+        var task = findTask(section,taskEditId);
+
+        if(task){
+            task.name = name;
+            task.emoji = selectedEmoji;
+            task.time = formatTime(startMinutes)+"–"+formatTime(endMinutes);
+        }
+
+    }else{
+
+        section.tasks.push({
+            id:id("task"),
+            name:name,
+            emoji:selectedEmoji,
+            time:formatTime(startMinutes)+"–"+formatTime(endMinutes),
+            done:false
+        });
+    }
+
+    save();
+    closeModal("taskOverlay");
+    render();
+};
+
+document.getElementById("deleteTask").onclick = function(){
+
+    var section = findSection(taskSectionId);
+
+    if(!section || !taskEditId) return;
+
+    if(confirm("Excluir esta atividade?")){
+
+        section.tasks = section.tasks.filter(function(task){
+            return task.id !== taskEditId;
+        });
+
+        save();
+        closeModal("taskOverlay");
+        render();
+    }
+};
+
+document.getElementById("startMinus").onclick = function(){
+    startMinutes -= 15;
+    normalizeTime();
+};
+
+document.getElementById("startPlus").onclick = function(){
+    startMinutes += 15;
+    normalizeTime();
+};
+
+document.getElementById("endMinus").onclick = function(){
+    endMinutes -= 15;
+    normalizeTime();
+};
+
+document.getElementById("endPlus").onclick = function(){
+    endMinutes += 15;
+    normalizeTime();
+};
+
+document.getElementById("clearChecks").onclick = function(){
+
+    for(var i=0;i<state.sections.length;i++){
+        for(var j=0;j<state.sections[i].tasks.length;j++){
+            state.sections[i].tasks[j].done = false;
+        }
+    }
+
+    save();
+    closeModal("settingsOverlay");
+    render();
+};
+
+document.getElementById("deleteAll").onclick = function(){
+
+    if(confirm("Apagar todas as seções e atividades?")){
+
+        state.sections = [];
+        save();
+        setEditing(false);
+        closeModal("settingsOverlay");
+        render();
+    }
+};
+
+var closeButtons = document.querySelectorAll("[data-close]");
+
+for(var c=0;c<closeButtons.length;c++){
+
+    closeButtons[c].onclick = function(){
+        closeModal(this.getAttribute("data-close"));
+    };
+}
+
+
+/* ==================================================
+   START
+================================================== */
+
+load();
+buildKeyboard("sectionKeyboard","section");
+buildKeyboard("taskKeyboard","task");
+buildEmojis();
+render();
+
+})();
 </script>
 
 </body>
