@@ -1,10 +1,17 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
 <title>Checklist HYTE</title>
+
 
 <style>
 
@@ -17,51 +24,83 @@
 }
 
 :root {
+
     --bg: #000;
+
     --panel: #050505;
-    --panel-2: #0a0a0a;
-    --line: rgba(255,255,255,.16);
-    --line-strong: rgba(255,255,255,.32);
-    --text: #f3f3f3;
-    --muted: #8b8b8b;
-    --muted-2: #5f5f5f;
-    --white: #f2f2f2;
+
+    --panel2: #0b0b0b;
+
+    --line: rgba(255,255,255,.15);
+
+    --line2: rgba(255,255,255,.30);
+
+    --text: #f2f2f2;
+
+    --muted: #888;
+
+    --white: #f1f1f1;
+
     --black: #080808;
+
 }
+
 
 html,
 body {
+
     margin: 0;
+
     width: 100%;
+
     height: 100%;
+
     background: transparent;
+
     color: var(--text);
-    font-family: Arial, Helvetica, sans-serif;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
 }
 
+
 body {
+
     overflow: hidden;
+
 }
 
 
 /* =========================================================
-   ESTRUTURA
+   APP
 ========================================================= */
 
 .app {
+
     width: 100%;
+
     height: 100%;
+
     padding: 10px 12px;
 
     display: flex;
+
     flex-direction: column;
+
 }
 
+
 .card {
+
     flex: 1;
+
     min-height: 0;
 
     display: flex;
+
     flex-direction: column;
 
     position: relative;
@@ -71,29 +110,37 @@ body {
     background:
         linear-gradient(
             180deg,
-            rgba(7,7,7,.985),
-            rgba(2,2,2,.985)
+            rgba(7,7,7,.99),
+            rgba(2,2,2,.99)
         );
 
-    border: 1px solid #626262;
+    border:
+        1px solid
+        #626262;
+
     border-radius: 18px;
 
     box-shadow:
-        0 12px 30px rgba(0,0,0,.5);
+        0 12px 30px
+        rgba(0,0,0,.50);
+
 }
 
 
-/* pincel superior */
+/* PINCEL SUPERIOR */
 
 .card::before {
+
     content: "";
 
     position: absolute;
 
-    left: 0;
     top: 0;
 
+    left: 0;
+
     width: 150px;
+
     height: 23px;
 
     background:
@@ -117,20 +164,24 @@ body {
     );
 
     z-index: 3;
+
 }
 
 
-/* pincel inferior */
+/* PINCEL INFERIOR */
 
 .card::after {
+
     content: "";
 
     position: absolute;
 
     right: -10px;
+
     bottom: -3px;
 
     width: 180px;
+
     height: 34px;
 
     background:
@@ -153,14 +204,16 @@ body {
     pointer-events: none;
 
     z-index: 3;
+
 }
 
 
 /* =========================================================
-   CABEÇALHO
+   HEADER
 ========================================================= */
 
 .header {
+
     flex-shrink: 0;
 
     padding:
@@ -168,23 +221,34 @@ body {
         20px
         16px;
 
-    border-bottom: 1px solid var(--line-strong);
+    border-bottom:
+        1px solid
+        var(--line2);
 
     position: relative;
 
     z-index: 2;
+
 }
 
+
 .header-top {
+
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
 
     gap: 12px;
+
 }
 
+
 .header-title {
+
     font-size: 30px;
+
     line-height: 1;
 
     font-weight: 900;
@@ -192,41 +256,51 @@ body {
     letter-spacing: -.5px;
 
     text-transform: uppercase;
+
 }
 
+
 .settings-button {
-    width: 43px;
-    height: 43px;
+
+    width: 44px;
+
+    height: 44px;
 
     flex-shrink: 0;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
     padding: 0;
 
-    border: 1px solid #d9d9d9;
-    border-radius: 8px;
-
     background: transparent;
+
     color: white;
+
+    border:
+        1px solid
+        #d8d8d8;
+
+    border-radius: 8px;
 
     font-size: 23px;
 
     cursor: pointer;
+
 }
 
-.settings-button:active {
-    transform: scale(.96);
-}
 
 .subtitle {
+
     margin-top: 9px;
 
     color: var(--muted);
 
     font-size: 17px;
+
 }
 
 
@@ -235,6 +309,7 @@ body {
 ========================================================= */
 
 .progress-area {
+
     flex-shrink: 0;
 
     padding:
@@ -242,66 +317,95 @@ body {
         20px
         15px;
 
-    border-bottom: 1px solid var(--line);
+    border-bottom:
+        1px solid
+        var(--line);
+
 }
 
+
 .progress-top {
+
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
 
     gap: 10px;
 
     margin-bottom: 9px;
+
 }
 
+
 .progress-label {
+
     color: #909090;
 
     font-size: 12px;
+
     font-weight: 800;
 
     letter-spacing: 2px;
 
     text-transform: uppercase;
+
 }
+
 
 .progress-number {
-    color: white;
 
-    font-size: 17px;
+    font-size: 18px;
+
     font-weight: 900;
+
 }
 
+
 .progress-bar {
+
     width: 100%;
+
     height: 8px;
 
     overflow: hidden;
 
     background: #171717;
 
-    border: 1px solid #363636;
+    border:
+        1px solid
+        #363636;
+
     border-radius: 10px;
+
 }
 
+
 .progress-fill {
+
     width: 0%;
+
     height: 100%;
 
     background: #eee;
 
     border-radius: 10px;
 
-    transition: width .25s ease;
+    transition:
+        width .25s ease;
+
 }
 
+
 .progress-details {
+
     margin-top: 7px;
 
     color: #707070;
 
     font-size: 12px;
+
 }
 
 
@@ -310,7 +414,9 @@ body {
 ========================================================= */
 
 .content {
+
     flex: 1;
+
     min-height: 0;
 
     overflow-y: auto;
@@ -321,101 +427,148 @@ body {
         38px;
 
     scrollbar-width: thin;
-    scrollbar-color: #707070 #111;
+
+    scrollbar-color:
+        #707070
+        #111;
+
 }
+
 
 .content::-webkit-scrollbar {
+
     width: 7px;
+
 }
+
 
 .content::-webkit-scrollbar-track {
+
     background: #101010;
+
 }
 
+
 .content::-webkit-scrollbar-thumb {
+
     background: #707070;
+
     border-radius: 10px;
+
 }
 
 
 /* =========================================================
-   ESTADO VAZIO
+   EMPTY
 ========================================================= */
 
 .empty-state {
-    min-height: 320px;
+
+    min-height: 360px;
 
     display: flex;
+
     flex-direction: column;
 
     align-items: center;
+
     justify-content: center;
 
     text-align: center;
 
     padding: 30px 20px;
+
 }
 
+
 .empty-symbol {
-    font-size: 50px;
+
+    font-size: 54px;
+
+    opacity: .85;
 
     margin-bottom: 15px;
 
-    opacity: .9;
 }
+
 
 .empty-title {
-    font-size: 24px;
+
+    font-size: 25px;
+
     font-weight: 900;
+
 }
 
+
 .empty-text {
-    max-width: 360px;
+
+    max-width: 400px;
 
     margin-top: 8px;
 
     color: #777;
 
     font-size: 15px;
+
     line-height: 1.45;
+
 }
 
-.empty-button {
+
+.big-action {
+
     margin-top: 22px;
+
+    min-height: 52px;
+
+    padding:
+        12px
+        22px;
+
+    background: #eee;
+
+    color: #080808;
 
     border: 0;
 
-    background: #eee;
-    color: #080808;
+    border-radius: 9px;
 
-    padding: 13px 20px;
+    font-size: 16px;
 
-    border-radius: 8px;
-
-    font-size: 15px;
     font-weight: 900;
 
     cursor: pointer;
+
 }
 
 
 /* =========================================================
-   SEÇÕES
+   SEÇÃO
 ========================================================= */
 
 .section-block {
-    margin-bottom: 9px;
+
+    margin-bottom: 10px;
+
 }
 
-.section-header {
+
+.section-top {
+
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
 
     gap: 10px;
+
 }
 
+
 .section-title {
+
     position: relative;
 
     display: inline-block;
@@ -431,30 +584,38 @@ body {
         6px
         15px;
 
-    color: #080808;
-
     background: #f1f1f1;
 
+    color: #080808;
+
     font-size: 22px;
+
     line-height: 1;
 
     font-weight: 900;
+
     font-style: italic;
 
     text-transform: uppercase;
 
-    transform: skew(-4deg);
+    transform:
+        skew(-4deg);
+
 }
 
+
 .section-title::before {
+
     content: "";
 
     position: absolute;
 
     left: -11px;
+
     top: 0;
 
     width: 18px;
+
     height: 100%;
 
     background: #f1f1f1;
@@ -470,17 +631,22 @@ body {
         25% 55%,
         0 25%
     );
+
 }
 
+
 .section-title::after {
+
     content: "";
 
     position: absolute;
 
     right: -24px;
+
     top: 2px;
 
     width: 30px;
+
     height: 90%;
 
     background: #f1f1f1;
@@ -496,18 +662,24 @@ body {
         75% 100%,
         0 85%
     );
+
 }
 
-.section-menu {
+
+.section-actions {
+
     display: none;
 
     gap: 5px;
 
-    margin-right: 3px;
 }
 
-.edit-mode .section-menu {
+
+.edit-mode
+.section-actions {
+
     display: flex;
+
 }
 
 
@@ -516,22 +688,27 @@ body {
 ========================================================= */
 
 .group {
+
     overflow: hidden;
 
-    border: 1px solid rgba(255,255,255,.14);
+    border:
+        1px solid
+        rgba(255,255,255,.14);
+
     border-radius: 17px;
 
-    background: rgba(0,0,0,.35);
+    background:
+        rgba(0,0,0,.35);
 
-    margin-bottom: 10px;
 }
 
 
 /* =========================================================
-   TAREFAS
+   TASK
 ========================================================= */
 
 .task {
+
     min-height: 76px;
 
     display: grid;
@@ -560,41 +737,44 @@ body {
             rgba(255,255,255,.002)
         );
 
-    position: relative;
 }
+
 
 .task:last-child {
-    border-bottom: none;
+
+    border-bottom: 0;
+
 }
 
+
 .task:nth-child(even) {
+
     background:
         linear-gradient(
             90deg,
             rgba(255,255,255,.03),
             rgba(255,255,255,.008)
         );
+
 }
 
-.task-main {
-    display: contents;
-}
-
-
-/* =========================================================
-   CHECKBOX
-========================================================= */
 
 .task-checkbox {
+
     appearance: none;
+
     -webkit-appearance: none;
 
     width: 32px;
+
     height: 32px;
 
     margin: 0;
 
-    border: 2px solid #b6b6b6;
+    border:
+        2px solid
+        #b6b6b6;
+
     border-radius: 6px;
 
     background: transparent;
@@ -602,126 +782,194 @@ body {
     position: relative;
 
     cursor: pointer;
+
 }
+
 
 .task-checkbox:checked {
+
     background: #ededed;
+
     border-color: #ededed;
+
 }
 
+
 .task-checkbox:checked::after {
+
     content: "✓";
 
     position: absolute;
 
     left: 6px;
+
     top: -2px;
 
     color: #111;
 
     font-size: 25px;
+
     font-weight: 900;
+
 }
 
 
-/* =========================================================
-   TEXTO DAS TAREFAS
-========================================================= */
-
 .task-time {
+
     color: #969696;
 
     font-size: 18px;
 
     white-space: nowrap;
+
 }
 
+
 .task-name {
+
     color: #f2f2f2;
 
     font-size: 23px;
+
     font-weight: 600;
 
     line-height: 1.2;
 
-    word-break: break-word;
 }
 
-.task.done .task-time {
+
+.task.done
+.task-time {
+
     color: #606060;
+
 }
 
-.task.done .task-name {
+
+.task.done
+.task-name {
+
     color: #777;
+
     text-decoration: line-through;
+
 }
 
 
 /* =========================================================
-   CONTROLES DE EDIÇÃO
+   EDIÇÃO
 ========================================================= */
 
+.edit-banner {
+
+    display: none;
+
+    flex-shrink: 0;
+
+    padding: 9px;
+
+    text-align: center;
+
+    background: #eee;
+
+    color: #050505;
+
+    font-size: 12px;
+
+    font-weight: 900;
+
+    letter-spacing: 2px;
+
+}
+
+
+.edit-mode
+.edit-banner {
+
+    display: block;
+
+}
+
+
 .task-actions {
+
     display: none;
 
     grid-column: 1 / -1;
 
-    gap: 7px;
-
     padding-top: 9px;
+
+    margin-top: 5px;
 
     border-top:
         1px dashed
         rgba(255,255,255,.1);
 
-    margin-top: 7px;
-}
+    gap: 6px;
 
-.edit-mode .task {
-    grid-template-columns:
-        42px
-        132px
-        1fr;
-}
-
-.edit-mode .task-actions {
-    display: flex;
     flex-wrap: wrap;
+
 }
 
-.mini-button {
-    min-height: 34px;
 
-    padding: 6px 10px;
+.edit-mode
+.task-actions {
 
-    border: 1px solid #555;
-    border-radius: 7px;
+    display: flex;
+
+}
+
+
+.small-button {
+
+    min-height: 36px;
+
+    padding:
+        6px
+        10px;
 
     background: #101010;
+
     color: #ddd;
 
+    border:
+        1px solid
+        #555;
+
+    border-radius: 7px;
+
     font-size: 12px;
+
     font-weight: 700;
 
     cursor: pointer;
+
 }
 
-.mini-button.danger {
+
+.small-button.danger {
+
+    color: #e0aaaa;
+
     border-color: #603b3b;
-    color: #d6a0a0;
+
 }
 
 
-/* =========================================================
-   BOTÃO ADICIONAR
-========================================================= */
+.add-task {
 
-.add-task-button {
+    display: none;
+
     width: 100%;
 
-    margin-top: 6px;
+    margin-top: 7px;
 
-    padding: 12px;
+    min-height: 48px;
+
+    background:
+        rgba(255,255,255,.025);
+
+    color: #aaa;
 
     border:
         1px dashed
@@ -729,18 +977,20 @@ body {
 
     border-radius: 10px;
 
-    background: rgba(255,255,255,.025);
-
-    color: #aaa;
-
     font-size: 14px;
-    font-weight: 800;
+
+    font-weight: 900;
 
     cursor: pointer;
+
 }
 
-.add-task-button:hover {
-    background: rgba(255,255,255,.05);
+
+.edit-mode
+.add-task {
+
+    display: block;
+
 }
 
 
@@ -748,7 +998,8 @@ body {
    MODAL
 ========================================================= */
 
-.modal-overlay {
+.overlay {
+
     position: fixed;
 
     inset: 0;
@@ -756,238 +1007,559 @@ body {
     display: none;
 
     align-items: center;
+
     justify-content: center;
 
-    padding: 18px;
+    padding: 14px;
 
-    background: rgba(0,0,0,.82);
+    background:
+        rgba(0,0,0,.88);
 
-    z-index: 100;
+    z-index: 1000;
+
 }
 
-.modal-overlay.show {
+
+.overlay.show {
+
     display: flex;
+
 }
+
 
 .modal {
-    width: min(520px, 100%);
 
-    max-height: 90vh;
+    width:
+        min(
+            560px,
+            100%
+        );
+
+    max-height: 94vh;
 
     overflow-y: auto;
 
-    background: #090909;
+    background: #080808;
 
-    border: 1px solid #555;
+    border:
+        1px solid
+        #555;
+
     border-radius: 16px;
 
     box-shadow:
         0 25px 70px
-        rgba(0,0,0,.7);
+        rgba(0,0,0,.75);
+
 }
 
+
 .modal-header {
+
     display: flex;
 
     align-items: center;
+
     justify-content: space-between;
 
-    gap: 10px;
-
     padding: 18px;
 
-    border-bottom: 1px solid #292929;
+    border-bottom:
+        1px solid
+        #292929;
+
 }
+
 
 .modal-title {
-    font-size: 22px;
+
+    font-size: 23px;
+
     font-weight: 900;
+
 }
 
-.close-button {
-    width: 38px;
-    height: 38px;
 
-    border: 1px solid #444;
-    border-radius: 8px;
+.close {
+
+    width: 40px;
+
+    height: 40px;
 
     background: transparent;
-    color: #ddd;
 
-    font-size: 22px;
+    color: white;
+
+    border:
+        1px solid
+        #555;
+
+    border-radius: 8px;
+
+    font-size: 23px;
 
     cursor: pointer;
+
 }
 
+
 .modal-body {
+
     padding: 18px;
+
 }
 
 
 /* =========================================================
-   FORMULÁRIOS
+   TEXT DISPLAY
+
+   NÃO É INPUT.
 ========================================================= */
 
-.field {
-    margin-bottom: 15px;
-}
-
-.field label {
-    display: block;
+.field-label {
 
     margin-bottom: 7px;
 
     color: #8c8c8c;
 
     font-size: 12px;
-    font-weight: 800;
+
+    font-weight: 900;
 
     letter-spacing: 1.5px;
 
     text-transform: uppercase;
+
 }
 
-.field input,
-.field select {
-    width: 100%;
 
-    min-height: 48px;
+.text-display {
 
-    padding: 10px 12px;
+    min-height: 58px;
 
-    border: 1px solid #444;
-    border-radius: 8px;
+    display: flex;
 
-    outline: none;
+    align-items: center;
 
-    background: #050505;
+    padding:
+        10px
+        13px;
+
+    background: #020202;
+
     color: white;
 
-    font-size: 17px;
+    border:
+        1px solid
+        #555;
+
+    border-radius: 9px;
+
+    font-size: 20px;
+
+    font-weight: 600;
+
+    word-break: break-word;
+
+    margin-bottom: 14px;
+
 }
 
-.field input:focus,
-.field select:focus {
-    border-color: #aaa;
-}
 
-.form-grid {
-    display: grid;
+.text-display.empty {
 
-    grid-template-columns: 95px 1fr;
+    color: #555;
 
-    gap: 10px;
 }
 
 
 /* =========================================================
-   BOTÕES GRANDES
+   TECLADO
 ========================================================= */
 
-.button {
-    width: 100%;
+.keyboard {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+
+    margin-top: 12px;
+
+}
+
+
+.key-row {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 5px;
+
+}
+
+
+.key {
+
+    flex: 1;
+
+    min-width: 0;
 
     min-height: 48px;
 
-    padding: 11px 14px;
+    padding: 4px;
 
-    border: 1px solid #444;
-    border-radius: 8px;
+    background: #151515;
 
-    background: #101010;
     color: #eee;
 
-    font-size: 15px;
+    border:
+        1px solid
+        #484848;
+
+    border-radius: 7px;
+
+    font-size: 17px;
+
     font-weight: 800;
 
     cursor: pointer;
 
-    margin-bottom: 8px;
 }
 
-.button.primary {
+
+.key:active {
+
     background: #eee;
+
     color: #070707;
-    border-color: #eee;
+
 }
 
-.button.danger {
-    color: #d7a6a6;
-    border-color: #633f3f;
+
+.key.wide {
+
+    flex: 2.2;
+
+}
+
+
+.key.extra-wide {
+
+    flex: 4;
+
 }
 
 
 /* =========================================================
-   CONFIGURAÇÕES
+   EMOJI
 ========================================================= */
 
-.settings-section {
-    padding-bottom: 16px;
+.emoji-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            6,
+            1fr
+        );
+
+    gap: 7px;
+
+    margin-bottom: 15px;
+
+}
+
+
+.emoji-button {
+
+    min-height: 50px;
+
+    background: #101010;
+
+    border:
+        1px solid
+        #444;
+
+    border-radius: 8px;
+
+    font-size: 24px;
+
+    cursor: pointer;
+
+}
+
+
+.emoji-button.selected {
+
+    background: #eee;
+
+    border-color: #eee;
+
+}
+
+
+/* =========================================================
+   HORÁRIO
+========================================================= */
+
+.time-editor {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        1fr;
+
+    gap: 10px;
 
     margin-bottom: 16px;
 
-    border-bottom: 1px solid #222;
 }
 
-.settings-section:last-child {
-    border-bottom: 0;
-    margin-bottom: 0;
+
+.time-box {
+
+    padding: 12px;
+
+    background: #050505;
+
+    border:
+        1px solid
+        #333;
+
+    border-radius: 10px;
+
+    text-align: center;
+
 }
+
+
+.time-title {
+
+    color: #777;
+
+    font-size: 11px;
+
+    font-weight: 900;
+
+    letter-spacing: 1.5px;
+
+    margin-bottom: 10px;
+
+}
+
+
+.time-value {
+
+    font-size: 27px;
+
+    font-weight: 900;
+
+    margin-bottom: 10px;
+
+}
+
+
+.time-controls {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            2,
+            1fr
+        );
+
+    gap: 6px;
+
+}
+
+
+.time-button {
+
+    min-height: 40px;
+
+    background: #121212;
+
+    color: #eee;
+
+    border:
+        1px solid
+        #454545;
+
+    border-radius: 7px;
+
+    font-size: 18px;
+
+    font-weight: 900;
+
+    cursor: pointer;
+
+}
+
+
+/* =========================================================
+   SEÇÃO DESTINO
+========================================================= */
+
+.section-picker {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 7px;
+
+    margin-bottom: 15px;
+
+}
+
+
+.section-choice {
+
+    padding:
+        10px
+        12px;
+
+    background: #101010;
+
+    color: #aaa;
+
+    border:
+        1px solid
+        #444;
+
+    border-radius: 8px;
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+}
+
+
+.section-choice.selected {
+
+    background: #eee;
+
+    color: #080808;
+
+    border-color: #eee;
+
+}
+
+
+/* =========================================================
+   BOTÕES
+========================================================= */
+
+.button {
+
+    width: 100%;
+
+    min-height: 50px;
+
+    padding:
+        11px
+        14px;
+
+    margin-bottom: 8px;
+
+    background: #111;
+
+    color: #eee;
+
+    border:
+        1px solid
+        #444;
+
+    border-radius: 8px;
+
+    font-size: 15px;
+
+    font-weight: 900;
+
+    cursor: pointer;
+
+}
+
+
+.button.primary {
+
+    background: #eee;
+
+    color: #070707;
+
+    border-color: #eee;
+
+}
+
+
+.button.danger {
+
+    color: #dfa8a8;
+
+    border-color: #613f3f;
+
+}
+
+
+/* =========================================================
+   CONFIG
+========================================================= */
+
+.settings-section {
+
+    padding-bottom: 15px;
+
+    margin-bottom: 15px;
+
+    border-bottom:
+        1px solid
+        #222;
+
+}
+
 
 .settings-heading {
+
     margin-bottom: 10px;
 
     color: #888;
 
     font-size: 12px;
+
     font-weight: 900;
 
     letter-spacing: 2px;
 
-    text-transform: uppercase;
 }
 
-.privacy-note {
+
+.privacy {
+
     padding: 12px;
-
-    background: #050505;
-
-    border: 1px solid #292929;
-    border-radius: 9px;
 
     color: #777;
 
+    background: #040404;
+
+    border:
+        1px solid
+        #292929;
+
+    border-radius: 9px;
+
     font-size: 12px;
+
     line-height: 1.5;
-}
 
-
-/* =========================================================
-   MODO EDIÇÃO
-========================================================= */
-
-.edit-banner {
-    display: none;
-
-    flex-shrink: 0;
-
-    padding: 9px 14px;
-
-    text-align: center;
-
-    background: #eee;
-    color: #060606;
-
-    font-size: 12px;
-    font-weight: 900;
-
-    letter-spacing: 2px;
-
-    text-transform: uppercase;
-}
-
-.edit-mode .edit-banner {
-    display: block;
 }
 
 
@@ -996,588 +1568,666 @@ body {
 ========================================================= */
 
 .toast {
+
     position: fixed;
 
     left: 50%;
+
     bottom: 25px;
 
     transform:
         translateX(-50%)
         translateY(20px);
 
-    max-width: calc(100% - 30px);
-
-    padding: 11px 16px;
-
-    border: 1px solid #555;
-    border-radius: 9px;
+    padding:
+        11px
+        16px;
 
     background: #111;
-    color: white;
 
-    font-size: 13px;
+    color: #fff;
+
+    border:
+        1px solid
+        #555;
+
+    border-radius: 9px;
 
     opacity: 0;
+
     pointer-events: none;
 
-    transition:
-        opacity .2s,
-        transform .2s;
+    transition: .2s;
 
-    z-index: 200;
+    z-index: 2000;
+
 }
 
+
 .toast.show {
+
     opacity: 1;
 
     transform:
         translateX(-50%)
         translateY(0);
+
 }
 
 
 /* =========================================================
-   INPUT DE ARQUIVO
+   RESPONSIVO HYTE
 ========================================================= */
 
-#importFile {
-    display: none;
-}
-
-
-/* =========================================================
-   MOBILE / HYTE
-========================================================= */
-
-@media (max-width: 500px) {
+@media
+(max-width: 500px) {
 
     .app {
-        padding: 8px 10px;
+
+        padding:
+            8px
+            10px;
+
     }
 
-    .header {
-        padding:
-            23px
-            18px
-            15px;
-    }
 
     .header-title {
+
         font-size: 29px;
+
     }
 
-    .subtitle {
-        font-size: 16px;
-    }
-
-    .progress-area {
-        padding:
-            13px
-            18px
-            14px;
-    }
 
     .section-title {
+
         font-size: 21px;
+
     }
 
+
     .task {
+
         grid-template-columns:
             40px
             128px
             1fr;
 
-        min-height: 76px;
-
-        padding:
-            9px
-            11px;
     }
+
 
     .task-time {
+
         font-size: 17px;
+
     }
+
 
     .task-name {
+
         font-size: 22px;
+
     }
 
-    .form-grid {
+
+    .key {
+
+        min-height: 45px;
+
+        font-size: 15px;
+
+    }
+
+
+    .emoji-grid {
+
         grid-template-columns:
-            82px
-            1fr;
+            repeat(
+                5,
+                1fr
+            );
+
     }
 
 }
 
 </style>
+
 </head>
+
 
 <body>
 
-<div class="app" id="app">
 
-    <div class="card">
+<div
+    class="app"
+    id="app"
+>
 
-        <div class="header">
 
-            <div class="header-top">
+<div class="card">
 
-                <div class="header-title">
-                    CHECKLIST DE HOJE
+
+    <div class="header">
+
+        <div class="header-top">
+
+            <div class="header-title">
+                CHECKLIST DE HOJE
+            </div>
+
+
+            <button
+                class="settings-button"
+                onclick="openSettings()"
+            >
+                ⚙
+            </button>
+
+        </div>
+
+
+        <div class="subtitle">
+            Marque as atividades concluídas
+        </div>
+
+    </div>
+
+
+    <div class="edit-banner">
+        MODO DE EDIÇÃO ATIVO
+    </div>
+
+
+    <div class="progress-area">
+
+        <div class="progress-top">
+
+            <div class="progress-label">
+                Progresso do dia
+            </div>
+
+            <div
+                class="progress-number"
+                id="progressPercent"
+            >
+                0%
+            </div>
+
+        </div>
+
+
+        <div class="progress-bar">
+
+            <div
+                class="progress-fill"
+                id="progressFill"
+            ></div>
+
+        </div>
+
+
+        <div
+            class="progress-details"
+            id="progressDetails"
+        >
+            Nenhuma atividade cadastrada
+        </div>
+
+    </div>
+
+
+    <div
+        class="content"
+        id="content"
+    ></div>
+
+
+</div>
+
+</div>
+
+
+
+<!-- =====================================================
+     SETTINGS
+===================================================== -->
+
+<div
+    class="overlay"
+    id="settingsOverlay"
+>
+
+<div class="modal">
+
+    <div class="modal-header">
+
+        <div class="modal-title">
+            Configurações
+        </div>
+
+        <button
+            class="close"
+            onclick="closeOverlay('settingsOverlay')"
+        >
+            ×
+        </button>
+
+    </div>
+
+
+    <div class="modal-body">
+
+
+        <div class="settings-section">
+
+            <div class="settings-heading">
+                CHECKLIST
+            </div>
+
+            <button
+                class="button primary"
+                id="editModeButton"
+                onclick="toggleEditMode()"
+            >
+                Ativar modo de edição
+            </button>
+
+
+            <button
+                class="button"
+                onclick="newSection()"
+            >
+                + Nova seção
+            </button>
+
+
+            <button
+                class="button"
+                onclick="clearChecks()"
+            >
+                Limpar marcações
+            </button>
+
+        </div>
+
+
+        <div class="settings-section">
+
+            <div class="settings-heading">
+                DADOS
+            </div>
+
+
+            <button
+                class="button danger"
+                onclick="eraseEverything()"
+            >
+                Apagar toda a checklist
+            </button>
+
+        </div>
+
+
+        <div class="privacy">
+
+            Sua rotina não fica armazenada no
+            GitHub.
+
+            <br><br>
+
+            As informações são salvas somente
+            no armazenamento local do navegador
+            deste dispositivo.
+
+        </div>
+
+    </div>
+
+</div>
+
+</div>
+
+
+
+<!-- =====================================================
+     EDITOR DE TEXTO
+===================================================== -->
+
+<div
+    class="overlay"
+    id="textOverlay"
+>
+
+<div class="modal">
+
+    <div class="modal-header">
+
+        <div
+            class="modal-title"
+            id="textTitle"
+        >
+            Escrever
+        </div>
+
+        <button
+            class="close"
+            onclick="closeOverlay('textOverlay')"
+        >
+            ×
+        </button>
+
+    </div>
+
+
+    <div class="modal-body">
+
+
+        <div class="field-label">
+            TEXTO
+        </div>
+
+
+        <div
+            class="text-display"
+            id="textDisplay"
+        >
+        </div>
+
+
+        <div
+            class="keyboard"
+            id="keyboard"
+        ></div>
+
+
+        <br>
+
+
+        <button
+            class="button primary"
+            onclick="confirmTextEditor()"
+        >
+            ✓ Confirmar
+        </button>
+
+
+    </div>
+
+</div>
+
+</div>
+
+
+
+<!-- =====================================================
+     EDITOR DE TAREFA
+===================================================== -->
+
+<div
+    class="overlay"
+    id="taskOverlay"
+>
+
+<div class="modal">
+
+    <div class="modal-header">
+
+        <div
+            class="modal-title"
+            id="taskEditorTitle"
+        >
+            Nova atividade
+        </div>
+
+        <button
+            class="close"
+            onclick="closeOverlay('taskOverlay')"
+        >
+            ×
+        </button>
+
+    </div>
+
+
+    <div class="modal-body">
+
+
+        <div class="field-label">
+            EMOJI
+        </div>
+
+
+        <div
+            class="emoji-grid"
+            id="emojiGrid"
+        ></div>
+
+
+        <div class="field-label">
+            HORÁRIO
+        </div>
+
+
+        <div class="time-editor">
+
+
+            <div class="time-box">
+
+                <div class="time-title">
+                    INÍCIO
                 </div>
-
-                <button
-                    class="settings-button"
-                    id="settingsButton"
-                    aria-label="Configurações"
-                >
-                    ⚙
-                </button>
-
-            </div>
-
-            <div class="subtitle">
-                Marque as atividades concluídas
-            </div>
-
-        </div>
-
-
-        <div class="edit-banner">
-            MODO DE EDIÇÃO ATIVO
-        </div>
-
-
-        <div class="progress-area">
-
-            <div class="progress-top">
-
-                <span class="progress-label">
-                    Progresso do dia
-                </span>
-
-                <span
-                    class="progress-number"
-                    id="progressPercent"
-                >
-                    0%
-                </span>
-
-            </div>
-
-            <div class="progress-bar">
 
                 <div
-                    class="progress-fill"
-                    id="progressFill"
-                ></div>
-
-            </div>
-
-            <div
-                class="progress-details"
-                id="progressDetails"
-            >
-                Nenhuma atividade cadastrada
-            </div>
-
-        </div>
-
-
-        <div class="content" id="content"></div>
-
-    </div>
-
-</div>
-
-
-<!-- ======================================================
-     MODAL DE CONFIGURAÇÕES
-====================================================== -->
-
-<div
-    class="modal-overlay"
-    id="settingsModal"
->
-
-    <div class="modal">
-
-        <div class="modal-header">
-
-            <div class="modal-title">
-                Configurações
-            </div>
-
-            <button
-                class="close-button"
-                data-close-modal="settingsModal"
-            >
-                ×
-            </button>
-
-        </div>
-
-
-        <div class="modal-body">
-
-
-            <div class="settings-section">
-
-                <div class="settings-heading">
-                    Checklist
+                    class="time-value"
+                    id="startTimeDisplay"
+                >
+                    07:30
                 </div>
 
-                <button
-                    class="button primary"
-                    id="toggleEditMode"
-                >
-                    Ativar modo de edição
-                </button>
 
-                <button
-                    class="button"
-                    id="addSectionButton"
-                >
-                    + Nova seção
-                </button>
+                <div class="time-controls">
 
-                <button
-                    class="button"
-                    id="clearChecksButton"
-                >
-                    Limpar marcações
-                </button>
-
-            </div>
-
-
-            <div class="settings-section">
-
-                <div class="settings-heading">
-                    Backup
-                </div>
-
-                <button
-                    class="button"
-                    id="exportButton"
-                >
-                    Exportar backup
-                </button>
-
-                <button
-                    class="button"
-                    id="importButton"
-                >
-                    Importar backup
-                </button>
-
-                <input
-                    type="file"
-                    id="importFile"
-                    accept=".json,application/json"
-                >
-
-            </div>
-
-
-            <div class="settings-section">
-
-                <div class="settings-heading">
-                    Dados locais
-                </div>
-
-                <button
-                    class="button danger"
-                    id="eraseButton"
-                >
-                    Apagar toda a checklist
-                </button>
-
-            </div>
-
-
-            <div class="privacy-note">
-                Os dados desta checklist são armazenados
-                apenas no armazenamento local deste navegador.
-                Nenhuma atividade é enviada ao GitHub ou para
-                qualquer servidor por este código.
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- ======================================================
-     MODAL DE SEÇÃO
-====================================================== -->
-
-<div
-    class="modal-overlay"
-    id="sectionModal"
->
-
-    <div class="modal">
-
-        <div class="modal-header">
-
-            <div
-                class="modal-title"
-                id="sectionModalTitle"
-            >
-                Nova seção
-            </div>
-
-            <button
-                class="close-button"
-                data-close-modal="sectionModal"
-            >
-                ×
-            </button>
-
-        </div>
-
-
-        <div class="modal-body">
-
-            <div class="field">
-
-                <label>
-                    Nome da seção
-                </label>
-
-                <input
-                    type="text"
-                    id="sectionNameInput"
-                    maxlength="40"
-                    placeholder="Ex.: Minha rotina"
-                >
-
-            </div>
-
-            <button
-                class="button primary"
-                id="saveSectionButton"
-            >
-                Salvar
-            </button>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- ======================================================
-     MODAL DE TAREFA
-====================================================== -->
-
-<div
-    class="modal-overlay"
-    id="taskModal"
->
-
-    <div class="modal">
-
-        <div class="modal-header">
-
-            <div
-                class="modal-title"
-                id="taskModalTitle"
-            >
-                Nova atividade
-            </div>
-
-            <button
-                class="close-button"
-                data-close-modal="taskModal"
-            >
-                ×
-            </button>
-
-        </div>
-
-
-        <div class="modal-body">
-
-            <div class="form-grid">
-
-                <div class="field">
-
-                    <label>
-                        Emoji
-                    </label>
-
-                    <input
-                        type="text"
-                        id="taskEmojiInput"
-                        maxlength="8"
-                        placeholder="✅"
+                    <button
+                        class="time-button"
+                        onclick="changeStart(-15)"
                     >
+                        −15
+                    </button>
 
-                </div>
-
-
-                <div class="field">
-
-                    <label>
-                        Horário
-                    </label>
-
-                    <input
-                        type="text"
-                        id="taskTimeInput"
-                        maxlength="20"
-                        placeholder="07:30–08:00"
+                    <button
+                        class="time-button"
+                        onclick="changeStart(15)"
                     >
+                        +15
+                    </button>
 
                 </div>
 
             </div>
 
 
-            <div class="field">
 
-                <label>
-                    Atividade
-                </label>
+            <div class="time-box">
 
-                <input
-                    type="text"
-                    id="taskNameInput"
-                    maxlength="80"
-                    placeholder="Nome da atividade"
+                <div class="time-title">
+                    FIM
+                </div>
+
+                <div
+                    class="time-value"
+                    id="endTimeDisplay"
                 >
+                    08:00
+                </div>
+
+
+                <div class="time-controls">
+
+                    <button
+                        class="time-button"
+                        onclick="changeEnd(-15)"
+                    >
+                        −15
+                    </button>
+
+                    <button
+                        class="time-button"
+                        onclick="changeEnd(15)"
+                    >
+                        +15
+                    </button>
+
+                </div>
 
             </div>
 
-
-            <div class="field">
-
-                <label>
-                    Seção
-                </label>
-
-                <select id="taskSectionInput"></select>
-
-            </div>
-
-
-            <button
-                class="button primary"
-                id="saveTaskButton"
-            >
-                Salvar atividade
-            </button>
 
         </div>
+
+
+        <div class="field-label">
+            ATIVIDADE
+        </div>
+
+
+        <div
+            class="text-display"
+            id="taskNameDisplay"
+        >
+            Toque aqui para escrever
+        </div>
+
+
+        <button
+            class="button"
+            onclick="editTaskName()"
+        >
+            ✎ Escrever nome da atividade
+        </button>
+
+
+        <div class="field-label">
+            SEÇÃO
+        </div>
+
+
+        <div
+            class="section-picker"
+            id="sectionPicker"
+        ></div>
+
+
+        <button
+            class="button primary"
+            onclick="saveTaskEditor()"
+        >
+            Salvar atividade
+        </button>
+
 
     </div>
 
 </div>
 
+</div>
 
-<div class="toast" id="toast"></div>
+
+
+<div
+    class="toast"
+    id="toast"
+></div>
+
 
 
 <script>
 
 /* =========================================================
-   CONFIGURAÇÃO
-
-   IMPORTANTE:
-   O código começa completamente vazio.
-   Nenhuma rotina pessoal está embutida aqui.
+   DADOS
 ========================================================= */
 
-const STORAGE_KEY = "hyte_checklist_v1";
+const STORAGE_KEY =
+    "hyte_checklist_v2";
 
 
-const EMPTY_DATA = {
-    sections: []
-};
+let data =
+    loadData();
+
+
+let editMode =
+    false;
+
+
+let activeText =
+    "";
+
+
+let activeTextCallback =
+    null;
+
+
+let shift =
+    false;
+
+
+let editingSectionId =
+    null;
+
+
+let editingTaskId =
+    null;
+
+
+let editingTaskSource =
+    null;
+
+
+let taskName =
+    "";
+
+
+let taskEmoji =
+    "✅";
+
+
+let taskSectionId =
+    null;
+
+
+let startMinutes =
+    450;
+
+
+let endMinutes =
+    480;
 
 
 /* =========================================================
-   ESTADO
-========================================================= */
-
-let data = loadData();
-
-let editMode = false;
-
-let editingSectionId = null;
-
-let editingTaskId = null;
-
-let taskTargetSectionId = null;
-
-
-/* =========================================================
-   UTILIDADES
-========================================================= */
-
-function makeId(prefix) {
-
-    return (
-        prefix +
-        "_" +
-        Date.now().toString(36) +
-        "_" +
-        Math.random().toString(36).slice(2, 8)
-    );
-
-}
-
-
-function clone(value) {
-
-    return JSON.parse(
-        JSON.stringify(value)
-    );
-
-}
-
-
-function escapeHtml(value) {
-
-    return String(value)
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#039;");
-
-}
-
-
-/* =========================================================
-   ARMAZENAMENTO LOCAL
+   LOCAL STORAGE
 ========================================================= */
 
 function loadData() {
 
     try {
 
-        const saved =
+        const raw =
             localStorage.getItem(
                 STORAGE_KEY
             );
 
-        if (!saved) {
 
-            return clone(
-                EMPTY_DATA
-            );
+        if (!raw) {
+
+            return {
+                sections: []
+            };
 
         }
 
+
         const parsed =
-            JSON.parse(saved);
+            JSON.parse(raw);
+
 
         if (
             !parsed ||
@@ -1586,19 +2236,21 @@ function loadData() {
             )
         ) {
 
-            return clone(
-                EMPTY_DATA
-            );
+            return {
+                sections: []
+            };
 
         }
 
+
         return parsed;
 
-    } catch (error) {
+    }
+    catch {
 
-        return clone(
-            EMPTY_DATA
-        );
+        return {
+            sections: []
+        };
 
     }
 
@@ -1616,7 +2268,58 @@ function saveData() {
 
 
 /* =========================================================
-   RENDERIZAÇÃO
+   UTIL
+========================================================= */
+
+function id(prefix) {
+
+    return (
+        prefix +
+        "_" +
+        Date.now().toString(36) +
+        "_" +
+        Math.random()
+            .toString(36)
+            .slice(2,7)
+    );
+
+}
+
+
+function escapeHtml(value) {
+
+    return String(value)
+
+        .replaceAll(
+            "&",
+            "&amp;"
+        )
+
+        .replaceAll(
+            "<",
+            "&lt;"
+        )
+
+        .replaceAll(
+            ">",
+            "&gt;"
+        )
+
+        .replaceAll(
+            '"',
+            "&quot;"
+        )
+
+        .replaceAll(
+            "'",
+            "&#039;"
+        );
+
+}
+
+
+/* =========================================================
+   RENDER
 ========================================================= */
 
 function render() {
@@ -1626,6 +2329,7 @@ function render() {
             "content"
         );
 
+
     document
         .getElementById("app")
         .classList.toggle(
@@ -1634,11 +2338,24 @@ function render() {
         );
 
 
+    document
+        .getElementById(
+            "editModeButton"
+        )
+        .textContent =
+        editMode
+            ?
+            "Sair do modo de edição"
+            :
+            "Ativar modo de edição";
+
+
     if (
         data.sections.length === 0
     ) {
 
         content.innerHTML = `
+
             <div class="empty-state">
 
                 <div class="empty-symbol">
@@ -1650,19 +2367,20 @@ function render() {
                 </div>
 
                 <div class="empty-text">
-                    Crie sua primeira seção e monte
-                    sua rotina diretamente neste
-                    dispositivo.
+                    Crie sua primeira seção
+                    e monte sua rotina diretamente
+                    neste dispositivo.
                 </div>
 
                 <button
-                    class="empty-button"
-                    onclick="openNewSection()"
+                    class="big-action"
+                    onclick="newSection()"
                 >
                     + CRIAR PRIMEIRA SEÇÃO
                 </button>
 
             </div>
+
         `;
 
         updateProgress();
@@ -1674,7 +2392,9 @@ function render() {
 
     content.innerHTML =
         data.sections
-            .map(sectionTemplate)
+            .map(
+                sectionHtml
+            )
             .join("");
 
 
@@ -1683,55 +2403,69 @@ function render() {
 }
 
 
-function sectionTemplate(section) {
-
-    const tasks =
-        Array.isArray(section.tasks)
-            ? section.tasks
-            : [];
-
+function sectionHtml(section) {
 
     return `
-        <div
-            class="section-block"
-            data-section-id="${section.id}"
-        >
 
-            <div class="section-header">
+        <div class="section-block">
+
+            <div class="section-top">
 
                 <div class="section-title">
-                    ${escapeHtml(section.name)}
+
+                    ${escapeHtml(
+                        section.name
+                    )}
+
                 </div>
 
 
-                <div class="section-menu">
+                <div class="section-actions">
 
                     <button
-                        class="mini-button"
-                        onclick="moveSection('${section.id}', -1)"
+                        class="small-button"
+                        onclick="
+                            moveSection(
+                                '${section.id}',
+                                -1
+                            )
+                        "
                     >
                         ↑
                     </button>
 
                     <button
-                        class="mini-button"
-                        onclick="moveSection('${section.id}', 1)"
+                        class="small-button"
+                        onclick="
+                            moveSection(
+                                '${section.id}',
+                                1
+                            )
+                        "
                     >
                         ↓
                     </button>
 
                     <button
-                        class="mini-button"
-                        onclick="editSection('${section.id}')"
+                        class="small-button"
+                        onclick="
+                            editSection(
+                                '${section.id}'
+                            )
+                        "
                     >
                         Editar
                     </button>
 
                     <button
-                        class="mini-button danger"
-                        onclick="deleteSection('${section.id}')"
+                        class="small-button danger"
+                        onclick="
+                            deleteSection(
+                                '${section.id}'
+                            )
+                        "
                     >
-                        Excluir
+                        ×
                     </button>
 
                 </div>
@@ -1742,82 +2476,88 @@ function sectionTemplate(section) {
             <div class="group">
 
                 ${
-                    tasks.length
-                        ? tasks
-                            .map(
-                                task =>
-                                    taskTemplate(
-                                        task,
-                                        section.id
-                                    )
-                            )
-                            .join("")
-                        : `
-                            <div
-                                style="
-                                    padding:20px;
-                                    color:#666;
-                                    text-align:center;
-                                    font-size:14px;
-                                "
-                            >
-                                Nenhuma atividade nesta seção
-                            </div>
-                        `
+                    section.tasks.length
+                    ?
+                    section.tasks
+                        .map(
+                            task =>
+                                taskHtml(
+                                    section,
+                                    task
+                                )
+                        )
+                        .join("")
+                    :
+                    `
+
+                    <div style="
+                        padding:20px;
+                        text-align:center;
+                        color:#666;
+                    ">
+                        Nenhuma atividade
+                    </div>
+
+                    `
                 }
 
             </div>
 
 
-            ${
-                editMode
-                    ? `
-                        <button
-                            class="add-task-button"
-                            onclick="openNewTask('${section.id}')"
-                        >
-                            + ADICIONAR ATIVIDADE
-                        </button>
-                    `
-                    : ""
-            }
+            <button
+                class="add-task"
+                onclick="
+                    newTask(
+                        '${section.id}'
+                    )
+                "
+            >
+                + ADICIONAR ATIVIDADE
+            </button>
+
 
         </div>
+
     `;
 
 }
 
 
-function taskTemplate(
-    task,
-    sectionId
+function taskHtml(
+    section,
+    task
 ) {
 
-    const doneClass =
-        task.done
-            ? "done"
-            : "";
-
-
     return `
+
         <div
-            class="task ${doneClass}"
-            data-task-id="${task.id}"
+            class="
+                task
+                ${
+                    task.done
+                    ?
+                    "done"
+                    :
+                    ""
+                }
+            "
         >
 
             <input
-                class="task-checkbox"
                 type="checkbox"
+                class="task-checkbox"
 
                 ${
                     task.done
-                        ? "checked"
-                        : ""
+                    ?
+                    "checked"
+                    :
+                    ""
                 }
 
                 onchange="
                     toggleTask(
-                        '${sectionId}',
+                        '${section.id}',
                         '${task.id}',
                         this.checked
                     )
@@ -1826,27 +2566,40 @@ function taskTemplate(
 
 
             <div class="task-time">
-                ${escapeHtml(task.time || "")}
+
+                ${
+                    escapeHtml(
+                        task.time
+                    )
+                }
+
             </div>
 
 
             <div class="task-name">
+
                 ${
-                    task.emoji
-                        ? escapeHtml(task.emoji) + " "
-                        : ""
+                    escapeHtml(
+                        task.emoji
+                    )
                 }
-                ${escapeHtml(task.name)}
+
+                ${
+                    escapeHtml(
+                        task.name
+                    )
+                }
+
             </div>
 
 
             <div class="task-actions">
 
                 <button
-                    class="mini-button"
+                    class="small-button"
                     onclick="
                         moveTask(
-                            '${sectionId}',
+                            '${section.id}',
                             '${task.id}',
                             -1
                         )
@@ -1857,10 +2610,10 @@ function taskTemplate(
 
 
                 <button
-                    class="mini-button"
+                    class="small-button"
                     onclick="
                         moveTask(
-                            '${sectionId}',
+                            '${section.id}',
                             '${task.id}',
                             1
                         )
@@ -1871,10 +2624,10 @@ function taskTemplate(
 
 
                 <button
-                    class="mini-button"
+                    class="small-button"
                     onclick="
                         editTask(
-                            '${sectionId}',
+                            '${section.id}',
                             '${task.id}'
                         )
                     "
@@ -1884,10 +2637,10 @@ function taskTemplate(
 
 
                 <button
-                    class="mini-button danger"
+                    class="small-button danger"
                     onclick="
                         deleteTask(
-                            '${sectionId}',
+                            '${section.id}',
                             '${task.id}'
                         )
                     "
@@ -1897,25 +2650,24 @@ function taskTemplate(
 
             </div>
 
+
         </div>
+
     `;
 
 }
 
 
 /* =========================================================
-   PROGRESSO
+   PROGRESS
 ========================================================= */
 
-function getAllTasks() {
+function allTasks() {
 
-    return data.sections
-        .flatMap(
-            section =>
-                Array.isArray(section.tasks)
-                    ? section.tasks
-                    : []
-        );
+    return data.sections.flatMap(
+        section =>
+            section.tasks
+    );
 
 }
 
@@ -1923,25 +2675,29 @@ function getAllTasks() {
 function updateProgress() {
 
     const tasks =
-        getAllTasks();
+        allTasks();
 
 
     const total =
         tasks.length;
 
 
-    const done =
+    const completed =
         tasks.filter(
             task => task.done
         ).length;
 
 
-    const percent =
-        total === 0
-            ? 0
-            : Math.round(
-                (done / total) * 100
-            );
+    const percentage =
+        total
+        ?
+        Math.round(
+            completed /
+            total *
+            100
+        )
+        :
+        0;
 
 
     document
@@ -1949,7 +2705,7 @@ function updateProgress() {
             "progressPercent"
         )
         .textContent =
-        percent + "%";
+        percentage + "%";
 
 
     document
@@ -1957,7 +2713,7 @@ function updateProgress() {
             "progressFill"
         )
         .style.width =
-        percent + "%";
+        percentage + "%";
 
 
     document
@@ -1965,45 +2721,64 @@ function updateProgress() {
             "progressDetails"
         )
         .textContent =
-        total === 0
-            ? "Nenhuma atividade cadastrada"
-            : `${done} de ${total} concluídas`;
+        total
+        ?
+        `${completed} de ${total} concluídas`
+        :
+        "Nenhuma atividade cadastrada";
 
 }
 
 
 /* =========================================================
-   CHECKBOX
+   OVERLAYS
 ========================================================= */
 
-function toggleTask(
-    sectionId,
-    taskId,
-    checked
-) {
+function openOverlay(name) {
 
-    const section =
-        findSection(sectionId);
-
-
-    if (!section) return;
-
-
-    const task =
-        section.tasks.find(
-            item =>
-                item.id === taskId
+    document
+        .getElementById(name)
+        .classList.add(
+            "show"
         );
 
-
-    if (!task) return;
-
-
-    task.done =
-        checked;
+}
 
 
-    saveData();
+function closeOverlay(name) {
+
+    document
+        .getElementById(name)
+        .classList.remove(
+            "show"
+        );
+
+}
+
+
+function openSettings() {
+
+    openOverlay(
+        "settingsOverlay"
+    );
+
+}
+
+
+/* =========================================================
+   EDIT MODE
+========================================================= */
+
+function toggleEditMode() {
+
+    editMode =
+        !editMode;
+
+
+    closeOverlay(
+        "settingsOverlay"
+    );
+
 
     render();
 
@@ -2011,109 +2786,255 @@ function toggleTask(
 
 
 /* =========================================================
-   SEÇÕES
+   TECLADO
 ========================================================= */
 
-function findSection(id) {
+const keyboardRows = [
 
-    return data.sections.find(
-        section =>
-            section.id === id
-    );
+    [
+        "1","2","3","4","5",
+        "6","7","8","9","0"
+    ],
 
-}
+    [
+        "q","w","e","r","t",
+        "y","u","i","o","p"
+    ],
+
+    [
+        "a","s","d","f","g",
+        "h","j","k","l"
+    ],
+
+    [
+        "z","x","c","v","b",
+        "n","m"
+    ],
+
+    [
+        "á","é","í","ó","ú","ç"
+    ]
+
+];
 
 
-function openNewSection() {
+function openTextEditor(
+    title,
+    initial,
+    callback
+) {
 
-    editingSectionId = null;
+    activeText =
+        initial || "";
+
+
+    activeTextCallback =
+        callback;
+
+
+    shift =
+        false;
+
 
     document
         .getElementById(
-            "sectionModalTitle"
+            "textTitle"
         )
         .textContent =
-        "Nova seção";
+        title;
 
 
-    document
-        .getElementById(
-            "sectionNameInput"
-        )
-        .value =
-        "";
+    updateTextDisplay();
 
 
-    openModal(
-        "sectionModal"
-    );
+    renderKeyboard();
 
 
-    setTimeout(() => {
-
-        document
-            .getElementById(
-                "sectionNameInput"
-            )
-            .focus();
-
-    }, 100);
-
-}
-
-
-function editSection(id) {
-
-    const section =
-        findSection(id);
-
-
-    if (!section) return;
-
-
-    editingSectionId =
-        id;
-
-
-    document
-        .getElementById(
-            "sectionModalTitle"
-        )
-        .textContent =
-        "Editar seção";
-
-
-    document
-        .getElementById(
-            "sectionNameInput"
-        )
-        .value =
-        section.name;
-
-
-    openModal(
-        "sectionModal"
+    openOverlay(
+        "textOverlay"
     );
 
 }
 
 
-function saveSection() {
+function updateTextDisplay() {
 
-    const input =
+    const display =
         document.getElementById(
-            "sectionNameInput"
+            "textDisplay"
         );
 
 
-    const name =
-        input.value.trim();
+    if (!activeText) {
+
+        display.textContent =
+            "Digite usando o teclado abaixo";
+
+        display.classList.add(
+            "empty"
+        );
+
+    }
+    else {
+
+        display.textContent =
+            activeText;
+
+        display.classList.remove(
+            "empty"
+        );
+
+    }
+
+}
 
 
-    if (!name) {
+function renderKeyboard() {
 
-        showToast(
-            "Digite um nome para a seção."
+    const keyboard =
+        document.getElementById(
+            "keyboard"
+        );
+
+
+    let html =
+        "";
+
+
+    keyboardRows.forEach(
+        row => {
+
+            html +=
+                `<div class="key-row">`;
+
+
+            row.forEach(
+                key => {
+
+                    const shown =
+                        shift
+                        ?
+                        key.toUpperCase()
+                        :
+                        key;
+
+
+                    html += `
+
+                        <button
+                            class="key"
+                            onclick="
+                                typeKey(
+                                    '${shown}'
+                                )
+                            "
+                        >
+                            ${shown}
+                        </button>
+
+                    `;
+
+                }
+            );
+
+
+            html +=
+                `</div>`;
+
+        }
+    );
+
+
+    html += `
+
+        <div class="key-row">
+
+            <button
+                class="key wide"
+                onclick="toggleShift()"
+            >
+                ⇧
+            </button>
+
+            <button
+                class="key extra-wide"
+                onclick="typeKey(' ')"
+            >
+                ESPAÇO
+            </button>
+
+            <button
+                class="key wide"
+                onclick="backspaceKey()"
+            >
+                ⌫
+            </button>
+
+        </div>
+
+    `;
+
+
+    keyboard.innerHTML =
+        html;
+
+}
+
+
+function typeKey(key) {
+
+    activeText +=
+        key;
+
+
+    if (shift) {
+
+        shift =
+            false;
+
+        renderKeyboard();
+
+    }
+
+
+    updateTextDisplay();
+
+}
+
+
+function backspaceKey() {
+
+    activeText =
+        activeText.slice(
+            0,
+            -1
+        );
+
+
+    updateTextDisplay();
+
+}
+
+
+function toggleShift() {
+
+    shift =
+        !shift;
+
+
+    renderKeyboard();
+
+}
+
+
+function confirmTextEditor() {
+
+    if (
+        !activeText.trim()
+    ) {
+
+        toast(
+            "Digite algum texto."
         );
 
         return;
@@ -2121,69 +3042,208 @@ function saveSection() {
     }
 
 
-    if (editingSectionId) {
-
-        const section =
-            findSection(
-                editingSectionId
-            );
+    const callback =
+        activeTextCallback;
 
 
-        if (!section) return;
+    const value =
+        activeText.trim();
 
 
-        section.name =
-            name;
-
-    } else {
-
-        data.sections.push({
-
-            id:
-                makeId(
-                    "section"
-                ),
-
-            name,
-
-            tasks: []
-
-        });
-
-    }
-
-
-    saveData();
-
-    closeModal(
-        "sectionModal"
+    closeOverlay(
+        "textOverlay"
     );
 
-    render();
+
+    if (callback) {
+
+        callback(
+            value
+        );
+
+    }
 
 }
 
 
-function deleteSection(id) {
+/* =========================================================
+   TECLADO FÍSICO OPCIONAL
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        const overlay =
+            document.getElementById(
+                "textOverlay"
+            );
+
+
+        if (
+            !overlay.classList.contains(
+                "show"
+            )
+        ) {
+
+            return;
+
+        }
+
+
+        if (
+            event.key ===
+            "Backspace"
+        ) {
+
+            backspaceKey();
+
+            event.preventDefault();
+
+            return;
+
+        }
+
+
+        if (
+            event.key ===
+            "Enter"
+        ) {
+
+            confirmTextEditor();
+
+            event.preventDefault();
+
+            return;
+
+        }
+
+
+        if (
+            event.key.length ===
+            1
+        ) {
+
+            activeText +=
+                event.key;
+
+            updateTextDisplay();
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   SECTION
+========================================================= */
+
+function newSection() {
+
+    closeOverlay(
+        "settingsOverlay"
+    );
+
+
+    editingSectionId =
+        null;
+
+
+    openTextEditor(
+
+        "Nova seção",
+
+        "",
+
+        value => {
+
+            data.sections.push({
+
+                id:
+                    id("section"),
+
+                name:
+                    value,
+
+                tasks: []
+
+            });
+
+
+            saveData();
+
+            render();
+
+            toast(
+                "Seção criada."
+            );
+
+        }
+
+    );
+
+}
+
+
+function editSection(
+    sectionId
+) {
 
     const section =
-        findSection(id);
+        data.sections.find(
+            section =>
+                section.id ===
+                sectionId
+        );
 
 
     if (!section) return;
 
 
-    const taskCount =
-        section.tasks.length;
+    openTextEditor(
+
+        "Editar seção",
+
+        section.name,
+
+        value => {
+
+            section.name =
+                value;
 
 
-    const message =
-        taskCount > 0
-            ? `Excluir "${section.name}" e suas ${taskCount} atividade(s)?`
-            : `Excluir a seção "${section.name}"?`;
+            saveData();
+
+            render();
+
+        }
+
+    );
+
+}
 
 
-    if (!confirm(message)) {
+function deleteSection(
+    sectionId
+) {
+
+    const section =
+        data.sections.find(
+            section =>
+                section.id ===
+                sectionId
+        );
+
+
+    if (!section) return;
+
+
+    if (
+        !confirm(
+            `Excluir "${section.name}"?`
+        )
+    ) {
 
         return;
 
@@ -2193,7 +3253,8 @@ function deleteSection(id) {
     data.sections =
         data.sections.filter(
             section =>
-                section.id !== id
+                section.id !==
+                sectionId
         );
 
 
@@ -2205,27 +3266,26 @@ function deleteSection(id) {
 
 
 function moveSection(
-    id,
+    sectionId,
     direction
 ) {
 
     const index =
         data.sections.findIndex(
             section =>
-                section.id === id
+                section.id ===
+                sectionId
         );
 
 
-    if (index < 0) return;
-
-
-    const newIndex =
+    const destination =
         index + direction;
 
 
     if (
-        newIndex < 0 ||
-        newIndex >=
+        index < 0 ||
+        destination < 0 ||
+        destination >=
             data.sections.length
     ) {
 
@@ -2234,17 +3294,17 @@ function moveSection(
     }
 
 
-    const [section] =
+    const item =
         data.sections.splice(
             index,
             1
-        );
+        )[0];
 
 
     data.sections.splice(
-        newIndex,
+        destination,
         0,
-        section
+        item
     );
 
 
@@ -2256,33 +3316,82 @@ function moveSection(
 
 
 /* =========================================================
-   TAREFAS
+   EMOJI
 ========================================================= */
 
-function populateSectionSelect(
-    selectedId
-) {
+const emojis = [
 
-    const select =
-        document.getElementById(
-            "taskSectionInput"
-        );
+    "✅",
+    "⏰",
+    "☕",
+    "💻",
+    "💼",
+    "🏋️",
+
+    "🍽️",
+    "🎹",
+    "🎓",
+    "🚗",
+    "🚿",
+    "📚",
+
+    "🎮",
+    "🧹",
+    "🛒",
+    "💰",
+    "📝",
+    "📱",
+
+    "❤️",
+    "⭐",
+    "🔥",
+    "🎯",
+    "🧠",
+    "🏠",
+
+    "💤",
+    "🎧",
+    "📺",
+    "🥤",
+    "🍳",
+    "🚶"
+
+];
 
 
-    select.innerHTML =
-        data.sections
+function renderEmojiGrid() {
+
+    document
+        .getElementById(
+            "emojiGrid"
+        )
+        .innerHTML =
+        emojis
             .map(
-                section => `
-                    <option
-                        value="${section.id}"
-                        ${
-                            section.id === selectedId
-                                ? "selected"
-                                : ""
-                        }
+                emoji => `
+
+                    <button
+                        class="
+                            emoji-button
+                            ${
+                                emoji ===
+                                taskEmoji
+                                ?
+                                "selected"
+                                :
+                                ""
+                            }
+                        "
+
+                        onclick="
+                            chooseEmoji(
+                                '${emoji}'
+                            )
+                        "
                     >
-                        ${escapeHtml(section.name)}
-                    </option>
+                        ${emoji}
+                    </button>
+
                 `
             )
             .join("");
@@ -2290,67 +3399,169 @@ function populateSectionSelect(
 }
 
 
-function openNewTask(sectionId) {
+function chooseEmoji(
+    emoji
+) {
 
-    if (
-        data.sections.length === 0
-    ) {
+    taskEmoji =
+        emoji;
 
-        showToast(
-            "Crie uma seção primeiro."
+
+    renderEmojiGrid();
+
+}
+
+
+/* =========================================================
+   HORÁRIO
+========================================================= */
+
+function formatTime(minutes) {
+
+    minutes =
+        (
+            minutes +
+            1440
+        ) %
+        1440;
+
+
+    const hour =
+        Math.floor(
+            minutes /
+            60
         );
 
-        return;
 
-    }
+    const minute =
+        minutes %
+        60;
 
 
-    editingTaskId = null;
+    return (
+        String(hour)
+            .padStart(2,"0")
+        +
+        ":"
+        +
+        String(minute)
+            .padStart(2,"0")
+    );
 
-    taskTargetSectionId =
-        sectionId ||
-        data.sections[0].id;
+}
+
+
+function updateTimeDisplays() {
+
+    document
+        .getElementById(
+            "startTimeDisplay"
+        )
+        .textContent =
+        formatTime(
+            startMinutes
+        );
 
 
     document
         .getElementById(
-            "taskModalTitle"
+            "endTimeDisplay"
+        )
+        .textContent =
+        formatTime(
+            endMinutes
+        );
+
+}
+
+
+function changeStart(
+    amount
+) {
+
+    startMinutes =
+        (
+            startMinutes +
+            amount +
+            1440
+        )
+        %
+        1440;
+
+
+    updateTimeDisplays();
+
+}
+
+
+function changeEnd(
+    amount
+) {
+
+    endMinutes =
+        (
+            endMinutes +
+            amount +
+            1440
+        )
+        %
+        1440;
+
+
+    updateTimeDisplays();
+
+}
+
+
+/* =========================================================
+   TASK EDITOR
+========================================================= */
+
+function newTask(
+    sectionId
+) {
+
+    editingTaskId =
+        null;
+
+
+    editingTaskSource =
+        null;
+
+
+    taskSectionId =
+        sectionId;
+
+
+    taskName =
+        "";
+
+
+    taskEmoji =
+        "✅";
+
+
+    startMinutes =
+        450;
+
+
+    endMinutes =
+        480;
+
+
+    document
+        .getElementById(
+            "taskEditorTitle"
         )
         .textContent =
         "Nova atividade";
 
 
-    document
-        .getElementById(
-            "taskEmojiInput"
-        )
-        .value =
-        "";
+    renderTaskEditor();
 
 
-    document
-        .getElementById(
-            "taskTimeInput"
-        )
-        .value =
-        "";
-
-
-    document
-        .getElementById(
-            "taskNameInput"
-        )
-        .value =
-        "";
-
-
-    populateSectionSelect(
-        taskTargetSectionId
-    );
-
-
-    openModal(
-        "taskModal"
+    openOverlay(
+        "taskOverlay"
     );
 
 }
@@ -2362,7 +3573,11 @@ function editTask(
 ) {
 
     const section =
-        findSection(sectionId);
+        data.sections.find(
+            section =>
+                section.id ===
+                sectionId
+        );
 
 
     if (!section) return;
@@ -2371,7 +3586,8 @@ function editTask(
     const task =
         section.tasks.find(
             task =>
-                task.id === taskId
+                task.id ===
+                taskId
         );
 
 
@@ -2382,95 +3598,245 @@ function editTask(
         taskId;
 
 
-    taskTargetSectionId =
+    editingTaskSource =
         sectionId;
+
+
+    taskSectionId =
+        sectionId;
+
+
+    taskName =
+        task.name;
+
+
+    taskEmoji =
+        task.emoji;
+
+
+    const times =
+        parseTaskTime(
+            task.time
+        );
+
+
+    startMinutes =
+        times.start;
+
+
+    endMinutes =
+        times.end;
 
 
     document
         .getElementById(
-            "taskModalTitle"
+            "taskEditorTitle"
         )
         .textContent =
         "Editar atividade";
 
 
-    document
-        .getElementById(
-            "taskEmojiInput"
-        )
-        .value =
-        task.emoji || "";
+    renderTaskEditor();
 
 
-    document
-        .getElementById(
-            "taskTimeInput"
-        )
-        .value =
-        task.time || "";
-
-
-    document
-        .getElementById(
-            "taskNameInput"
-        )
-        .value =
-        task.name || "";
-
-
-    populateSectionSelect(
-        sectionId
-    );
-
-
-    openModal(
-        "taskModal"
+    openOverlay(
+        "taskOverlay"
     );
 
 }
 
 
-function saveTask() {
+function parseTaskTime(
+    value
+) {
 
-    const emoji =
-        document
-            .getElementById(
-                "taskEmojiInput"
+    const parts =
+        String(value)
+            .split("–");
+
+
+    function parse(part) {
+
+        const pieces =
+            part
+                .trim()
+                .split(":");
+
+
+        if (
+            pieces.length !==
+            2
+        ) {
+
+            return 0;
+
+        }
+
+
+        return (
+            Number(pieces[0]) *
+            60
+            +
+            Number(pieces[1])
+        );
+
+    }
+
+
+    return {
+
+        start:
+            parts[0]
+            ?
+            parse(parts[0])
+            :
+            0,
+
+        end:
+            parts[1]
+            ?
+            parse(parts[1])
+            :
+            (
+                parse(parts[0]) +
+                30
             )
-            .value
-            .trim();
+
+    };
+
+}
 
 
-    const time =
-        document
-            .getElementById(
-                "taskTimeInput"
+function renderTaskEditor() {
+
+    renderEmojiGrid();
+
+
+    updateTimeDisplays();
+
+
+    const taskDisplay =
+        document.getElementById(
+            "taskNameDisplay"
+        );
+
+
+    if (taskName) {
+
+        taskDisplay.textContent =
+            taskName;
+
+
+        taskDisplay.classList.remove(
+            "empty"
+        );
+
+    }
+    else {
+
+        taskDisplay.textContent =
+            "Nenhum nome definido";
+
+
+        taskDisplay.classList.add(
+            "empty"
+        );
+
+    }
+
+
+    document
+        .getElementById(
+            "sectionPicker"
+        )
+        .innerHTML =
+        data.sections
+            .map(
+                section => `
+
+                    <button
+                        class="
+                            section-choice
+                            ${
+                                section.id ===
+                                taskSectionId
+                                ?
+                                "selected"
+                                :
+                                ""
+                            }
+                        "
+
+                        onclick="
+                            chooseTaskSection(
+                                '${section.id}'
+                            )
+                        "
+                    >
+                        ${escapeHtml(
+                            section.name
+                        )}
+                    </button>
+
+                `
             )
-            .value
-            .trim();
+            .join("");
+
+}
 
 
-    const name =
-        document
-            .getElementById(
-                "taskNameInput"
-            )
-            .value
-            .trim();
+function editTaskName() {
+
+    closeOverlay(
+        "taskOverlay"
+    );
 
 
-    const destinationId =
-        document
-            .getElementById(
-                "taskSectionInput"
-            )
-            .value;
+    openTextEditor(
+
+        "Nome da atividade",
+
+        taskName,
+
+        value => {
+
+            taskName =
+                value;
 
 
-    if (!name) {
+            renderTaskEditor();
 
-        showToast(
-            "Digite o nome da atividade."
+
+            openOverlay(
+                "taskOverlay"
+            );
+
+        }
+
+    );
+
+}
+
+
+function chooseTaskSection(
+    sectionId
+) {
+
+    taskSectionId =
+        sectionId;
+
+
+    renderTaskEditor();
+
+}
+
+
+function saveTaskEditor() {
+
+    if (!taskName.trim()) {
+
+        toast(
+            "Defina um nome."
         );
 
         return;
@@ -2479,23 +3845,35 @@ function saveTask() {
 
 
     const destination =
-        findSection(
-            destinationId
+        data.sections.find(
+            section =>
+                section.id ===
+                taskSectionId
         );
 
 
-    if (!destination) {
+    if (!destination) return;
 
-        return;
 
-    }
+    const time =
+        formatTime(
+            startMinutes
+        )
+        +
+        "–"
+        +
+        formatTime(
+            endMinutes
+        );
 
 
     if (editingTaskId) {
 
         const source =
-            findSection(
-                taskTargetSectionId
+            data.sections.find(
+                section =>
+                    section.id ===
+                    editingTaskSource
             );
 
 
@@ -2517,14 +3895,16 @@ function saveTask() {
             source.tasks[index];
 
 
+        task.name =
+            taskName;
+
+
         task.emoji =
-            emoji;
+            taskEmoji;
+
 
         task.time =
             time;
-
-        task.name =
-            name;
 
 
         if (
@@ -2544,22 +3924,25 @@ function saveTask() {
 
         }
 
-    } else {
+    }
+    else {
 
         destination.tasks.push({
 
             id:
-                makeId(
-                    "task"
-                ),
+                id("task"),
 
-            emoji,
+            name:
+                taskName,
 
-            time,
+            emoji:
+                taskEmoji,
 
-            name,
+            time:
+                time,
 
-            done: false
+            done:
+                false
 
         });
 
@@ -2568,9 +3951,59 @@ function saveTask() {
 
     saveData();
 
-    closeModal(
-        "taskModal"
+
+    closeOverlay(
+        "taskOverlay"
     );
+
+
+    render();
+
+
+    toast(
+        "Atividade salva."
+    );
+
+}
+
+
+/* =========================================================
+   TASK ACTIONS
+========================================================= */
+
+function toggleTask(
+    sectionId,
+    taskId,
+    checked
+) {
+
+    const section =
+        data.sections.find(
+            section =>
+                section.id ===
+                sectionId
+        );
+
+
+    if (!section) return;
+
+
+    const task =
+        section.tasks.find(
+            task =>
+                task.id ===
+                taskId
+        );
+
+
+    if (!task) return;
+
+
+    task.done =
+        checked;
+
+
+    saveData();
 
     render();
 
@@ -2583,7 +4016,11 @@ function deleteTask(
 ) {
 
     const section =
-        findSection(sectionId);
+        data.sections.find(
+            section =>
+                section.id ===
+                sectionId
+        );
 
 
     if (!section) return;
@@ -2591,8 +4028,9 @@ function deleteTask(
 
     const task =
         section.tasks.find(
-            item =>
-                item.id === taskId
+            task =>
+                task.id ===
+                taskId
         );
 
 
@@ -2612,8 +4050,9 @@ function deleteTask(
 
     section.tasks =
         section.tasks.filter(
-            item =>
-                item.id !== taskId
+            task =>
+                task.id !==
+                taskId
         );
 
 
@@ -2631,7 +4070,11 @@ function moveTask(
 ) {
 
     const section =
-        findSection(sectionId);
+        data.sections.find(
+            section =>
+                section.id ===
+                sectionId
+        );
 
 
     if (!section) return;
@@ -2640,20 +4083,20 @@ function moveTask(
     const index =
         section.tasks.findIndex(
             task =>
-                task.id === taskId
+                task.id ===
+                taskId
         );
 
 
-    if (index < 0) return;
-
-
-    const newIndex =
-        index + direction;
+    const target =
+        index +
+        direction;
 
 
     if (
-        newIndex < 0 ||
-        newIndex >=
+        index < 0 ||
+        target < 0 ||
+        target >=
             section.tasks.length
     ) {
 
@@ -2662,17 +4105,17 @@ function moveTask(
     }
 
 
-    const [task] =
+    const item =
         section.tasks.splice(
             index,
             1
-        );
+        )[0];
 
 
     section.tasks.splice(
-        newIndex,
+        target,
         0,
-        task
+        item
     );
 
 
@@ -2684,46 +4127,21 @@ function moveTask(
 
 
 /* =========================================================
-   EDIÇÃO
-========================================================= */
-
-function setEditMode(value) {
-
-    editMode =
-        Boolean(value);
-
-
-    document
-        .getElementById(
-            "toggleEditMode"
-        )
-        .textContent =
-        editMode
-            ? "Sair do modo de edição"
-            : "Ativar modo de edição";
-
-
-    render();
-
-}
-
-
-/* =========================================================
-   LIMPAR MARCAÇÕES
+   CLEAR
 ========================================================= */
 
 function clearChecks() {
 
     const tasks =
-        getAllTasks();
+        allTasks();
 
 
     if (
         tasks.length === 0
     ) {
 
-        showToast(
-            "Não há atividades."
+        toast(
+            "Nenhuma atividade."
         );
 
         return;
@@ -2744,7 +4162,8 @@ function clearChecks() {
 
     tasks.forEach(
         task =>
-            task.done = false
+            task.done =
+            false
     );
 
 
@@ -2756,14 +4175,14 @@ function clearChecks() {
 
 
 /* =========================================================
-   APAGAR TUDO
+   ERASE
 ========================================================= */
 
-function eraseAll() {
+function eraseEverything() {
 
     if (
         !confirm(
-            "Isso apagará todas as seções e atividades salvas neste navegador. Continuar?"
+            "Apagar todas as seções e atividades deste dispositivo?"
         )
     ) {
 
@@ -2772,10 +4191,9 @@ function eraseAll() {
     }
 
 
-    data =
-        clone(
-            EMPTY_DATA
-        );
+    data = {
+        sections: []
+    };
 
 
     localStorage.removeItem(
@@ -2787,204 +4205,12 @@ function eraseAll() {
         false;
 
 
-    closeModal(
-        "settingsModal"
+    closeOverlay(
+        "settingsOverlay"
     );
 
 
     render();
-
-
-    showToast(
-        "Checklist apagada."
-    );
-
-}
-
-
-/* =========================================================
-   BACKUP
-========================================================= */
-
-function exportBackup() {
-
-    const payload = {
-
-        version: 1,
-
-        exportedAt:
-            new Date()
-                .toISOString(),
-
-        data
-
-    };
-
-
-    const blob =
-        new Blob(
-
-            [
-                JSON.stringify(
-                    payload,
-                    null,
-                    2
-                )
-            ],
-
-            {
-                type:
-                    "application/json"
-            }
-
-        );
-
-
-    const url =
-        URL.createObjectURL(
-            blob
-        );
-
-
-    const link =
-        document.createElement(
-            "a"
-        );
-
-
-    link.href =
-        url;
-
-
-    link.download =
-        "hyte-checklist-backup.json";
-
-
-    document.body.appendChild(
-        link
-    );
-
-
-    link.click();
-
-
-    link.remove();
-
-
-    URL.revokeObjectURL(
-        url
-    );
-
-
-    showToast(
-        "Backup exportado."
-    );
-
-}
-
-
-function importBackup(file) {
-
-    if (!file) return;
-
-
-    const reader =
-        new FileReader();
-
-
-    reader.onload =
-        function () {
-
-            try {
-
-                const parsed =
-                    JSON.parse(
-                        reader.result
-                    );
-
-
-                const importedData =
-                    parsed.data ||
-                    parsed;
-
-
-                if (
-                    !importedData ||
-                    !Array.isArray(
-                        importedData.sections
-                    )
-                ) {
-
-                    throw new Error(
-                        "Formato inválido"
-                    );
-
-                }
-
-
-                if (
-                    !confirm(
-                        "Importar este backup substituirá a checklist atual. Continuar?"
-                    )
-                ) {
-
-                    return;
-
-                }
-
-
-                data =
-                    importedData;
-
-
-                saveData();
-
-                closeModal(
-                    "settingsModal"
-                );
-
-                render();
-
-                showToast(
-                    "Backup importado."
-                );
-
-            } catch (error) {
-
-                alert(
-                    "Não foi possível importar esse arquivo."
-                );
-
-            }
-
-        };
-
-
-    reader.readAsText(
-        file
-    );
-
-}
-
-
-/* =========================================================
-   MODAIS
-========================================================= */
-
-function openModal(id) {
-
-    document
-        .getElementById(id)
-        .classList.add("show");
-
-}
-
-
-function closeModal(id) {
-
-    document
-        .getElementById(id)
-        .classList.remove("show");
 
 }
 
@@ -2996,19 +4222,19 @@ function closeModal(id) {
 let toastTimer;
 
 
-function showToast(message) {
+function toast(message) {
 
-    const toast =
+    const element =
         document.getElementById(
             "toast"
         );
 
 
-    toast.textContent =
+    element.textContent =
         message;
 
 
-    toast.classList.add(
+    element.classList.add(
         "show"
     );
 
@@ -3022,248 +4248,26 @@ function showToast(message) {
         setTimeout(
             () => {
 
-                toast.classList.remove(
+                element.classList.remove(
                     "show"
                 );
 
             },
-            2200
+            2000
         );
 
 }
 
 
 /* =========================================================
-   EVENTOS
-========================================================= */
-
-document
-    .getElementById(
-        "settingsButton"
-    )
-    .addEventListener(
-        "click",
-        () => {
-
-            openModal(
-                "settingsModal"
-            );
-
-        }
-    );
-
-
-document
-    .querySelectorAll(
-        "[data-close-modal]"
-    )
-    .forEach(
-        button => {
-
-            button.addEventListener(
-                "click",
-                () => {
-
-                    closeModal(
-                        button.dataset.closeModal
-                    );
-
-                }
-            );
-
-        }
-    );
-
-
-document
-    .querySelectorAll(
-        ".modal-overlay"
-    )
-    .forEach(
-        overlay => {
-
-            overlay.addEventListener(
-                "click",
-                event => {
-
-                    if (
-                        event.target ===
-                        overlay
-                    ) {
-
-                        closeModal(
-                            overlay.id
-                        );
-
-                    }
-
-                }
-            );
-
-        }
-    );
-
-
-document
-    .getElementById(
-        "toggleEditMode"
-    )
-    .addEventListener(
-        "click",
-        () => {
-
-            setEditMode(
-                !editMode
-            );
-
-            closeModal(
-                "settingsModal"
-            );
-
-        }
-    );
-
-
-document
-    .getElementById(
-        "addSectionButton"
-    )
-    .addEventListener(
-        "click",
-        () => {
-
-            closeModal(
-                "settingsModal"
-            );
-
-            openNewSection();
-
-        }
-    );
-
-
-document
-    .getElementById(
-        "saveSectionButton"
-    )
-    .addEventListener(
-        "click",
-        saveSection
-    );
-
-
-document
-    .getElementById(
-        "saveTaskButton"
-    )
-    .addEventListener(
-        "click",
-        saveTask
-    );
-
-
-document
-    .getElementById(
-        "clearChecksButton"
-    )
-    .addEventListener(
-        "click",
-        clearChecks
-    );
-
-
-document
-    .getElementById(
-        "eraseButton"
-    )
-    .addEventListener(
-        "click",
-        eraseAll
-    );
-
-
-document
-    .getElementById(
-        "exportButton"
-    )
-    .addEventListener(
-        "click",
-        exportBackup
-    );
-
-
-document
-    .getElementById(
-        "importButton"
-    )
-    .addEventListener(
-        "click",
-        () => {
-
-            document
-                .getElementById(
-                    "importFile"
-                )
-                .click();
-
-        }
-    );
-
-
-document
-    .getElementById(
-        "importFile"
-    )
-    .addEventListener(
-        "change",
-        event => {
-
-            const file =
-                event.target.files[0];
-
-
-            importBackup(
-                file
-            );
-
-
-            event.target.value =
-                "";
-
-        }
-    );
-
-
-/* Enter para salvar seção */
-
-document
-    .getElementById(
-        "sectionNameInput"
-    )
-    .addEventListener(
-        "keydown",
-        event => {
-
-            if (
-                event.key ===
-                "Enter"
-            ) {
-
-                saveSection();
-
-            }
-
-        }
-    );
-
-
-/* =========================================================
-   INICIALIZAÇÃO
+   START
 ========================================================= */
 
 render();
 
 </script>
 
+
 </body>
+
 </html>
