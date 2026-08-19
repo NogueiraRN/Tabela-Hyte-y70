@@ -17,22 +17,29 @@ body {
     margin: 0;
     width: 100%;
     height: 100%;
+
     background: transparent;
+
     color: #f2f2f2;
-    font-family: Arial, Helvetica, sans-serif;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
 }
 
 body {
     overflow: hidden;
 }
 
-/* =========================================================
+/* =====================================================
    APP
-========================================================= */
+===================================================== */
 
 .app {
     width: 100%;
     height: 100%;
+
     padding: 10px 12px;
 }
 
@@ -44,6 +51,7 @@ body {
     flex-direction: column;
 
     position: relative;
+
     overflow: hidden;
 
     background:
@@ -54,37 +62,37 @@ body {
         );
 
     border: 1px solid #626262;
-    border-radius: 18px;
 
-    box-shadow:
-        0 12px 30px
-        rgba(0,0,0,.5);
+    border-radius: 18px;
 }
 
-.card:before {
+/* pincel */
+
+.card::before {
     content: "";
 
     position: absolute;
+
     top: 0;
     left: 0;
 
     width: 150px;
-    height: 23px;
+    height: 22px;
 
     background:
         linear-gradient(
             90deg,
             #fff 0%,
-            #fff 72%,
+            #fff 70%,
             transparent 100%
         );
 
     z-index: 2;
 }
 
-/* =========================================================
+/* =====================================================
    HEADER
-========================================================= */
+===================================================== */
 
 .header {
     flex-shrink: 0;
@@ -99,19 +107,25 @@ body {
         rgba(255,255,255,.28);
 
     position: relative;
+
     z-index: 3;
 }
 
 .header-top {
     display: flex;
-    align-items: center;
+
     justify-content: space-between;
+    align-items: center;
+
+    gap: 12px;
 }
 
 .header-title {
     font-size: 30px;
-    font-weight: 900;
+
     line-height: 1;
+
+    font-weight: 900;
 
     text-transform: uppercase;
 }
@@ -121,13 +135,20 @@ body {
     height: 44px;
 
     display: flex;
-    align-items: center;
+
     justify-content: center;
+    align-items: center;
+
+    padding: 0;
 
     background: transparent;
+
     color: white;
 
-    border: 1px solid #ddd;
+    border:
+        1px solid
+        #ddd;
+
     border-radius: 8px;
 
     font-size: 23px;
@@ -137,13 +158,43 @@ body {
 
 .subtitle {
     margin-top: 9px;
+
     color: #888;
+
     font-size: 17px;
 }
 
-/* =========================================================
+/* =====================================================
+   EDIT MODE
+===================================================== */
+
+.edit-banner {
+    display: none;
+
+    flex-shrink: 0;
+
+    padding: 9px;
+
+    background: #eee;
+
+    color: #080808;
+
+    text-align: center;
+
+    font-size: 12px;
+
+    font-weight: 900;
+
+    letter-spacing: 2px;
+}
+
+.app.edit-mode .edit-banner {
+    display: block;
+}
+
+/* =====================================================
    PROGRESSO
-========================================================= */
+===================================================== */
 
 .progress {
     flex-shrink: 0;
@@ -160,6 +211,7 @@ body {
 
 .progress-top {
     display: flex;
+
     justify-content: space-between;
     align-items: center;
 
@@ -170,6 +222,7 @@ body {
     color: #8d8d8d;
 
     font-size: 12px;
+
     font-weight: 900;
 
     letter-spacing: 2px;
@@ -177,6 +230,7 @@ body {
 
 .progress-percent {
     font-size: 18px;
+
     font-weight: 900;
 }
 
@@ -187,12 +241,16 @@ body {
 
     background: #181818;
 
-    border: 1px solid #373737;
+    border:
+        1px solid
+        #373737;
+
     border-radius: 10px;
 }
 
 .progress-fill {
     width: 0%;
+
     height: 100%;
 
     background: #eee;
@@ -200,41 +258,19 @@ body {
 
 .progress-info {
     margin-top: 7px;
+
     color: #707070;
-    font-size: 12px;
-}
-
-/* =========================================================
-   MODO EDIÇÃO
-========================================================= */
-
-.edit-banner {
-    display: none;
-
-    flex-shrink: 0;
-
-    padding: 9px;
-
-    text-align: center;
-
-    background: #eee;
-    color: #050505;
 
     font-size: 12px;
-    font-weight: 900;
-    letter-spacing: 2px;
 }
 
-.app.edit-mode .edit-banner {
-    display: block;
-}
-
-/* =========================================================
+/* =====================================================
    CONTEÚDO
-========================================================= */
+===================================================== */
 
 .content {
     flex: 1;
+
     min-height: 0;
 
     overflow-y: auto;
@@ -242,14 +278,13 @@ body {
     padding:
         10px
         13px
-        35px;
+        40px;
 
     scrollbar-width: thin;
-    scrollbar-color: #777 #111;
 
-    transform: translateZ(0);
-    -webkit-transform: translateZ(0);
-    will-change: transform;
+    scrollbar-color:
+        #777
+        #111;
 }
 
 .content::-webkit-scrollbar {
@@ -262,92 +297,68 @@ body {
 
 .content::-webkit-scrollbar-thumb {
     background: #777;
+
     border-radius: 20px;
 }
 
-/* =========================================================
-   VAZIO
-========================================================= */
+/* =====================================================
+   EMPTY
+===================================================== */
 
 .empty {
     min-height: 350px;
 
     display: flex;
+
     flex-direction: column;
 
     justify-content: center;
     align-items: center;
 
-    text-align: center;
-
     padding: 25px;
+
+    text-align: center;
 }
 
 .empty-icon {
-    font-size: 50px;
+    font-size: 52px;
 }
 
 .empty-title {
     margin-top: 15px;
 
     font-size: 25px;
+
     font-weight: 900;
 }
 
 .empty-text {
-    margin-top: 8px;
+    max-width: 390px;
 
-    max-width: 380px;
+    margin-top: 8px;
 
     color: #777;
 
     font-size: 15px;
+
     line-height: 1.4;
 }
 
-.primary-button {
-    width: 100%;
-
-    min-height: 50px;
-
-    margin-top: 12px;
-
-    padding: 11px 15px;
-
-    background: #eee;
-    color: #070707;
-
-    border: 0;
-    border-radius: 9px;
-
-    font-size: 15px;
-    font-weight: 900;
-
-    cursor: pointer;
-}
-
-.empty .primary-button {
-    width: auto;
-
-    margin-top: 22px;
-
-    padding:
-        13px
-        22px;
-}
-
-/* =========================================================
-   SEÇÕES
-========================================================= */
+/* =====================================================
+   SEÇÃO
+===================================================== */
 
 .section-block {
-    margin-bottom: 14px;
+    margin-bottom: 16px;
 }
 
 .section-top {
     display: flex;
-    align-items: center;
+
     justify-content: space-between;
+    align-items: center;
+
+    gap: 10px;
 }
 
 .section-title {
@@ -367,12 +378,15 @@ body {
         15px;
 
     background: #f1f1f1;
+
     color: #080808;
 
     font-size: 22px;
+
     line-height: 1;
 
     font-weight: 900;
+
     font-style: italic;
 
     text-transform: uppercase;
@@ -380,7 +394,7 @@ body {
     transform: skew(-4deg);
 }
 
-.section-title:before {
+.section-title::before {
     content: "";
 
     position: absolute;
@@ -394,7 +408,7 @@ body {
     background: #f1f1f1;
 }
 
-.section-title:after {
+.section-title::after {
     content: "";
 
     position: absolute;
@@ -412,6 +426,7 @@ body {
 
 .section-tools {
     display: none;
+
     gap: 5px;
 }
 
@@ -427,20 +442,23 @@ body {
         9px;
 
     background: #111;
+
     color: #bbb;
 
-    border: 1px solid #444;
+    border:
+        1px solid
+        #444;
+
     border-radius: 7px;
 
     font-size: 12px;
-    font-weight: 800;
 
-    cursor: pointer;
+    font-weight: 800;
 }
 
-/* =========================================================
-   GRUPO
-========================================================= */
+/* =====================================================
+   GROUP
+===================================================== */
 
 .group {
     overflow: hidden;
@@ -455,9 +473,9 @@ body {
         rgba(0,0,0,.35);
 }
 
-/* =========================================================
-   TAREFAS
-========================================================= */
+/* =====================================================
+   TASK
+===================================================== */
 
 .task {
     min-height: 76px;
@@ -466,7 +484,7 @@ body {
 
     grid-template-columns:
         42px
-        132px
+        130px
         1fr
         auto;
 
@@ -505,6 +523,7 @@ body {
 
 .task-check {
     appearance: none;
+
     -webkit-appearance: none;
 
     width: 32px;
@@ -512,7 +531,10 @@ body {
 
     margin: 0;
 
-    border: 2px solid #b6b6b6;
+    border:
+        2px solid
+        #b6b6b6;
+
     border-radius: 6px;
 
     background: transparent;
@@ -524,7 +546,7 @@ body {
     background: #eee;
 }
 
-.task-check:checked:after {
+.task-check:checked::after {
     content: "✓";
 
     position: absolute;
@@ -535,6 +557,7 @@ body {
     color: #111;
 
     font-size: 25px;
+
     font-weight: 900;
 }
 
@@ -550,6 +573,7 @@ body {
     color: #f2f2f2;
 
     font-size: 23px;
+
     font-weight: 600;
 
     line-height: 1.2;
@@ -561,6 +585,7 @@ body {
 
 .task.done .task-name {
     color: #777;
+
     text-decoration: line-through;
 }
 
@@ -576,16 +601,22 @@ body {
     width: 34px;
     height: 34px;
 
-    background: #0e0e0e;
-    color: #777;
+    background: #111;
 
-    border: 1px solid #333;
+    color: #888;
+
+    border:
+        1px solid
+        #444;
+
     border-radius: 7px;
 
     font-size: 18px;
-
-    cursor: pointer;
 }
+
+/* =====================================================
+   ADD TASK
+===================================================== */
 
 .add-task-button {
     display: none;
@@ -608,18 +639,77 @@ body {
     border-radius: 10px;
 
     font-size: 14px;
-    font-weight: 900;
 
-    cursor: pointer;
+    font-weight: 900;
 }
 
 .app.edit-mode .add-task-button {
     display: block;
 }
 
-/* =========================================================
-   OVERLAY
-========================================================= */
+/* =====================================================
+   BOTÕES
+===================================================== */
+
+.primary-button {
+    min-height: 50px;
+
+    margin-top: 14px;
+
+    padding:
+        12px
+        20px;
+
+    background: #eee;
+
+    color: #070707;
+
+    border: 0;
+
+    border-radius: 9px;
+
+    font-size: 15px;
+
+    font-weight: 900;
+}
+
+.config-button {
+    width: 100%;
+
+    min-height: 50px;
+
+    margin-bottom: 8px;
+
+    background: #111;
+
+    color: #eee;
+
+    border:
+        1px solid
+        #444;
+
+    border-radius: 8px;
+
+    font-size: 15px;
+
+    font-weight: 900;
+}
+
+.config-button.primary {
+    background: #eee;
+
+    color: #070707;
+}
+
+.config-button.danger {
+    color: #dda7a7;
+
+    border-color: #604040;
+}
+
+/* =====================================================
+   OVERLAYS
+===================================================== */
 
 .overlay {
     position: fixed;
@@ -637,9 +727,9 @@ body {
     padding: 14px;
 
     background:
-        rgba(0,0,0,.90);
+        rgba(0,0,0,.91);
 
-    z-index: 999;
+    z-index: 9999;
 }
 
 .overlay.show {
@@ -648,31 +738,38 @@ body {
 
 .modal {
     width: 100%;
+
     max-width: 560px;
 
-    max-height: 94vh;
+    max-height: 95vh;
 
     overflow-y: auto;
 
     background: #080808;
 
-    border: 1px solid #555;
+    border:
+        1px solid
+        #555;
+
     border-radius: 16px;
 }
 
 .modal-header {
     display: flex;
-    align-items: center;
+
     justify-content: space-between;
+    align-items: center;
 
     padding: 18px;
 
     border-bottom:
-        1px solid #292929;
+        1px solid
+        #292929;
 }
 
 .modal-title {
     font-size: 23px;
+
     font-weight: 900;
 }
 
@@ -681,55 +778,63 @@ body {
     height: 40px;
 
     background: transparent;
+
     color: white;
 
-    border: 1px solid #555;
+    border:
+        1px solid
+        #555;
+
     border-radius: 8px;
 
     font-size: 23px;
-
-    cursor: pointer;
 }
 
 .modal-body {
     padding: 18px;
 }
 
-/* =========================================================
-   TECLADO
-========================================================= */
+/* =====================================================
+   TEXT PREVIEW
+===================================================== */
 
 .field-label {
-    margin-bottom: 7px;
+    margin-bottom: 8px;
 
     color: #888;
 
     font-size: 12px;
+
     font-weight: 900;
 
     letter-spacing: 1.5px;
 }
 
 .text-preview {
-    min-height: 58px;
+    min-height: 60px;
 
     display: flex;
+
     align-items: center;
 
     padding:
         10px
         13px;
 
-    margin-bottom: 12px;
+    margin-bottom: 14px;
 
     background: #020202;
 
     color: white;
 
-    border: 1px solid #555;
+    border:
+        1px solid
+        #555;
+
     border-radius: 9px;
 
     font-size: 20px;
+
     font-weight: 600;
 
     word-break: break-word;
@@ -739,49 +844,75 @@ body {
     color: #555;
 }
 
+/* =====================================================
+   TECLADO FIXO
+===================================================== */
+
 .keyboard {
     display: flex;
+
     flex-direction: column;
 
     gap: 6px;
+
+    width: 100%;
 }
 
 .key-row {
     display: flex;
+
     gap: 5px;
+
+    width: 100%;
 }
 
 .key {
     flex: 1;
 
     min-width: 0;
-    min-height: 46px;
+
+    height: 47px;
+
+    padding: 0;
 
     background: #151515;
-    color: white;
 
-    border: 1px solid #444;
+    color: #eee;
+
+    border:
+        1px solid
+        #484848;
+
     border-radius: 7px;
 
     font-size: 16px;
-    font-weight: 800;
 
-    cursor: pointer;
+    font-weight: 800;
+}
+
+.key:active {
+    background: #eee;
+
+    color: #080808;
 }
 
 .key-space {
     flex: 4;
 }
 
-/* =========================================================
+.key-delete {
+    flex: 1.4;
+}
+
+/* =====================================================
    EMOJIS
-========================================================= */
+===================================================== */
 
 .emoji-grid {
     display: grid;
 
     grid-template-columns:
-        repeat(6,1fr);
+        repeat(6, 1fr);
 
     gap: 7px;
 
@@ -793,21 +924,24 @@ body {
 
     background: #111;
 
-    border: 1px solid #444;
+    border:
+        1px solid
+        #444;
+
     border-radius: 8px;
 
     font-size: 24px;
-
-    cursor: pointer;
 }
 
 .emoji-button.selected {
     background: #eee;
+
+    border-color: white;
 }
 
-/* =========================================================
-   HORÁRIO
-========================================================= */
+/* =====================================================
+   TIME
+===================================================== */
 
 .time-grid {
     display: grid;
@@ -826,7 +960,10 @@ body {
 
     background: #050505;
 
-    border: 1px solid #333;
+    border:
+        1px solid
+        #333;
+
     border-radius: 10px;
 
     text-align: center;
@@ -838,6 +975,7 @@ body {
     color: #777;
 
     font-size: 11px;
+
     font-weight: 900;
 }
 
@@ -845,6 +983,7 @@ body {
     margin-bottom: 10px;
 
     font-size: 27px;
+
     font-weight: 900;
 }
 
@@ -862,49 +1001,23 @@ body {
     min-height: 40px;
 
     background: #111;
+
     color: white;
 
-    border: 1px solid #444;
+    border:
+        1px solid
+        #444;
+
     border-radius: 7px;
 
     font-size: 17px;
+
     font-weight: 900;
-
-    cursor: pointer;
 }
 
-/* =========================================================
-   CONFIG
-========================================================= */
-
-.config-button {
-    width: 100%;
-
-    min-height: 50px;
-
-    margin-bottom: 8px;
-
-    background: #111;
-    color: #eee;
-
-    border: 1px solid #444;
-    border-radius: 8px;
-
-    font-size: 15px;
-    font-weight: 900;
-
-    cursor: pointer;
-}
-
-.config-button.primary {
-    background: #eee;
-    color: #070707;
-}
-
-.config-button.danger {
-    color: #dda7a7;
-    border-color: #604040;
-}
+/* =====================================================
+   PRIVACIDADE
+===================================================== */
 
 .privacy {
     margin-top: 16px;
@@ -913,21 +1026,41 @@ body {
 
     color: #777;
 
-    border: 1px solid #292929;
+    border:
+        1px solid
+        #292929;
+
     border-radius: 9px;
 
     font-size: 12px;
+
     line-height: 1.5;
 }
 
-/* =========================================================
+/* =====================================================
+   REPAINT
+===================================================== */
+
+.paint-pulse {
+    transform:
+        translateZ(0)
+        scale(1.00001);
+
+    -webkit-transform:
+        translateZ(0)
+        scale(1.00001);
+}
+
+/* =====================================================
    HYTE
-========================================================= */
+===================================================== */
 
 @media (max-width: 500px) {
 
     .app {
-        padding: 8px 10px;
+        padding:
+            8px
+            10px;
     }
 
     .header-title {
@@ -956,7 +1089,13 @@ body {
 
     .emoji-grid {
         grid-template-columns:
-            repeat(5,1fr);
+            repeat(5, 1fr);
+    }
+
+    .key {
+        height: 44px;
+
+        font-size: 14px;
     }
 
 }
@@ -972,526 +1111,548 @@ body {
     id="app"
 >
 
-    <div class="card">
+<div class="card">
 
-        <div class="header">
 
-            <div class="header-top">
+    <div class="header">
 
-                <div class="header-title">
-                    CHECKLIST DE HOJE
-                </div>
+        <div class="header-top">
 
-                <button
-                    class="settings-button"
-                    onclick="openSettings()"
-                >
-                    ⚙
-                </button>
-
+            <div class="header-title">
+                CHECKLIST DE HOJE
             </div>
 
-            <div class="subtitle">
-                Marque as atividades concluídas
-            </div>
-
-        </div>
-
-
-        <div class="edit-banner">
-            MODO DE EDIÇÃO ATIVO
-        </div>
-
-
-        <div class="progress">
-
-            <div class="progress-top">
-
-                <div class="progress-label">
-                    PROGRESSO DO DIA
-                </div>
-
-                <div
-                    class="progress-percent"
-                    id="progressPercent"
-                >
-                    0%
-                </div>
-
-            </div>
-
-            <div class="progress-bar">
-
-                <div
-                    class="progress-fill"
-                    id="progressFill"
-                ></div>
-
-            </div>
-
-            <div
-                class="progress-info"
-                id="progressInfo"
+            <button
+                class="settings-button"
+                onclick="openSettings()"
             >
-                Nenhuma atividade cadastrada
-            </div>
+                ⚙
+            </button>
 
         </div>
 
-
-        <div
-            class="content"
-            id="content"
-        >
-
-            <div
-                class="empty"
-                id="emptyState"
-            >
-
-                <div class="empty-icon">
-                    ✓
-                </div>
-
-                <div class="empty-title">
-                    Sua checklist está vazia
-                </div>
-
-                <div class="empty-text">
-                    Crie sua primeira seção e monte
-                    sua rotina diretamente neste dispositivo.
-                </div>
-
-                <button
-                    class="primary-button"
-                    onclick="openNewSection()"
-                >
-                    + CRIAR PRIMEIRA SEÇÃO
-                </button>
-
-            </div>
-
+        <div class="subtitle">
+            Marque as atividades concluídas
         </div>
 
     </div>
 
+
+    <div class="edit-banner">
+        MODO DE EDIÇÃO ATIVO
+    </div>
+
+
+    <div class="progress">
+
+        <div class="progress-top">
+
+            <div class="progress-label">
+                PROGRESSO DO DIA
+            </div>
+
+            <div
+                class="progress-percent"
+                id="progressPercent"
+            >
+                0%
+            </div>
+
+        </div>
+
+        <div class="progress-bar">
+
+            <div
+                class="progress-fill"
+                id="progressFill"
+            ></div>
+
+        </div>
+
+        <div
+            class="progress-info"
+            id="progressInfo"
+        >
+            Nenhuma atividade cadastrada
+        </div>
+
+    </div>
+
+
+    <div
+        class="content"
+        id="content"
+    ></div>
+
+
+</div>
+
 </div>
 
 
-<!-- TEXTO / TECLADO -->
+<!-- =====================================================
+     TECLADO / TEXTO
+===================================================== -->
 
 <div
     class="overlay"
     id="textOverlay"
 >
 
-    <div class="modal">
+<div class="modal">
 
-        <div class="modal-header">
+    <div class="modal-header">
 
-            <div
-                class="modal-title"
-                id="textModalTitle"
-            >
-                Escrever
+        <div
+            class="modal-title"
+            id="textTitle"
+        >
+            Escrever
+        </div>
+
+        <button
+            class="close-button"
+            onclick="cancelText()"
+        >
+            ×
+        </button>
+
+    </div>
+
+
+    <div class="modal-body">
+
+        <div class="field-label">
+            TEXTO
+        </div>
+
+
+        <div
+            class="text-preview placeholder"
+            id="textPreview"
+        >
+            Digite usando o teclado abaixo
+        </div>
+
+
+        <!-- TECLADO FIXO NO HTML -->
+
+        <div class="keyboard">
+
+
+            <div class="key-row">
+
+                <button class="key" onclick="typeKey('1')">1</button>
+                <button class="key" onclick="typeKey('2')">2</button>
+                <button class="key" onclick="typeKey('3')">3</button>
+                <button class="key" onclick="typeKey('4')">4</button>
+                <button class="key" onclick="typeKey('5')">5</button>
+                <button class="key" onclick="typeKey('6')">6</button>
+                <button class="key" onclick="typeKey('7')">7</button>
+                <button class="key" onclick="typeKey('8')">8</button>
+                <button class="key" onclick="typeKey('9')">9</button>
+                <button class="key" onclick="typeKey('0')">0</button>
+
             </div>
 
-            <button
-                class="close-button"
-                onclick="closeTextModal()"
-            >
-                ×
-            </button>
+
+            <div class="key-row">
+
+                <button class="key" onclick="typeKey('Q')">Q</button>
+                <button class="key" onclick="typeKey('W')">W</button>
+                <button class="key" onclick="typeKey('E')">E</button>
+                <button class="key" onclick="typeKey('R')">R</button>
+                <button class="key" onclick="typeKey('T')">T</button>
+                <button class="key" onclick="typeKey('Y')">Y</button>
+                <button class="key" onclick="typeKey('U')">U</button>
+                <button class="key" onclick="typeKey('I')">I</button>
+                <button class="key" onclick="typeKey('O')">O</button>
+                <button class="key" onclick="typeKey('P')">P</button>
+
+            </div>
+
+
+            <div class="key-row">
+
+                <button class="key" onclick="typeKey('A')">A</button>
+                <button class="key" onclick="typeKey('S')">S</button>
+                <button class="key" onclick="typeKey('D')">D</button>
+                <button class="key" onclick="typeKey('F')">F</button>
+                <button class="key" onclick="typeKey('G')">G</button>
+                <button class="key" onclick="typeKey('H')">H</button>
+                <button class="key" onclick="typeKey('J')">J</button>
+                <button class="key" onclick="typeKey('K')">K</button>
+                <button class="key" onclick="typeKey('L')">L</button>
+
+            </div>
+
+
+            <div class="key-row">
+
+                <button class="key" onclick="typeKey('Z')">Z</button>
+                <button class="key" onclick="typeKey('X')">X</button>
+                <button class="key" onclick="typeKey('C')">C</button>
+                <button class="key" onclick="typeKey('V')">V</button>
+                <button class="key" onclick="typeKey('B')">B</button>
+                <button class="key" onclick="typeKey('N')">N</button>
+                <button class="key" onclick="typeKey('M')">M</button>
+
+            </div>
+
+
+            <div class="key-row">
+
+                <button class="key" onclick="typeKey('Á')">Á</button>
+                <button class="key" onclick="typeKey('É')">É</button>
+                <button class="key" onclick="typeKey('Í')">Í</button>
+                <button class="key" onclick="typeKey('Ó')">Ó</button>
+                <button class="key" onclick="typeKey('Ú')">Ú</button>
+                <button class="key" onclick="typeKey('Ç')">Ç</button>
+
+            </div>
+
+
+            <div class="key-row">
+
+                <button
+                    class="key key-space"
+                    onclick="typeKey(' ')"
+                >
+                    ESPAÇO
+                </button>
+
+                <button
+                    class="key key-delete"
+                    onclick="eraseKey()"
+                >
+                    ⌫
+                </button>
+
+            </div>
+
 
         </div>
 
 
-        <div class="modal-body">
+        <button
+            class="primary-button"
+            style="width:100%;"
+            onclick="confirmText()"
+        >
+            ✓ CONFIRMAR
+        </button>
 
-            <div class="field-label">
-                TEXTO
-            </div>
-
-            <div
-                class="text-preview placeholder"
-                id="textPreview"
-            >
-                Digite usando o teclado abaixo
-            </div>
-
-            <div
-                class="keyboard"
-                id="keyboard"
-            ></div>
-
-            <button
-                class="primary-button"
-                onclick="confirmText()"
-            >
-                ✓ CONFIRMAR
-            </button>
-
-        </div>
 
     </div>
 
 </div>
 
+</div>
 
-<!-- NOVA TAREFA -->
+
+<!-- =====================================================
+     NOVA ATIVIDADE
+===================================================== -->
 
 <div
     class="overlay"
     id="taskOverlay"
 >
 
-    <div class="modal">
+<div class="modal">
 
-        <div class="modal-header">
+    <div class="modal-header">
 
-            <div class="modal-title">
-                Nova atividade
-            </div>
+        <div class="modal-title">
+            Nova atividade
+        </div>
 
-            <button
-                class="close-button"
-                onclick="closeTaskModal()"
-            >
-                ×
-            </button>
+        <button
+            class="close-button"
+            onclick="closeTask()"
+        >
+            ×
+        </button>
 
+    </div>
+
+
+    <div class="modal-body">
+
+
+        <div class="field-label">
+            EMOJI
         </div>
 
 
-        <div class="modal-body">
-
-            <div class="field-label">
-                EMOJI
-            </div>
-
-            <div
-                class="emoji-grid"
-                id="emojiGrid"
-            ></div>
+        <div
+            class="emoji-grid"
+            id="emojiGrid"
+        ></div>
 
 
-            <div class="field-label">
-                HORÁRIO
-            </div>
+        <div class="field-label">
+            HORÁRIO
+        </div>
 
 
-            <div class="time-grid">
+        <div class="time-grid">
 
-                <div class="time-box">
 
-                    <div class="time-label">
-                        INÍCIO
-                    </div>
+            <div class="time-box">
 
-                    <div
-                        class="time-value"
-                        id="startTime"
-                    >
-                        07:30
-                    </div>
-
-                    <div class="time-buttons">
-
-                        <button
-                            class="time-button"
-                            onclick="changeStart(-15)"
-                        >
-                            −15
-                        </button>
-
-                        <button
-                            class="time-button"
-                            onclick="changeStart(15)"
-                        >
-                            +15
-                        </button>
-
-                    </div>
-
+                <div class="time-label">
+                    INÍCIO
                 </div>
 
+                <div
+                    class="time-value"
+                    id="startTime"
+                >
+                    07:30
+                </div>
 
-                <div class="time-box">
+                <div class="time-buttons">
 
-                    <div class="time-label">
-                        FIM
-                    </div>
-
-                    <div
-                        class="time-value"
-                        id="endTime"
+                    <button
+                        class="time-button"
+                        onclick="changeStart(-15)"
                     >
-                        08:00
-                    </div>
+                        −15
+                    </button>
 
-                    <div class="time-buttons">
-
-                        <button
-                            class="time-button"
-                            onclick="changeEnd(-15)"
-                        >
-                            −15
-                        </button>
-
-                        <button
-                            class="time-button"
-                            onclick="changeEnd(15)"
-                        >
-                            +15
-                        </button>
-
-                    </div>
+                    <button
+                        class="time-button"
+                        onclick="changeStart(15)"
+                    >
+                        +15
+                    </button>
 
                 </div>
 
             </div>
 
 
-            <div class="field-label">
-                ATIVIDADE
+            <div class="time-box">
+
+                <div class="time-label">
+                    FIM
+                </div>
+
+                <div
+                    class="time-value"
+                    id="endTime"
+                >
+                    08:00
+                </div>
+
+                <div class="time-buttons">
+
+                    <button
+                        class="time-button"
+                        onclick="changeEnd(-15)"
+                    >
+                        −15
+                    </button>
+
+                    <button
+                        class="time-button"
+                        onclick="changeEnd(15)"
+                    >
+                        +15
+                    </button>
+
+                </div>
+
             </div>
 
-            <div
-                class="text-preview placeholder"
-                id="taskNamePreview"
-            >
-                Nenhum nome definido
-            </div>
-
-            <button
-                class="config-button"
-                onclick="openTaskNameKeyboard()"
-            >
-                ✎ ESCREVER NOME
-            </button>
-
-            <button
-                class="primary-button"
-                onclick="saveNewTask()"
-            >
-                SALVAR ATIVIDADE
-            </button>
 
         </div>
+
+
+        <div class="field-label">
+            ATIVIDADE
+        </div>
+
+
+        <div
+            class="text-preview placeholder"
+            id="taskNamePreview"
+        >
+            Nenhum nome definido
+        </div>
+
+
+        <button
+            class="config-button"
+            onclick="openTaskName()"
+        >
+            ✎ ESCREVER NOME
+        </button>
+
+
+        <button
+            class="primary-button"
+            style="width:100%;"
+            onclick="saveTask()"
+        >
+            SALVAR ATIVIDADE
+        </button>
+
 
     </div>
 
 </div>
 
+</div>
 
-<!-- CONFIGURAÇÕES -->
+
+<!-- =====================================================
+     CONFIGURAÇÕES
+===================================================== -->
 
 <div
     class="overlay"
     id="settingsOverlay"
 >
 
-    <div class="modal">
+<div class="modal">
 
-        <div class="modal-header">
+    <div class="modal-header">
 
-            <div class="modal-title">
-                Configurações
-            </div>
-
-            <button
-                class="close-button"
-                onclick="closeSettings()"
-            >
-                ×
-            </button>
-
+        <div class="modal-title">
+            Configurações
         </div>
 
-
-        <div class="modal-body">
-
-            <button
-                class="config-button primary"
-                id="editModeButton"
-                onclick="toggleEditMode()"
-            >
-                ATIVAR MODO DE EDIÇÃO
-            </button>
-
-            <button
-                class="config-button"
-                onclick="openNewSectionFromSettings()"
-            >
-                + NOVA SEÇÃO
-            </button>
-
-            <button
-                class="config-button"
-                onclick="clearChecks()"
-            >
-                LIMPAR MARCAÇÕES
-            </button>
-
-            <button
-                class="config-button danger"
-                onclick="eraseEverything()"
-            >
-                APAGAR TODA A CHECKLIST
-            </button>
-
-            <div class="privacy">
-                Os dados desta checklist ficam
-                apenas no armazenamento local
-                deste navegador.
-                <br><br>
-                Nenhuma atividade é enviada
-                para o GitHub.
-            </div>
-
-        </div>
+        <button
+            class="close-button"
+            onclick="closeSettings()"
+        >
+            ×
+        </button>
 
     </div>
+
+
+    <div class="modal-body">
+
+
+        <button
+            class="config-button primary"
+            id="editButton"
+            onclick="toggleEditMode()"
+        >
+            ATIVAR MODO DE EDIÇÃO
+        </button>
+
+
+        <button
+            class="config-button"
+            onclick="newSectionFromSettings()"
+        >
+            + NOVA SEÇÃO
+        </button>
+
+
+        <button
+            class="config-button"
+            onclick="clearChecks()"
+        >
+            LIMPAR MARCAÇÕES
+        </button>
+
+
+        <button
+            class="config-button danger"
+            onclick="eraseEverything()"
+        >
+            APAGAR TODA A CHECKLIST
+        </button>
+
+
+        <div class="privacy">
+
+            Os dados ficam somente no armazenamento
+            local deste navegador.
+
+            <br><br>
+
+            Nenhuma atividade cadastrada é enviada
+            ao GitHub.
+
+        </div>
+
+
+    </div>
+
+</div>
 
 </div>
 
 
 <script>
 
-/* =========================================================
+/* =====================================================
    DADOS
-========================================================= */
+===================================================== */
 
 var STORAGE_KEY =
-    "hyte_checklist_repaint_v1";
+    "hyte_checklist_stable_v1";
+
 
 var data = {
     sections: []
 };
 
+
 var editMode =
     false;
+
 
 var currentText =
     "";
 
+
 var textMode =
     "";
+
 
 var currentSectionId =
     "";
 
-var pendingTaskName =
+
+var taskName =
     "";
 
-var pendingEmoji =
+
+var taskEmoji =
     "✅";
+
 
 var startMinutes =
     450;
+
 
 var endMinutes =
     480;
 
 
-/* =========================================================
-   REPAINT / REFLOW FORÇADO
-========================================================= */
+/* =====================================================
+   INICIALIZAÇÃO
+===================================================== */
 
-function forceRepaint() {
+loadData();
 
-    var content =
-        document.getElementById(
-            "content"
-        );
+buildEmojiGrid();
 
-    var app =
-        document.getElementById(
-            "app"
-        );
-
-    if (!content) {
-        return;
-    }
-
-    /*
-        1. força leitura de layout
-    */
-
-    var dummy =
-        content.offsetHeight;
+renderAll();
 
 
-    /*
-        2. muda transform
-    */
-
-    content.style.webkitTransform =
-        "translateZ(0) scale(1.0001)";
-
-    content.style.transform =
-        "translateZ(0) scale(1.0001)";
-
-
-    /*
-        3. força novo layout
-    */
-
-    dummy =
-        content.offsetHeight;
-
-
-    /*
-        4. retorna ao normal
-    */
-
-    setTimeout(
-        function () {
-
-            content.style.webkitTransform =
-                "translateZ(0)";
-
-            content.style.transform =
-                "translateZ(0)";
-
-
-            /*
-                força alteração temporária
-                no container pai também
-            */
-
-            if (app) {
-
-                app.style.opacity =
-                    "0.999";
-
-                var d2 =
-                    app.offsetHeight;
-
-                setTimeout(
-                    function () {
-
-                        app.style.opacity =
-                            "1";
-
-                    },
-                    20
-                );
-
-            }
-
-        },
-        20
-    );
-
-}
-
-
-/* =========================================================
+/* =====================================================
    STORAGE
-========================================================= */
+===================================================== */
 
-function loadSavedData() {
+function loadData() {
 
     try {
 
@@ -1500,10 +1661,12 @@ function loadSavedData() {
                 STORAGE_KEY
             );
 
+
         if (saved) {
 
             var parsed =
                 JSON.parse(saved);
+
 
             if (
                 parsed &&
@@ -1547,49 +1710,61 @@ function saveData() {
 }
 
 
-/* =========================================================
-   ID
-========================================================= */
+/* =====================================================
+   FORCE PAINT
 
-function makeId(prefix) {
+   Usa uma mudança visual mínima,
+   parecida com o que o modo edição
+   já estava fazendo no HYTE.
+===================================================== */
 
-    return (
-        prefix +
-        "_" +
-        new Date().getTime() +
-        "_" +
-        Math.floor(
-            Math.random() *
-            100000
-        )
+function forcePaint() {
+
+    var card =
+        document.querySelector(
+            ".card"
+        );
+
+
+    if (!card) {
+
+        return;
+
+    }
+
+
+    card.className =
+        "card paint-pulse";
+
+
+    var ignored =
+        card.offsetHeight;
+
+
+    setTimeout(
+        function () {
+
+            card.className =
+                "card";
+
+        },
+        40
     );
 
 }
 
 
-/* =========================================================
-   INICIALIZAÇÃO
-========================================================= */
+/* =====================================================
+   RENDER
+===================================================== */
 
-loadSavedData();
-
-buildKeyboard();
-
-buildEmojiGrid();
-
-renderEverything();
-
-
-/* =========================================================
-   RENDER GERAL
-========================================================= */
-
-function renderEverything() {
+function renderAll() {
 
     var content =
         document.getElementById(
             "content"
         );
+
 
     content.innerHTML =
         "";
@@ -1599,32 +1774,35 @@ function renderEverything() {
         data.sections.length === 0
     ) {
 
-        content.innerHTML =
-            '<div class="empty" id="emptyState">' +
+        var empty =
+            document.createElement(
+                "div"
+            );
 
-                '<div class="empty-icon">' +
-                    '✓' +
-                '</div>' +
+        empty.className =
+            "empty";
 
-                '<div class="empty-title">' +
-                    'Sua checklist está vazia' +
-                '</div>' +
 
-                '<div class="empty-text">' +
-                    'Crie sua primeira seção e monte sua rotina diretamente neste dispositivo.' +
-                '</div>' +
+        empty.innerHTML =
+            '<div class="empty-icon">✓</div>' +
+            '<div class="empty-title">Sua checklist está vazia</div>' +
+            '<div class="empty-text">' +
+            'Crie sua primeira seção e monte sua rotina diretamente neste dispositivo.' +
+            '</div>' +
+            '<button class="primary-button" onclick="openNewSection()">' +
+            '+ CRIAR PRIMEIRA SEÇÃO' +
+            '</button>';
 
-                '<button class="primary-button" onclick="openNewSection()">' +
-                    '+ CRIAR PRIMEIRA SEÇÃO' +
-                '</button>' +
 
-            '</div>';
+        content.appendChild(
+            empty
+        );
 
     }
     else {
 
         var i;
-        var j;
+
 
         for (
             i = 0;
@@ -1632,22 +1810,9 @@ function renderEverything() {
             i++
         ) {
 
-            createSectionElement(
+            renderSection(
                 data.sections[i]
             );
-
-            for (
-                j = 0;
-                j < data.sections[i].tasks.length;
-                j++
-            ) {
-
-                createTaskElement(
-                    data.sections[i].id,
-                    data.sections[i].tasks[j]
-                );
-
-            }
 
         }
 
@@ -1658,228 +1823,14 @@ function renderEverything() {
 
     updateProgress();
 
-    forceRepaint();
-
 }
 
 
-/* =========================================================
-   MODO EDIÇÃO
-========================================================= */
-
-function toggleEditMode() {
-
-    editMode =
-        !editMode;
-
-    applyEditMode();
-
-    closeSettings();
-
-    forceRepaint();
-
-}
-
-
-function applyEditMode() {
-
-    var app =
-        document.getElementById(
-            "app"
-        );
-
-    var button =
-        document.getElementById(
-            "editModeButton"
-        );
-
-    if (editMode) {
-
-        app.className =
-            "app edit-mode";
-
-        if (button) {
-
-            button.innerHTML =
-                "SAIR DO MODO DE EDIÇÃO";
-
-        }
-
-    }
-    else {
-
-        app.className =
-            "app";
-
-        if (button) {
-
-            button.innerHTML =
-                "ATIVAR MODO DE EDIÇÃO";
-
-        }
-
-    }
-
-}
-
-
-/* =========================================================
-   NOVA SEÇÃO
-========================================================= */
-
-function openNewSection() {
-
-    textMode =
-        "newSection";
-
-    currentText =
-        "";
-
-    document
-        .getElementById(
-            "textModalTitle"
-        )
-        .innerHTML =
-        "Nova seção";
-
-    updateTextPreview();
-
-    document
-        .getElementById(
-            "textOverlay"
-        )
-        .className =
-        "overlay show";
-
-    forceRepaint();
-
-}
-
-
-function openNewSectionFromSettings() {
-
-    closeSettings();
-
-    openNewSection();
-
-}
-
-
-/* =========================================================
-   CONFIRMAR TEXTO
-========================================================= */
-
-function confirmText() {
-
-    var value =
-        trimText(
-            currentText
-        );
-
-    if (
-        value === ""
-    ) {
-
-        return;
-
-    }
-
-
-    if (
-        textMode ===
-        "newSection"
-    ) {
-
-        var section =
-        {
-            id:
-                makeId(
-                    "section"
-                ),
-
-            name:
-                value,
-
-            tasks:
-                []
-        };
-
-
-        data.sections.push(
-            section
-        );
-
-
-        saveData();
-
-
-        closeTextModal();
-
-
-        renderEverything();
-
-
-        forceRepaint();
-
-
-        return;
-
-    }
-
-
-    if (
-        textMode ===
-        "taskName"
-    ) {
-
-        pendingTaskName =
-            value;
-
-
-        document
-            .getElementById(
-                "taskNamePreview"
-            )
-            .innerHTML =
-            escapeHtml(
-                value
-            );
-
-
-        document
-            .getElementById(
-                "taskNamePreview"
-            )
-            .className =
-            "text-preview";
-
-
-        closeTextModal();
-
-
-        document
-            .getElementById(
-                "taskOverlay"
-            )
-            .className =
-            "overlay show";
-
-
-        forceRepaint();
-
-
-        return;
-
-    }
-
-}
-
-
-/* =========================================================
-   CRIAR SEÇÃO
-========================================================= */
-
-function createSectionElement(
+/* =====================================================
+   SEÇÃO
+===================================================== */
+
+function renderSection(
     section
 ) {
 
@@ -1889,17 +1840,13 @@ function createSectionElement(
         );
 
 
-    var wrapper =
+    var block =
         document.createElement(
             "div"
         );
 
-    wrapper.className =
+    block.className =
         "section-block";
-
-    wrapper.id =
-        "section_" +
-        section.id;
 
 
     var top =
@@ -1935,19 +1882,19 @@ function createSectionElement(
         "section-tools";
 
 
-    var removeButton =
+    var deleteSectionButton =
         document.createElement(
             "button"
         );
 
-    removeButton.className =
+    deleteSectionButton.className =
         "tool-button";
 
-    removeButton.innerHTML =
+    deleteSectionButton.innerHTML =
         "Excluir";
 
 
-    removeButton.onclick =
+    deleteSectionButton.onclick =
         function () {
 
             deleteSection(
@@ -1958,7 +1905,7 @@ function createSectionElement(
 
 
     tools.appendChild(
-        removeButton
+        deleteSectionButton
     );
 
 
@@ -1979,24 +1926,39 @@ function createSectionElement(
     group.className =
         "group";
 
-    group.id =
-        "group_" +
-        section.id;
+
+    var i;
 
 
-    var addButton =
+    for (
+        i = 0;
+        i < section.tasks.length;
+        i++
+    ) {
+
+        group.appendChild(
+            createTaskRow(
+                section,
+                section.tasks[i]
+            )
+        );
+
+    }
+
+
+    var add =
         document.createElement(
             "button"
         );
 
-    addButton.className =
+    add.className =
         "add-task-button";
 
-    addButton.innerHTML =
+    add.innerHTML =
         "+ ADICIONAR ATIVIDADE";
 
 
-    addButton.onclick =
+    add.onclick =
         function () {
 
             openNewTask(
@@ -2006,303 +1968,40 @@ function createSectionElement(
         };
 
 
-    wrapper.appendChild(
+    block.appendChild(
         top
     );
 
-    wrapper.appendChild(
+    block.appendChild(
         group
     );
 
-    wrapper.appendChild(
-        addButton
+    block.appendChild(
+        add
     );
 
 
     content.appendChild(
-        wrapper
+        block
     );
 
 }
 
 
-/* =========================================================
-   EXCLUIR SEÇÃO
-========================================================= */
-
-function deleteSection(
-    sectionId
-) {
-
-    if (
-        !confirm(
-            "Excluir esta seção?"
-        )
-    ) {
-
-        return;
-
-    }
-
-
-    var newSections =
-        [];
-
-    var i;
-
-
-    for (
-        i = 0;
-        i < data.sections.length;
-        i++
-    ) {
-
-        if (
-            data.sections[i].id !==
-            sectionId
-        ) {
-
-            newSections.push(
-                data.sections[i]
-            );
-
-        }
-
-    }
-
-
-    data.sections =
-        newSections;
-
-
-    saveData();
-
-    renderEverything();
-
-    forceRepaint();
-
-}
-
-
-/* =========================================================
-   NOVA TAREFA
-========================================================= */
-
-function openNewTask(
-    sectionId
-) {
-
-    currentSectionId =
-        sectionId;
-
-    pendingTaskName =
-        "";
-
-    pendingEmoji =
-        "✅";
-
-    startMinutes =
-        450;
-
-    endMinutes =
-        480;
-
-
-    document
-        .getElementById(
-            "taskNamePreview"
-        )
-        .innerHTML =
-        "Nenhum nome definido";
-
-
-    document
-        .getElementById(
-            "taskNamePreview"
-        )
-        .className =
-        "text-preview placeholder";
-
-
-    updateEmojiSelection();
-
-    updateTimeDisplays();
-
-
-    document
-        .getElementById(
-            "taskOverlay"
-        )
-        .className =
-        "overlay show";
-
-    forceRepaint();
-
-}
-
-
-function closeTaskModal() {
-
-    document
-        .getElementById(
-            "taskOverlay"
-        )
-        .className =
-        "overlay";
-
-    forceRepaint();
-
-}
-
-
-/* =========================================================
-   NOME DA TAREFA
-========================================================= */
-
-function openTaskNameKeyboard() {
-
-    document
-        .getElementById(
-            "taskOverlay"
-        )
-        .className =
-        "overlay";
-
-
-    textMode =
-        "taskName";
-
-    currentText =
-        pendingTaskName;
-
-
-    document
-        .getElementById(
-            "textModalTitle"
-        )
-        .innerHTML =
-        "Nome da atividade";
-
-
-    updateTextPreview();
-
-
-    document
-        .getElementById(
-            "textOverlay"
-        )
-        .className =
-        "overlay show";
-
-    forceRepaint();
-
-}
-
-
-/* =========================================================
-   SALVAR NOVA TAREFA
-========================================================= */
-
-function saveNewTask() {
-
-    if (
-        trimText(
-            pendingTaskName
-        ) === ""
-    ) {
-
-        return;
-
-    }
-
-
-    var section =
-        findSection(
-            currentSectionId
-        );
-
-
-    if (!section) {
-
-        return;
-
-    }
-
-
-    var task =
-    {
-        id:
-            makeId(
-                "task"
-            ),
-
-        emoji:
-            pendingEmoji,
-
-        name:
-            pendingTaskName,
-
-        time:
-            formatTime(
-                startMinutes
-            )
-            +
-            "–"
-            +
-            formatTime(
-                endMinutes
-            ),
-
-        done:
-            false
-    };
-
-
-    section.tasks.push(
-        task
-    );
-
-
-    saveData();
-
-
-    closeTaskModal();
-
-
-    renderEverything();
-
-    forceRepaint();
-
-}
-
-
-/* =========================================================
-   CRIAR TAREFA
-========================================================= */
-
-function createTaskElement(
-    sectionId,
+/* =====================================================
+   TASK ROW
+===================================================== */
+
+function createTaskRow(
+    section,
     task
 ) {
-
-    var group =
-        document.getElementById(
-            "group_" +
-            sectionId
-        );
-
-
-    if (!group) {
-
-        return;
-
-    }
-
 
     var row =
         document.createElement(
             "div"
         );
+
 
     row.className =
         task.done
@@ -2311,40 +2010,51 @@ function createTaskElement(
         :
         "task";
 
-    row.id =
-        "task_" +
-        task.id;
 
-
-    var checkbox =
+    var check =
         document.createElement(
             "input"
         );
 
-    checkbox.type =
+    check.type =
         "checkbox";
 
-    checkbox.className =
+    check.className =
         "task-check";
 
-    checkbox.checked =
+    check.checked =
         task.done;
 
 
-    checkbox.onchange =
+    check.onchange =
         function () {
 
             task.done =
-                checkbox.checked;
+                check.checked;
 
 
             saveData();
 
+
+            if (
+                task.done
+            ) {
+
+                row.className =
+                    "task done";
+
+            }
+            else {
+
+                row.className =
+                    "task";
+
+            }
+
+
             updateProgress();
 
-            renderEverything();
-
-            forceRepaint();
+            forcePaint();
 
         };
 
@@ -2406,7 +2116,7 @@ function createTaskElement(
         function () {
 
             deleteTask(
-                sectionId,
+                section.id,
                 task.id
             );
 
@@ -2419,7 +2129,7 @@ function createTaskElement(
 
 
     row.appendChild(
-        checkbox
+        check
     );
 
     row.appendChild(
@@ -2435,16 +2145,494 @@ function createTaskElement(
     );
 
 
-    group.appendChild(
-        row
-    );
+    return row;
 
 }
 
 
-/* =========================================================
-   EXCLUIR TAREFA
-========================================================= */
+/* =====================================================
+   TEXT
+===================================================== */
+
+function openNewSection() {
+
+    currentText =
+        "";
+
+    textMode =
+        "section";
+
+
+    document
+        .getElementById(
+            "textTitle"
+        )
+        .innerHTML =
+        "Nova seção";
+
+
+    updateTextPreview();
+
+
+    document
+        .getElementById(
+            "textOverlay"
+        )
+        .className =
+        "overlay show";
+
+}
+
+
+function newSectionFromSettings() {
+
+    closeSettings();
+
+    openNewSection();
+
+}
+
+
+function typeKey(
+    key
+) {
+
+    currentText +=
+        key;
+
+
+    updateTextPreview();
+
+}
+
+
+function eraseKey() {
+
+    if (
+        currentText.length >
+        0
+    ) {
+
+        currentText =
+            currentText.substring(
+                0,
+                currentText.length -
+                1
+            );
+
+    }
+
+
+    updateTextPreview();
+
+}
+
+
+function updateTextPreview() {
+
+    var preview =
+        document.getElementById(
+            "textPreview"
+        );
+
+
+    if (
+        currentText === ""
+    ) {
+
+        preview.innerHTML =
+            "Digite usando o teclado abaixo";
+
+
+        preview.className =
+            "text-preview placeholder";
+
+    }
+    else {
+
+        preview.innerHTML =
+            escapeHtml(
+                currentText
+            );
+
+
+        preview.className =
+            "text-preview";
+
+    }
+
+}
+
+
+function confirmText() {
+
+    var value =
+        trimText(
+            currentText
+        );
+
+
+    if (
+        value === ""
+    ) {
+
+        return;
+
+    }
+
+
+    if (
+        textMode ===
+        "section"
+    ) {
+
+        data.sections.push(
+        {
+            id:
+                makeId(
+                    "section"
+                ),
+
+            name:
+                value,
+
+            tasks:
+                []
+        });
+
+
+        saveData();
+
+
+        closeTextOnly();
+
+
+        renderAll();
+
+
+        forcePaint();
+
+
+        return;
+
+    }
+
+
+    if (
+        textMode ===
+        "task"
+    ) {
+
+        taskName =
+            value;
+
+
+        document
+            .getElementById(
+                "taskNamePreview"
+            )
+            .innerHTML =
+            escapeHtml(
+                taskName
+            );
+
+
+        document
+            .getElementById(
+                "taskNamePreview"
+            )
+            .className =
+            "text-preview";
+
+
+        closeTextOnly();
+
+
+        document
+            .getElementById(
+                "taskOverlay"
+            )
+            .className =
+            "overlay show";
+
+
+        return;
+
+    }
+
+}
+
+
+function cancelText() {
+
+    closeTextOnly();
+
+
+    if (
+        textMode ===
+        "task"
+    ) {
+
+        document
+            .getElementById(
+                "taskOverlay"
+            )
+            .className =
+            "overlay show";
+
+    }
+
+}
+
+
+function closeTextOnly() {
+
+    document
+        .getElementById(
+            "textOverlay"
+        )
+        .className =
+        "overlay";
+
+}
+
+
+/* =====================================================
+   TASK
+===================================================== */
+
+function openNewTask(
+    sectionId
+) {
+
+    currentSectionId =
+        sectionId;
+
+
+    taskName =
+        "";
+
+
+    taskEmoji =
+        "✅";
+
+
+    startMinutes =
+        450;
+
+
+    endMinutes =
+        480;
+
+
+    document
+        .getElementById(
+            "taskNamePreview"
+        )
+        .innerHTML =
+        "Nenhum nome definido";
+
+
+    document
+        .getElementById(
+            "taskNamePreview"
+        )
+        .className =
+        "text-preview placeholder";
+
+
+    updateTime();
+
+    updateEmojiButtons();
+
+
+    document
+        .getElementById(
+            "taskOverlay"
+        )
+        .className =
+        "overlay show";
+
+}
+
+
+function openTaskName() {
+
+    document
+        .getElementById(
+            "taskOverlay"
+        )
+        .className =
+        "overlay";
+
+
+    currentText =
+        taskName;
+
+
+    textMode =
+        "task";
+
+
+    document
+        .getElementById(
+            "textTitle"
+        )
+        .innerHTML =
+        "Nome da atividade";
+
+
+    updateTextPreview();
+
+
+    document
+        .getElementById(
+            "textOverlay"
+        )
+        .className =
+        "overlay show";
+
+}
+
+
+function closeTask() {
+
+    document
+        .getElementById(
+            "taskOverlay"
+        )
+        .className =
+        "overlay";
+
+}
+
+
+function saveTask() {
+
+    if (
+        trimText(
+            taskName
+        ) === ""
+    ) {
+
+        return;
+
+    }
+
+
+    var section =
+        findSection(
+            currentSectionId
+        );
+
+
+    if (!section) {
+
+        return;
+
+    }
+
+
+    section.tasks.push(
+    {
+        id:
+            makeId(
+                "task"
+            ),
+
+        emoji:
+            taskEmoji,
+
+        name:
+            taskName,
+
+        time:
+            formatTime(
+                startMinutes
+            )
+            +
+            "–"
+            +
+            formatTime(
+                endMinutes
+            ),
+
+        done:
+            false
+    });
+
+
+    saveData();
+
+
+    closeTask();
+
+
+    renderAll();
+
+
+    forcePaint();
+
+}
+
+
+/* =====================================================
+   DELETE
+===================================================== */
+
+function deleteSection(
+    sectionId
+) {
+
+    if (
+        !confirm(
+            "Excluir esta seção?"
+        )
+    ) {
+
+        return;
+
+    }
+
+
+    var result =
+        [];
+
+    var i;
+
+
+    for (
+        i = 0;
+        i < data.sections.length;
+        i++
+    ) {
+
+        if (
+            data.sections[i].id !==
+            sectionId
+        ) {
+
+            result.push(
+                data.sections[i]
+            );
+
+        }
+
+    }
+
+
+    data.sections =
+        result;
+
+
+    saveData();
+
+    renderAll();
+
+    forcePaint();
+
+}
+
 
 function deleteTask(
     sectionId,
@@ -2464,7 +2652,7 @@ function deleteTask(
     }
 
 
-    var newTasks =
+    var result =
         [];
 
     var i;
@@ -2481,7 +2669,7 @@ function deleteTask(
             taskId
         ) {
 
-            newTasks.push(
+            result.push(
                 section.tasks[i]
             );
 
@@ -2491,24 +2679,24 @@ function deleteTask(
 
 
     section.tasks =
-        newTasks;
+        result;
 
 
     saveData();
 
-    renderEverything();
+    renderAll();
 
-    forceRepaint();
+    forcePaint();
 
 }
 
 
-/* =========================================================
-   FIND SECTION
-========================================================= */
+/* =====================================================
+   FIND
+===================================================== */
 
 function findSection(
-    sectionId
+    id
 ) {
 
     var i;
@@ -2522,7 +2710,7 @@ function findSection(
 
         if (
             data.sections[i].id ===
-            sectionId
+            id
         ) {
 
             return data.sections[i];
@@ -2537,17 +2725,19 @@ function findSection(
 }
 
 
-/* =========================================================
-   PROGRESSO
-========================================================= */
+/* =====================================================
+   PROGRESS
+===================================================== */
 
 function updateProgress() {
 
     var total =
         0;
 
+
     var done =
         0;
+
 
     var i;
     var j;
@@ -2588,7 +2778,8 @@ function updateProgress() {
 
 
     if (
-        total > 0
+        total >
+        0
     ) {
 
         percent =
@@ -2620,7 +2811,8 @@ function updateProgress() {
 
 
     if (
-        total === 0
+        total ===
+        0
     ) {
 
         document
@@ -2648,242 +2840,9 @@ function updateProgress() {
 }
 
 
-/* =========================================================
-   TECLADO
-========================================================= */
-
-var keys =
-[
-    ["1","2","3","4","5","6","7","8","9","0"],
-    ["Q","W","E","R","T","Y","U","I","O","P"],
-    ["A","S","D","F","G","H","J","K","L"],
-    ["Z","X","C","V","B","N","M"],
-    ["Á","É","Í","Ó","Ú","Ç"]
-];
-
-
-function buildKeyboard() {
-
-    var keyboard =
-        document.getElementById(
-            "keyboard"
-        );
-
-
-    var i;
-    var j;
-
-
-    for (
-        i = 0;
-        i < keys.length;
-        i++
-    ) {
-
-        var row =
-            document.createElement(
-                "div"
-            );
-
-        row.className =
-            "key-row";
-
-
-        for (
-            j = 0;
-            j < keys[i].length;
-            j++
-        ) {
-
-            createKey(
-                row,
-                keys[i][j]
-            );
-
-        }
-
-
-        keyboard.appendChild(
-            row
-        );
-
-    }
-
-
-    var lastRow =
-        document.createElement(
-            "div"
-        );
-
-    lastRow.className =
-        "key-row";
-
-
-    var space =
-        document.createElement(
-            "button"
-        );
-
-    space.className =
-        "key key-space";
-
-    space.innerHTML =
-        "ESPAÇO";
-
-    space.onclick =
-        function () {
-
-            currentText +=
-                " ";
-
-            updateTextPreview();
-
-            forceRepaint();
-
-        };
-
-
-    var erase =
-        document.createElement(
-            "button"
-        );
-
-    erase.className =
-        "key";
-
-    erase.innerHTML =
-        "⌫";
-
-    erase.onclick =
-        function () {
-
-            if (
-                currentText.length >
-                0
-            ) {
-
-                currentText =
-                    currentText.substring(
-                        0,
-                        currentText.length - 1
-                    );
-
-                updateTextPreview();
-
-                forceRepaint();
-
-            }
-
-        };
-
-
-    lastRow.appendChild(
-        space
-    );
-
-    lastRow.appendChild(
-        erase
-    );
-
-
-    keyboard.appendChild(
-        lastRow
-    );
-
-}
-
-
-function createKey(
-    row,
-    value
-) {
-
-    var button =
-        document.createElement(
-            "button"
-        );
-
-    button.className =
-        "key";
-
-    button.appendChild(
-        document.createTextNode(
-            value
-        )
-    );
-
-
-    button.onclick =
-        function () {
-
-            currentText +=
-                value;
-
-            updateTextPreview();
-
-            forceRepaint();
-
-        };
-
-
-    row.appendChild(
-        button
-    );
-
-}
-
-
-function updateTextPreview() {
-
-    var preview =
-        document.getElementById(
-            "textPreview"
-        );
-
-
-    if (
-        currentText === ""
-    ) {
-
-        preview.innerHTML =
-            "Digite usando o teclado abaixo";
-
-        preview.className =
-            "text-preview placeholder";
-
-    }
-    else {
-
-        preview.innerHTML =
-            escapeHtml(
-                currentText
-            );
-
-        preview.className =
-            "text-preview";
-
-    }
-
-}
-
-
-function closeTextModal() {
-
-    document
-        .getElementById(
-            "textOverlay"
-        )
-        .className =
-        "overlay";
-
-    forceRepaint();
-
-}
-
-
-/* =========================================================
-   EMOJIS
-========================================================= */
+/* =====================================================
+   EMOJI
+===================================================== */
 
 var emojis =
 [
@@ -2938,7 +2897,6 @@ function buildEmojiGrid() {
     ) {
 
         createEmojiButton(
-            grid,
             emojis[i]
         );
 
@@ -2948,17 +2906,30 @@ function buildEmojiGrid() {
 
 
 function createEmojiButton(
-    grid,
     emoji
 ) {
+
+    var grid =
+        document.getElementById(
+            "emojiGrid"
+        );
+
 
     var button =
         document.createElement(
             "button"
         );
 
+
     button.className =
         "emoji-button";
+
+
+    button.setAttribute(
+        "data-emoji",
+        emoji
+    );
+
 
     button.appendChild(
         document.createTextNode(
@@ -2970,20 +2941,13 @@ function createEmojiButton(
     button.onclick =
         function () {
 
-            pendingEmoji =
+            taskEmoji =
                 emoji;
 
-            updateEmojiSelection();
 
-            forceRepaint();
+            updateEmojiButtons();
 
         };
-
-
-    button.setAttribute(
-        "data-emoji",
-        emoji
-    );
 
 
     grid.appendChild(
@@ -2993,14 +2957,16 @@ function createEmojiButton(
 }
 
 
-function updateEmojiSelection() {
+function updateEmojiButtons() {
+
+    var grid =
+        document.getElementById(
+            "emojiGrid"
+        );
+
 
     var buttons =
-        document
-        .getElementById(
-            "emojiGrid"
-        )
-        .getElementsByTagName(
+        grid.getElementsByTagName(
             "button"
         );
 
@@ -3016,11 +2982,11 @@ function updateEmojiSelection() {
 
         if (
             buttons[i]
-            .getAttribute(
-                "data-emoji"
-            )
+                .getAttribute(
+                    "data-emoji"
+                )
             ===
-            pendingEmoji
+            taskEmoji
         ) {
 
             buttons[i].className =
@@ -3039,20 +3005,45 @@ function updateEmojiSelection() {
 }
 
 
-/* =========================================================
-   HORÁRIO
-========================================================= */
+/* =====================================================
+   TIME
+===================================================== */
 
 function changeStart(
-    value
+    amount
 ) {
 
     startMinutes +=
-        value;
+        amount;
 
 
-    if (
-        startMinutes < 0
+    normalizeTimes();
+
+    updateTime();
+
+}
+
+
+function changeEnd(
+    amount
+) {
+
+    endMinutes +=
+        amount;
+
+
+    normalizeTimes();
+
+    updateTime();
+
+}
+
+
+function normalizeTimes() {
+
+    while (
+        startMinutes <
+        0
     ) {
 
         startMinutes +=
@@ -3061,7 +3052,7 @@ function changeStart(
     }
 
 
-    if (
+    while (
         startMinutes >=
         1440
     ) {
@@ -3072,23 +3063,9 @@ function changeStart(
     }
 
 
-    updateTimeDisplays();
-
-    forceRepaint();
-
-}
-
-
-function changeEnd(
-    value
-) {
-
-    endMinutes +=
-        value;
-
-
-    if (
-        endMinutes < 0
+    while (
+        endMinutes <
+        0
     ) {
 
         endMinutes +=
@@ -3097,7 +3074,7 @@ function changeEnd(
     }
 
 
-    if (
+    while (
         endMinutes >=
         1440
     ) {
@@ -3107,15 +3084,10 @@ function changeEnd(
 
     }
 
-
-    updateTimeDisplays();
-
-    forceRepaint();
-
 }
 
 
-function updateTimeDisplays() {
+function updateTime() {
 
     document
         .getElementById(
@@ -3140,18 +3112,18 @@ function updateTimeDisplays() {
 
 
 function formatTime(
-    value
+    minutes
 ) {
 
     var hour =
         Math.floor(
-            value /
+            minutes /
             60
         );
 
 
     var minute =
-        value %
+        minutes %
         60;
 
 
@@ -3180,11 +3152,14 @@ function formatTime(
 }
 
 
-/* =========================================================
-   CONFIG
-========================================================= */
+/* =====================================================
+   SETTINGS
+===================================================== */
 
 function openSettings() {
+
+    applyEditMode();
+
 
     document
         .getElementById(
@@ -3192,10 +3167,6 @@ function openSettings() {
         )
         .className =
         "overlay show";
-
-    applyEditMode();
-
-    forceRepaint();
 
 }
 
@@ -3209,7 +3180,79 @@ function closeSettings() {
         .className =
         "overlay";
 
-    forceRepaint();
+}
+
+
+function toggleEditMode() {
+
+    editMode =
+        !editMode;
+
+
+    applyEditMode();
+
+
+    closeSettings();
+
+
+    /*
+        Esse botão sabemos que
+        força o HYTE a redesenhar.
+    */
+
+    forcePaint();
+
+}
+
+
+function applyEditMode() {
+
+    var app =
+        document.getElementById(
+            "app"
+        );
+
+
+    var button =
+        document.getElementById(
+            "editButton"
+        );
+
+
+    if (
+        editMode
+    ) {
+
+        app.className =
+            "app edit-mode";
+
+
+        if (
+            button
+        ) {
+
+            button.innerHTML =
+                "SAIR DO MODO DE EDIÇÃO";
+
+        }
+
+    }
+    else {
+
+        app.className =
+            "app";
+
+
+        if (
+            button
+        ) {
+
+            button.innerHTML =
+                "ATIVAR MODO DE EDIÇÃO";
+
+        }
+
+    }
 
 }
 
@@ -3244,9 +3287,9 @@ function clearChecks() {
 
     saveData();
 
-    renderEverything();
+    renderAll();
 
-    forceRepaint();
+    forcePaint();
 
 }
 
@@ -3287,16 +3330,35 @@ function eraseEverything() {
 
     closeSettings();
 
-    renderEverything();
 
-    forceRepaint();
+    renderAll();
+
+    forcePaint();
 
 }
 
 
-/* =========================================================
+/* =====================================================
    UTIL
-========================================================= */
+===================================================== */
+
+function makeId(
+    prefix
+) {
+
+    return (
+        prefix +
+        "_" +
+        new Date().getTime() +
+        "_" +
+        Math.floor(
+            Math.random() *
+            100000
+        )
+    );
+
+}
+
 
 function trimText(
     value
@@ -3325,17 +3387,20 @@ function escapeHtml(
             "&amp;"
         );
 
+
     text =
         text.replace(
             /</g,
             "&lt;"
         );
 
+
     text =
         text.replace(
             />/g,
             "&gt;"
         );
+
 
     return text;
 
