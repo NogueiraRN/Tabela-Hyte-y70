@@ -44,7 +44,6 @@ body {
     flex-direction: column;
 
     position: relative;
-
     overflow: hidden;
 
     background:
@@ -59,16 +58,13 @@ body {
 
     box-shadow:
         0 12px 30px
-        rgba(0,0,0,.50);
+        rgba(0,0,0,.5);
 }
-
-/* PINCEL SUPERIOR */
 
 .card:before {
     content: "";
 
     position: absolute;
-
     top: 0;
     left: 0;
 
@@ -103,7 +99,6 @@ body {
         rgba(255,255,255,.28);
 
     position: relative;
-
     z-index: 3;
 }
 
@@ -142,9 +137,7 @@ body {
 
 .subtitle {
     margin-top: 9px;
-
     color: #888;
-
     font-size: 17px;
 }
 
@@ -207,10 +200,33 @@ body {
 
 .progress-info {
     margin-top: 7px;
-
     color: #707070;
+    font-size: 12px;
+}
+
+/* =========================================================
+   MODO EDIÇÃO
+========================================================= */
+
+.edit-banner {
+    display: none;
+
+    flex-shrink: 0;
+
+    padding: 9px;
+
+    text-align: center;
+
+    background: #eee;
+    color: #050505;
 
     font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+.app.edit-mode .edit-banner {
+    display: block;
 }
 
 /* =========================================================
@@ -230,6 +246,10 @@ body {
 
     scrollbar-width: thin;
     scrollbar-color: #777 #111;
+
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    will-change: transform;
 }
 
 .content::-webkit-scrollbar {
@@ -391,8 +411,12 @@ body {
 }
 
 .section-tools {
-    display: flex;
+    display: none;
     gap: 5px;
+}
+
+.app.edit-mode .section-tools {
+    display: flex;
 }
 
 .tool-button {
@@ -537,8 +561,15 @@ body {
 
 .task.done .task-name {
     color: #777;
-
     text-decoration: line-through;
+}
+
+.task-tools {
+    display: none;
+}
+
+.app.edit-mode .task-tools {
+    display: block;
 }
 
 .delete-task {
@@ -557,6 +588,8 @@ body {
 }
 
 .add-task-button {
+    display: none;
+
     width: 100%;
 
     min-height: 48px;
@@ -578,6 +611,10 @@ body {
     font-weight: 900;
 
     cursor: pointer;
+}
+
+.app.edit-mode .add-task-button {
+    display: block;
 }
 
 /* =========================================================
@@ -711,7 +748,6 @@ body {
 
 .key-row {
     display: flex;
-
     gap: 5px;
 }
 
@@ -860,9 +896,13 @@ body {
     cursor: pointer;
 }
 
+.config-button.primary {
+    background: #eee;
+    color: #070707;
+}
+
 .config-button.danger {
     color: #dda7a7;
-
     border-color: #604040;
 }
 
@@ -927,7 +967,10 @@ body {
 
 <body>
 
-<div class="app">
+<div
+    class="app"
+    id="app"
+>
 
     <div class="card">
 
@@ -952,6 +995,11 @@ body {
                 Marque as atividades concluídas
             </div>
 
+        </div>
+
+
+        <div class="edit-banner">
+            MODO DE EDIÇÃO ATIVO
         </div>
 
 
@@ -1030,9 +1078,7 @@ body {
 </div>
 
 
-<!-- ======================================================
-     TEXTO / TECLADO
-====================================================== -->
+<!-- TEXTO / TECLADO -->
 
 <div
     class="overlay"
@@ -1092,9 +1138,7 @@ body {
 </div>
 
 
-<!-- ======================================================
-     NOVA TAREFA
-====================================================== -->
+<!-- NOVA TAREFA -->
 
 <div
     class="overlay"
@@ -1240,9 +1284,7 @@ body {
 </div>
 
 
-<!-- ======================================================
-     CONFIGURAÇÕES
-====================================================== -->
+<!-- CONFIGURAÇÕES -->
 
 <div
     class="overlay"
@@ -1268,6 +1310,14 @@ body {
 
 
         <div class="modal-body">
+
+            <button
+                class="config-button primary"
+                id="editModeButton"
+                onclick="toggleEditMode()"
+            >
+                ATIVAR MODO DE EDIÇÃO
+            </button>
 
             <button
                 class="config-button"
@@ -1313,11 +1363,14 @@ body {
 ========================================================= */
 
 var STORAGE_KEY =
-    "hyte_checklist_direct_v1";
+    "hyte_checklist_repaint_v1";
 
 var data = {
     sections: []
 };
+
+var editMode =
+    false;
 
 var currentText =
     "";
@@ -1342,18 +1395,96 @@ var endMinutes =
 
 
 /* =========================================================
-   INICIALIZAÇÃO
+   REPAINT / REFLOW FORÇADO
 ========================================================= */
 
-loadSavedData();
+function forceRepaint() {
 
-buildKeyboard();
+    var content =
+        document.getElementById(
+            "content"
+        );
 
-buildEmojiGrid();
+    var app =
+        document.getElementById(
+            "app"
+        );
 
-renderSavedData();
+    if (!content) {
+        return;
+    }
 
-updateProgress();
+    /*
+        1. força leitura de layout
+    */
+
+    var dummy =
+        content.offsetHeight;
+
+
+    /*
+        2. muda transform
+    */
+
+    content.style.webkitTransform =
+        "translateZ(0) scale(1.0001)";
+
+    content.style.transform =
+        "translateZ(0) scale(1.0001)";
+
+
+    /*
+        3. força novo layout
+    */
+
+    dummy =
+        content.offsetHeight;
+
+
+    /*
+        4. retorna ao normal
+    */
+
+    setTimeout(
+        function () {
+
+            content.style.webkitTransform =
+                "translateZ(0)";
+
+            content.style.transform =
+                "translateZ(0)";
+
+
+            /*
+                força alteração temporária
+                no container pai também
+            */
+
+            if (app) {
+
+                app.style.opacity =
+                    "0.999";
+
+                var d2 =
+                    app.offsetHeight;
+
+                setTimeout(
+                    function () {
+
+                        app.style.opacity =
+                            "1";
+
+                    },
+                    20
+                );
+
+            }
+
+        },
+        20
+    );
+
+}
 
 
 /* =========================================================
@@ -1437,92 +1568,155 @@ function makeId(prefix) {
 
 
 /* =========================================================
-   CARREGAR O QUE JÁ ESTAVA SALVO
+   INICIALIZAÇÃO
 ========================================================= */
 
-function renderSavedData() {
+loadSavedData();
+
+buildKeyboard();
+
+buildEmojiGrid();
+
+renderEverything();
+
+
+/* =========================================================
+   RENDER GERAL
+========================================================= */
+
+function renderEverything() {
+
+    var content =
+        document.getElementById(
+            "content"
+        );
+
+    content.innerHTML =
+        "";
+
 
     if (
         data.sections.length === 0
     ) {
 
-        return;
+        content.innerHTML =
+            '<div class="empty" id="emptyState">' +
+
+                '<div class="empty-icon">' +
+                    '✓' +
+                '</div>' +
+
+                '<div class="empty-title">' +
+                    'Sua checklist está vazia' +
+                '</div>' +
+
+                '<div class="empty-text">' +
+                    'Crie sua primeira seção e monte sua rotina diretamente neste dispositivo.' +
+                '</div>' +
+
+                '<button class="primary-button" onclick="openNewSection()">' +
+                    '+ CRIAR PRIMEIRA SEÇÃO' +
+                '</button>' +
+
+            '</div>';
 
     }
+    else {
 
-    hideEmpty();
-
-    var i;
-    var j;
-
-    for (
-        i = 0;
-        i < data.sections.length;
-        i++
-    ) {
-
-        createSectionElement(
-            data.sections[i]
-        );
+        var i;
+        var j;
 
         for (
-            j = 0;
-            j < data.sections[i].tasks.length;
-            j++
+            i = 0;
+            i < data.sections.length;
+            i++
         ) {
 
-            createTaskElement(
-                data.sections[i].id,
-                data.sections[i].tasks[j]
+            createSectionElement(
+                data.sections[i]
             );
+
+            for (
+                j = 0;
+                j < data.sections[i].tasks.length;
+                j++
+            ) {
+
+                createTaskElement(
+                    data.sections[i].id,
+                    data.sections[i].tasks[j]
+                );
+
+            }
 
         }
 
     }
 
+
+    applyEditMode();
+
+    updateProgress();
+
+    forceRepaint();
+
 }
 
 
 /* =========================================================
-   ESTADO VAZIO
+   MODO EDIÇÃO
 ========================================================= */
 
-function hideEmpty() {
+function toggleEditMode() {
 
-    var empty =
-        document.getElementById(
-            "emptyState"
-        );
+    editMode =
+        !editMode;
 
-    if (empty) {
+    applyEditMode();
 
-        empty.style.display =
-            "none";
+    closeSettings();
 
-    }
+    forceRepaint();
 
 }
 
 
-function showEmptyIfNeeded() {
+function applyEditMode() {
 
-    if (
-        data.sections.length > 0
-    ) {
-
-        return;
-
-    }
-
-    var empty =
+    var app =
         document.getElementById(
-            "emptyState"
+            "app"
         );
 
-    if (empty) {
+    var button =
+        document.getElementById(
+            "editModeButton"
+        );
 
-        empty.style.display =
-            "flex";
+    if (editMode) {
+
+        app.className =
+            "app edit-mode";
+
+        if (button) {
+
+            button.innerHTML =
+                "SAIR DO MODO DE EDIÇÃO";
+
+        }
+
+    }
+    else {
+
+        app.className =
+            "app";
+
+        if (button) {
+
+            button.innerHTML =
+                "ATIVAR MODO DE EDIÇÃO";
+
+        }
 
     }
 
@@ -1557,6 +1751,8 @@ function openNewSection() {
         .className =
         "overlay show";
 
+    forceRepaint();
+
 }
 
 
@@ -1589,10 +1785,6 @@ function confirmText() {
     }
 
 
-    /*
-        CRIAR SEÇÃO
-    */
-
     if (
         textMode ===
         "newSection"
@@ -1613,42 +1805,27 @@ function confirmText() {
         };
 
 
-        /*
-            PRIMEIRO:
-            mostra imediatamente
-        */
-
-        hideEmpty();
-
-        createSectionElement(
-            section
-        );
-
-
-        /*
-            DEPOIS:
-            salva
-        */
-
         data.sections.push(
             section
         );
+
 
         saveData();
 
 
         closeTextModal();
 
-        updateProgress();
+
+        renderEverything();
+
+
+        forceRepaint();
+
 
         return;
 
     }
 
-
-    /*
-        NOME DE ATIVIDADE
-    */
 
     if (
         textMode ===
@@ -1657,6 +1834,7 @@ function confirmText() {
 
         pendingTaskName =
             value;
+
 
         document
             .getElementById(
@@ -1667,6 +1845,7 @@ function confirmText() {
                 value
             );
 
+
         document
             .getElementById(
                 "taskNamePreview"
@@ -1674,7 +1853,9 @@ function confirmText() {
             .className =
             "text-preview";
 
+
         closeTextModal();
+
 
         document
             .getElementById(
@@ -1682,6 +1863,10 @@ function confirmText() {
             )
             .className =
             "overlay show";
+
+
+        forceRepaint();
+
 
         return;
 
@@ -1691,7 +1876,7 @@ function confirmText() {
 
 
 /* =========================================================
-   CRIAR ELEMENTO DE SEÇÃO DIRETO NO DOM
+   CRIAR SEÇÃO
 ========================================================= */
 
 function createSectionElement(
@@ -1890,31 +2075,11 @@ function deleteSection(
         newSections;
 
 
-    var element =
-        document.getElementById(
-            "section_" +
-            sectionId
-        );
-
-
-    if (
-        element &&
-        element.parentNode
-    ) {
-
-        element.parentNode
-            .removeChild(
-                element
-            );
-
-    }
-
-
     saveData();
 
-    showEmptyIfNeeded();
+    renderEverything();
 
-    updateProgress();
+    forceRepaint();
 
 }
 
@@ -1971,6 +2136,8 @@ function openNewTask(
         .className =
         "overlay show";
 
+    forceRepaint();
+
 }
 
 
@@ -1982,6 +2149,8 @@ function closeTaskModal() {
         )
         .className =
         "overlay";
+
+    forceRepaint();
 
 }
 
@@ -2024,6 +2193,8 @@ function openTaskNameKeyboard() {
         )
         .className =
         "overlay show";
+
+    forceRepaint();
 
 }
 
@@ -2087,38 +2258,26 @@ function saveNewTask() {
     };
 
 
-    /*
-        PRIMEIRO:
-        aparece imediatamente
-    */
-
-    createTaskElement(
-        currentSectionId,
-        task
-    );
-
-
-    /*
-        DEPOIS:
-        salva
-    */
-
     section.tasks.push(
         task
     );
+
 
     saveData();
 
 
     closeTaskModal();
 
-    updateProgress();
+
+    renderEverything();
+
+    forceRepaint();
 
 }
 
 
 /* =========================================================
-   CRIAR TAREFA DIRETO NO DOM
+   CRIAR TAREFA
 ========================================================= */
 
 function createTaskElement(
@@ -2179,25 +2338,13 @@ function createTaskElement(
                 checkbox.checked;
 
 
-            if (
-                checkbox.checked
-            ) {
-
-                row.className =
-                    "task done";
-
-            }
-            else {
-
-                row.className =
-                    "task";
-
-            }
-
-
             saveData();
 
             updateProgress();
+
+            renderEverything();
+
+            forceRepaint();
 
         };
 
@@ -2234,6 +2381,15 @@ function createTaskElement(
     );
 
 
+    var tools =
+        document.createElement(
+            "div"
+        );
+
+    tools.className =
+        "task-tools";
+
+
     var remove =
         document.createElement(
             "button"
@@ -2257,6 +2413,11 @@ function createTaskElement(
         };
 
 
+    tools.appendChild(
+        remove
+    );
+
+
     row.appendChild(
         checkbox
     );
@@ -2270,7 +2431,7 @@ function createTaskElement(
     );
 
     row.appendChild(
-        remove
+        tools
     );
 
 
@@ -2333,29 +2494,11 @@ function deleteTask(
         newTasks;
 
 
-    var element =
-        document.getElementById(
-            "task_" +
-            taskId
-        );
-
-
-    if (
-        element &&
-        element.parentNode
-    ) {
-
-        element.parentNode
-            .removeChild(
-                element
-            );
-
-    }
-
-
     saveData();
 
-    updateProgress();
+    renderEverything();
+
+    forceRepaint();
 
 }
 
@@ -2595,6 +2738,8 @@ function buildKeyboard() {
 
             updateTextPreview();
 
+            forceRepaint();
+
         };
 
 
@@ -2624,6 +2769,8 @@ function buildKeyboard() {
                     );
 
                 updateTextPreview();
+
+                forceRepaint();
 
             }
 
@@ -2673,6 +2820,8 @@ function createKey(
                 value;
 
             updateTextPreview();
+
+            forceRepaint();
 
         };
 
@@ -2726,6 +2875,8 @@ function closeTextModal() {
         )
         .className =
         "overlay";
+
+    forceRepaint();
 
 }
 
@@ -2824,6 +2975,8 @@ function createEmojiButton(
 
             updateEmojiSelection();
 
+            forceRepaint();
+
         };
 
 
@@ -2921,6 +3074,8 @@ function changeStart(
 
     updateTimeDisplays();
 
+    forceRepaint();
+
 }
 
 
@@ -2954,6 +3109,8 @@ function changeEnd(
 
 
     updateTimeDisplays();
+
+    forceRepaint();
 
 }
 
@@ -3036,6 +3193,10 @@ function openSettings() {
         .className =
         "overlay show";
 
+    applyEditMode();
+
+    forceRepaint();
+
 }
 
 
@@ -3047,6 +3208,8 @@ function closeSettings() {
         )
         .className =
         "overlay";
+
+    forceRepaint();
 
 }
 
@@ -3074,41 +3237,6 @@ function clearChecks() {
                 .done =
                 false;
 
-
-            var element =
-                document.getElementById(
-                    "task_" +
-                    data.sections[i]
-                    .tasks[j]
-                    .id
-                );
-
-
-            if (element) {
-
-                element.className =
-                    "task";
-
-
-                var inputs =
-                    element
-                    .getElementsByTagName(
-                        "input"
-                    );
-
-
-                if (
-                    inputs.length >
-                    0
-                ) {
-
-                    inputs[0].checked =
-                        false;
-
-                }
-
-            }
-
         }
 
     }
@@ -3116,7 +3244,9 @@ function clearChecks() {
 
     saveData();
 
-    updateProgress();
+    renderEverything();
+
+    forceRepaint();
 
 }
 
@@ -3151,46 +3281,15 @@ function eraseEverything() {
     }
 
 
-    var content =
-        document.getElementById(
-            "content"
-        );
+    editMode =
+        false;
 
-
-    var children =
-        content.children;
-
-
-    var i =
-        children.length -
-        1;
-
-
-    while (
-        i >= 0
-    ) {
-
-        if (
-            children[i].id !==
-            "emptyState"
-        ) {
-
-            content.removeChild(
-                children[i]
-            );
-
-        }
-
-        i--;
-
-    }
-
-
-    showEmptyIfNeeded();
 
     closeSettings();
 
-    updateProgress();
+    renderEverything();
+
+    forceRepaint();
 
 }
 
